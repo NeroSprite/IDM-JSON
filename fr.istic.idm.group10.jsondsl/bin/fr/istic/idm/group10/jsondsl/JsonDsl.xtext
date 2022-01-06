@@ -1,0 +1,252 @@
+grammar fr.istic.idm.group10.jsondsl.JsonDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+
+
+JSonFile returns JSonFile:
+'JSonFile' name=STRING '{' (Contient+=JSonObject*) '}';
+
+Commandes_Impl returns Commandes:
+{Commandes}
+'Commandes'
+'{'
+('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+'}';
+
+
+
+
+JSonObject:
+JsonArray | JsonInteger | JsonBoolean | JSonAttribut_Impl | JSonEnum | JSonString | JSonNull | Operation_Impl | ComplexAttribut_Impl | SimpleAttribut_Impl | Sum | Div | Mult | Sub;
+
+
+
+ComplexAttribut returns ComplexAttribut:
+ComplexAttribut_Impl | JsonArray | JSonEnum;
+
+
+
+JSonAttribut returns JSonAttribut:
+JSonAttribut_Impl | JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Operation_Impl | ComplexAttribut_Impl | SimpleAttribut_Impl | Sum | Div | Mult | Sub;
+
+
+
+
+
+Store returns Store:
+{Store}
+'Store'
+name=STRING
+'{'
+('path' path=STRING)?
+('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+'}';
+
+
+
+Load returns Load:
+{Load}
+'Load'
+'{'
+('path' path=STRING)?
+('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+'}';
+
+
+
+Display returns Display:
+'Display'
+'{'
+('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+'node' node=[JSonObject]
+'}';
+
+
+
+Subset returns Subset:
+'Subset'
+name=STRING
+'{'
+('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+'listNodes' '(' listNodes+=[JSonObject] ( "," listNodes+=[JSonObject])* ')'
+'}';
+
+
+
+Select returns Select:
+'Select'
+name=STRING
+'{'
+('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+'node' node=[JSonObject]
+'}';
+
+
+
+Projection returns Projection:
+'Projection'
+name=STRING
+'{'
+('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+'node' node=[JSonObject]
+'}';
+
+
+
+Insert returns Insert:
+'Insert'
+'{'
+('value' value=STRING)?
+('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+'node' node=[JSonObject]
+'complexattribut' complexattribut=[ComplexAttribut]
+'}';
+
+
+
+Remove returns Remove:
+'Remove'
+'{'
+('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+'node' node=[JSonObject]
+'}';
+
+
+
+Modify returns Modify:
+'Modify'
+'{'
+('value' value=STRING)?
+('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+'node' '(' node+=[JSonObject] ( "," node+=[JSonObject])* ')'
+'}';
+
+
+
+
+
+
+JSonObject_Impl returns JSonObject:
+{JSonObject}
+'JSonObject'
+;
+
+
+
+JsonArray:
+name=STRING '{'
+Contient+=JSonAttribut ( "," Contient+=JSonAttribut)*
+'}';
+
+
+
+JsonInteger:
+name=STRING
+value=INT
+;
+
+
+
+JsonBoolean:
+{JsonBoolean}
+(value?='value')?
+'JsonBoolean'
+name=STRING;
+
+
+
+JSonAttribut_Impl returns JSonAttribut:
+{JSonAttribut}
+'JSonAttribut'
+name=STRING;
+
+
+
+JSonEnum returns JSonEnum:
+'JSonEnum'
+name=STRING
+'{'
+'enum' '[' Contient+=JSonAttribut ( "," Contient+=JSonAttribut)* ']'
+'}';
+
+
+
+JSonString:
+'JSonString'
+name=STRING
+'{'
+('value' value=STRING)?
+'}';
+
+
+
+JSonNull returns JSonNull:
+{JSonNull}
+'JSonNull'
+name=STRING;
+
+
+
+Operation_Impl returns Operation:
+{Operation}
+'Operation'
+name=STRING;
+
+
+
+ComplexAttribut_Impl returns ComplexAttribut:
+{ComplexAttribut}
+'ComplexAttribut'
+name=STRING;
+
+
+
+SimpleAttribut_Impl returns SimpleAttribut:
+{SimpleAttribut}
+'SimpleAttribut'
+name=STRING;
+
+
+
+Sum returns Sum:
+'Sum'
+name=STRING
+'['
+listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
+']';
+
+
+
+Div returns Div:
+'Div'
+name=STRING
+'['
+Contient+=[JsonInteger] ( "," Contient+=[JsonInteger])*
+']';
+
+
+
+Mult returns Mult:
+'Mult'
+name=STRING
+'['
+"int" listInterger+=JsonInteger ( "," "int" listInterger+=JsonInteger)*
+//listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
+']';
+
+
+
+Sub returns Sub:
+'Sub'
+name=STRING
+'['
+listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
+']';
+
+
+
+
+
+EBoolean returns EBoolean:
+{EBoolean} 'true' | {EBoolean} 'false';
