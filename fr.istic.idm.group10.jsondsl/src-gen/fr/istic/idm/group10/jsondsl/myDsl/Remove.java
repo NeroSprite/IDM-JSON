@@ -5,8 +5,6 @@ package fr.istic.idm.group10.jsondsl.myDsl;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Remove</b></em>'.
@@ -24,37 +22,37 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Remove extends EObject
+public interface Remove extends Commandes
 {
   /**
-   * Returns the value of the '<em><b>Jsonfile</b></em>' reference list.
+   * Returns the value of the '<em><b>Jsonfile</b></em>' containment reference list.
    * The list contents are of type {@link fr.istic.idm.group10.jsondsl.myDsl.JSonFile}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Jsonfile</em>' reference list.
+   * @return the value of the '<em>Jsonfile</em>' containment reference list.
    * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getRemove_Jsonfile()
-   * @model
+   * @model containment="true"
    * @generated
    */
   EList<JSonFile> getJsonfile();
 
   /**
-   * Returns the value of the '<em><b>Node</b></em>' reference.
+   * Returns the value of the '<em><b>Node</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Node</em>' reference.
+   * @return the value of the '<em>Node</em>' containment reference.
    * @see #setNode(JSonObject)
    * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getRemove_Node()
-   * @model
+   * @model containment="true"
    * @generated
    */
   JSonObject getNode();
 
   /**
-   * Sets the value of the '{@link fr.istic.idm.group10.jsondsl.myDsl.Remove#getNode <em>Node</em>}' reference.
+   * Sets the value of the '{@link fr.istic.idm.group10.jsondsl.myDsl.Remove#getNode <em>Node</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Node</em>' reference.
+   * @param value the new value of the '<em>Node</em>' containment reference.
    * @see #getNode()
    * @generated
    */

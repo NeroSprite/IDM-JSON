@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.Mult#getName <em>Name</em>}</li>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.Mult#getListInterger <em>List Interger</em>}</li>
  * </ul>
  *
@@ -23,6 +24,28 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Mult extends JSonObject, JSonAttribut
 {
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getMult_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link fr.istic.idm.group10.jsondsl.myDsl.Mult#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
   /**
    * Returns the value of the '<em><b>List Interger</b></em>' containment reference list.
    * The list contents are of type {@link fr.istic.idm.group10.jsondsl.myDsl.JsonInteger}.

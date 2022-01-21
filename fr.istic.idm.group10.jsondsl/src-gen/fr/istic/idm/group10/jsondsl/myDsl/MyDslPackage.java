@@ -58,6 +58,25 @@ public interface MyDslPackage extends EPackage
   MyDslPackage eINSTANCE = fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl.init();
 
   /**
+   * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.MainGrammarImpl <em>Main Grammar</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MainGrammarImpl
+   * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getMainGrammar()
+   * @generated
+   */
+  int MAIN_GRAMMAR = 0;
+
+  /**
+   * The number of structural features of the '<em>Main Grammar</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAIN_GRAMMAR_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JSonFileImpl <em>JSon File</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -65,7 +84,7 @@ public interface MyDslPackage extends EPackage
    * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getJSonFile()
    * @generated
    */
-  int JSON_FILE = 0;
+  int JSON_FILE = 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -74,7 +93,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int JSON_FILE__NAME = 0;
+  int JSON_FILE__NAME = MAIN_GRAMMAR_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Contient</b></em>' containment reference list.
@@ -83,7 +102,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int JSON_FILE__CONTIENT = 1;
+  int JSON_FILE__CONTIENT = MAIN_GRAMMAR_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>JSon File</em>' class.
@@ -92,7 +111,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int JSON_FILE_FEATURE_COUNT = 2;
+  int JSON_FILE_FEATURE_COUNT = MAIN_GRAMMAR_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.CommandesImpl <em>Commandes</em>}' class.
@@ -102,16 +121,7 @@ public interface MyDslPackage extends EPackage
    * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getCommandes()
    * @generated
    */
-  int COMMANDES = 1;
-
-  /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMMANDES__JSONFILE = 0;
+  int COMMANDES = 2;
 
   /**
    * The number of structural features of the '<em>Commandes</em>' class.
@@ -120,7 +130,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMMANDES_FEATURE_COUNT = 1;
+  int COMMANDES_FEATURE_COUNT = MAIN_GRAMMAR_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JSonObjectImpl <em>JSon Object</em>}' class.
@@ -130,7 +140,7 @@ public interface MyDslPackage extends EPackage
    * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getJSonObject()
    * @generated
    */
-  int JSON_OBJECT = 2;
+  int JSON_OBJECT = 3;
 
   /**
    * The number of structural features of the '<em>JSon Object</em>' class.
@@ -140,43 +150,6 @@ public interface MyDslPackage extends EPackage
    * @ordered
    */
   int JSON_OBJECT_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.ComplexAttributImpl <em>Complex Attribut</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.istic.idm.group10.jsondsl.myDsl.impl.ComplexAttributImpl
-   * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getComplexAttribut()
-   * @generated
-   */
-  int COMPLEX_ATTRIBUT = 3;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPLEX_ATTRIBUT__NAME = JSON_OBJECT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Contient</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPLEX_ATTRIBUT__CONTIENT = JSON_OBJECT_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Complex Attribut</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPLEX_ATTRIBUT_FEATURE_COUNT = JSON_OBJECT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JSonAttributImpl <em>JSon Attribut</em>}' class.
@@ -189,22 +162,13 @@ public interface MyDslPackage extends EPackage
   int JSON_ATTRIBUT = 4;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int JSON_ATTRIBUT__NAME = JSON_OBJECT_FEATURE_COUNT + 0;
-
-  /**
    * The number of structural features of the '<em>JSon Attribut</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int JSON_ATTRIBUT_FEATURE_COUNT = JSON_OBJECT_FEATURE_COUNT + 1;
+  int JSON_ATTRIBUT_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.StoreImpl <em>Store</em>}' class.
@@ -217,31 +181,22 @@ public interface MyDslPackage extends EPackage
   int STORE = 5;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STORE__NAME = 0;
-
-  /**
    * The feature id for the '<em><b>Path</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STORE__PATH = 1;
+  int STORE__PATH = COMMANDES_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' reference list.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STORE__JSONFILE = 2;
+  int STORE__NAME = COMMANDES_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Store</em>' class.
@@ -250,7 +205,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STORE_FEATURE_COUNT = 3;
+  int STORE_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.LoadImpl <em>Load</em>}' class.
@@ -269,16 +224,16 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LOAD__PATH = 0;
+  int LOAD__PATH = COMMANDES_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' reference list.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOAD__JSONFILE = 1;
+  int LOAD__NAME = COMMANDES_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Load</em>' class.
@@ -287,7 +242,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LOAD_FEATURE_COUNT = 2;
+  int LOAD_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.DisplayImpl <em>Display</em>}' class.
@@ -300,22 +255,13 @@ public interface MyDslPackage extends EPackage
   int DISPLAY = 7;
 
   /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' reference list.
+   * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DISPLAY__JSONFILE = 0;
-
-  /**
-   * The feature id for the '<em><b>Node</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DISPLAY__NODE = 1;
+  int DISPLAY__JSONFILE = COMMANDES_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Display</em>' class.
@@ -324,7 +270,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DISPLAY_FEATURE_COUNT = 2;
+  int DISPLAY_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.SubsetImpl <em>Subset</em>}' class.
@@ -337,31 +283,22 @@ public interface MyDslPackage extends EPackage
   int SUBSET = 8;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SUBSET__NAME = 0;
+  int SUBSET__JSONFILE = COMMANDES_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' reference list.
+   * The feature id for the '<em><b>List Nodes</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SUBSET__JSONFILE = 1;
-
-  /**
-   * The feature id for the '<em><b>List Nodes</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SUBSET__LIST_NODES = 2;
+  int SUBSET__LIST_NODES = COMMANDES_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Subset</em>' class.
@@ -370,53 +307,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SUBSET_FEATURE_COUNT = 3;
-
-  /**
-   * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.SelectImpl <em>Select</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.istic.idm.group10.jsondsl.myDsl.impl.SelectImpl
-   * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getSelect()
-   * @generated
-   */
-  int SELECT = 9;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT__JSONFILE = 1;
-
-  /**
-   * The feature id for the '<em><b>Node</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT__NODE = 2;
-
-  /**
-   * The number of structural features of the '<em>Select</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECT_FEATURE_COUNT = 3;
+  int SUBSET_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.ProjectionImpl <em>Projection</em>}' class.
@@ -426,34 +317,25 @@ public interface MyDslPackage extends EPackage
    * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getProjection()
    * @generated
    */
-  int PROJECTION = 10;
+  int PROJECTION = 9;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROJECTION__NAME = 0;
+  int PROJECTION__JSONFILE = COMMANDES_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' reference list.
+   * The feature id for the '<em><b>Node</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROJECTION__JSONFILE = 1;
-
-  /**
-   * The feature id for the '<em><b>Node</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROJECTION__NODE = 2;
+  int PROJECTION__NODE = COMMANDES_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Projection</em>' class.
@@ -462,7 +344,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROJECTION_FEATURE_COUNT = 3;
+  int PROJECTION_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.InsertImpl <em>Insert</em>}' class.
@@ -472,43 +354,25 @@ public interface MyDslPackage extends EPackage
    * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getInsert()
    * @generated
    */
-  int INSERT = 11;
+  int INSERT = 10;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSERT__VALUE = 0;
+  int INSERT__JSONFILE = COMMANDES_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' reference list.
+   * The feature id for the '<em><b>Node</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSERT__JSONFILE = 1;
-
-  /**
-   * The feature id for the '<em><b>Node</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INSERT__NODE = 2;
-
-  /**
-   * The feature id for the '<em><b>Complexattribut</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INSERT__COMPLEXATTRIBUT = 3;
+  int INSERT__NODE = COMMANDES_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Insert</em>' class.
@@ -517,7 +381,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INSERT_FEATURE_COUNT = 4;
+  int INSERT_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.RemoveImpl <em>Remove</em>}' class.
@@ -527,25 +391,25 @@ public interface MyDslPackage extends EPackage
    * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getRemove()
    * @generated
    */
-  int REMOVE = 12;
+  int REMOVE = 11;
 
   /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' reference list.
+   * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REMOVE__JSONFILE = 0;
+  int REMOVE__JSONFILE = COMMANDES_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Node</b></em>' reference.
+   * The feature id for the '<em><b>Node</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REMOVE__NODE = 1;
+  int REMOVE__NODE = COMMANDES_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Remove</em>' class.
@@ -554,7 +418,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REMOVE_FEATURE_COUNT = 2;
+  int REMOVE_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.ModifyImpl <em>Modify</em>}' class.
@@ -564,34 +428,25 @@ public interface MyDslPackage extends EPackage
    * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getModify()
    * @generated
    */
-  int MODIFY = 13;
+  int MODIFY = 12;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODIFY__VALUE = 0;
+  int MODIFY__JSONFILE = COMMANDES_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' reference list.
+   * The feature id for the '<em><b>Node</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODIFY__JSONFILE = 1;
-
-  /**
-   * The feature id for the '<em><b>Node</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODIFY__NODE = 2;
+  int MODIFY__NODE = COMMANDES_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Modify</em>' class.
@@ -600,7 +455,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODIFY_FEATURE_COUNT = 3;
+  int MODIFY_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JsonArrayImpl <em>Json Array</em>}' class.
@@ -610,7 +465,7 @@ public interface MyDslPackage extends EPackage
    * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getJsonArray()
    * @generated
    */
-  int JSON_ARRAY = 14;
+  int JSON_ARRAY = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -638,6 +493,43 @@ public interface MyDslPackage extends EPackage
    * @ordered
    */
   int JSON_ARRAY_FEATURE_COUNT = JSON_OBJECT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JSonEnumImpl <em>JSon Enum</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fr.istic.idm.group10.jsondsl.myDsl.impl.JSonEnumImpl
+   * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getJSonEnum()
+   * @generated
+   */
+  int JSON_ENUM = 14;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int JSON_ENUM__NAME = JSON_OBJECT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Contient</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int JSON_ENUM__CONTIENT = JSON_OBJECT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>JSon Enum</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int JSON_ENUM_FEATURE_COUNT = JSON_OBJECT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JsonIntegerImpl <em>Json Integer</em>}' class.
@@ -714,43 +606,6 @@ public interface MyDslPackage extends EPackage
   int JSON_BOOLEAN_FEATURE_COUNT = JSON_OBJECT_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JSonEnumImpl <em>JSon Enum</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.istic.idm.group10.jsondsl.myDsl.impl.JSonEnumImpl
-   * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getJSonEnum()
-   * @generated
-   */
-  int JSON_ENUM = 17;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int JSON_ENUM__NAME = JSON_OBJECT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Contient</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int JSON_ENUM__CONTIENT = JSON_OBJECT_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>JSon Enum</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int JSON_ENUM_FEATURE_COUNT = JSON_OBJECT_FEATURE_COUNT + 2;
-
-  /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JSonStringImpl <em>JSon String</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -758,7 +613,7 @@ public interface MyDslPackage extends EPackage
    * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getJSonString()
    * @generated
    */
-  int JSON_STRING = 18;
+  int JSON_STRING = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -795,7 +650,7 @@ public interface MyDslPackage extends EPackage
    * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getJSonNull()
    * @generated
    */
-  int JSON_NULL = 19;
+  int JSON_NULL = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -816,62 +671,6 @@ public interface MyDslPackage extends EPackage
   int JSON_NULL_FEATURE_COUNT = JSON_OBJECT_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.OperationImpl <em>Operation</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.istic.idm.group10.jsondsl.myDsl.impl.OperationImpl
-   * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getOperation()
-   * @generated
-   */
-  int OPERATION = 20;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERATION__NAME = JSON_OBJECT_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Operation</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERATION_FEATURE_COUNT = JSON_OBJECT_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.SimpleAttributImpl <em>Simple Attribut</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fr.istic.idm.group10.jsondsl.myDsl.impl.SimpleAttributImpl
-   * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getSimpleAttribut()
-   * @generated
-   */
-  int SIMPLE_ATTRIBUT = 21;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SIMPLE_ATTRIBUT__NAME = JSON_OBJECT_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Simple Attribut</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SIMPLE_ATTRIBUT_FEATURE_COUNT = JSON_OBJECT_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.SumImpl <em>Sum</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -879,7 +678,7 @@ public interface MyDslPackage extends EPackage
    * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getSum()
    * @generated
    */
-  int SUM = 22;
+  int SUM = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -891,7 +690,7 @@ public interface MyDslPackage extends EPackage
   int SUM__NAME = JSON_OBJECT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>List Interger</b></em>' reference list.
+   * The feature id for the '<em><b>List Interger</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -916,7 +715,7 @@ public interface MyDslPackage extends EPackage
    * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getDiv()
    * @generated
    */
-  int DIV = 23;
+  int DIV = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -928,13 +727,13 @@ public interface MyDslPackage extends EPackage
   int DIV__NAME = JSON_OBJECT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Contient</b></em>' reference list.
+   * The feature id for the '<em><b>List Interger</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DIV__CONTIENT = JSON_OBJECT_FEATURE_COUNT + 1;
+  int DIV__LIST_INTERGER = JSON_OBJECT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Div</em>' class.
@@ -953,7 +752,7 @@ public interface MyDslPackage extends EPackage
    * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getMult()
    * @generated
    */
-  int MULT = 24;
+  int MULT = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -990,7 +789,7 @@ public interface MyDslPackage extends EPackage
    * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getSub()
    * @generated
    */
-  int SUB = 25;
+  int SUB = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1002,7 +801,7 @@ public interface MyDslPackage extends EPackage
   int SUB__NAME = JSON_OBJECT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>List Interger</b></em>' reference list.
+   * The feature id for the '<em><b>List Interger</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1027,7 +826,7 @@ public interface MyDslPackage extends EPackage
    * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getEBoolean()
    * @generated
    */
-  int EBOOLEAN = 26;
+  int EBOOLEAN = 23;
 
   /**
    * The number of structural features of the '<em>EBoolean</em>' class.
@@ -1038,6 +837,16 @@ public interface MyDslPackage extends EPackage
    */
   int EBOOLEAN_FEATURE_COUNT = 0;
 
+
+  /**
+   * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.MainGrammar <em>Main Grammar</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Main Grammar</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.MainGrammar
+   * @generated
+   */
+  EClass getMainGrammar();
 
   /**
    * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonFile <em>JSon File</em>}'.
@@ -1082,17 +891,6 @@ public interface MyDslPackage extends EPackage
   EClass getCommandes();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Commandes#getJsonfile <em>Jsonfile</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Jsonfile</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Commandes#getJsonfile()
-   * @see #getCommandes()
-   * @generated
-   */
-  EReference getCommandes_Jsonfile();
-
-  /**
    * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonObject <em>JSon Object</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1101,27 +899,6 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EClass getJSonObject();
-
-  /**
-   * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.ComplexAttribut <em>Complex Attribut</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Complex Attribut</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.ComplexAttribut
-   * @generated
-   */
-  EClass getComplexAttribut();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.ComplexAttribut#getContient <em>Contient</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Contient</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.ComplexAttribut#getContient()
-   * @see #getComplexAttribut()
-   * @generated
-   */
-  EReference getComplexAttribut_Contient();
 
   /**
    * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonAttribut <em>JSon Attribut</em>}'.
@@ -1134,17 +911,6 @@ public interface MyDslPackage extends EPackage
   EClass getJSonAttribut();
 
   /**
-   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonAttribut#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.JSonAttribut#getName()
-   * @see #getJSonAttribut()
-   * @generated
-   */
-  EAttribute getJSonAttribut_Name();
-
-  /**
    * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.Store <em>Store</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1153,17 +919,6 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EClass getStore();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.Store#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Store#getName()
-   * @see #getStore()
-   * @generated
-   */
-  EAttribute getStore_Name();
 
   /**
    * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.Store#getPath <em>Path</em>}'.
@@ -1177,15 +932,15 @@ public interface MyDslPackage extends EPackage
   EAttribute getStore_Path();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Store#getJsonfile <em>Jsonfile</em>}'.
+   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.Store#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Jsonfile</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Store#getJsonfile()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.Store#getName()
    * @see #getStore()
    * @generated
    */
-  EReference getStore_Jsonfile();
+  EAttribute getStore_Name();
 
   /**
    * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.Load <em>Load</em>}'.
@@ -1209,15 +964,15 @@ public interface MyDslPackage extends EPackage
   EAttribute getLoad_Path();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Load#getJsonfile <em>Jsonfile</em>}'.
+   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.Load#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Jsonfile</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Load#getJsonfile()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.Load#getName()
    * @see #getLoad()
    * @generated
    */
-  EReference getLoad_Jsonfile();
+  EAttribute getLoad_Name();
 
   /**
    * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.Display <em>Display</em>}'.
@@ -1230,26 +985,15 @@ public interface MyDslPackage extends EPackage
   EClass getDisplay();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Display#getJsonfile <em>Jsonfile</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Display#getJsonfile <em>Jsonfile</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Jsonfile</em>'.
+   * @return the meta object for the containment reference list '<em>Jsonfile</em>'.
    * @see fr.istic.idm.group10.jsondsl.myDsl.Display#getJsonfile()
    * @see #getDisplay()
    * @generated
    */
   EReference getDisplay_Jsonfile();
-
-  /**
-   * Returns the meta object for the reference '{@link fr.istic.idm.group10.jsondsl.myDsl.Display#getNode <em>Node</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Node</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Display#getNode()
-   * @see #getDisplay()
-   * @generated
-   */
-  EReference getDisplay_Node();
 
   /**
    * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.Subset <em>Subset</em>}'.
@@ -1262,21 +1006,10 @@ public interface MyDslPackage extends EPackage
   EClass getSubset();
 
   /**
-   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.Subset#getName <em>Name</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Subset#getJsonfile <em>Jsonfile</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Subset#getName()
-   * @see #getSubset()
-   * @generated
-   */
-  EAttribute getSubset_Name();
-
-  /**
-   * Returns the meta object for the reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Subset#getJsonfile <em>Jsonfile</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Jsonfile</em>'.
+   * @return the meta object for the containment reference list '<em>Jsonfile</em>'.
    * @see fr.istic.idm.group10.jsondsl.myDsl.Subset#getJsonfile()
    * @see #getSubset()
    * @generated
@@ -1284,58 +1017,15 @@ public interface MyDslPackage extends EPackage
   EReference getSubset_Jsonfile();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Subset#getListNodes <em>List Nodes</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Subset#getListNodes <em>List Nodes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>List Nodes</em>'.
+   * @return the meta object for the containment reference list '<em>List Nodes</em>'.
    * @see fr.istic.idm.group10.jsondsl.myDsl.Subset#getListNodes()
    * @see #getSubset()
    * @generated
    */
   EReference getSubset_ListNodes();
-
-  /**
-   * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.Select <em>Select</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Select</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Select
-   * @generated
-   */
-  EClass getSelect();
-
-  /**
-   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.Select#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Select#getName()
-   * @see #getSelect()
-   * @generated
-   */
-  EAttribute getSelect_Name();
-
-  /**
-   * Returns the meta object for the reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Select#getJsonfile <em>Jsonfile</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Jsonfile</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Select#getJsonfile()
-   * @see #getSelect()
-   * @generated
-   */
-  EReference getSelect_Jsonfile();
-
-  /**
-   * Returns the meta object for the reference '{@link fr.istic.idm.group10.jsondsl.myDsl.Select#getNode <em>Node</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Node</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Select#getNode()
-   * @see #getSelect()
-   * @generated
-   */
-  EReference getSelect_Node();
 
   /**
    * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.Projection <em>Projection</em>}'.
@@ -1348,21 +1038,10 @@ public interface MyDslPackage extends EPackage
   EClass getProjection();
 
   /**
-   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.Projection#getName <em>Name</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Projection#getJsonfile <em>Jsonfile</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Projection#getName()
-   * @see #getProjection()
-   * @generated
-   */
-  EAttribute getProjection_Name();
-
-  /**
-   * Returns the meta object for the reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Projection#getJsonfile <em>Jsonfile</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Jsonfile</em>'.
+   * @return the meta object for the containment reference list '<em>Jsonfile</em>'.
    * @see fr.istic.idm.group10.jsondsl.myDsl.Projection#getJsonfile()
    * @see #getProjection()
    * @generated
@@ -1370,10 +1049,10 @@ public interface MyDslPackage extends EPackage
   EReference getProjection_Jsonfile();
 
   /**
-   * Returns the meta object for the reference '{@link fr.istic.idm.group10.jsondsl.myDsl.Projection#getNode <em>Node</em>}'.
+   * Returns the meta object for the containment reference '{@link fr.istic.idm.group10.jsondsl.myDsl.Projection#getNode <em>Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Node</em>'.
+   * @return the meta object for the containment reference '<em>Node</em>'.
    * @see fr.istic.idm.group10.jsondsl.myDsl.Projection#getNode()
    * @see #getProjection()
    * @generated
@@ -1391,21 +1070,10 @@ public interface MyDslPackage extends EPackage
   EClass getInsert();
 
   /**
-   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.Insert#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Insert#getJsonfile <em>Jsonfile</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Insert#getValue()
-   * @see #getInsert()
-   * @generated
-   */
-  EAttribute getInsert_Value();
-
-  /**
-   * Returns the meta object for the reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Insert#getJsonfile <em>Jsonfile</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Jsonfile</em>'.
+   * @return the meta object for the containment reference list '<em>Jsonfile</em>'.
    * @see fr.istic.idm.group10.jsondsl.myDsl.Insert#getJsonfile()
    * @see #getInsert()
    * @generated
@@ -1413,26 +1081,15 @@ public interface MyDslPackage extends EPackage
   EReference getInsert_Jsonfile();
 
   /**
-   * Returns the meta object for the reference '{@link fr.istic.idm.group10.jsondsl.myDsl.Insert#getNode <em>Node</em>}'.
+   * Returns the meta object for the containment reference '{@link fr.istic.idm.group10.jsondsl.myDsl.Insert#getNode <em>Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Node</em>'.
+   * @return the meta object for the containment reference '<em>Node</em>'.
    * @see fr.istic.idm.group10.jsondsl.myDsl.Insert#getNode()
    * @see #getInsert()
    * @generated
    */
   EReference getInsert_Node();
-
-  /**
-   * Returns the meta object for the reference '{@link fr.istic.idm.group10.jsondsl.myDsl.Insert#getComplexattribut <em>Complexattribut</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Complexattribut</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Insert#getComplexattribut()
-   * @see #getInsert()
-   * @generated
-   */
-  EReference getInsert_Complexattribut();
 
   /**
    * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.Remove <em>Remove</em>}'.
@@ -1445,10 +1102,10 @@ public interface MyDslPackage extends EPackage
   EClass getRemove();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Remove#getJsonfile <em>Jsonfile</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Remove#getJsonfile <em>Jsonfile</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Jsonfile</em>'.
+   * @return the meta object for the containment reference list '<em>Jsonfile</em>'.
    * @see fr.istic.idm.group10.jsondsl.myDsl.Remove#getJsonfile()
    * @see #getRemove()
    * @generated
@@ -1456,10 +1113,10 @@ public interface MyDslPackage extends EPackage
   EReference getRemove_Jsonfile();
 
   /**
-   * Returns the meta object for the reference '{@link fr.istic.idm.group10.jsondsl.myDsl.Remove#getNode <em>Node</em>}'.
+   * Returns the meta object for the containment reference '{@link fr.istic.idm.group10.jsondsl.myDsl.Remove#getNode <em>Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Node</em>'.
+   * @return the meta object for the containment reference '<em>Node</em>'.
    * @see fr.istic.idm.group10.jsondsl.myDsl.Remove#getNode()
    * @see #getRemove()
    * @generated
@@ -1477,21 +1134,10 @@ public interface MyDslPackage extends EPackage
   EClass getModify();
 
   /**
-   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.Modify#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Modify#getJsonfile <em>Jsonfile</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Modify#getValue()
-   * @see #getModify()
-   * @generated
-   */
-  EAttribute getModify_Value();
-
-  /**
-   * Returns the meta object for the reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Modify#getJsonfile <em>Jsonfile</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Jsonfile</em>'.
+   * @return the meta object for the containment reference list '<em>Jsonfile</em>'.
    * @see fr.istic.idm.group10.jsondsl.myDsl.Modify#getJsonfile()
    * @see #getModify()
    * @generated
@@ -1499,10 +1145,10 @@ public interface MyDslPackage extends EPackage
   EReference getModify_Jsonfile();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Modify#getNode <em>Node</em>}'.
+   * Returns the meta object for the containment reference '{@link fr.istic.idm.group10.jsondsl.myDsl.Modify#getNode <em>Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Node</em>'.
+   * @return the meta object for the containment reference '<em>Node</em>'.
    * @see fr.istic.idm.group10.jsondsl.myDsl.Modify#getNode()
    * @see #getModify()
    * @generated
@@ -1520,6 +1166,60 @@ public interface MyDslPackage extends EPackage
   EClass getJsonArray();
 
   /**
+   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.JsonArray#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.JsonArray#getName()
+   * @see #getJsonArray()
+   * @generated
+   */
+  EAttribute getJsonArray_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.JsonArray#getContient <em>Contient</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Contient</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.JsonArray#getContient()
+   * @see #getJsonArray()
+   * @generated
+   */
+  EReference getJsonArray_Contient();
+
+  /**
+   * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonEnum <em>JSon Enum</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>JSon Enum</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.JSonEnum
+   * @generated
+   */
+  EClass getJSonEnum();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonEnum#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.JSonEnum#getName()
+   * @see #getJSonEnum()
+   * @generated
+   */
+  EAttribute getJSonEnum_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonEnum#getContient <em>Contient</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Contient</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.JSonEnum#getContient()
+   * @see #getJSonEnum()
+   * @generated
+   */
+  EReference getJSonEnum_Contient();
+
+  /**
    * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.JsonInteger <em>Json Integer</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1528,6 +1228,17 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EClass getJsonInteger();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.JsonInteger#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.JsonInteger#getName()
+   * @see #getJsonInteger()
+   * @generated
+   */
+  EAttribute getJsonInteger_Name();
 
   /**
    * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.JsonInteger#getValue <em>Value</em>}'.
@@ -1551,25 +1262,26 @@ public interface MyDslPackage extends EPackage
   EClass getJsonBoolean();
 
   /**
-   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.JsonBoolean#isValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.JsonBoolean#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.JsonBoolean#getName()
+   * @see #getJsonBoolean()
+   * @generated
+   */
+  EAttribute getJsonBoolean_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.JsonBoolean#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.JsonBoolean#isValue()
+   * @see fr.istic.idm.group10.jsondsl.myDsl.JsonBoolean#getValue()
    * @see #getJsonBoolean()
    * @generated
    */
   EAttribute getJsonBoolean_Value();
-
-  /**
-   * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonEnum <em>JSon Enum</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>JSon Enum</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.JSonEnum
-   * @generated
-   */
-  EClass getJSonEnum();
 
   /**
    * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonString <em>JSon String</em>}'.
@@ -1580,6 +1292,17 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EClass getJSonString();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonString#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.JSonString#getName()
+   * @see #getJSonString()
+   * @generated
+   */
+  EAttribute getJSonString_Name();
 
   /**
    * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonString#getValue <em>Value</em>}'.
@@ -1603,24 +1326,15 @@ public interface MyDslPackage extends EPackage
   EClass getJSonNull();
 
   /**
-   * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.Operation <em>Operation</em>}'.
+   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonNull#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Operation</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Operation
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.JSonNull#getName()
+   * @see #getJSonNull()
    * @generated
    */
-  EClass getOperation();
-
-  /**
-   * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.SimpleAttribut <em>Simple Attribut</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Simple Attribut</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.SimpleAttribut
-   * @generated
-   */
-  EClass getSimpleAttribut();
+  EAttribute getJSonNull_Name();
 
   /**
    * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.Sum <em>Sum</em>}'.
@@ -1633,10 +1347,21 @@ public interface MyDslPackage extends EPackage
   EClass getSum();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Sum#getListInterger <em>List Interger</em>}'.
+   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.Sum#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>List Interger</em>'.
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.Sum#getName()
+   * @see #getSum()
+   * @generated
+   */
+  EAttribute getSum_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Sum#getListInterger <em>List Interger</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>List Interger</em>'.
    * @see fr.istic.idm.group10.jsondsl.myDsl.Sum#getListInterger()
    * @see #getSum()
    * @generated
@@ -1654,15 +1379,26 @@ public interface MyDslPackage extends EPackage
   EClass getDiv();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Div#getContient <em>Contient</em>}'.
+   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.Div#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Contient</em>'.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Div#getContient()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.Div#getName()
    * @see #getDiv()
    * @generated
    */
-  EReference getDiv_Contient();
+  EAttribute getDiv_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Div#getListInterger <em>List Interger</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>List Interger</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.Div#getListInterger()
+   * @see #getDiv()
+   * @generated
+   */
+  EReference getDiv_ListInterger();
 
   /**
    * Returns the meta object for class '{@link fr.istic.idm.group10.jsondsl.myDsl.Mult <em>Mult</em>}'.
@@ -1673,6 +1409,17 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EClass getMult();
+
+  /**
+   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.Mult#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.Mult#getName()
+   * @see #getMult()
+   * @generated
+   */
+  EAttribute getMult_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Mult#getListInterger <em>List Interger</em>}'.
@@ -1696,10 +1443,21 @@ public interface MyDslPackage extends EPackage
   EClass getSub();
 
   /**
-   * Returns the meta object for the reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Sub#getListInterger <em>List Interger</em>}'.
+   * Returns the meta object for the attribute '{@link fr.istic.idm.group10.jsondsl.myDsl.Sub#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>List Interger</em>'.
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.Sub#getName()
+   * @see #getSub()
+   * @generated
+   */
+  EAttribute getSub_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fr.istic.idm.group10.jsondsl.myDsl.Sub#getListInterger <em>List Interger</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>List Interger</em>'.
    * @see fr.istic.idm.group10.jsondsl.myDsl.Sub#getListInterger()
    * @see #getSub()
    * @generated
@@ -1740,6 +1498,16 @@ public interface MyDslPackage extends EPackage
   interface Literals
   {
     /**
+     * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.MainGrammarImpl <em>Main Grammar</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MainGrammarImpl
+     * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getMainGrammar()
+     * @generated
+     */
+    EClass MAIN_GRAMMAR = eINSTANCE.getMainGrammar();
+
+    /**
      * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JSonFileImpl <em>JSon File</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1776,14 +1544,6 @@ public interface MyDslPackage extends EPackage
     EClass COMMANDES = eINSTANCE.getCommandes();
 
     /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference COMMANDES__JSONFILE = eINSTANCE.getCommandes_Jsonfile();
-
-    /**
      * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JSonObjectImpl <em>JSon Object</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1792,24 +1552,6 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EClass JSON_OBJECT = eINSTANCE.getJSonObject();
-
-    /**
-     * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.ComplexAttributImpl <em>Complex Attribut</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.istic.idm.group10.jsondsl.myDsl.impl.ComplexAttributImpl
-     * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getComplexAttribut()
-     * @generated
-     */
-    EClass COMPLEX_ATTRIBUT = eINSTANCE.getComplexAttribut();
-
-    /**
-     * The meta object literal for the '<em><b>Contient</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference COMPLEX_ATTRIBUT__CONTIENT = eINSTANCE.getComplexAttribut_Contient();
 
     /**
      * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JSonAttributImpl <em>JSon Attribut</em>}' class.
@@ -1822,14 +1564,6 @@ public interface MyDslPackage extends EPackage
     EClass JSON_ATTRIBUT = eINSTANCE.getJSonAttribut();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute JSON_ATTRIBUT__NAME = eINSTANCE.getJSonAttribut_Name();
-
-    /**
      * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.StoreImpl <em>Store</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1840,14 +1574,6 @@ public interface MyDslPackage extends EPackage
     EClass STORE = eINSTANCE.getStore();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute STORE__NAME = eINSTANCE.getStore_Name();
-
-    /**
      * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1856,12 +1582,12 @@ public interface MyDslPackage extends EPackage
     EAttribute STORE__PATH = eINSTANCE.getStore_Path();
 
     /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference STORE__JSONFILE = eINSTANCE.getStore_Jsonfile();
+    EAttribute STORE__NAME = eINSTANCE.getStore_Name();
 
     /**
      * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.LoadImpl <em>Load</em>}' class.
@@ -1882,12 +1608,12 @@ public interface MyDslPackage extends EPackage
     EAttribute LOAD__PATH = eINSTANCE.getLoad_Path();
 
     /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference LOAD__JSONFILE = eINSTANCE.getLoad_Jsonfile();
+    EAttribute LOAD__NAME = eINSTANCE.getLoad_Name();
 
     /**
      * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.DisplayImpl <em>Display</em>}' class.
@@ -1900,20 +1626,12 @@ public interface MyDslPackage extends EPackage
     EClass DISPLAY = eINSTANCE.getDisplay();
 
     /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Jsonfile</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference DISPLAY__JSONFILE = eINSTANCE.getDisplay_Jsonfile();
-
-    /**
-     * The meta object literal for the '<em><b>Node</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DISPLAY__NODE = eINSTANCE.getDisplay_Node();
 
     /**
      * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.SubsetImpl <em>Subset</em>}' class.
@@ -1926,15 +1644,7 @@ public interface MyDslPackage extends EPackage
     EClass SUBSET = eINSTANCE.getSubset();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SUBSET__NAME = eINSTANCE.getSubset_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Jsonfile</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1942,46 +1652,12 @@ public interface MyDslPackage extends EPackage
     EReference SUBSET__JSONFILE = eINSTANCE.getSubset_Jsonfile();
 
     /**
-     * The meta object literal for the '<em><b>List Nodes</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>List Nodes</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference SUBSET__LIST_NODES = eINSTANCE.getSubset_ListNodes();
-
-    /**
-     * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.SelectImpl <em>Select</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.istic.idm.group10.jsondsl.myDsl.impl.SelectImpl
-     * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getSelect()
-     * @generated
-     */
-    EClass SELECT = eINSTANCE.getSelect();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SELECT__NAME = eINSTANCE.getSelect_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SELECT__JSONFILE = eINSTANCE.getSelect_Jsonfile();
-
-    /**
-     * The meta object literal for the '<em><b>Node</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SELECT__NODE = eINSTANCE.getSelect_Node();
 
     /**
      * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.ProjectionImpl <em>Projection</em>}' class.
@@ -1994,15 +1670,7 @@ public interface MyDslPackage extends EPackage
     EClass PROJECTION = eINSTANCE.getProjection();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PROJECTION__NAME = eINSTANCE.getProjection_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Jsonfile</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2010,7 +1678,7 @@ public interface MyDslPackage extends EPackage
     EReference PROJECTION__JSONFILE = eINSTANCE.getProjection_Jsonfile();
 
     /**
-     * The meta object literal for the '<em><b>Node</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Node</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2028,15 +1696,7 @@ public interface MyDslPackage extends EPackage
     EClass INSERT = eINSTANCE.getInsert();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute INSERT__VALUE = eINSTANCE.getInsert_Value();
-
-    /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Jsonfile</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2044,20 +1704,12 @@ public interface MyDslPackage extends EPackage
     EReference INSERT__JSONFILE = eINSTANCE.getInsert_Jsonfile();
 
     /**
-     * The meta object literal for the '<em><b>Node</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Node</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference INSERT__NODE = eINSTANCE.getInsert_Node();
-
-    /**
-     * The meta object literal for the '<em><b>Complexattribut</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference INSERT__COMPLEXATTRIBUT = eINSTANCE.getInsert_Complexattribut();
 
     /**
      * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.RemoveImpl <em>Remove</em>}' class.
@@ -2070,7 +1722,7 @@ public interface MyDslPackage extends EPackage
     EClass REMOVE = eINSTANCE.getRemove();
 
     /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Jsonfile</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2078,7 +1730,7 @@ public interface MyDslPackage extends EPackage
     EReference REMOVE__JSONFILE = eINSTANCE.getRemove_Jsonfile();
 
     /**
-     * The meta object literal for the '<em><b>Node</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Node</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2096,15 +1748,7 @@ public interface MyDslPackage extends EPackage
     EClass MODIFY = eINSTANCE.getModify();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute MODIFY__VALUE = eINSTANCE.getModify_Value();
-
-    /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Jsonfile</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2112,7 +1756,7 @@ public interface MyDslPackage extends EPackage
     EReference MODIFY__JSONFILE = eINSTANCE.getModify_Jsonfile();
 
     /**
-     * The meta object literal for the '<em><b>Node</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Node</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2130,6 +1774,48 @@ public interface MyDslPackage extends EPackage
     EClass JSON_ARRAY = eINSTANCE.getJsonArray();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute JSON_ARRAY__NAME = eINSTANCE.getJsonArray_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Contient</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference JSON_ARRAY__CONTIENT = eINSTANCE.getJsonArray_Contient();
+
+    /**
+     * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JSonEnumImpl <em>JSon Enum</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fr.istic.idm.group10.jsondsl.myDsl.impl.JSonEnumImpl
+     * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getJSonEnum()
+     * @generated
+     */
+    EClass JSON_ENUM = eINSTANCE.getJSonEnum();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute JSON_ENUM__NAME = eINSTANCE.getJSonEnum_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Contient</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference JSON_ENUM__CONTIENT = eINSTANCE.getJSonEnum_Contient();
+
+    /**
      * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JsonIntegerImpl <em>Json Integer</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2138,6 +1824,14 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EClass JSON_INTEGER = eINSTANCE.getJsonInteger();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute JSON_INTEGER__NAME = eINSTANCE.getJsonInteger_Name();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -2158,22 +1852,20 @@ public interface MyDslPackage extends EPackage
     EClass JSON_BOOLEAN = eINSTANCE.getJsonBoolean();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute JSON_BOOLEAN__NAME = eINSTANCE.getJsonBoolean_Name();
+
+    /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute JSON_BOOLEAN__VALUE = eINSTANCE.getJsonBoolean_Value();
-
-    /**
-     * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JSonEnumImpl <em>JSon Enum</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.istic.idm.group10.jsondsl.myDsl.impl.JSonEnumImpl
-     * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getJSonEnum()
-     * @generated
-     */
-    EClass JSON_ENUM = eINSTANCE.getJSonEnum();
 
     /**
      * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JSonStringImpl <em>JSon String</em>}' class.
@@ -2184,6 +1876,14 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EClass JSON_STRING = eINSTANCE.getJSonString();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute JSON_STRING__NAME = eINSTANCE.getJSonString_Name();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -2204,24 +1904,12 @@ public interface MyDslPackage extends EPackage
     EClass JSON_NULL = eINSTANCE.getJSonNull();
 
     /**
-     * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.OperationImpl <em>Operation</em>}' class.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see fr.istic.idm.group10.jsondsl.myDsl.impl.OperationImpl
-     * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getOperation()
      * @generated
      */
-    EClass OPERATION = eINSTANCE.getOperation();
-
-    /**
-     * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.SimpleAttributImpl <em>Simple Attribut</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fr.istic.idm.group10.jsondsl.myDsl.impl.SimpleAttributImpl
-     * @see fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslPackageImpl#getSimpleAttribut()
-     * @generated
-     */
-    EClass SIMPLE_ATTRIBUT = eINSTANCE.getSimpleAttribut();
+    EAttribute JSON_NULL__NAME = eINSTANCE.getJSonNull_Name();
 
     /**
      * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.SumImpl <em>Sum</em>}' class.
@@ -2234,7 +1922,15 @@ public interface MyDslPackage extends EPackage
     EClass SUM = eINSTANCE.getSum();
 
     /**
-     * The meta object literal for the '<em><b>List Interger</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SUM__NAME = eINSTANCE.getSum_Name();
+
+    /**
+     * The meta object literal for the '<em><b>List Interger</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2252,12 +1948,20 @@ public interface MyDslPackage extends EPackage
     EClass DIV = eINSTANCE.getDiv();
 
     /**
-     * The meta object literal for the '<em><b>Contient</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DIV__CONTIENT = eINSTANCE.getDiv_Contient();
+    EAttribute DIV__NAME = eINSTANCE.getDiv_Name();
+
+    /**
+     * The meta object literal for the '<em><b>List Interger</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DIV__LIST_INTERGER = eINSTANCE.getDiv_ListInterger();
 
     /**
      * The meta object literal for the '{@link fr.istic.idm.group10.jsondsl.myDsl.impl.MultImpl <em>Mult</em>}' class.
@@ -2268,6 +1972,14 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EClass MULT = eINSTANCE.getMult();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MULT__NAME = eINSTANCE.getMult_Name();
 
     /**
      * The meta object literal for the '<em><b>List Interger</b></em>' containment reference list feature.
@@ -2288,7 +2000,15 @@ public interface MyDslPackage extends EPackage
     EClass SUB = eINSTANCE.getSub();
 
     /**
-     * The meta object literal for the '<em><b>List Interger</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SUB__NAME = eINSTANCE.getSub_Name();
+
+    /**
+     * The meta object literal for the '<em><b>List Interger</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

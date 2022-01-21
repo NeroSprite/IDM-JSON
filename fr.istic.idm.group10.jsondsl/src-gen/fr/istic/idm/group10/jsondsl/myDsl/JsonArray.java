@@ -3,17 +3,59 @@
  */
 package fr.istic.idm.group10.jsondsl.myDsl;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Json Array</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.JsonArray#getName <em>Name</em>}</li>
+ *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.JsonArray#getContient <em>Contient</em>}</li>
+ * </ul>
  *
  * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getJsonArray()
  * @model
  * @generated
  */
-public interface JsonArray extends JSonObject, ComplexAttribut, JSonAttribut
+public interface JsonArray extends JSonObject, JSonAttribut
 {
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getJsonArray_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link fr.istic.idm.group10.jsondsl.myDsl.JsonArray#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Contient</b></em>' containment reference list.
+   * The list contents are of type {@link fr.istic.idm.group10.jsondsl.myDsl.JSonAttribut}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Contient</em>' containment reference list.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getJsonArray_Contient()
+   * @model containment="true"
+   * @generated
+   */
+  EList<JSonAttribut> getContient();
+
 } // JsonArray

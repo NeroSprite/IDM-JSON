@@ -4,21 +4,23 @@
 package fr.istic.idm.group10.jsondsl.myDsl.impl;
 
 import fr.istic.idm.group10.jsondsl.myDsl.Div;
-import fr.istic.idm.group10.jsondsl.myDsl.JSonAttribut;
 import fr.istic.idm.group10.jsondsl.myDsl.JsonInteger;
 import fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +31,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * </p>
  * <ul>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.DivImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.DivImpl#getContient <em>Contient</em>}</li>
+ *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.DivImpl#getListInterger <em>List Interger</em>}</li>
  * </ul>
  *
  * @generated
@@ -57,14 +59,14 @@ public class DivImpl extends JSonObjectImpl implements Div
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getContient() <em>Contient</em>}' reference list.
+   * The cached value of the '{@link #getListInterger() <em>List Interger</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getContient()
+   * @see #getListInterger()
    * @generated
    * @ordered
    */
-  protected EList<JsonInteger> contient;
+  protected EList<JsonInteger> listInterger;
 
   /**
    * <!-- begin-user-doc -->
@@ -118,13 +120,29 @@ public class DivImpl extends JSonObjectImpl implements Div
    * @generated
    */
   @Override
-  public EList<JsonInteger> getContient()
+  public EList<JsonInteger> getListInterger()
   {
-    if (contient == null)
+    if (listInterger == null)
     {
-      contient = new EObjectResolvingEList<JsonInteger>(JsonInteger.class, this, MyDslPackage.DIV__CONTIENT);
+      listInterger = new EObjectContainmentEList<JsonInteger>(JsonInteger.class, this, MyDslPackage.DIV__LIST_INTERGER);
     }
-    return contient;
+    return listInterger;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.DIV__LIST_INTERGER:
+        return ((InternalEList<?>)getListInterger()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -139,8 +157,8 @@ public class DivImpl extends JSonObjectImpl implements Div
     {
       case MyDslPackage.DIV__NAME:
         return getName();
-      case MyDslPackage.DIV__CONTIENT:
-        return getContient();
+      case MyDslPackage.DIV__LIST_INTERGER:
+        return getListInterger();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -159,9 +177,9 @@ public class DivImpl extends JSonObjectImpl implements Div
       case MyDslPackage.DIV__NAME:
         setName((String)newValue);
         return;
-      case MyDslPackage.DIV__CONTIENT:
-        getContient().clear();
-        getContient().addAll((Collection<? extends JsonInteger>)newValue);
+      case MyDslPackage.DIV__LIST_INTERGER:
+        getListInterger().clear();
+        getListInterger().addAll((Collection<? extends JsonInteger>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -180,8 +198,8 @@ public class DivImpl extends JSonObjectImpl implements Div
       case MyDslPackage.DIV__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case MyDslPackage.DIV__CONTIENT:
-        getContient().clear();
+      case MyDslPackage.DIV__LIST_INTERGER:
+        getListInterger().clear();
         return;
     }
     super.eUnset(featureID);
@@ -199,48 +217,10 @@ public class DivImpl extends JSonObjectImpl implements Div
     {
       case MyDslPackage.DIV__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case MyDslPackage.DIV__CONTIENT:
-        return contient != null && !contient.isEmpty();
+      case MyDslPackage.DIV__LIST_INTERGER:
+        return listInterger != null && !listInterger.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == JSonAttribut.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case MyDslPackage.DIV__NAME: return MyDslPackage.JSON_ATTRIBUT__NAME;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == JSonAttribut.class)
-    {
-      switch (baseFeatureID)
-      {
-        case MyDslPackage.JSON_ATTRIBUT__NAME: return MyDslPackage.DIV__NAME;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**

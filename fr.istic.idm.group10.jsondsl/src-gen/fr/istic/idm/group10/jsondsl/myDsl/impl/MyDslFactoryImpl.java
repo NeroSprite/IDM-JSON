@@ -65,28 +65,25 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     switch (eClass.getClassifierID())
     {
+      case MyDslPackage.MAIN_GRAMMAR: return createMainGrammar();
       case MyDslPackage.JSON_FILE: return createJSonFile();
       case MyDslPackage.COMMANDES: return createCommandes();
       case MyDslPackage.JSON_OBJECT: return createJSonObject();
-      case MyDslPackage.COMPLEX_ATTRIBUT: return createComplexAttribut();
       case MyDslPackage.JSON_ATTRIBUT: return createJSonAttribut();
       case MyDslPackage.STORE: return createStore();
       case MyDslPackage.LOAD: return createLoad();
       case MyDslPackage.DISPLAY: return createDisplay();
       case MyDslPackage.SUBSET: return createSubset();
-      case MyDslPackage.SELECT: return createSelect();
       case MyDslPackage.PROJECTION: return createProjection();
       case MyDslPackage.INSERT: return createInsert();
       case MyDslPackage.REMOVE: return createRemove();
       case MyDslPackage.MODIFY: return createModify();
       case MyDslPackage.JSON_ARRAY: return createJsonArray();
+      case MyDslPackage.JSON_ENUM: return createJSonEnum();
       case MyDslPackage.JSON_INTEGER: return createJsonInteger();
       case MyDslPackage.JSON_BOOLEAN: return createJsonBoolean();
-      case MyDslPackage.JSON_ENUM: return createJSonEnum();
       case MyDslPackage.JSON_STRING: return createJSonString();
       case MyDslPackage.JSON_NULL: return createJSonNull();
-      case MyDslPackage.OPERATION: return createOperation();
-      case MyDslPackage.SIMPLE_ATTRIBUT: return createSimpleAttribut();
       case MyDslPackage.SUM: return createSum();
       case MyDslPackage.DIV: return createDiv();
       case MyDslPackage.MULT: return createMult();
@@ -95,6 +92,18 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MainGrammar createMainGrammar()
+  {
+    MainGrammarImpl mainGrammar = new MainGrammarImpl();
+    return mainGrammar;
   }
 
   /**
@@ -131,18 +140,6 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     JSonObjectImpl jSonObject = new JSonObjectImpl();
     return jSonObject;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ComplexAttribut createComplexAttribut()
-  {
-    ComplexAttributImpl complexAttribut = new ComplexAttributImpl();
-    return complexAttribut;
   }
 
   /**
@@ -211,18 +208,6 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * @generated
    */
   @Override
-  public Select createSelect()
-  {
-    SelectImpl select = new SelectImpl();
-    return select;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Projection createProjection()
   {
     ProjectionImpl projection = new ProjectionImpl();
@@ -283,6 +268,18 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * @generated
    */
   @Override
+  public JSonEnum createJSonEnum()
+  {
+    JSonEnumImpl jSonEnum = new JSonEnumImpl();
+    return jSonEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public JsonInteger createJsonInteger()
   {
     JsonIntegerImpl jsonInteger = new JsonIntegerImpl();
@@ -307,18 +304,6 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * @generated
    */
   @Override
-  public JSonEnum createJSonEnum()
-  {
-    JSonEnumImpl jSonEnum = new JSonEnumImpl();
-    return jSonEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public JSonString createJSonString()
   {
     JSonStringImpl jSonString = new JSonStringImpl();
@@ -335,30 +320,6 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     JSonNullImpl jSonNull = new JSonNullImpl();
     return jSonNull;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Operation createOperation()
-  {
-    OperationImpl operation = new OperationImpl();
-    return operation;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public SimpleAttribut createSimpleAttribut()
-  {
-    SimpleAttributImpl simpleAttribut = new SimpleAttributImpl();
-    return simpleAttribut;
   }
 
   /**

@@ -3,9 +3,6 @@
  */
 package fr.istic.idm.group10.jsondsl.myDsl;
 
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,39 +13,16 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.Store#getName <em>Name</em>}</li>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.Store#getPath <em>Path</em>}</li>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.Store#getJsonfile <em>Jsonfile</em>}</li>
+ *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.Store#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getStore()
  * @model
  * @generated
  */
-public interface Store extends EObject
+public interface Store extends Commandes
 {
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getStore_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link fr.istic.idm.group10.jsondsl.myDsl.Store#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
   /**
    * Returns the value of the '<em><b>Path</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -72,15 +46,25 @@ public interface Store extends EObject
   void setPath(String value);
 
   /**
-   * Returns the value of the '<em><b>Jsonfile</b></em>' reference list.
-   * The list contents are of type {@link fr.istic.idm.group10.jsondsl.myDsl.JSonFile}.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Jsonfile</em>' reference list.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getStore_Jsonfile()
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getStore_Name()
    * @model
    * @generated
    */
-  EList<JSonFile> getJsonfile();
+  String getName();
+
+  /**
+   * Sets the value of the '{@link fr.istic.idm.group10.jsondsl.myDsl.Store#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
 
 } // Store

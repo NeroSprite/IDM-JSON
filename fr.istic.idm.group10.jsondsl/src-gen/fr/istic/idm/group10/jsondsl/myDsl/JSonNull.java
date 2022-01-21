@@ -9,6 +9,12 @@ package fr.istic.idm.group10.jsondsl.myDsl;
  * A representation of the model object '<em><b>JSon Null</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.JSonNull#getName <em>Name</em>}</li>
+ * </ul>
  *
  * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getJSonNull()
  * @model
@@ -16,4 +22,26 @@ package fr.istic.idm.group10.jsondsl.myDsl;
  */
 public interface JSonNull extends JSonObject, JSonAttribut
 {
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getJSonNull_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonNull#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
 } // JSonNull

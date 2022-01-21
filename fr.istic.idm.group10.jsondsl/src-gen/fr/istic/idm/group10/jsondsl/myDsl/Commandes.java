@@ -3,38 +3,17 @@
  */
 package fr.istic.idm.group10.jsondsl.myDsl;
 
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Commandes</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.Commandes#getJsonfile <em>Jsonfile</em>}</li>
- * </ul>
  *
  * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getCommandes()
  * @model
  * @generated
  */
-public interface Commandes extends EObject
+public interface Commandes extends MainGrammar
 {
-  /**
-   * Returns the value of the '<em><b>Jsonfile</b></em>' reference list.
-   * The list contents are of type {@link fr.istic.idm.group10.jsondsl.myDsl.JSonFile}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Jsonfile</em>' reference list.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getCommandes_Jsonfile()
-   * @model
-   * @generated
-   */
-  EList<JSonFile> getJsonfile();
-
 } // Commandes

@@ -27,7 +27,7 @@ public class JsonDslParser extends AbstractAntlrParser {
 
 	@Override 
 	protected String getDefaultRuleName() {
-		return "JSonFile";
+		return "MainGrammar";
 	}
 
 	public JsonDslGrammarAccess getGrammarAccess() {

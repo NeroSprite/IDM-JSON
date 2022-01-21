@@ -4,17 +4,13 @@
 package fr.istic.idm.group10.jsondsl.serializer;
 
 import com.google.inject.Inject;
-import fr.istic.idm.group10.jsondsl.myDsl.Commandes;
-import fr.istic.idm.group10.jsondsl.myDsl.ComplexAttribut;
 import fr.istic.idm.group10.jsondsl.myDsl.Display;
 import fr.istic.idm.group10.jsondsl.myDsl.Div;
 import fr.istic.idm.group10.jsondsl.myDsl.EBoolean;
 import fr.istic.idm.group10.jsondsl.myDsl.Insert;
-import fr.istic.idm.group10.jsondsl.myDsl.JSonAttribut;
 import fr.istic.idm.group10.jsondsl.myDsl.JSonEnum;
 import fr.istic.idm.group10.jsondsl.myDsl.JSonFile;
 import fr.istic.idm.group10.jsondsl.myDsl.JSonNull;
-import fr.istic.idm.group10.jsondsl.myDsl.JSonObject;
 import fr.istic.idm.group10.jsondsl.myDsl.JSonString;
 import fr.istic.idm.group10.jsondsl.myDsl.JsonArray;
 import fr.istic.idm.group10.jsondsl.myDsl.JsonBoolean;
@@ -23,11 +19,8 @@ import fr.istic.idm.group10.jsondsl.myDsl.Load;
 import fr.istic.idm.group10.jsondsl.myDsl.Modify;
 import fr.istic.idm.group10.jsondsl.myDsl.Mult;
 import fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage;
-import fr.istic.idm.group10.jsondsl.myDsl.Operation;
 import fr.istic.idm.group10.jsondsl.myDsl.Projection;
 import fr.istic.idm.group10.jsondsl.myDsl.Remove;
-import fr.istic.idm.group10.jsondsl.myDsl.Select;
-import fr.istic.idm.group10.jsondsl.myDsl.SimpleAttribut;
 import fr.istic.idm.group10.jsondsl.myDsl.Store;
 import fr.istic.idm.group10.jsondsl.myDsl.Sub;
 import fr.istic.idm.group10.jsondsl.myDsl.Subset;
@@ -58,12 +51,6 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == MyDslPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case MyDslPackage.COMMANDES:
-				sequence_Commandes_Impl(context, (Commandes) semanticObject); 
-				return; 
-			case MyDslPackage.COMPLEX_ATTRIBUT:
-				sequence_ComplexAttribut_Impl(context, (ComplexAttribut) semanticObject); 
-				return; 
 			case MyDslPackage.DISPLAY:
 				sequence_Display(context, (Display) semanticObject); 
 				return; 
@@ -76,9 +63,6 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case MyDslPackage.INSERT:
 				sequence_Insert(context, (Insert) semanticObject); 
 				return; 
-			case MyDslPackage.JSON_ATTRIBUT:
-				sequence_JSonAttribut_Impl(context, (JSonAttribut) semanticObject); 
-				return; 
 			case MyDslPackage.JSON_ENUM:
 				sequence_JSonEnum(context, (JSonEnum) semanticObject); 
 				return; 
@@ -87,9 +71,6 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 				return; 
 			case MyDslPackage.JSON_NULL:
 				sequence_JSonNull(context, (JSonNull) semanticObject); 
-				return; 
-			case MyDslPackage.JSON_OBJECT:
-				sequence_JSonObject_Impl(context, (JSonObject) semanticObject); 
 				return; 
 			case MyDslPackage.JSON_STRING:
 				sequence_JSonString(context, (JSonString) semanticObject); 
@@ -112,20 +93,11 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case MyDslPackage.MULT:
 				sequence_Mult(context, (Mult) semanticObject); 
 				return; 
-			case MyDslPackage.OPERATION:
-				sequence_Operation_Impl(context, (Operation) semanticObject); 
-				return; 
 			case MyDslPackage.PROJECTION:
 				sequence_Projection(context, (Projection) semanticObject); 
 				return; 
 			case MyDslPackage.REMOVE:
 				sequence_Remove(context, (Remove) semanticObject); 
-				return; 
-			case MyDslPackage.SELECT:
-				sequence_Select(context, (Select) semanticObject); 
-				return; 
-			case MyDslPackage.SIMPLE_ATTRIBUT:
-				sequence_SimpleAttribut_Impl(context, (SimpleAttribut) semanticObject); 
 				return; 
 			case MyDslPackage.STORE:
 				sequence_Store(context, (Store) semanticObject); 
@@ -146,43 +118,12 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
-	 *     Commandes_Impl returns Commandes
-	 *
-	 * Constraint:
-	 *     (jsonfile+=[JSonFile|ID] jsonfile+=[JSonFile|ID]*)?
-	 */
-	protected void sequence_Commandes_Impl(ISerializationContext context, Commandes semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     JSonObject returns ComplexAttribut
-	 *     ComplexAttribut returns ComplexAttribut
-	 *     JSonAttribut returns ComplexAttribut
-	 *     ComplexAttribut_Impl returns ComplexAttribut
-	 *
-	 * Constraint:
-	 *     name=STRING
-	 */
-	protected void sequence_ComplexAttribut_Impl(ISerializationContext context, ComplexAttribut semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.JSON_ATTRIBUT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.JSON_ATTRIBUT__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getComplexAttribut_ImplAccess().getNameSTRINGTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
+	 *     MainGrammar returns Display
+	 *     Commandes returns Display
 	 *     Display returns Display
 	 *
 	 * Constraint:
-	 *     ((jsonfile+=[JSonFile|ID] jsonfile+=[JSonFile|ID]*)? node=[JSonObject|ID])
+	 *     jsonfile+=JSonFile
 	 */
 	protected void sequence_Display(ISerializationContext context, Display semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -196,7 +137,7 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Div returns Div
 	 *
 	 * Constraint:
-	 *     (name=STRING Contient+=[JsonInteger|ID] Contient+=[JsonInteger|ID]*)
+	 *     (name=STRING listInterger+=JsonInteger listInterger+=JsonInteger*)
 	 */
 	protected void sequence_Div(ISerializationContext context, Div semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -217,10 +158,12 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
+	 *     MainGrammar returns Insert
+	 *     Commandes returns Insert
 	 *     Insert returns Insert
 	 *
 	 * Constraint:
-	 *     (value=STRING? (jsonfile+=[JSonFile|ID] jsonfile+=[JSonFile|ID]*)? node=[JSonObject|ID] complexattribut=[ComplexAttribut|ID])
+	 *     (jsonfile+=JSonFile jsonfile+=JSonFile node=JSonObject)
 	 */
 	protected void sequence_Insert(ISerializationContext context, Insert semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -229,28 +172,7 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
-	 *     JSonObject returns JSonAttribut
-	 *     JSonAttribut returns JSonAttribut
-	 *     JSonAttribut_Impl returns JSonAttribut
-	 *
-	 * Constraint:
-	 *     name=STRING
-	 */
-	protected void sequence_JSonAttribut_Impl(ISerializationContext context, JSonAttribut semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.JSON_ATTRIBUT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.JSON_ATTRIBUT__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getJSonAttribut_ImplAccess().getNameSTRINGTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     JSonObject returns JSonEnum
-	 *     ComplexAttribut returns JSonEnum
 	 *     JSonAttribut returns JSonEnum
 	 *     JSonEnum returns JSonEnum
 	 *
@@ -264,6 +186,7 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
+	 *     MainGrammar returns JSonFile
 	 *     JSonFile returns JSonFile
 	 *
 	 * Constraint:
@@ -285,24 +208,12 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 */
 	protected void sequence_JSonNull(ISerializationContext context, JSonNull semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.JSON_ATTRIBUT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.JSON_ATTRIBUT__NAME));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.JSON_NULL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.JSON_NULL__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getJSonNullAccess().getNameSTRINGTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getJSonNullAccess().getNameSTRINGTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     JSonObject_Impl returns JSonObject
-	 *
-	 * Constraint:
-	 *     {JSonObject}
-	 */
-	protected void sequence_JSonObject_Impl(ISerializationContext context, JSonObject semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -313,17 +224,25 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     JSonString returns JSonString
 	 *
 	 * Constraint:
-	 *     (name=STRING value=STRING?)
+	 *     (name=STRING value=STRING)
 	 */
 	protected void sequence_JSonString(ISerializationContext context, JSonString semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.JSON_STRING__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.JSON_STRING__NAME));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.JSON_STRING__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.JSON_STRING__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getJSonStringAccess().getNameSTRINGTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getJSonStringAccess().getValueSTRINGTerminalRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
 	 *     JSonObject returns JsonArray
-	 *     ComplexAttribut returns JsonArray
 	 *     JSonAttribut returns JsonArray
 	 *     JsonArray returns JsonArray
 	 *
@@ -342,7 +261,7 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     JsonBoolean returns JsonBoolean
 	 *
 	 * Constraint:
-	 *     (value?='value'? name=STRING)
+	 *     (name=STRING (value='true' | value='false'))
 	 */
 	protected void sequence_JsonBoolean(ISerializationContext context, JsonBoolean semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -360,36 +279,49 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 */
 	protected void sequence_JsonInteger(ISerializationContext context, JsonInteger semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.JSON_ATTRIBUT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.JSON_ATTRIBUT__NAME));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.JSON_INTEGER__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.JSON_INTEGER__NAME));
 			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.JSON_INTEGER__VALUE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.JSON_INTEGER__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getJsonIntegerAccess().getNameSTRINGTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getJsonIntegerAccess().getValueINTTerminalRuleCall_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getJsonIntegerAccess().getNameSTRINGTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getJsonIntegerAccess().getValueINTTerminalRuleCall_2_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
+	 *     MainGrammar returns Load
+	 *     Commandes returns Load
 	 *     Load returns Load
 	 *
 	 * Constraint:
-	 *     (path=STRING? (jsonfile+=[JSonFile|ID] jsonfile+=[JSonFile|ID]*)?)
+	 *     (path=STRING name=STRING)
 	 */
 	protected void sequence_Load(ISerializationContext context, Load semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.LOAD__PATH) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.LOAD__PATH));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.LOAD__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.LOAD__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getLoadAccess().getPathSTRINGTerminalRuleCall_3_0(), semanticObject.getPath());
+		feeder.accept(grammarAccess.getLoadAccess().getNameSTRINGTerminalRuleCall_6_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
+	 *     MainGrammar returns Modify
+	 *     Commandes returns Modify
 	 *     Modify returns Modify
 	 *
 	 * Constraint:
-	 *     (value=STRING? (jsonfile+=[JSonFile|ID] jsonfile+=[JSonFile|ID]*)? node+=[JSonObject|ID] node+=[JSonObject|ID]*)
+	 *     (jsonfile+=JSonFile jsonfile+=JSonFile node=JSonObject)
 	 */
 	protected void sequence_Modify(ISerializationContext context, Modify semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -412,30 +344,12 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
-	 *     JSonObject returns Operation
-	 *     JSonAttribut returns Operation
-	 *     Operation_Impl returns Operation
-	 *
-	 * Constraint:
-	 *     name=STRING
-	 */
-	protected void sequence_Operation_Impl(ISerializationContext context, Operation semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.JSON_ATTRIBUT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.JSON_ATTRIBUT__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getOperation_ImplAccess().getNameSTRINGTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
+	 *     MainGrammar returns Projection
+	 *     Commandes returns Projection
 	 *     Projection returns Projection
 	 *
 	 * Constraint:
-	 *     (name=STRING (jsonfile+=[JSonFile|ID] jsonfile+=[JSonFile|ID]*)? node=[JSonObject|ID])
+	 *     (jsonfile+=JSonFile node=JSonObject)
 	 */
 	protected void sequence_Projection(ISerializationContext context, Projection semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -444,10 +358,12 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
+	 *     MainGrammar returns Remove
+	 *     Commandes returns Remove
 	 *     Remove returns Remove
 	 *
 	 * Constraint:
-	 *     ((jsonfile+=[JSonFile|ID] jsonfile+=[JSonFile|ID]*)? node=[JSonObject|ID])
+	 *     (jsonfile+=JSonFile node=JSonObject)
 	 */
 	protected void sequence_Remove(ISerializationContext context, Remove semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -456,45 +372,24 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
-	 *     Select returns Select
-	 *
-	 * Constraint:
-	 *     (name=STRING (jsonfile+=[JSonFile|ID] jsonfile+=[JSonFile|ID]*)? node=[JSonObject|ID])
-	 */
-	protected void sequence_Select(ISerializationContext context, Select semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     JSonObject returns SimpleAttribut
-	 *     JSonAttribut returns SimpleAttribut
-	 *     SimpleAttribut_Impl returns SimpleAttribut
-	 *
-	 * Constraint:
-	 *     name=STRING
-	 */
-	protected void sequence_SimpleAttribut_Impl(ISerializationContext context, SimpleAttribut semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.JSON_ATTRIBUT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.JSON_ATTRIBUT__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSimpleAttribut_ImplAccess().getNameSTRINGTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
+	 *     MainGrammar returns Store
+	 *     Commandes returns Store
 	 *     Store returns Store
 	 *
 	 * Constraint:
-	 *     (name=STRING path=STRING? (jsonfile+=[JSonFile|ID] jsonfile+=[JSonFile|ID]*)?)
+	 *     (path=STRING name=STRING)
 	 */
 	protected void sequence_Store(ISerializationContext context, Store semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.STORE__PATH) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.STORE__PATH));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.STORE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.STORE__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getStoreAccess().getPathSTRINGTerminalRuleCall_3_0(), semanticObject.getPath());
+		feeder.accept(grammarAccess.getStoreAccess().getNameSTRINGTerminalRuleCall_6_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	
@@ -505,7 +400,7 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Sub returns Sub
 	 *
 	 * Constraint:
-	 *     (name=STRING listInterger+=[JsonInteger|ID] listInterger+=[JsonInteger|ID]*)
+	 *     (name=STRING listInterger+=JsonInteger listInterger+=JsonInteger*)
 	 */
 	protected void sequence_Sub(ISerializationContext context, Sub semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -514,10 +409,12 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
+	 *     MainGrammar returns Subset
+	 *     Commandes returns Subset
 	 *     Subset returns Subset
 	 *
 	 * Constraint:
-	 *     (name=STRING (jsonfile+=[JSonFile|ID] jsonfile+=[JSonFile|ID]*)? listNodes+=[JSonObject|ID] listNodes+=[JSonObject|ID]*)
+	 *     (jsonfile+=JSonFile listNodes+=JSonObject listNodes+=JSonObject*)
 	 */
 	protected void sequence_Subset(ISerializationContext context, Subset semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -531,7 +428,7 @@ public class JsonDslSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Sum returns Sum
 	 *
 	 * Constraint:
-	 *     (name=STRING listInterger+=[JsonInteger|ID] listInterger+=[JsonInteger|ID]*)
+	 *     (name=STRING listInterger+=JsonInteger listInterger+=JsonInteger*)
 	 */
 	protected void sequence_Sum(ISerializationContext context, Sum semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

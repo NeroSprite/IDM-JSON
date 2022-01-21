@@ -14,7 +14,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.Div#getContient <em>Contient</em>}</li>
+ *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.Div#getName <em>Name</em>}</li>
+ *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.Div#getListInterger <em>List Interger</em>}</li>
  * </ul>
  *
  * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getDiv()
@@ -24,15 +25,37 @@ import org.eclipse.emf.common.util.EList;
 public interface Div extends JSonObject, JSonAttribut
 {
   /**
-   * Returns the value of the '<em><b>Contient</b></em>' reference list.
-   * The list contents are of type {@link fr.istic.idm.group10.jsondsl.myDsl.JsonInteger}.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Contient</em>' reference list.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getDiv_Contient()
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getDiv_Name()
    * @model
    * @generated
    */
-  EList<JsonInteger> getContient();
+  String getName();
+
+  /**
+   * Sets the value of the '{@link fr.istic.idm.group10.jsondsl.myDsl.Div#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>List Interger</b></em>' containment reference list.
+   * The list contents are of type {@link fr.istic.idm.group10.jsondsl.myDsl.JsonInteger}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>List Interger</em>' containment reference list.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getDiv_ListInterger()
+   * @model containment="true"
+   * @generated
+   */
+  EList<JsonInteger> getListInterger();
 
 } // Div

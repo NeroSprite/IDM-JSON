@@ -11,15 +11,17 @@ import fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,37 +31,16 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.ModifyImpl#getValue <em>Value</em>}</li>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.ModifyImpl#getJsonfile <em>Jsonfile</em>}</li>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.ModifyImpl#getNode <em>Node</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ModifyImpl extends MinimalEObjectImpl.Container implements Modify
+public class ModifyImpl extends CommandesImpl implements Modify
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected static final String VALUE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected String value = VALUE_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getJsonfile() <em>Jsonfile</em>}' reference list.
+   * The cached value of the '{@link #getJsonfile() <em>Jsonfile</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getJsonfile()
@@ -69,14 +50,14 @@ public class ModifyImpl extends MinimalEObjectImpl.Container implements Modify
   protected EList<JSonFile> jsonfile;
 
   /**
-   * The cached value of the '{@link #getNode() <em>Node</em>}' reference list.
+   * The cached value of the '{@link #getNode() <em>Node</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getNode()
    * @generated
    * @ordered
    */
-  protected EList<JSonObject> node;
+  protected JSonObject node;
 
   /**
    * <!-- begin-user-doc -->
@@ -105,36 +86,11 @@ public class ModifyImpl extends MinimalEObjectImpl.Container implements Modify
    * @generated
    */
   @Override
-  public String getValue()
-  {
-    return value;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setValue(String newValue)
-  {
-    String oldValue = value;
-    value = newValue;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.MODIFY__VALUE, oldValue, value));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EList<JSonFile> getJsonfile()
   {
     if (jsonfile == null)
     {
-      jsonfile = new EObjectResolvingEList<JSonFile>(JSonFile.class, this, MyDslPackage.MODIFY__JSONFILE);
+      jsonfile = new EObjectContainmentEList<JSonFile>(JSonFile.class, this, MyDslPackage.MODIFY__JSONFILE);
     }
     return jsonfile;
   }
@@ -145,13 +101,66 @@ public class ModifyImpl extends MinimalEObjectImpl.Container implements Modify
    * @generated
    */
   @Override
-  public EList<JSonObject> getNode()
+  public JSonObject getNode()
   {
-    if (node == null)
-    {
-      node = new EObjectResolvingEList<JSonObject>(JSonObject.class, this, MyDslPackage.MODIFY__NODE);
-    }
     return node;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetNode(JSonObject newNode, NotificationChain msgs)
+  {
+    JSonObject oldNode = node;
+    node = newNode;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.MODIFY__NODE, oldNode, newNode);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setNode(JSonObject newNode)
+  {
+    if (newNode != node)
+    {
+      NotificationChain msgs = null;
+      if (node != null)
+        msgs = ((InternalEObject)node).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.MODIFY__NODE, null, msgs);
+      if (newNode != null)
+        msgs = ((InternalEObject)newNode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.MODIFY__NODE, null, msgs);
+      msgs = basicSetNode(newNode, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.MODIFY__NODE, newNode, newNode));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.MODIFY__JSONFILE:
+        return ((InternalEList<?>)getJsonfile()).basicRemove(otherEnd, msgs);
+      case MyDslPackage.MODIFY__NODE:
+        return basicSetNode(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -164,8 +173,6 @@ public class ModifyImpl extends MinimalEObjectImpl.Container implements Modify
   {
     switch (featureID)
     {
-      case MyDslPackage.MODIFY__VALUE:
-        return getValue();
       case MyDslPackage.MODIFY__JSONFILE:
         return getJsonfile();
       case MyDslPackage.MODIFY__NODE:
@@ -185,16 +192,12 @@ public class ModifyImpl extends MinimalEObjectImpl.Container implements Modify
   {
     switch (featureID)
     {
-      case MyDslPackage.MODIFY__VALUE:
-        setValue((String)newValue);
-        return;
       case MyDslPackage.MODIFY__JSONFILE:
         getJsonfile().clear();
         getJsonfile().addAll((Collection<? extends JSonFile>)newValue);
         return;
       case MyDslPackage.MODIFY__NODE:
-        getNode().clear();
-        getNode().addAll((Collection<? extends JSonObject>)newValue);
+        setNode((JSonObject)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -210,14 +213,11 @@ public class ModifyImpl extends MinimalEObjectImpl.Container implements Modify
   {
     switch (featureID)
     {
-      case MyDslPackage.MODIFY__VALUE:
-        setValue(VALUE_EDEFAULT);
-        return;
       case MyDslPackage.MODIFY__JSONFILE:
         getJsonfile().clear();
         return;
       case MyDslPackage.MODIFY__NODE:
-        getNode().clear();
+        setNode((JSonObject)null);
         return;
     }
     super.eUnset(featureID);
@@ -233,31 +233,12 @@ public class ModifyImpl extends MinimalEObjectImpl.Container implements Modify
   {
     switch (featureID)
     {
-      case MyDslPackage.MODIFY__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
       case MyDslPackage.MODIFY__JSONFILE:
         return jsonfile != null && !jsonfile.isEmpty();
       case MyDslPackage.MODIFY__NODE:
-        return node != null && !node.isEmpty();
+        return node != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (value: ");
-    result.append(value);
-    result.append(')');
-    return result.toString();
   }
 
 } //ModifyImpl

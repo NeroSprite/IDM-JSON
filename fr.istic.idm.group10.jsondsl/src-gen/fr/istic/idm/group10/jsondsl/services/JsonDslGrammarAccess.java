@@ -9,7 +9,6 @@ import java.util.List;
 import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
-import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Group;
@@ -24,6 +23,26 @@ import org.eclipse.xtext.service.GrammarProvider;
 @Singleton
 public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarElementFinder {
 	
+	public class MainGrammarElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.MainGrammar");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cJSonFileParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cCommandesParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//MainGrammar:
+		//JSonFile | Commandes
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//JSonFile | Commandes
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//JSonFile
+		public RuleCall getJSonFileParserRuleCall_0() { return cJSonFileParserRuleCall_0; }
+		
+		//Commandes
+		public RuleCall getCommandesParserRuleCall_1() { return cCommandesParserRuleCall_1; }
+	}
 	public class JSonFileElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.JSonFile");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -35,7 +54,7 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final RuleCall cContientJSonObjectParserRuleCall_3_0 = (RuleCall)cContientAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//JSonFile returns JSonFile:
+		//JSonFile:
 		//'JSonFile' name=STRING '{' (Contient+=JSonObject*) '}';
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -63,88 +82,77 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
-	public class Commandes_ImplElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.Commandes_Impl");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cCommandesAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cCommandesKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cJsonfileKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Assignment cJsonfileAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
-		private final CrossReference cJsonfileJSonFileCrossReference_3_2_0 = (CrossReference)cJsonfileAssignment_3_2.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_3_2_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_3_2_0.eContents().get(1);
-		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
-		private final Keyword cCommaKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
-		private final Assignment cJsonfileAssignment_3_3_1 = (Assignment)cGroup_3_3.eContents().get(1);
-		private final CrossReference cJsonfileJSonFileCrossReference_3_3_1_0 = (CrossReference)cJsonfileAssignment_3_3_1.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_3_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+	public class CommandesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.Commandes");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cCommandesKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final RuleCall cStoreParserRuleCall_0_2 = (RuleCall)cGroup_0.eContents().get(2);
+		private final RuleCall cLoadParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cDisplayParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cSubsetParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cProjectionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cInsertParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cRemoveParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final Group cGroup_7 = (Group)cAlternatives.eContents().get(7);
+		private final RuleCall cModifyParserRuleCall_7_0 = (RuleCall)cGroup_7.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
 		
-		//Commandes_Impl returns Commandes:
-		//{Commandes}
+		//Commandes:
 		//'Commandes'
 		//'{'
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+		//Store | Load | Display | Subset | Projection | Insert | Remove | Modify
 		//'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Commandes}
 		//'Commandes'
 		//'{'
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+		//Store | Load | Display | Subset | Projection | Insert | Remove | Modify
 		//'}'
-		public Group getGroup() { return cGroup; }
-		
-		//{Commandes}
-		public Action getCommandesAction_0() { return cCommandesAction_0; }
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'Commandes'
-		public Keyword getCommandesKeyword_1() { return cCommandesKeyword_1; }
+		//'{'
+		//Store
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'Commandes'
+		public Keyword getCommandesKeyword_0_0() { return cCommandesKeyword_0_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		public Keyword getLeftCurlyBracketKeyword_0_1() { return cLeftCurlyBracketKeyword_0_1; }
 		
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		public Group getGroup_3() { return cGroup_3; }
+		//Store
+		public RuleCall getStoreParserRuleCall_0_2() { return cStoreParserRuleCall_0_2; }
 		
-		//'jsonfile'
-		public Keyword getJsonfileKeyword_3_0() { return cJsonfileKeyword_3_0; }
+		//Load
+		public RuleCall getLoadParserRuleCall_1() { return cLoadParserRuleCall_1; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_3_1() { return cLeftParenthesisKeyword_3_1; }
+		//Display
+		public RuleCall getDisplayParserRuleCall_2() { return cDisplayParserRuleCall_2; }
 		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_3_2() { return cJsonfileAssignment_3_2; }
+		//Subset
+		public RuleCall getSubsetParserRuleCall_3() { return cSubsetParserRuleCall_3; }
 		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_3_2_0() { return cJsonfileJSonFileCrossReference_3_2_0; }
+		//Projection
+		public RuleCall getProjectionParserRuleCall_4() { return cProjectionParserRuleCall_4; }
 		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_3_2_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_3_2_0_1; }
+		//Insert
+		public RuleCall getInsertParserRuleCall_5() { return cInsertParserRuleCall_5; }
 		
-		//( "," jsonfile+=[JSonFile])*
-		public Group getGroup_3_3() { return cGroup_3_3; }
+		//Remove
+		public RuleCall getRemoveParserRuleCall_6() { return cRemoveParserRuleCall_6; }
 		
-		//","
-		public Keyword getCommaKeyword_3_3_0() { return cCommaKeyword_3_3_0; }
+		// Modify
+		//'}'
+		public Group getGroup_7() { return cGroup_7; }
 		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_3_3_1() { return cJsonfileAssignment_3_3_1; }
-		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_3_3_1_0() { return cJsonfileJSonFileCrossReference_3_3_1_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_3_4() { return cRightParenthesisKeyword_3_4; }
+		//Modify
+		public RuleCall getModifyParserRuleCall_7_0() { return cModifyParserRuleCall_7_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public Keyword getRightCurlyBracketKeyword_7_1() { return cRightCurlyBracketKeyword_7_1; }
 	}
 	public class JSonObjectElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.JSonObject");
@@ -152,23 +160,19 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final RuleCall cJsonArrayParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cJsonIntegerParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cJsonBooleanParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cJSonAttribut_ImplParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cJSonEnumParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cJSonStringParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cJSonNullParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		private final RuleCall cOperation_ImplParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
-		private final RuleCall cComplexAttribut_ImplParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
-		private final RuleCall cSimpleAttribut_ImplParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
-		private final RuleCall cSumParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
-		private final RuleCall cDivParserRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
-		private final RuleCall cMultParserRuleCall_12 = (RuleCall)cAlternatives.eContents().get(12);
-		private final RuleCall cSubParserRuleCall_13 = (RuleCall)cAlternatives.eContents().get(13);
+		private final RuleCall cJSonEnumParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cJSonStringParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cJSonNullParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cSumParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cDivParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cMultParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cSubParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
 		
 		//JSonObject:
-		//JsonArray | JsonInteger | JsonBoolean | JSonAttribut_Impl | JSonEnum | JSonString | JSonNull | Operation_Impl | ComplexAttribut_Impl | SimpleAttribut_Impl | Sum | Div | Mult | Sub;
+		//JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Sum | Div | Mult | Sub;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//JsonArray | JsonInteger | JsonBoolean | JSonAttribut_Impl | JSonEnum | JSonString | JSonNull | Operation_Impl | ComplexAttribut_Impl | SimpleAttribut_Impl | Sum | Div | Mult | Sub
+		//JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Sum | Div | Mult | Sub
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//JsonArray
@@ -180,376 +184,218 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//JsonBoolean
 		public RuleCall getJsonBooleanParserRuleCall_2() { return cJsonBooleanParserRuleCall_2; }
 		
-		//JSonAttribut_Impl
-		public RuleCall getJSonAttribut_ImplParserRuleCall_3() { return cJSonAttribut_ImplParserRuleCall_3; }
-		
 		//JSonEnum
-		public RuleCall getJSonEnumParserRuleCall_4() { return cJSonEnumParserRuleCall_4; }
+		public RuleCall getJSonEnumParserRuleCall_3() { return cJSonEnumParserRuleCall_3; }
 		
 		//JSonString
-		public RuleCall getJSonStringParserRuleCall_5() { return cJSonStringParserRuleCall_5; }
+		public RuleCall getJSonStringParserRuleCall_4() { return cJSonStringParserRuleCall_4; }
 		
 		//JSonNull
-		public RuleCall getJSonNullParserRuleCall_6() { return cJSonNullParserRuleCall_6; }
-		
-		//Operation_Impl
-		public RuleCall getOperation_ImplParserRuleCall_7() { return cOperation_ImplParserRuleCall_7; }
-		
-		//ComplexAttribut_Impl
-		public RuleCall getComplexAttribut_ImplParserRuleCall_8() { return cComplexAttribut_ImplParserRuleCall_8; }
-		
-		//SimpleAttribut_Impl
-		public RuleCall getSimpleAttribut_ImplParserRuleCall_9() { return cSimpleAttribut_ImplParserRuleCall_9; }
+		public RuleCall getJSonNullParserRuleCall_5() { return cJSonNullParserRuleCall_5; }
 		
 		//Sum
-		public RuleCall getSumParserRuleCall_10() { return cSumParserRuleCall_10; }
+		public RuleCall getSumParserRuleCall_6() { return cSumParserRuleCall_6; }
 		
 		//Div
-		public RuleCall getDivParserRuleCall_11() { return cDivParserRuleCall_11; }
+		public RuleCall getDivParserRuleCall_7() { return cDivParserRuleCall_7; }
 		
 		//Mult
-		public RuleCall getMultParserRuleCall_12() { return cMultParserRuleCall_12; }
+		public RuleCall getMultParserRuleCall_8() { return cMultParserRuleCall_8; }
 		
 		//Sub
-		public RuleCall getSubParserRuleCall_13() { return cSubParserRuleCall_13; }
-	}
-	public class ComplexAttributElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.ComplexAttribut");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cComplexAttribut_ImplParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cJsonArrayParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cJSonEnumParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		
-		//ComplexAttribut returns ComplexAttribut:
-		//ComplexAttribut_Impl | JsonArray | JSonEnum;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//ComplexAttribut_Impl | JsonArray | JSonEnum
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//ComplexAttribut_Impl
-		public RuleCall getComplexAttribut_ImplParserRuleCall_0() { return cComplexAttribut_ImplParserRuleCall_0; }
-		
-		//JsonArray
-		public RuleCall getJsonArrayParserRuleCall_1() { return cJsonArrayParserRuleCall_1; }
-		
-		//JSonEnum
-		public RuleCall getJSonEnumParserRuleCall_2() { return cJSonEnumParserRuleCall_2; }
+		public RuleCall getSubParserRuleCall_9() { return cSubParserRuleCall_9; }
 	}
 	public class JSonAttributElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.JSonAttribut");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cJSonAttribut_ImplParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cJsonArrayParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cJsonIntegerParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cJsonBooleanParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cJSonEnumParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cJSonStringParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cJSonNullParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		private final RuleCall cOperation_ImplParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
-		private final RuleCall cComplexAttribut_ImplParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
-		private final RuleCall cSimpleAttribut_ImplParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
-		private final RuleCall cSumParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
-		private final RuleCall cDivParserRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
-		private final RuleCall cMultParserRuleCall_12 = (RuleCall)cAlternatives.eContents().get(12);
-		private final RuleCall cSubParserRuleCall_13 = (RuleCall)cAlternatives.eContents().get(13);
+		private final RuleCall cJsonArrayParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cJsonIntegerParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cJsonBooleanParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cJSonEnumParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cJSonStringParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cJSonNullParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cSumParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cDivParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cMultParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cSubParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
 		
-		//JSonAttribut returns JSonAttribut:
-		//JSonAttribut_Impl | JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Operation_Impl | ComplexAttribut_Impl | SimpleAttribut_Impl | Sum | Div | Mult | Sub;
+		//JSonAttribut:
+		//JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Sum | Div | Mult | Sub;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//JSonAttribut_Impl | JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Operation_Impl | ComplexAttribut_Impl | SimpleAttribut_Impl | Sum | Div | Mult | Sub
+		//JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Sum | Div | Mult | Sub
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//JSonAttribut_Impl
-		public RuleCall getJSonAttribut_ImplParserRuleCall_0() { return cJSonAttribut_ImplParserRuleCall_0; }
-		
 		//JsonArray
-		public RuleCall getJsonArrayParserRuleCall_1() { return cJsonArrayParserRuleCall_1; }
+		public RuleCall getJsonArrayParserRuleCall_0() { return cJsonArrayParserRuleCall_0; }
 		
 		//JsonInteger
-		public RuleCall getJsonIntegerParserRuleCall_2() { return cJsonIntegerParserRuleCall_2; }
+		public RuleCall getJsonIntegerParserRuleCall_1() { return cJsonIntegerParserRuleCall_1; }
 		
 		//JsonBoolean
-		public RuleCall getJsonBooleanParserRuleCall_3() { return cJsonBooleanParserRuleCall_3; }
+		public RuleCall getJsonBooleanParserRuleCall_2() { return cJsonBooleanParserRuleCall_2; }
 		
 		//JSonEnum
-		public RuleCall getJSonEnumParserRuleCall_4() { return cJSonEnumParserRuleCall_4; }
+		public RuleCall getJSonEnumParserRuleCall_3() { return cJSonEnumParserRuleCall_3; }
 		
 		//JSonString
-		public RuleCall getJSonStringParserRuleCall_5() { return cJSonStringParserRuleCall_5; }
+		public RuleCall getJSonStringParserRuleCall_4() { return cJSonStringParserRuleCall_4; }
 		
 		//JSonNull
-		public RuleCall getJSonNullParserRuleCall_6() { return cJSonNullParserRuleCall_6; }
-		
-		//Operation_Impl
-		public RuleCall getOperation_ImplParserRuleCall_7() { return cOperation_ImplParserRuleCall_7; }
-		
-		//ComplexAttribut_Impl
-		public RuleCall getComplexAttribut_ImplParserRuleCall_8() { return cComplexAttribut_ImplParserRuleCall_8; }
-		
-		//SimpleAttribut_Impl
-		public RuleCall getSimpleAttribut_ImplParserRuleCall_9() { return cSimpleAttribut_ImplParserRuleCall_9; }
+		public RuleCall getJSonNullParserRuleCall_5() { return cJSonNullParserRuleCall_5; }
 		
 		//Sum
-		public RuleCall getSumParserRuleCall_10() { return cSumParserRuleCall_10; }
+		public RuleCall getSumParserRuleCall_6() { return cSumParserRuleCall_6; }
 		
 		//Div
-		public RuleCall getDivParserRuleCall_11() { return cDivParserRuleCall_11; }
+		public RuleCall getDivParserRuleCall_7() { return cDivParserRuleCall_7; }
 		
 		//Mult
-		public RuleCall getMultParserRuleCall_12() { return cMultParserRuleCall_12; }
+		public RuleCall getMultParserRuleCall_8() { return cMultParserRuleCall_8; }
 		
 		//Sub
-		public RuleCall getSubParserRuleCall_13() { return cSubParserRuleCall_13; }
+		public RuleCall getSubParserRuleCall_9() { return cSubParserRuleCall_9; }
 	}
 	public class StoreElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.Store");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cStoreAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cStoreKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameSTRINGTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cPathKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cPathAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cPathSTRINGTerminalRuleCall_4_1_0 = (RuleCall)cPathAssignment_4_1.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cJsonfileKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
-		private final Assignment cJsonfileAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
-		private final CrossReference cJsonfileJSonFileCrossReference_5_2_0 = (CrossReference)cJsonfileAssignment_5_2.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_5_2_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_5_2_0.eContents().get(1);
-		private final Group cGroup_5_3 = (Group)cGroup_5.eContents().get(3);
-		private final Keyword cCommaKeyword_5_3_0 = (Keyword)cGroup_5_3.eContents().get(0);
-		private final Assignment cJsonfileAssignment_5_3_1 = (Assignment)cGroup_5_3.eContents().get(1);
-		private final CrossReference cJsonfileJSonFileCrossReference_5_3_1_0 = (CrossReference)cJsonfileAssignment_5_3_1.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_5_3_1_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_5_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cStoreKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cPathKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cPathAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cPathSTRINGTerminalRuleCall_3_0 = (RuleCall)cPathAssignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cNameKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cNameAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cNameSTRINGTerminalRuleCall_6_0 = (RuleCall)cNameAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
-		//Store returns Store:
-		//{Store}
+		///* Load and Store */
+		//Store :
 		//'Store'
-		//name=STRING
 		//'{'
-		//('path' path=STRING)?
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+		//'path' path=STRING ','
+		//'name' name=STRING
 		//'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Store}
 		//'Store'
-		//name=STRING
 		//'{'
-		//('path' path=STRING)?
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+		//'path' path=STRING ','
+		//'name' name=STRING
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
-		//{Store}
-		public Action getStoreAction_0() { return cStoreAction_0; }
-		
 		//'Store'
-		public Keyword getStoreKeyword_1() { return cStoreKeyword_1; }
-		
-		//name=STRING
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_2_0() { return cNameSTRINGTerminalRuleCall_2_0; }
+		public Keyword getStoreKeyword_0() { return cStoreKeyword_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-		
-		//('path' path=STRING)?
-		public Group getGroup_4() { return cGroup_4; }
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
 		//'path'
-		public Keyword getPathKeyword_4_0() { return cPathKeyword_4_0; }
+		public Keyword getPathKeyword_2() { return cPathKeyword_2; }
 		
 		//path=STRING
-		public Assignment getPathAssignment_4_1() { return cPathAssignment_4_1; }
+		public Assignment getPathAssignment_3() { return cPathAssignment_3; }
 		
 		//STRING
-		public RuleCall getPathSTRINGTerminalRuleCall_4_1_0() { return cPathSTRINGTerminalRuleCall_4_1_0; }
+		public RuleCall getPathSTRINGTerminalRuleCall_3_0() { return cPathSTRINGTerminalRuleCall_3_0; }
 		
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		public Group getGroup_5() { return cGroup_5; }
+		//','
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
 		
-		//'jsonfile'
-		public Keyword getJsonfileKeyword_5_0() { return cJsonfileKeyword_5_0; }
+		//'name'
+		public Keyword getNameKeyword_5() { return cNameKeyword_5; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_5_1() { return cLeftParenthesisKeyword_5_1; }
+		//name=STRING
+		public Assignment getNameAssignment_6() { return cNameAssignment_6; }
 		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_5_2() { return cJsonfileAssignment_5_2; }
-		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_5_2_0() { return cJsonfileJSonFileCrossReference_5_2_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_5_2_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_5_2_0_1; }
-		
-		//( "," jsonfile+=[JSonFile])*
-		public Group getGroup_5_3() { return cGroup_5_3; }
-		
-		//","
-		public Keyword getCommaKeyword_5_3_0() { return cCommaKeyword_5_3_0; }
-		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_5_3_1() { return cJsonfileAssignment_5_3_1; }
-		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_5_3_1_0() { return cJsonfileJSonFileCrossReference_5_3_1_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_5_3_1_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_5_3_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_5_4() { return cRightParenthesisKeyword_5_4; }
+		//STRING
+		public RuleCall getNameSTRINGTerminalRuleCall_6_0() { return cNameSTRINGTerminalRuleCall_6_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 	public class LoadElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.Load");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cLoadAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cLoadKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cPathKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cPathAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cPathSTRINGTerminalRuleCall_3_1_0 = (RuleCall)cPathAssignment_3_1.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cJsonfileKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Assignment cJsonfileAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final CrossReference cJsonfileJSonFileCrossReference_4_2_0 = (CrossReference)cJsonfileAssignment_4_2.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_4_2_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_4_2_0.eContents().get(1);
-		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
-		private final Keyword cCommaKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
-		private final Assignment cJsonfileAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final CrossReference cJsonfileJSonFileCrossReference_4_3_1_0 = (CrossReference)cJsonfileAssignment_4_3_1.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_4_3_1_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_4_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cLoadKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cPathKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cPathAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cPathSTRINGTerminalRuleCall_3_0 = (RuleCall)cPathAssignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cNameKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cNameAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cNameSTRINGTerminalRuleCall_6_0 = (RuleCall)cNameAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
-		//Load returns Load:
-		//{Load}
+		//Load:
 		//'Load'
 		//'{'
-		//('path' path=STRING)?
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+		//'path' path=STRING ','
+		//'name' name=STRING
 		//'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Load}
 		//'Load'
 		//'{'
-		//('path' path=STRING)?
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+		//'path' path=STRING ','
+		//'name' name=STRING
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
-		//{Load}
-		public Action getLoadAction_0() { return cLoadAction_0; }
-		
 		//'Load'
-		public Keyword getLoadKeyword_1() { return cLoadKeyword_1; }
+		public Keyword getLoadKeyword_0() { return cLoadKeyword_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//('path' path=STRING)?
-		public Group getGroup_3() { return cGroup_3; }
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
 		//'path'
-		public Keyword getPathKeyword_3_0() { return cPathKeyword_3_0; }
+		public Keyword getPathKeyword_2() { return cPathKeyword_2; }
 		
 		//path=STRING
-		public Assignment getPathAssignment_3_1() { return cPathAssignment_3_1; }
+		public Assignment getPathAssignment_3() { return cPathAssignment_3; }
 		
 		//STRING
-		public RuleCall getPathSTRINGTerminalRuleCall_3_1_0() { return cPathSTRINGTerminalRuleCall_3_1_0; }
+		public RuleCall getPathSTRINGTerminalRuleCall_3_0() { return cPathSTRINGTerminalRuleCall_3_0; }
 		
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		public Group getGroup_4() { return cGroup_4; }
+		//','
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
 		
-		//'jsonfile'
-		public Keyword getJsonfileKeyword_4_0() { return cJsonfileKeyword_4_0; }
+		//'name'
+		public Keyword getNameKeyword_5() { return cNameKeyword_5; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_4_1() { return cLeftParenthesisKeyword_4_1; }
+		//name=STRING
+		public Assignment getNameAssignment_6() { return cNameAssignment_6; }
 		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_4_2() { return cJsonfileAssignment_4_2; }
-		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_4_2_0() { return cJsonfileJSonFileCrossReference_4_2_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_4_2_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_4_2_0_1; }
-		
-		//( "," jsonfile+=[JSonFile])*
-		public Group getGroup_4_3() { return cGroup_4_3; }
-		
-		//","
-		public Keyword getCommaKeyword_4_3_0() { return cCommaKeyword_4_3_0; }
-		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_4_3_1() { return cJsonfileAssignment_4_3_1; }
-		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_4_3_1_0() { return cJsonfileJSonFileCrossReference_4_3_1_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_4_3_1_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_4_3_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_4_4() { return cRightParenthesisKeyword_4_4; }
+		//STRING
+		public RuleCall getNameSTRINGTerminalRuleCall_6_0() { return cNameSTRINGTerminalRuleCall_6_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 	public class DisplayElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.Display");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cDisplayKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cJsonfileKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
-		private final Assignment cJsonfileAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
-		private final CrossReference cJsonfileJSonFileCrossReference_2_2_0 = (CrossReference)cJsonfileAssignment_2_2.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_2_2_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_2_2_0.eContents().get(1);
-		private final Group cGroup_2_3 = (Group)cGroup_2.eContents().get(3);
-		private final Keyword cCommaKeyword_2_3_0 = (Keyword)cGroup_2_3.eContents().get(0);
-		private final Assignment cJsonfileAssignment_2_3_1 = (Assignment)cGroup_2_3.eContents().get(1);
-		private final CrossReference cJsonfileJSonFileCrossReference_2_3_1_0 = (CrossReference)cJsonfileAssignment_2_3_1.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_2_3_1_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_2_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
-		private final Keyword cNodeKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cNodeAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final CrossReference cNodeJSonObjectCrossReference_4_0 = (CrossReference)cNodeAssignment_4.eContents().get(0);
-		private final RuleCall cNodeJSonObjectIDTerminalRuleCall_4_0_1 = (RuleCall)cNodeJSonObjectCrossReference_4_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cJsonfileKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cJsonfileAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cJsonfileJSonFileParserRuleCall_3_0 = (RuleCall)cJsonfileAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//Display returns Display:
+		///* Display */
+		//Display:
 		//'Display'
 		//'{'
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		//'node' node=[JSonObject]
+		//'jsonfile' jsonfile+=JSonFile
 		//'}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Display'
 		//'{'
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		//'node' node=[JSonObject]
+		//'jsonfile' jsonfile+=JSonFile
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -559,447 +405,194 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		public Group getGroup_2() { return cGroup_2; }
-		
 		//'jsonfile'
-		public Keyword getJsonfileKeyword_2_0() { return cJsonfileKeyword_2_0; }
+		public Keyword getJsonfileKeyword_2() { return cJsonfileKeyword_2; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_2_1() { return cLeftParenthesisKeyword_2_1; }
+		//jsonfile+=JSonFile
+		public Assignment getJsonfileAssignment_3() { return cJsonfileAssignment_3; }
 		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_2_2() { return cJsonfileAssignment_2_2; }
-		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_2_2_0() { return cJsonfileJSonFileCrossReference_2_2_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_2_2_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_2_2_0_1; }
-		
-		//( "," jsonfile+=[JSonFile])*
-		public Group getGroup_2_3() { return cGroup_2_3; }
-		
-		//","
-		public Keyword getCommaKeyword_2_3_0() { return cCommaKeyword_2_3_0; }
-		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_2_3_1() { return cJsonfileAssignment_2_3_1; }
-		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_2_3_1_0() { return cJsonfileJSonFileCrossReference_2_3_1_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_2_3_1_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_2_3_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_2_4() { return cRightParenthesisKeyword_2_4; }
-		
-		//'node'
-		public Keyword getNodeKeyword_3() { return cNodeKeyword_3; }
-		
-		//node=[JSonObject]
-		public Assignment getNodeAssignment_4() { return cNodeAssignment_4; }
-		
-		//[JSonObject]
-		public CrossReference getNodeJSonObjectCrossReference_4_0() { return cNodeJSonObjectCrossReference_4_0; }
-		
-		//ID
-		public RuleCall getNodeJSonObjectIDTerminalRuleCall_4_0_1() { return cNodeJSonObjectIDTerminalRuleCall_4_0_1; }
+		//JSonFile
+		public RuleCall getJsonfileJSonFileParserRuleCall_3_0() { return cJsonfileJSonFileParserRuleCall_3_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 	public class SubsetElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.Subset");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cSubsetKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cJsonfileKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Assignment cJsonfileAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
-		private final CrossReference cJsonfileJSonFileCrossReference_3_2_0 = (CrossReference)cJsonfileAssignment_3_2.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_3_2_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_3_2_0.eContents().get(1);
-		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
-		private final Keyword cCommaKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
-		private final Assignment cJsonfileAssignment_3_3_1 = (Assignment)cGroup_3_3.eContents().get(1);
-		private final CrossReference cJsonfileJSonFileCrossReference_3_3_1_0 = (CrossReference)cJsonfileAssignment_3_3_1.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_3_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
-		private final Keyword cListNodesKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cLeftParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cListNodesAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final CrossReference cListNodesJSonObjectCrossReference_6_0 = (CrossReference)cListNodesAssignment_6.eContents().get(0);
-		private final RuleCall cListNodesJSonObjectIDTerminalRuleCall_6_0_1 = (RuleCall)cListNodesJSonObjectCrossReference_6_0.eContents().get(1);
-		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cCommaKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Assignment cListNodesAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final CrossReference cListNodesJSonObjectCrossReference_7_1_0 = (CrossReference)cListNodesAssignment_7_1.eContents().get(0);
-		private final RuleCall cListNodesJSonObjectIDTerminalRuleCall_7_1_0_1 = (RuleCall)cListNodesJSonObjectCrossReference_7_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cJsonfileKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cJsonfileAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cJsonfileJSonFileParserRuleCall_3_0 = (RuleCall)cJsonfileAssignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cListNodesKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cLeftParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cListNodesAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cListNodesJSonObjectParserRuleCall_7_0 = (RuleCall)cListNodesAssignment_7.eContents().get(0);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Keyword cCommaKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Assignment cListNodesAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cListNodesJSonObjectParserRuleCall_8_1_0 = (RuleCall)cListNodesAssignment_8_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
-		//Subset returns Subset:
+		///* Replace */
+		//Subset:
 		//'Subset'
-		//name=STRING
 		//'{'
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		//'listNodes' '(' listNodes+=[JSonObject] ( "," listNodes+=[JSonObject])* ')'
+		//'jsonfile' jsonfile+=JSonFile ','
+		//'listNodes' '(' listNodes+=JSonObject ( "," listNodes+=JSonObject)* ')'
 		//'}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Subset'
-		//name=STRING
 		//'{'
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		//'listNodes' '(' listNodes+=[JSonObject] ( "," listNodes+=[JSonObject])* ')'
+		//'jsonfile' jsonfile+=JSonFile ','
+		//'listNodes' '(' listNodes+=JSonObject ( "," listNodes+=JSonObject)* ')'
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
 		//'Subset'
 		public Keyword getSubsetKeyword_0() { return cSubsetKeyword_0; }
 		
-		//name=STRING
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
-		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		public Group getGroup_3() { return cGroup_3; }
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
 		//'jsonfile'
-		public Keyword getJsonfileKeyword_3_0() { return cJsonfileKeyword_3_0; }
+		public Keyword getJsonfileKeyword_2() { return cJsonfileKeyword_2; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_3_1() { return cLeftParenthesisKeyword_3_1; }
+		//jsonfile+=JSonFile
+		public Assignment getJsonfileAssignment_3() { return cJsonfileAssignment_3; }
 		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_3_2() { return cJsonfileAssignment_3_2; }
+		//JSonFile
+		public RuleCall getJsonfileJSonFileParserRuleCall_3_0() { return cJsonfileJSonFileParserRuleCall_3_0; }
 		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_3_2_0() { return cJsonfileJSonFileCrossReference_3_2_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_3_2_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_3_2_0_1; }
-		
-		//( "," jsonfile+=[JSonFile])*
-		public Group getGroup_3_3() { return cGroup_3_3; }
-		
-		//","
-		public Keyword getCommaKeyword_3_3_0() { return cCommaKeyword_3_3_0; }
-		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_3_3_1() { return cJsonfileAssignment_3_3_1; }
-		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_3_3_1_0() { return cJsonfileJSonFileCrossReference_3_3_1_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_3_4() { return cRightParenthesisKeyword_3_4; }
+		//','
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
 		
 		//'listNodes'
-		public Keyword getListNodesKeyword_4() { return cListNodesKeyword_4; }
+		public Keyword getListNodesKeyword_5() { return cListNodesKeyword_5; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_5() { return cLeftParenthesisKeyword_5; }
+		public Keyword getLeftParenthesisKeyword_6() { return cLeftParenthesisKeyword_6; }
 		
-		//listNodes+=[JSonObject]
-		public Assignment getListNodesAssignment_6() { return cListNodesAssignment_6; }
+		//listNodes+=JSonObject
+		public Assignment getListNodesAssignment_7() { return cListNodesAssignment_7; }
 		
-		//[JSonObject]
-		public CrossReference getListNodesJSonObjectCrossReference_6_0() { return cListNodesJSonObjectCrossReference_6_0; }
+		//JSonObject
+		public RuleCall getListNodesJSonObjectParserRuleCall_7_0() { return cListNodesJSonObjectParserRuleCall_7_0; }
 		
-		//ID
-		public RuleCall getListNodesJSonObjectIDTerminalRuleCall_6_0_1() { return cListNodesJSonObjectIDTerminalRuleCall_6_0_1; }
-		
-		//( "," listNodes+=[JSonObject])*
-		public Group getGroup_7() { return cGroup_7; }
+		//( "," listNodes+=JSonObject)*
+		public Group getGroup_8() { return cGroup_8; }
 		
 		//","
-		public Keyword getCommaKeyword_7_0() { return cCommaKeyword_7_0; }
+		public Keyword getCommaKeyword_8_0() { return cCommaKeyword_8_0; }
 		
-		//listNodes+=[JSonObject]
-		public Assignment getListNodesAssignment_7_1() { return cListNodesAssignment_7_1; }
+		//listNodes+=JSonObject
+		public Assignment getListNodesAssignment_8_1() { return cListNodesAssignment_8_1; }
 		
-		//[JSonObject]
-		public CrossReference getListNodesJSonObjectCrossReference_7_1_0() { return cListNodesJSonObjectCrossReference_7_1_0; }
-		
-		//ID
-		public RuleCall getListNodesJSonObjectIDTerminalRuleCall_7_1_0_1() { return cListNodesJSonObjectIDTerminalRuleCall_7_1_0_1; }
+		//JSonObject
+		public RuleCall getListNodesJSonObjectParserRuleCall_8_1_0() { return cListNodesJSonObjectParserRuleCall_8_1_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_8() { return cRightParenthesisKeyword_8; }
+		public Keyword getRightParenthesisKeyword_9() { return cRightParenthesisKeyword_9; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
-	}
-	public class SelectElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.Select");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cSelectKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cJsonfileKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Assignment cJsonfileAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
-		private final CrossReference cJsonfileJSonFileCrossReference_3_2_0 = (CrossReference)cJsonfileAssignment_3_2.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_3_2_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_3_2_0.eContents().get(1);
-		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
-		private final Keyword cCommaKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
-		private final Assignment cJsonfileAssignment_3_3_1 = (Assignment)cGroup_3_3.eContents().get(1);
-		private final CrossReference cJsonfileJSonFileCrossReference_3_3_1_0 = (CrossReference)cJsonfileAssignment_3_3_1.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_3_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
-		private final Keyword cNodeKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cNodeAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cNodeJSonObjectCrossReference_5_0 = (CrossReference)cNodeAssignment_5.eContents().get(0);
-		private final RuleCall cNodeJSonObjectIDTerminalRuleCall_5_0_1 = (RuleCall)cNodeJSonObjectCrossReference_5_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		
-		//Select returns Select:
-		//'Select'
-		//name=STRING
-		//'{'
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		//'node' node=[JSonObject]
-		//'}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'Select'
-		//name=STRING
-		//'{'
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		//'node' node=[JSonObject]
-		//'}'
-		public Group getGroup() { return cGroup; }
-		
-		//'Select'
-		public Keyword getSelectKeyword_0() { return cSelectKeyword_0; }
-		
-		//name=STRING
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'jsonfile'
-		public Keyword getJsonfileKeyword_3_0() { return cJsonfileKeyword_3_0; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_3_1() { return cLeftParenthesisKeyword_3_1; }
-		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_3_2() { return cJsonfileAssignment_3_2; }
-		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_3_2_0() { return cJsonfileJSonFileCrossReference_3_2_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_3_2_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_3_2_0_1; }
-		
-		//( "," jsonfile+=[JSonFile])*
-		public Group getGroup_3_3() { return cGroup_3_3; }
-		
-		//","
-		public Keyword getCommaKeyword_3_3_0() { return cCommaKeyword_3_3_0; }
-		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_3_3_1() { return cJsonfileAssignment_3_3_1; }
-		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_3_3_1_0() { return cJsonfileJSonFileCrossReference_3_3_1_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_3_4() { return cRightParenthesisKeyword_3_4; }
-		
-		//'node'
-		public Keyword getNodeKeyword_4() { return cNodeKeyword_4; }
-		
-		//node=[JSonObject]
-		public Assignment getNodeAssignment_5() { return cNodeAssignment_5; }
-		
-		//[JSonObject]
-		public CrossReference getNodeJSonObjectCrossReference_5_0() { return cNodeJSonObjectCrossReference_5_0; }
-		
-		//ID
-		public RuleCall getNodeJSonObjectIDTerminalRuleCall_5_0_1() { return cNodeJSonObjectIDTerminalRuleCall_5_0_1; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
 	}
 	public class ProjectionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.Projection");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cProjectionKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cJsonfileKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Assignment cJsonfileAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
-		private final CrossReference cJsonfileJSonFileCrossReference_3_2_0 = (CrossReference)cJsonfileAssignment_3_2.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_3_2_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_3_2_0.eContents().get(1);
-		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
-		private final Keyword cCommaKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
-		private final Assignment cJsonfileAssignment_3_3_1 = (Assignment)cGroup_3_3.eContents().get(1);
-		private final CrossReference cJsonfileJSonFileCrossReference_3_3_1_0 = (CrossReference)cJsonfileAssignment_3_3_1.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_3_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
-		private final Keyword cNodeKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cNodeAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cNodeJSonObjectCrossReference_5_0 = (CrossReference)cNodeAssignment_5.eContents().get(0);
-		private final RuleCall cNodeJSonObjectIDTerminalRuleCall_5_0_1 = (RuleCall)cNodeJSonObjectCrossReference_5_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cJsonfileKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cJsonfileAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cJsonfileJSonFileParserRuleCall_3_0 = (RuleCall)cJsonfileAssignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cNodeKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cNodeAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cNodeJSonObjectParserRuleCall_6_0 = (RuleCall)cNodeAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
-		//Projection returns Projection:
+		//Projection:
 		//'Projection'
-		//name=STRING
 		//'{'
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		//'node' node=[JSonObject]
+		//'jsonfile' jsonfile+=JSonFile ','
+		//'node' node=JSonObject
 		//'}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Projection'
-		//name=STRING
 		//'{'
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		//'node' node=[JSonObject]
+		//'jsonfile' jsonfile+=JSonFile ','
+		//'node' node=JSonObject
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
 		//'Projection'
 		public Keyword getProjectionKeyword_0() { return cProjectionKeyword_0; }
 		
-		//name=STRING
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
-		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		public Group getGroup_3() { return cGroup_3; }
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
 		//'jsonfile'
-		public Keyword getJsonfileKeyword_3_0() { return cJsonfileKeyword_3_0; }
+		public Keyword getJsonfileKeyword_2() { return cJsonfileKeyword_2; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_3_1() { return cLeftParenthesisKeyword_3_1; }
+		//jsonfile+=JSonFile
+		public Assignment getJsonfileAssignment_3() { return cJsonfileAssignment_3; }
 		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_3_2() { return cJsonfileAssignment_3_2; }
+		//JSonFile
+		public RuleCall getJsonfileJSonFileParserRuleCall_3_0() { return cJsonfileJSonFileParserRuleCall_3_0; }
 		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_3_2_0() { return cJsonfileJSonFileCrossReference_3_2_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_3_2_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_3_2_0_1; }
-		
-		//( "," jsonfile+=[JSonFile])*
-		public Group getGroup_3_3() { return cGroup_3_3; }
-		
-		//","
-		public Keyword getCommaKeyword_3_3_0() { return cCommaKeyword_3_3_0; }
-		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_3_3_1() { return cJsonfileAssignment_3_3_1; }
-		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_3_3_1_0() { return cJsonfileJSonFileCrossReference_3_3_1_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_3_4() { return cRightParenthesisKeyword_3_4; }
+		//','
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
 		
 		//'node'
-		public Keyword getNodeKeyword_4() { return cNodeKeyword_4; }
+		public Keyword getNodeKeyword_5() { return cNodeKeyword_5; }
 		
-		//node=[JSonObject]
-		public Assignment getNodeAssignment_5() { return cNodeAssignment_5; }
+		//node=JSonObject
+		public Assignment getNodeAssignment_6() { return cNodeAssignment_6; }
 		
-		//[JSonObject]
-		public CrossReference getNodeJSonObjectCrossReference_5_0() { return cNodeJSonObjectCrossReference_5_0; }
-		
-		//ID
-		public RuleCall getNodeJSonObjectIDTerminalRuleCall_5_0_1() { return cNodeJSonObjectIDTerminalRuleCall_5_0_1; }
+		//JSonObject
+		public RuleCall getNodeJSonObjectParserRuleCall_6_0() { return cNodeJSonObjectParserRuleCall_6_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 	public class InsertElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.Insert");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cInsertKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cValueKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cValueAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cValueSTRINGTerminalRuleCall_2_1_0 = (RuleCall)cValueAssignment_2_1.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cJsonfileKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Assignment cJsonfileAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
-		private final CrossReference cJsonfileJSonFileCrossReference_3_2_0 = (CrossReference)cJsonfileAssignment_3_2.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_3_2_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_3_2_0.eContents().get(1);
-		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
-		private final Keyword cCommaKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
-		private final Assignment cJsonfileAssignment_3_3_1 = (Assignment)cGroup_3_3.eContents().get(1);
-		private final CrossReference cJsonfileJSonFileCrossReference_3_3_1_0 = (CrossReference)cJsonfileAssignment_3_3_1.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_3_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
-		private final Keyword cNodeKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cNodeAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cNodeJSonObjectCrossReference_5_0 = (CrossReference)cNodeAssignment_5.eContents().get(0);
-		private final RuleCall cNodeJSonObjectIDTerminalRuleCall_5_0_1 = (RuleCall)cNodeJSonObjectCrossReference_5_0.eContents().get(1);
-		private final Keyword cComplexattributKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cComplexattributAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final CrossReference cComplexattributComplexAttributCrossReference_7_0 = (CrossReference)cComplexattributAssignment_7.eContents().get(0);
-		private final RuleCall cComplexattributComplexAttributIDTerminalRuleCall_7_0_1 = (RuleCall)cComplexattributComplexAttributCrossReference_7_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cJsonFileTargetKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cJsonfileAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cJsonfileJSonFileParserRuleCall_4_0 = (RuleCall)cJsonfileAssignment_4.eContents().get(0);
+		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cJsonFileSourceKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cJsonfileAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cJsonfileJSonFileParserRuleCall_7_0 = (RuleCall)cJsonfileAssignment_7.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cCommaKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cObjectKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cNodeAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cNodeJSonObjectParserRuleCall_11_0 = (RuleCall)cNodeAssignment_11.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		
-		//Insert returns Insert:
+		///* Modification On File */
+		//Insert:
 		//'Insert'
 		//'{'
-		//('value' value=STRING)?
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		//'node' node=[JSonObject]
-		//'complexattribut' complexattribut=[ComplexAttribut]
+		//'(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')' ','
+		//'Object:' node=JSonObject
 		//'}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Insert'
 		//'{'
-		//('value' value=STRING)?
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		//'node' node=[JSonObject]
-		//'complexattribut' complexattribut=[ComplexAttribut]
+		//'(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')' ','
+		//'Object:' node=JSonObject
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -1009,116 +602,74 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//('value' value=STRING)?
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//'value'
-		public Keyword getValueKeyword_2_0() { return cValueKeyword_2_0; }
-		
-		//value=STRING
-		public Assignment getValueAssignment_2_1() { return cValueAssignment_2_1; }
-		
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_2_1_0() { return cValueSTRINGTerminalRuleCall_2_1_0; }
-		
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'jsonfile'
-		public Keyword getJsonfileKeyword_3_0() { return cJsonfileKeyword_3_0; }
-		
 		//'('
-		public Keyword getLeftParenthesisKeyword_3_1() { return cLeftParenthesisKeyword_3_1; }
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_3_2() { return cJsonfileAssignment_3_2; }
+		//'JsonFileTarget'
+		public Keyword getJsonFileTargetKeyword_3() { return cJsonFileTargetKeyword_3; }
 		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_3_2_0() { return cJsonfileJSonFileCrossReference_3_2_0; }
+		//jsonfile+=JSonFile
+		public Assignment getJsonfileAssignment_4() { return cJsonfileAssignment_4; }
 		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_3_2_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_3_2_0_1; }
+		//JSonFile
+		public RuleCall getJsonfileJSonFileParserRuleCall_4_0() { return cJsonfileJSonFileParserRuleCall_4_0; }
 		
-		//( "," jsonfile+=[JSonFile])*
-		public Group getGroup_3_3() { return cGroup_3_3; }
+		//','
+		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
 		
-		//","
-		public Keyword getCommaKeyword_3_3_0() { return cCommaKeyword_3_3_0; }
+		//'JsonFileSource'
+		public Keyword getJsonFileSourceKeyword_6() { return cJsonFileSourceKeyword_6; }
 		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_3_3_1() { return cJsonfileAssignment_3_3_1; }
+		//jsonfile+=JSonFile
+		public Assignment getJsonfileAssignment_7() { return cJsonfileAssignment_7; }
 		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_3_3_1_0() { return cJsonfileJSonFileCrossReference_3_3_1_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1; }
+		//JSonFile
+		public RuleCall getJsonfileJSonFileParserRuleCall_7_0() { return cJsonfileJSonFileParserRuleCall_7_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_3_4() { return cRightParenthesisKeyword_3_4; }
+		public Keyword getRightParenthesisKeyword_8() { return cRightParenthesisKeyword_8; }
 		
-		//'node'
-		public Keyword getNodeKeyword_4() { return cNodeKeyword_4; }
+		//','
+		public Keyword getCommaKeyword_9() { return cCommaKeyword_9; }
 		
-		//node=[JSonObject]
-		public Assignment getNodeAssignment_5() { return cNodeAssignment_5; }
+		//'Object:'
+		public Keyword getObjectKeyword_10() { return cObjectKeyword_10; }
 		
-		//[JSonObject]
-		public CrossReference getNodeJSonObjectCrossReference_5_0() { return cNodeJSonObjectCrossReference_5_0; }
+		//node=JSonObject
+		public Assignment getNodeAssignment_11() { return cNodeAssignment_11; }
 		
-		//ID
-		public RuleCall getNodeJSonObjectIDTerminalRuleCall_5_0_1() { return cNodeJSonObjectIDTerminalRuleCall_5_0_1; }
-		
-		//'complexattribut'
-		public Keyword getComplexattributKeyword_6() { return cComplexattributKeyword_6; }
-		
-		//complexattribut=[ComplexAttribut]
-		public Assignment getComplexattributAssignment_7() { return cComplexattributAssignment_7; }
-		
-		//[ComplexAttribut]
-		public CrossReference getComplexattributComplexAttributCrossReference_7_0() { return cComplexattributComplexAttributCrossReference_7_0; }
-		
-		//ID
-		public RuleCall getComplexattributComplexAttributIDTerminalRuleCall_7_0_1() { return cComplexattributComplexAttributIDTerminalRuleCall_7_0_1; }
+		//JSonObject
+		public RuleCall getNodeJSonObjectParserRuleCall_11_0() { return cNodeJSonObjectParserRuleCall_11_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
 	}
 	public class RemoveElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.Remove");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cRemoveKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cJsonfileKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
-		private final Assignment cJsonfileAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
-		private final CrossReference cJsonfileJSonFileCrossReference_2_2_0 = (CrossReference)cJsonfileAssignment_2_2.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_2_2_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_2_2_0.eContents().get(1);
-		private final Group cGroup_2_3 = (Group)cGroup_2.eContents().get(3);
-		private final Keyword cCommaKeyword_2_3_0 = (Keyword)cGroup_2_3.eContents().get(0);
-		private final Assignment cJsonfileAssignment_2_3_1 = (Assignment)cGroup_2_3.eContents().get(1);
-		private final CrossReference cJsonfileJSonFileCrossReference_2_3_1_0 = (CrossReference)cJsonfileAssignment_2_3_1.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_2_3_1_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_2_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
-		private final Keyword cNodeKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cNodeAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final CrossReference cNodeJSonObjectCrossReference_4_0 = (CrossReference)cNodeAssignment_4.eContents().get(0);
-		private final RuleCall cNodeJSonObjectIDTerminalRuleCall_4_0_1 = (RuleCall)cNodeJSonObjectCrossReference_4_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cJsonFileTargetKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cJsonfileAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cJsonfileJSonFileParserRuleCall_3_0 = (RuleCall)cJsonfileAssignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cObjectKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cNodeAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cNodeJSonObjectParserRuleCall_6_0 = (RuleCall)cNodeAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
-		//Remove returns Remove:
+		//Remove:
 		//'Remove'
 		//'{'
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		//'node' node=[JSonObject]
+		//'JsonFileTarget' jsonfile+=JSonFile ','
+		//'Object:' node=JSonObject
 		//'}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Remove'
 		//'{'
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		//'node' node=[JSonObject]
+		//'JsonFileTarget' jsonfile+=JSonFile ','
+		//'Object:' node=JSonObject
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -1128,105 +679,62 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		public Group getGroup_2() { return cGroup_2; }
+		//'JsonFileTarget'
+		public Keyword getJsonFileTargetKeyword_2() { return cJsonFileTargetKeyword_2; }
 		
-		//'jsonfile'
-		public Keyword getJsonfileKeyword_2_0() { return cJsonfileKeyword_2_0; }
+		//jsonfile+=JSonFile
+		public Assignment getJsonfileAssignment_3() { return cJsonfileAssignment_3; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_2_1() { return cLeftParenthesisKeyword_2_1; }
+		//JSonFile
+		public RuleCall getJsonfileJSonFileParserRuleCall_3_0() { return cJsonfileJSonFileParserRuleCall_3_0; }
 		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_2_2() { return cJsonfileAssignment_2_2; }
+		//','
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
 		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_2_2_0() { return cJsonfileJSonFileCrossReference_2_2_0; }
+		//'Object:'
+		public Keyword getObjectKeyword_5() { return cObjectKeyword_5; }
 		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_2_2_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_2_2_0_1; }
+		//node=JSonObject
+		public Assignment getNodeAssignment_6() { return cNodeAssignment_6; }
 		
-		//( "," jsonfile+=[JSonFile])*
-		public Group getGroup_2_3() { return cGroup_2_3; }
-		
-		//","
-		public Keyword getCommaKeyword_2_3_0() { return cCommaKeyword_2_3_0; }
-		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_2_3_1() { return cJsonfileAssignment_2_3_1; }
-		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_2_3_1_0() { return cJsonfileJSonFileCrossReference_2_3_1_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_2_3_1_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_2_3_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_2_4() { return cRightParenthesisKeyword_2_4; }
-		
-		//'node'
-		public Keyword getNodeKeyword_3() { return cNodeKeyword_3; }
-		
-		//node=[JSonObject]
-		public Assignment getNodeAssignment_4() { return cNodeAssignment_4; }
-		
-		//[JSonObject]
-		public CrossReference getNodeJSonObjectCrossReference_4_0() { return cNodeJSonObjectCrossReference_4_0; }
-		
-		//ID
-		public RuleCall getNodeJSonObjectIDTerminalRuleCall_4_0_1() { return cNodeJSonObjectIDTerminalRuleCall_4_0_1; }
+		//JSonObject
+		public RuleCall getNodeJSonObjectParserRuleCall_6_0() { return cNodeJSonObjectParserRuleCall_6_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 	public class ModifyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.Modify");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cModifyKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cValueKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cValueAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cValueSTRINGTerminalRuleCall_2_1_0 = (RuleCall)cValueAssignment_2_1.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cJsonfileKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Assignment cJsonfileAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
-		private final CrossReference cJsonfileJSonFileCrossReference_3_2_0 = (CrossReference)cJsonfileAssignment_3_2.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_3_2_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_3_2_0.eContents().get(1);
-		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
-		private final Keyword cCommaKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
-		private final Assignment cJsonfileAssignment_3_3_1 = (Assignment)cGroup_3_3.eContents().get(1);
-		private final CrossReference cJsonfileJSonFileCrossReference_3_3_1_0 = (CrossReference)cJsonfileAssignment_3_3_1.eContents().get(0);
-		private final RuleCall cJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1 = (RuleCall)cJsonfileJSonFileCrossReference_3_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
-		private final Keyword cNodeKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cLeftParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cNodeAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final CrossReference cNodeJSonObjectCrossReference_6_0 = (CrossReference)cNodeAssignment_6.eContents().get(0);
-		private final RuleCall cNodeJSonObjectIDTerminalRuleCall_6_0_1 = (RuleCall)cNodeJSonObjectCrossReference_6_0.eContents().get(1);
-		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cCommaKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Assignment cNodeAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final CrossReference cNodeJSonObjectCrossReference_7_1_0 = (CrossReference)cNodeAssignment_7_1.eContents().get(0);
-		private final RuleCall cNodeJSonObjectIDTerminalRuleCall_7_1_0_1 = (RuleCall)cNodeJSonObjectCrossReference_7_1_0.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cJsonFileTargetKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cJsonfileAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cJsonfileJSonFileParserRuleCall_4_0 = (RuleCall)cJsonfileAssignment_4.eContents().get(0);
+		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cJsonFileSourceKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cJsonfileAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cJsonfileJSonFileParserRuleCall_7_0 = (RuleCall)cJsonfileAssignment_7.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cCommaKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cObjectKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cNodeAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cNodeJSonObjectParserRuleCall_11_0 = (RuleCall)cNodeAssignment_11.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		
-		//Modify returns Modify:
+		//Modify:
 		//'Modify'
 		//'{'
-		//('value' value=STRING)?
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		//'node' '(' node+=[JSonObject] ( "," node+=[JSonObject])* ')'
+		//'(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')' ','
+		//'Object:' node=JSonObject
 		//'}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Modify'
 		//'{'
-		//('value' value=STRING)?
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		//'node' '(' node+=[JSonObject] ( "," node+=[JSonObject])* ')'
+		//'(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')' ','
+		//'Object:' node=JSonObject
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -1236,268 +744,109 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//('value' value=STRING)?
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//'value'
-		public Keyword getValueKeyword_2_0() { return cValueKeyword_2_0; }
-		
-		//value=STRING
-		public Assignment getValueAssignment_2_1() { return cValueAssignment_2_1; }
-		
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_2_1_0() { return cValueSTRINGTerminalRuleCall_2_1_0; }
-		
-		//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'jsonfile'
-		public Keyword getJsonfileKeyword_3_0() { return cJsonfileKeyword_3_0; }
-		
 		//'('
-		public Keyword getLeftParenthesisKeyword_3_1() { return cLeftParenthesisKeyword_3_1; }
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_3_2() { return cJsonfileAssignment_3_2; }
+		//'JsonFileTarget'
+		public Keyword getJsonFileTargetKeyword_3() { return cJsonFileTargetKeyword_3; }
 		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_3_2_0() { return cJsonfileJSonFileCrossReference_3_2_0; }
+		//jsonfile+=JSonFile
+		public Assignment getJsonfileAssignment_4() { return cJsonfileAssignment_4; }
 		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_3_2_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_3_2_0_1; }
+		//JSonFile
+		public RuleCall getJsonfileJSonFileParserRuleCall_4_0() { return cJsonfileJSonFileParserRuleCall_4_0; }
 		
-		//( "," jsonfile+=[JSonFile])*
-		public Group getGroup_3_3() { return cGroup_3_3; }
+		//','
+		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
 		
-		//","
-		public Keyword getCommaKeyword_3_3_0() { return cCommaKeyword_3_3_0; }
+		//'JsonFileSource'
+		public Keyword getJsonFileSourceKeyword_6() { return cJsonFileSourceKeyword_6; }
 		
-		//jsonfile+=[JSonFile]
-		public Assignment getJsonfileAssignment_3_3_1() { return cJsonfileAssignment_3_3_1; }
+		//jsonfile+=JSonFile
+		public Assignment getJsonfileAssignment_7() { return cJsonfileAssignment_7; }
 		
-		//[JSonFile]
-		public CrossReference getJsonfileJSonFileCrossReference_3_3_1_0() { return cJsonfileJSonFileCrossReference_3_3_1_0; }
-		
-		//ID
-		public RuleCall getJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1() { return cJsonfileJSonFileIDTerminalRuleCall_3_3_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_3_4() { return cRightParenthesisKeyword_3_4; }
-		
-		//'node'
-		public Keyword getNodeKeyword_4() { return cNodeKeyword_4; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_5() { return cLeftParenthesisKeyword_5; }
-		
-		//node+=[JSonObject]
-		public Assignment getNodeAssignment_6() { return cNodeAssignment_6; }
-		
-		//[JSonObject]
-		public CrossReference getNodeJSonObjectCrossReference_6_0() { return cNodeJSonObjectCrossReference_6_0; }
-		
-		//ID
-		public RuleCall getNodeJSonObjectIDTerminalRuleCall_6_0_1() { return cNodeJSonObjectIDTerminalRuleCall_6_0_1; }
-		
-		//( "," node+=[JSonObject])*
-		public Group getGroup_7() { return cGroup_7; }
-		
-		//","
-		public Keyword getCommaKeyword_7_0() { return cCommaKeyword_7_0; }
-		
-		//node+=[JSonObject]
-		public Assignment getNodeAssignment_7_1() { return cNodeAssignment_7_1; }
-		
-		//[JSonObject]
-		public CrossReference getNodeJSonObjectCrossReference_7_1_0() { return cNodeJSonObjectCrossReference_7_1_0; }
-		
-		//ID
-		public RuleCall getNodeJSonObjectIDTerminalRuleCall_7_1_0_1() { return cNodeJSonObjectIDTerminalRuleCall_7_1_0_1; }
+		//JSonFile
+		public RuleCall getJsonfileJSonFileParserRuleCall_7_0() { return cJsonfileJSonFileParserRuleCall_7_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_8() { return cRightParenthesisKeyword_8; }
 		
+		//','
+		public Keyword getCommaKeyword_9() { return cCommaKeyword_9; }
+		
+		//'Object:'
+		public Keyword getObjectKeyword_10() { return cObjectKeyword_10; }
+		
+		//node=JSonObject
+		public Assignment getNodeAssignment_11() { return cNodeAssignment_11; }
+		
+		//JSonObject
+		public RuleCall getNodeJSonObjectParserRuleCall_11_0() { return cNodeJSonObjectParserRuleCall_11_0; }
+		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
-	}
-	public class JSonObject_ImplElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.JSonObject_Impl");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cJSonObjectAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cJSonObjectKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		
-		//JSonObject_Impl returns JSonObject:
-		//{JSonObject}
-		//'JSonObject'
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{JSonObject}
-		//'JSonObject'
-		public Group getGroup() { return cGroup; }
-		
-		//{JSonObject}
-		public Action getJSonObjectAction_0() { return cJSonObjectAction_0; }
-		
-		//'JSonObject'
-		public Keyword getJSonObjectKeyword_1() { return cJSonObjectKeyword_1; }
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
 	}
 	public class JsonArrayElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.JsonArray");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameSTRINGTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cContientAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cContientJSonAttributParserRuleCall_2_0 = (RuleCall)cContientAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cContientAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cContientJSonAttributParserRuleCall_3_1_0 = (RuleCall)cContientAssignment_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cJSonArrayKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cContientAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cContientJSonAttributParserRuleCall_3_0 = (RuleCall)cContientAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cContientAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cContientJSonAttributParserRuleCall_4_1_0 = (RuleCall)cContientAssignment_4_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
+		///* ATTRIBUT COMPLEX */
 		//JsonArray:
+		//'JSonArray'
 		//name=STRING '{'
 		//Contient+=JSonAttribut ( "," Contient+=JSonAttribut)*
 		//'}';
 		@Override public ParserRule getRule() { return rule; }
 		
+		//'JSonArray'
 		//name=STRING '{'
 		//Contient+=JSonAttribut ( "," Contient+=JSonAttribut)*
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
+		//'JSonArray'
+		public Keyword getJSonArrayKeyword_0() { return cJSonArrayKeyword_0; }
+		
 		//name=STRING
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_0_0() { return cNameSTRINGTerminalRuleCall_0_0; }
+		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
 		//Contient+=JSonAttribut
-		public Assignment getContientAssignment_2() { return cContientAssignment_2; }
+		public Assignment getContientAssignment_3() { return cContientAssignment_3; }
 		
 		//JSonAttribut
-		public RuleCall getContientJSonAttributParserRuleCall_2_0() { return cContientJSonAttributParserRuleCall_2_0; }
+		public RuleCall getContientJSonAttributParserRuleCall_3_0() { return cContientJSonAttributParserRuleCall_3_0; }
 		
 		//( "," Contient+=JSonAttribut)*
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_4() { return cGroup_4; }
 		
 		//","
-		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 		
 		//Contient+=JSonAttribut
-		public Assignment getContientAssignment_3_1() { return cContientAssignment_3_1; }
+		public Assignment getContientAssignment_4_1() { return cContientAssignment_4_1; }
 		
 		//JSonAttribut
-		public RuleCall getContientJSonAttributParserRuleCall_3_1_0() { return cContientJSonAttributParserRuleCall_3_1_0; }
+		public RuleCall getContientJSonAttributParserRuleCall_4_1_0() { return cContientJSonAttributParserRuleCall_4_1_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
-	}
-	public class JsonIntegerElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.JsonInteger");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameSTRINGTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cValueINTTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
-		
-		//JsonInteger:
-		//name=STRING
-		//value=INT
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//name=STRING
-		//value=INT
-		public Group getGroup() { return cGroup; }
-		
-		//name=STRING
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
-		
-		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_0_0() { return cNameSTRINGTerminalRuleCall_0_0; }
-		
-		//value=INT
-		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
-		
-		//INT
-		public RuleCall getValueINTTerminalRuleCall_1_0() { return cValueINTTerminalRuleCall_1_0; }
-	}
-	public class JsonBooleanElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.JsonBoolean");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cJsonBooleanAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Keyword cValueValueKeyword_1_0 = (Keyword)cValueAssignment_1.eContents().get(0);
-		private final Keyword cJsonBooleanKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cNameSTRINGTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
-		
-		//JsonBoolean:
-		//{JsonBoolean}
-		//(value?='value')?
-		//'JsonBoolean'
-		//name=STRING;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{JsonBoolean}
-		//(value?='value')?
-		//'JsonBoolean'
-		//name=STRING
-		public Group getGroup() { return cGroup; }
-		
-		//{JsonBoolean}
-		public Action getJsonBooleanAction_0() { return cJsonBooleanAction_0; }
-		
-		//(value?='value')?
-		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
-		
-		//'value'
-		public Keyword getValueValueKeyword_1_0() { return cValueValueKeyword_1_0; }
-		
-		//'JsonBoolean'
-		public Keyword getJsonBooleanKeyword_2() { return cJsonBooleanKeyword_2; }
-		
-		//name=STRING
-		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
-		
-		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_3_0() { return cNameSTRINGTerminalRuleCall_3_0; }
-	}
-	public class JSonAttribut_ImplElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.JSonAttribut_Impl");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cJSonAttributAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cJSonAttributKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameSTRINGTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		
-		//JSonAttribut_Impl returns JSonAttribut:
-		//{JSonAttribut}
-		//'JSonAttribut'
-		//name=STRING;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{JSonAttribut}
-		//'JSonAttribut'
-		//name=STRING
-		public Group getGroup() { return cGroup; }
-		
-		//{JSonAttribut}
-		public Action getJSonAttributAction_0() { return cJSonAttributAction_0; }
-		
-		//'JSonAttribut'
-		public Keyword getJSonAttributKeyword_1() { return cJSonAttributKeyword_1; }
-		
-		//name=STRING
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_2_0() { return cNameSTRINGTerminalRuleCall_2_0; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 	public class JSonEnumElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.JSonEnum");
@@ -1505,31 +854,25 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Keyword cJSonEnumKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cEnumKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Keyword cLeftSquareBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cContientAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cContientJSonAttributParserRuleCall_5_0 = (RuleCall)cContientAssignment_5.eContents().get(0);
-		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cCommaKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Assignment cContientAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final RuleCall cContientJSonAttributParserRuleCall_6_1_0 = (RuleCall)cContientAssignment_6_1.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cLeftSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cContientAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cContientJSonAttributParserRuleCall_3_0 = (RuleCall)cContientAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cContientAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cContientJSonAttributParserRuleCall_4_1_0 = (RuleCall)cContientAssignment_4_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//JSonEnum returns JSonEnum:
+		//JSonEnum:
 		//'JSonEnum'
 		//name=STRING
-		//'{'
-		//'enum' '[' Contient+=JSonAttribut ( "," Contient+=JSonAttribut)* ']'
-		//'}';
+		//'[' Contient+=JSonAttribut ( "," Contient+=JSonAttribut)* ']'
+		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'JSonEnum'
 		//name=STRING
-		//'{'
-		//'enum' '[' Contient+=JSonAttribut ( "," Contient+=JSonAttribut)* ']'
-		//'}'
+		//'[' Contient+=JSonAttribut ( "," Contient+=JSonAttribut)* ']'
 		public Group getGroup() { return cGroup; }
 		
 		//'JSonEnum'
@@ -1541,69 +884,54 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//STRING
 		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
 		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//'enum'
-		public Keyword getEnumKeyword_3() { return cEnumKeyword_3; }
-		
 		//'['
-		public Keyword getLeftSquareBracketKeyword_4() { return cLeftSquareBracketKeyword_4; }
+		public Keyword getLeftSquareBracketKeyword_2() { return cLeftSquareBracketKeyword_2; }
 		
 		//Contient+=JSonAttribut
-		public Assignment getContientAssignment_5() { return cContientAssignment_5; }
+		public Assignment getContientAssignment_3() { return cContientAssignment_3; }
 		
 		//JSonAttribut
-		public RuleCall getContientJSonAttributParserRuleCall_5_0() { return cContientJSonAttributParserRuleCall_5_0; }
+		public RuleCall getContientJSonAttributParserRuleCall_3_0() { return cContientJSonAttributParserRuleCall_3_0; }
 		
 		//( "," Contient+=JSonAttribut)*
-		public Group getGroup_6() { return cGroup_6; }
+		public Group getGroup_4() { return cGroup_4; }
 		
 		//","
-		public Keyword getCommaKeyword_6_0() { return cCommaKeyword_6_0; }
+		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 		
 		//Contient+=JSonAttribut
-		public Assignment getContientAssignment_6_1() { return cContientAssignment_6_1; }
+		public Assignment getContientAssignment_4_1() { return cContientAssignment_4_1; }
 		
 		//JSonAttribut
-		public RuleCall getContientJSonAttributParserRuleCall_6_1_0() { return cContientJSonAttributParserRuleCall_6_1_0; }
+		public RuleCall getContientJSonAttributParserRuleCall_4_1_0() { return cContientJSonAttributParserRuleCall_4_1_0; }
 		
 		//']'
-		public Keyword getRightSquareBracketKeyword_7() { return cRightSquareBracketKeyword_7; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
+		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
 	}
-	public class JSonStringElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.JSonString");
+	public class JsonIntegerElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.JsonInteger");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cJSonStringKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cIntegerKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cValueKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cValueAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cValueSTRINGTerminalRuleCall_3_1_0 = (RuleCall)cValueAssignment_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueINTTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
-		//JSonString:
-		//'JSonString'
+		///* ATTRIBUT SIMPLE */
+		//JsonInteger:
+		//'Integer'
 		//name=STRING
-		//'{'
-		//('value' value=STRING)?
-		//'}';
+		//value=INT
+		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'JSonString'
+		//'Integer'
 		//name=STRING
-		//'{'
-		//('value' value=STRING)?
-		//'}'
+		//value=INT
 		public Group getGroup() { return cGroup; }
 		
-		//'JSonString'
-		public Keyword getJSonStringKeyword_0() { return cJSonStringKeyword_0; }
+		//'Integer'
+		public Keyword getIntegerKeyword_0() { return cIntegerKeyword_0; }
 		
 		//name=STRING
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -1611,147 +939,116 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//STRING
 		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
 		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		//value=INT
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
 		
-		//('value' value=STRING)?
-		public Group getGroup_3() { return cGroup_3; }
+		//INT
+		public RuleCall getValueINTTerminalRuleCall_2_0() { return cValueINTTerminalRuleCall_2_0; }
+	}
+	public class JsonBooleanElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.JsonBoolean");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cBooleanKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Alternatives cValueAlternatives_2_0 = (Alternatives)cValueAssignment_2.eContents().get(0);
+		private final Keyword cValueTrueKeyword_2_0_0 = (Keyword)cValueAlternatives_2_0.eContents().get(0);
+		private final Keyword cValueFalseKeyword_2_0_1 = (Keyword)cValueAlternatives_2_0.eContents().get(1);
 		
-		//'value'
-		public Keyword getValueKeyword_3_0() { return cValueKeyword_3_0; }
+		//JsonBoolean:
+		//'Boolean'
+		//name=STRING
+		//value=('true' | 'false')
+		//;
+		@Override public ParserRule getRule() { return rule; }
 		
-		//value=STRING
-		public Assignment getValueAssignment_3_1() { return cValueAssignment_3_1; }
+		//'Boolean'
+		//name=STRING
+		//value=('true' | 'false')
+		public Group getGroup() { return cGroup; }
+		
+		//'Boolean'
+		public Keyword getBooleanKeyword_0() { return cBooleanKeyword_0; }
+		
+		//name=STRING
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_3_1_0() { return cValueSTRINGTerminalRuleCall_3_1_0; }
+		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
 		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		//value=('true' | 'false')
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+		
+		//('true' | 'false')
+		public Alternatives getValueAlternatives_2_0() { return cValueAlternatives_2_0; }
+		
+		//'true'
+		public Keyword getValueTrueKeyword_2_0_0() { return cValueTrueKeyword_2_0_0; }
+		
+		//'false'
+		public Keyword getValueFalseKeyword_2_0_1() { return cValueFalseKeyword_2_0_1; }
+	}
+	public class JSonStringElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.JSonString");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cStringKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueSTRINGTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		
+		//JSonString:
+		//'String'
+		//name=STRING
+		//value=STRING
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'String'
+		//name=STRING
+		//value=STRING
+		public Group getGroup() { return cGroup; }
+		
+		//'String'
+		public Keyword getStringKeyword_0() { return cStringKeyword_0; }
+		
+		//name=STRING
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//STRING
+		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
+		
+		//value=STRING
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+		
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_2_0() { return cValueSTRINGTerminalRuleCall_2_0; }
 	}
 	public class JSonNullElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.JSonNull");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cJSonNullAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cJSonNullKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameSTRINGTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cNullKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
-		//JSonNull returns JSonNull:
-		//{JSonNull}
-		//'JSonNull'
+		//JSonNull:
+		//'Null'
 		//name=STRING;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{JSonNull}
-		//'JSonNull'
+		//'Null'
 		//name=STRING
 		public Group getGroup() { return cGroup; }
 		
-		//{JSonNull}
-		public Action getJSonNullAction_0() { return cJSonNullAction_0; }
-		
-		//'JSonNull'
-		public Keyword getJSonNullKeyword_1() { return cJSonNullKeyword_1; }
+		//'Null'
+		public Keyword getNullKeyword_0() { return cNullKeyword_0; }
 		
 		//name=STRING
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_2_0() { return cNameSTRINGTerminalRuleCall_2_0; }
-	}
-	public class Operation_ImplElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.Operation_Impl");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cOperationAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cOperationKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameSTRINGTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		
-		//Operation_Impl returns Operation:
-		//{Operation}
-		//'Operation'
-		//name=STRING;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{Operation}
-		//'Operation'
-		//name=STRING
-		public Group getGroup() { return cGroup; }
-		
-		//{Operation}
-		public Action getOperationAction_0() { return cOperationAction_0; }
-		
-		//'Operation'
-		public Keyword getOperationKeyword_1() { return cOperationKeyword_1; }
-		
-		//name=STRING
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_2_0() { return cNameSTRINGTerminalRuleCall_2_0; }
-	}
-	public class ComplexAttribut_ImplElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.ComplexAttribut_Impl");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cComplexAttributAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cComplexAttributKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameSTRINGTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		
-		//ComplexAttribut_Impl returns ComplexAttribut:
-		//{ComplexAttribut}
-		//'ComplexAttribut'
-		//name=STRING;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{ComplexAttribut}
-		//'ComplexAttribut'
-		//name=STRING
-		public Group getGroup() { return cGroup; }
-		
-		//{ComplexAttribut}
-		public Action getComplexAttributAction_0() { return cComplexAttributAction_0; }
-		
-		//'ComplexAttribut'
-		public Keyword getComplexAttributKeyword_1() { return cComplexAttributKeyword_1; }
-		
-		//name=STRING
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_2_0() { return cNameSTRINGTerminalRuleCall_2_0; }
-	}
-	public class SimpleAttribut_ImplElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.SimpleAttribut_Impl");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cSimpleAttributAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cSimpleAttributKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameSTRINGTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		
-		//SimpleAttribut_Impl returns SimpleAttribut:
-		//{SimpleAttribut}
-		//'SimpleAttribut'
-		//name=STRING;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{SimpleAttribut}
-		//'SimpleAttribut'
-		//name=STRING
-		public Group getGroup() { return cGroup; }
-		
-		//{SimpleAttribut}
-		public Action getSimpleAttributAction_0() { return cSimpleAttributAction_0; }
-		
-		//'SimpleAttribut'
-		public Keyword getSimpleAttributKeyword_1() { return cSimpleAttributKeyword_1; }
-		
-		//name=STRING
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_2_0() { return cNameSTRINGTerminalRuleCall_2_0; }
+		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
 	}
 	public class SumElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.Sum");
@@ -1761,27 +1058,26 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cListIntergerAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cListIntergerJsonIntegerCrossReference_3_0 = (CrossReference)cListIntergerAssignment_3.eContents().get(0);
-		private final RuleCall cListIntergerJsonIntegerIDTerminalRuleCall_3_0_1 = (RuleCall)cListIntergerJsonIntegerCrossReference_3_0.eContents().get(1);
+		private final RuleCall cListIntergerJsonIntegerParserRuleCall_3_0 = (RuleCall)cListIntergerAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cListIntergerAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final CrossReference cListIntergerJsonIntegerCrossReference_4_1_0 = (CrossReference)cListIntergerAssignment_4_1.eContents().get(0);
-		private final RuleCall cListIntergerJsonIntegerIDTerminalRuleCall_4_1_0_1 = (RuleCall)cListIntergerJsonIntegerCrossReference_4_1_0.eContents().get(1);
+		private final RuleCall cListIntergerJsonIntegerParserRuleCall_4_1_0 = (RuleCall)cListIntergerAssignment_4_1.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//Sum returns Sum:
+		///* OPPERATION */
+		//Sum:
 		//'Sum'
 		//name=STRING
 		//'['
-		//listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
+		//listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 		//']';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Sum'
 		//name=STRING
 		//'['
-		//listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
+		//listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 		//']'
 		public Group getGroup() { return cGroup; }
 		
@@ -1797,29 +1093,23 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//'['
 		public Keyword getLeftSquareBracketKeyword_2() { return cLeftSquareBracketKeyword_2; }
 		
-		//listInterger+=[JsonInteger]
+		//listInterger+=JsonInteger
 		public Assignment getListIntergerAssignment_3() { return cListIntergerAssignment_3; }
 		
-		//[JsonInteger]
-		public CrossReference getListIntergerJsonIntegerCrossReference_3_0() { return cListIntergerJsonIntegerCrossReference_3_0; }
+		//JsonInteger
+		public RuleCall getListIntergerJsonIntegerParserRuleCall_3_0() { return cListIntergerJsonIntegerParserRuleCall_3_0; }
 		
-		//ID
-		public RuleCall getListIntergerJsonIntegerIDTerminalRuleCall_3_0_1() { return cListIntergerJsonIntegerIDTerminalRuleCall_3_0_1; }
-		
-		//( "," listInterger+=[JsonInteger])*
+		//( "," listInterger+=JsonInteger)*
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//","
 		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 		
-		//listInterger+=[JsonInteger]
+		//listInterger+=JsonInteger
 		public Assignment getListIntergerAssignment_4_1() { return cListIntergerAssignment_4_1; }
 		
-		//[JsonInteger]
-		public CrossReference getListIntergerJsonIntegerCrossReference_4_1_0() { return cListIntergerJsonIntegerCrossReference_4_1_0; }
-		
-		//ID
-		public RuleCall getListIntergerJsonIntegerIDTerminalRuleCall_4_1_0_1() { return cListIntergerJsonIntegerIDTerminalRuleCall_4_1_0_1; }
+		//JsonInteger
+		public RuleCall getListIntergerJsonIntegerParserRuleCall_4_1_0() { return cListIntergerJsonIntegerParserRuleCall_4_1_0; }
 		
 		//']'
 		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
@@ -1831,28 +1121,26 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cContientAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cContientJsonIntegerCrossReference_3_0 = (CrossReference)cContientAssignment_3.eContents().get(0);
-		private final RuleCall cContientJsonIntegerIDTerminalRuleCall_3_0_1 = (RuleCall)cContientJsonIntegerCrossReference_3_0.eContents().get(1);
+		private final Assignment cListIntergerAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cListIntergerJsonIntegerParserRuleCall_3_0 = (RuleCall)cListIntergerAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cContientAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final CrossReference cContientJsonIntegerCrossReference_4_1_0 = (CrossReference)cContientAssignment_4_1.eContents().get(0);
-		private final RuleCall cContientJsonIntegerIDTerminalRuleCall_4_1_0_1 = (RuleCall)cContientJsonIntegerCrossReference_4_1_0.eContents().get(1);
+		private final Assignment cListIntergerAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cListIntergerJsonIntegerParserRuleCall_4_1_0 = (RuleCall)cListIntergerAssignment_4_1.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//Div returns Div:
+		//Div:
 		//'Div'
 		//name=STRING
 		//'['
-		//Contient+=[JsonInteger] ( "," Contient+=[JsonInteger])*
+		//listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 		//']';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Div'
 		//name=STRING
 		//'['
-		//Contient+=[JsonInteger] ( "," Contient+=[JsonInteger])*
+		//listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 		//']'
 		public Group getGroup() { return cGroup; }
 		
@@ -1868,29 +1156,23 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//'['
 		public Keyword getLeftSquareBracketKeyword_2() { return cLeftSquareBracketKeyword_2; }
 		
-		//Contient+=[JsonInteger]
-		public Assignment getContientAssignment_3() { return cContientAssignment_3; }
+		//listInterger+=JsonInteger
+		public Assignment getListIntergerAssignment_3() { return cListIntergerAssignment_3; }
 		
-		//[JsonInteger]
-		public CrossReference getContientJsonIntegerCrossReference_3_0() { return cContientJsonIntegerCrossReference_3_0; }
+		//JsonInteger
+		public RuleCall getListIntergerJsonIntegerParserRuleCall_3_0() { return cListIntergerJsonIntegerParserRuleCall_3_0; }
 		
-		//ID
-		public RuleCall getContientJsonIntegerIDTerminalRuleCall_3_0_1() { return cContientJsonIntegerIDTerminalRuleCall_3_0_1; }
-		
-		//( "," Contient+=[JsonInteger])*
+		//( "," listInterger+=JsonInteger)*
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//","
 		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 		
-		//Contient+=[JsonInteger]
-		public Assignment getContientAssignment_4_1() { return cContientAssignment_4_1; }
+		//listInterger+=JsonInteger
+		public Assignment getListIntergerAssignment_4_1() { return cListIntergerAssignment_4_1; }
 		
-		//[JsonInteger]
-		public CrossReference getContientJsonIntegerCrossReference_4_1_0() { return cContientJsonIntegerCrossReference_4_1_0; }
-		
-		//ID
-		public RuleCall getContientJsonIntegerIDTerminalRuleCall_4_1_0_1() { return cContientJsonIntegerIDTerminalRuleCall_4_1_0_1; }
+		//JsonInteger
+		public RuleCall getListIntergerJsonIntegerParserRuleCall_4_1_0() { return cListIntergerJsonIntegerParserRuleCall_4_1_0; }
 		
 		//']'
 		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
@@ -1902,30 +1184,26 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cIntKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cListIntergerAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cListIntergerJsonIntegerParserRuleCall_4_0 = (RuleCall)cListIntergerAssignment_4.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cCommaKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Keyword cIntKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
-		private final Assignment cListIntergerAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
-		private final RuleCall cListIntergerJsonIntegerParserRuleCall_5_2_0 = (RuleCall)cListIntergerAssignment_5_2.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cListIntergerAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cListIntergerJsonIntegerParserRuleCall_3_0 = (RuleCall)cListIntergerAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cListIntergerAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cListIntergerJsonIntegerParserRuleCall_4_1_0 = (RuleCall)cListIntergerAssignment_4_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//Mult returns Mult:
+		//Mult :
 		//'Mult'
 		//name=STRING
 		//'['
-		//"int" listInterger+=JsonInteger ( "," "int" listInterger+=JsonInteger)*
-		////listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
+		//listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 		//']';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Mult'
 		//name=STRING
 		//'['
-		//"int" listInterger+=JsonInteger ( "," "int" listInterger+=JsonInteger)*
-		////listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
+		//listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 		//']'
 		public Group getGroup() { return cGroup; }
 		
@@ -1941,33 +1219,26 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//'['
 		public Keyword getLeftSquareBracketKeyword_2() { return cLeftSquareBracketKeyword_2; }
 		
-		//"int"
-		public Keyword getIntKeyword_3() { return cIntKeyword_3; }
-		
 		//listInterger+=JsonInteger
-		public Assignment getListIntergerAssignment_4() { return cListIntergerAssignment_4; }
+		public Assignment getListIntergerAssignment_3() { return cListIntergerAssignment_3; }
 		
 		//JsonInteger
-		public RuleCall getListIntergerJsonIntegerParserRuleCall_4_0() { return cListIntergerJsonIntegerParserRuleCall_4_0; }
+		public RuleCall getListIntergerJsonIntegerParserRuleCall_3_0() { return cListIntergerJsonIntegerParserRuleCall_3_0; }
 		
-		//( "," "int" listInterger+=JsonInteger)*
-		public Group getGroup_5() { return cGroup_5; }
+		//( "," listInterger+=JsonInteger)*
+		public Group getGroup_4() { return cGroup_4; }
 		
 		//","
-		public Keyword getCommaKeyword_5_0() { return cCommaKeyword_5_0; }
-		
-		//"int"
-		public Keyword getIntKeyword_5_1() { return cIntKeyword_5_1; }
+		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 		
 		//listInterger+=JsonInteger
-		public Assignment getListIntergerAssignment_5_2() { return cListIntergerAssignment_5_2; }
+		public Assignment getListIntergerAssignment_4_1() { return cListIntergerAssignment_4_1; }
 		
 		//JsonInteger
-		public RuleCall getListIntergerJsonIntegerParserRuleCall_5_2_0() { return cListIntergerJsonIntegerParserRuleCall_5_2_0; }
+		public RuleCall getListIntergerJsonIntegerParserRuleCall_4_1_0() { return cListIntergerJsonIntegerParserRuleCall_4_1_0; }
 		
-		////listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
 		//']'
-		public Keyword getRightSquareBracketKeyword_6() { return cRightSquareBracketKeyword_6; }
+		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
 	}
 	public class SubElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fr.istic.idm.group10.jsondsl.JsonDsl.Sub");
@@ -1977,27 +1248,25 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cListIntergerAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cListIntergerJsonIntegerCrossReference_3_0 = (CrossReference)cListIntergerAssignment_3.eContents().get(0);
-		private final RuleCall cListIntergerJsonIntegerIDTerminalRuleCall_3_0_1 = (RuleCall)cListIntergerJsonIntegerCrossReference_3_0.eContents().get(1);
+		private final RuleCall cListIntergerJsonIntegerParserRuleCall_3_0 = (RuleCall)cListIntergerAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cListIntergerAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final CrossReference cListIntergerJsonIntegerCrossReference_4_1_0 = (CrossReference)cListIntergerAssignment_4_1.eContents().get(0);
-		private final RuleCall cListIntergerJsonIntegerIDTerminalRuleCall_4_1_0_1 = (RuleCall)cListIntergerJsonIntegerCrossReference_4_1_0.eContents().get(1);
+		private final RuleCall cListIntergerJsonIntegerParserRuleCall_4_1_0 = (RuleCall)cListIntergerAssignment_4_1.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//Sub returns Sub:
+		//Sub:
 		//'Sub'
 		//name=STRING
 		//'['
-		//listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
+		//listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 		//']';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Sub'
 		//name=STRING
 		//'['
-		//listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
+		//listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 		//']'
 		public Group getGroup() { return cGroup; }
 		
@@ -2013,29 +1282,23 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		//'['
 		public Keyword getLeftSquareBracketKeyword_2() { return cLeftSquareBracketKeyword_2; }
 		
-		//listInterger+=[JsonInteger]
+		//listInterger+=JsonInteger
 		public Assignment getListIntergerAssignment_3() { return cListIntergerAssignment_3; }
 		
-		//[JsonInteger]
-		public CrossReference getListIntergerJsonIntegerCrossReference_3_0() { return cListIntergerJsonIntegerCrossReference_3_0; }
+		//JsonInteger
+		public RuleCall getListIntergerJsonIntegerParserRuleCall_3_0() { return cListIntergerJsonIntegerParserRuleCall_3_0; }
 		
-		//ID
-		public RuleCall getListIntergerJsonIntegerIDTerminalRuleCall_3_0_1() { return cListIntergerJsonIntegerIDTerminalRuleCall_3_0_1; }
-		
-		//( "," listInterger+=[JsonInteger])*
+		//( "," listInterger+=JsonInteger)*
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//","
 		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 		
-		//listInterger+=[JsonInteger]
+		//listInterger+=JsonInteger
 		public Assignment getListIntergerAssignment_4_1() { return cListIntergerAssignment_4_1; }
 		
-		//[JsonInteger]
-		public CrossReference getListIntergerJsonIntegerCrossReference_4_1_0() { return cListIntergerJsonIntegerCrossReference_4_1_0; }
-		
-		//ID
-		public RuleCall getListIntergerJsonIntegerIDTerminalRuleCall_4_1_0_1() { return cListIntergerJsonIntegerIDTerminalRuleCall_4_1_0_1; }
+		//JsonInteger
+		public RuleCall getListIntergerJsonIntegerParserRuleCall_4_1_0() { return cListIntergerJsonIntegerParserRuleCall_4_1_0; }
 		
 		//']'
 		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
@@ -2050,6 +1313,7 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		private final Action cEBooleanAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Keyword cFalseKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		
+		///* TYPE */
 		//EBoolean returns EBoolean:
 		//{EBoolean} 'true' | {EBoolean} 'false';
 		@Override public ParserRule getRule() { return rule; }
@@ -2077,31 +1341,25 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	}
 	
 	
+	private final MainGrammarElements pMainGrammar;
 	private final JSonFileElements pJSonFile;
-	private final Commandes_ImplElements pCommandes_Impl;
+	private final CommandesElements pCommandes;
 	private final JSonObjectElements pJSonObject;
-	private final ComplexAttributElements pComplexAttribut;
 	private final JSonAttributElements pJSonAttribut;
 	private final StoreElements pStore;
 	private final LoadElements pLoad;
 	private final DisplayElements pDisplay;
 	private final SubsetElements pSubset;
-	private final SelectElements pSelect;
 	private final ProjectionElements pProjection;
 	private final InsertElements pInsert;
 	private final RemoveElements pRemove;
 	private final ModifyElements pModify;
-	private final JSonObject_ImplElements pJSonObject_Impl;
 	private final JsonArrayElements pJsonArray;
+	private final JSonEnumElements pJSonEnum;
 	private final JsonIntegerElements pJsonInteger;
 	private final JsonBooleanElements pJsonBoolean;
-	private final JSonAttribut_ImplElements pJSonAttribut_Impl;
-	private final JSonEnumElements pJSonEnum;
 	private final JSonStringElements pJSonString;
 	private final JSonNullElements pJSonNull;
-	private final Operation_ImplElements pOperation_Impl;
-	private final ComplexAttribut_ImplElements pComplexAttribut_Impl;
-	private final SimpleAttribut_ImplElements pSimpleAttribut_Impl;
 	private final SumElements pSum;
 	private final DivElements pDiv;
 	private final MultElements pMult;
@@ -2117,31 +1375,25 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 			TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pMainGrammar = new MainGrammarElements();
 		this.pJSonFile = new JSonFileElements();
-		this.pCommandes_Impl = new Commandes_ImplElements();
+		this.pCommandes = new CommandesElements();
 		this.pJSonObject = new JSonObjectElements();
-		this.pComplexAttribut = new ComplexAttributElements();
 		this.pJSonAttribut = new JSonAttributElements();
 		this.pStore = new StoreElements();
 		this.pLoad = new LoadElements();
 		this.pDisplay = new DisplayElements();
 		this.pSubset = new SubsetElements();
-		this.pSelect = new SelectElements();
 		this.pProjection = new ProjectionElements();
 		this.pInsert = new InsertElements();
 		this.pRemove = new RemoveElements();
 		this.pModify = new ModifyElements();
-		this.pJSonObject_Impl = new JSonObject_ImplElements();
 		this.pJsonArray = new JsonArrayElements();
+		this.pJSonEnum = new JSonEnumElements();
 		this.pJsonInteger = new JsonIntegerElements();
 		this.pJsonBoolean = new JsonBooleanElements();
-		this.pJSonAttribut_Impl = new JSonAttribut_ImplElements();
-		this.pJSonEnum = new JSonEnumElements();
 		this.pJSonString = new JSonStringElements();
 		this.pJSonNull = new JSonNullElements();
-		this.pOperation_Impl = new Operation_ImplElements();
-		this.pComplexAttribut_Impl = new ComplexAttribut_ImplElements();
-		this.pSimpleAttribut_Impl = new SimpleAttribut_ImplElements();
 		this.pSum = new SumElements();
 		this.pDiv = new DivElements();
 		this.pMult = new MultElements();
@@ -2176,7 +1428,18 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	}
 
 	
-	//JSonFile returns JSonFile:
+	//MainGrammar:
+	//JSonFile | Commandes
+	//;
+	public MainGrammarElements getMainGrammarAccess() {
+		return pMainGrammar;
+	}
+	
+	public ParserRule getMainGrammarRule() {
+		return getMainGrammarAccess().getRule();
+	}
+	
+	//JSonFile:
 	//'JSonFile' name=STRING '{' (Contient+=JSonObject*) '}';
 	public JSonFileElements getJSonFileAccess() {
 		return pJSonFile;
@@ -2186,22 +1449,21 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getJSonFileAccess().getRule();
 	}
 	
-	//Commandes_Impl returns Commandes:
-	//{Commandes}
+	//Commandes:
 	//'Commandes'
 	//'{'
-	//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+	//Store | Load | Display | Subset | Projection | Insert | Remove | Modify
 	//'}';
-	public Commandes_ImplElements getCommandes_ImplAccess() {
-		return pCommandes_Impl;
+	public CommandesElements getCommandesAccess() {
+		return pCommandes;
 	}
 	
-	public ParserRule getCommandes_ImplRule() {
-		return getCommandes_ImplAccess().getRule();
+	public ParserRule getCommandesRule() {
+		return getCommandesAccess().getRule();
 	}
 	
 	//JSonObject:
-	//JsonArray | JsonInteger | JsonBoolean | JSonAttribut_Impl | JSonEnum | JSonString | JSonNull | Operation_Impl | ComplexAttribut_Impl | SimpleAttribut_Impl | Sum | Div | Mult | Sub;
+	//JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Sum | Div | Mult | Sub;
 	public JSonObjectElements getJSonObjectAccess() {
 		return pJSonObject;
 	}
@@ -2210,18 +1472,8 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getJSonObjectAccess().getRule();
 	}
 	
-	//ComplexAttribut returns ComplexAttribut:
-	//ComplexAttribut_Impl | JsonArray | JSonEnum;
-	public ComplexAttributElements getComplexAttributAccess() {
-		return pComplexAttribut;
-	}
-	
-	public ParserRule getComplexAttributRule() {
-		return getComplexAttributAccess().getRule();
-	}
-	
-	//JSonAttribut returns JSonAttribut:
-	//JSonAttribut_Impl | JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Operation_Impl | ComplexAttribut_Impl | SimpleAttribut_Impl | Sum | Div | Mult | Sub;
+	//JSonAttribut:
+	//JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Sum | Div | Mult | Sub;
 	public JSonAttributElements getJSonAttributAccess() {
 		return pJSonAttribut;
 	}
@@ -2230,13 +1482,12 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getJSonAttributAccess().getRule();
 	}
 	
-	//Store returns Store:
-	//{Store}
+	///* Load and Store */
+	//Store :
 	//'Store'
-	//name=STRING
 	//'{'
-	//('path' path=STRING)?
-	//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+	//'path' path=STRING ','
+	//'name' name=STRING
 	//'}';
 	public StoreElements getStoreAccess() {
 		return pStore;
@@ -2246,12 +1497,11 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getStoreAccess().getRule();
 	}
 	
-	//Load returns Load:
-	//{Load}
+	//Load:
 	//'Load'
 	//'{'
-	//('path' path=STRING)?
-	//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+	//'path' path=STRING ','
+	//'name' name=STRING
 	//'}';
 	public LoadElements getLoadAccess() {
 		return pLoad;
@@ -2261,11 +1511,11 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getLoadAccess().getRule();
 	}
 	
-	//Display returns Display:
+	///* Display */
+	//Display:
 	//'Display'
 	//'{'
-	//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-	//'node' node=[JSonObject]
+	//'jsonfile' jsonfile+=JSonFile
 	//'}';
 	public DisplayElements getDisplayAccess() {
 		return pDisplay;
@@ -2275,12 +1525,12 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getDisplayAccess().getRule();
 	}
 	
-	//Subset returns Subset:
+	///* Replace */
+	//Subset:
 	//'Subset'
-	//name=STRING
 	//'{'
-	//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-	//'listNodes' '(' listNodes+=[JSonObject] ( "," listNodes+=[JSonObject])* ')'
+	//'jsonfile' jsonfile+=JSonFile ','
+	//'listNodes' '(' listNodes+=JSonObject ( "," listNodes+=JSonObject)* ')'
 	//'}';
 	public SubsetElements getSubsetAccess() {
 		return pSubset;
@@ -2290,27 +1540,11 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getSubsetAccess().getRule();
 	}
 	
-	//Select returns Select:
-	//'Select'
-	//name=STRING
-	//'{'
-	//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-	//'node' node=[JSonObject]
-	//'}';
-	public SelectElements getSelectAccess() {
-		return pSelect;
-	}
-	
-	public ParserRule getSelectRule() {
-		return getSelectAccess().getRule();
-	}
-	
-	//Projection returns Projection:
+	//Projection:
 	//'Projection'
-	//name=STRING
 	//'{'
-	//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-	//'node' node=[JSonObject]
+	//'jsonfile' jsonfile+=JSonFile ','
+	//'node' node=JSonObject
 	//'}';
 	public ProjectionElements getProjectionAccess() {
 		return pProjection;
@@ -2320,13 +1554,12 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getProjectionAccess().getRule();
 	}
 	
-	//Insert returns Insert:
+	///* Modification On File */
+	//Insert:
 	//'Insert'
 	//'{'
-	//('value' value=STRING)?
-	//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-	//'node' node=[JSonObject]
-	//'complexattribut' complexattribut=[ComplexAttribut]
+	//'(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')' ','
+	//'Object:' node=JSonObject
 	//'}';
 	public InsertElements getInsertAccess() {
 		return pInsert;
@@ -2336,11 +1569,11 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getInsertAccess().getRule();
 	}
 	
-	//Remove returns Remove:
+	//Remove:
 	//'Remove'
 	//'{'
-	//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-	//'node' node=[JSonObject]
+	//'JsonFileTarget' jsonfile+=JSonFile ','
+	//'Object:' node=JSonObject
 	//'}';
 	public RemoveElements getRemoveAccess() {
 		return pRemove;
@@ -2350,12 +1583,11 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getRemoveAccess().getRule();
 	}
 	
-	//Modify returns Modify:
+	//Modify:
 	//'Modify'
 	//'{'
-	//('value' value=STRING)?
-	//('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-	//'node' '(' node+=[JSonObject] ( "," node+=[JSonObject])* ')'
+	//'(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')' ','
+	//'Object:' node=JSonObject
 	//'}';
 	public ModifyElements getModifyAccess() {
 		return pModify;
@@ -2365,19 +1597,9 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getModifyAccess().getRule();
 	}
 	
-	//JSonObject_Impl returns JSonObject:
-	//{JSonObject}
-	//'JSonObject'
-	//;
-	public JSonObject_ImplElements getJSonObject_ImplAccess() {
-		return pJSonObject_Impl;
-	}
-	
-	public ParserRule getJSonObject_ImplRule() {
-		return getJSonObject_ImplAccess().getRule();
-	}
-	
+	///* ATTRIBUT COMPLEX */
 	//JsonArray:
+	//'JSonArray'
 	//name=STRING '{'
 	//Contient+=JSonAttribut ( "," Contient+=JSonAttribut)*
 	//'}';
@@ -2389,7 +1611,22 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getJsonArrayAccess().getRule();
 	}
 	
+	//JSonEnum:
+	//'JSonEnum'
+	//name=STRING
+	//'[' Contient+=JSonAttribut ( "," Contient+=JSonAttribut)* ']'
+	//;
+	public JSonEnumElements getJSonEnumAccess() {
+		return pJSonEnum;
+	}
+	
+	public ParserRule getJSonEnumRule() {
+		return getJSonEnumAccess().getRule();
+	}
+	
+	///* ATTRIBUT SIMPLE */
 	//JsonInteger:
+	//'Integer'
 	//name=STRING
 	//value=INT
 	//;
@@ -2402,10 +1639,10 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 	}
 	
 	//JsonBoolean:
-	//{JsonBoolean}
-	//(value?='value')?
-	//'JsonBoolean'
-	//name=STRING;
+	//'Boolean'
+	//name=STRING
+	//value=('true' | 'false')
+	//;
 	public JsonBooleanElements getJsonBooleanAccess() {
 		return pJsonBoolean;
 	}
@@ -2414,38 +1651,11 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getJsonBooleanAccess().getRule();
 	}
 	
-	//JSonAttribut_Impl returns JSonAttribut:
-	//{JSonAttribut}
-	//'JSonAttribut'
-	//name=STRING;
-	public JSonAttribut_ImplElements getJSonAttribut_ImplAccess() {
-		return pJSonAttribut_Impl;
-	}
-	
-	public ParserRule getJSonAttribut_ImplRule() {
-		return getJSonAttribut_ImplAccess().getRule();
-	}
-	
-	//JSonEnum returns JSonEnum:
-	//'JSonEnum'
-	//name=STRING
-	//'{'
-	//'enum' '[' Contient+=JSonAttribut ( "," Contient+=JSonAttribut)* ']'
-	//'}';
-	public JSonEnumElements getJSonEnumAccess() {
-		return pJSonEnum;
-	}
-	
-	public ParserRule getJSonEnumRule() {
-		return getJSonEnumAccess().getRule();
-	}
-	
 	//JSonString:
-	//'JSonString'
+	//'String'
 	//name=STRING
-	//'{'
-	//('value' value=STRING)?
-	//'}';
+	//value=STRING
+	//;
 	public JSonStringElements getJSonStringAccess() {
 		return pJSonString;
 	}
@@ -2454,9 +1664,8 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getJSonStringAccess().getRule();
 	}
 	
-	//JSonNull returns JSonNull:
-	//{JSonNull}
-	//'JSonNull'
+	//JSonNull:
+	//'Null'
 	//name=STRING;
 	public JSonNullElements getJSonNullAccess() {
 		return pJSonNull;
@@ -2466,47 +1675,12 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getJSonNullAccess().getRule();
 	}
 	
-	//Operation_Impl returns Operation:
-	//{Operation}
-	//'Operation'
-	//name=STRING;
-	public Operation_ImplElements getOperation_ImplAccess() {
-		return pOperation_Impl;
-	}
-	
-	public ParserRule getOperation_ImplRule() {
-		return getOperation_ImplAccess().getRule();
-	}
-	
-	//ComplexAttribut_Impl returns ComplexAttribut:
-	//{ComplexAttribut}
-	//'ComplexAttribut'
-	//name=STRING;
-	public ComplexAttribut_ImplElements getComplexAttribut_ImplAccess() {
-		return pComplexAttribut_Impl;
-	}
-	
-	public ParserRule getComplexAttribut_ImplRule() {
-		return getComplexAttribut_ImplAccess().getRule();
-	}
-	
-	//SimpleAttribut_Impl returns SimpleAttribut:
-	//{SimpleAttribut}
-	//'SimpleAttribut'
-	//name=STRING;
-	public SimpleAttribut_ImplElements getSimpleAttribut_ImplAccess() {
-		return pSimpleAttribut_Impl;
-	}
-	
-	public ParserRule getSimpleAttribut_ImplRule() {
-		return getSimpleAttribut_ImplAccess().getRule();
-	}
-	
-	//Sum returns Sum:
+	///* OPPERATION */
+	//Sum:
 	//'Sum'
 	//name=STRING
 	//'['
-	//listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
+	//listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 	//']';
 	public SumElements getSumAccess() {
 		return pSum;
@@ -2516,11 +1690,11 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getSumAccess().getRule();
 	}
 	
-	//Div returns Div:
+	//Div:
 	//'Div'
 	//name=STRING
 	//'['
-	//Contient+=[JsonInteger] ( "," Contient+=[JsonInteger])*
+	//listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 	//']';
 	public DivElements getDivAccess() {
 		return pDiv;
@@ -2530,12 +1704,11 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getDivAccess().getRule();
 	}
 	
-	//Mult returns Mult:
+	//Mult :
 	//'Mult'
 	//name=STRING
 	//'['
-	//"int" listInterger+=JsonInteger ( "," "int" listInterger+=JsonInteger)*
-	////listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
+	//listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 	//']';
 	public MultElements getMultAccess() {
 		return pMult;
@@ -2545,11 +1718,11 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getMultAccess().getRule();
 	}
 	
-	//Sub returns Sub:
+	//Sub:
 	//'Sub'
 	//name=STRING
 	//'['
-	//listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
+	//listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 	//']';
 	public SubElements getSubAccess() {
 		return pSub;
@@ -2559,6 +1732,7 @@ public class JsonDslGrammarAccess extends AbstractElementFinder.AbstractGrammarE
 		return getSubAccess().getRule();
 	}
 	
+	///* TYPE */
 	//EBoolean returns EBoolean:
 	//{EBoolean} 'true' | {EBoolean} 'false';
 	public EBooleanElements getEBooleanAccess() {

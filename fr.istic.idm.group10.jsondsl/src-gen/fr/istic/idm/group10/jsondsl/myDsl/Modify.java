@@ -5,8 +5,6 @@ package fr.istic.idm.group10.jsondsl.myDsl;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Modify</b></em>'.
@@ -16,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.Modify#getValue <em>Value</em>}</li>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.Modify#getJsonfile <em>Jsonfile</em>}</li>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.Modify#getNode <em>Node</em>}</li>
  * </ul>
@@ -25,52 +22,40 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Modify extends EObject
+public interface Modify extends Commandes
 {
   /**
-   * Returns the value of the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(String)
-   * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getModify_Value()
-   * @model
-   * @generated
-   */
-  String getValue();
-
-  /**
-   * Sets the value of the '{@link fr.istic.idm.group10.jsondsl.myDsl.Modify#getValue <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' attribute.
-   * @see #getValue()
-   * @generated
-   */
-  void setValue(String value);
-
-  /**
-   * Returns the value of the '<em><b>Jsonfile</b></em>' reference list.
+   * Returns the value of the '<em><b>Jsonfile</b></em>' containment reference list.
    * The list contents are of type {@link fr.istic.idm.group10.jsondsl.myDsl.JSonFile}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Jsonfile</em>' reference list.
+   * @return the value of the '<em>Jsonfile</em>' containment reference list.
    * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getModify_Jsonfile()
-   * @model
+   * @model containment="true"
    * @generated
    */
   EList<JSonFile> getJsonfile();
 
   /**
-   * Returns the value of the '<em><b>Node</b></em>' reference list.
-   * The list contents are of type {@link fr.istic.idm.group10.jsondsl.myDsl.JSonObject}.
+   * Returns the value of the '<em><b>Node</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Node</em>' reference list.
+   * @return the value of the '<em>Node</em>' containment reference.
+   * @see #setNode(JSonObject)
    * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getModify_Node()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  EList<JSonObject> getNode();
+  JSonObject getNode();
+
+  /**
+   * Sets the value of the '{@link fr.istic.idm.group10.jsondsl.myDsl.Modify#getNode <em>Node</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Node</em>' containment reference.
+   * @see #getNode()
+   * @generated
+   */
+  void setNode(JSonObject value);
 
 } // Modify

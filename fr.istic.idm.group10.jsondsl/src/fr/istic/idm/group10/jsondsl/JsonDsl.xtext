@@ -2,124 +2,143 @@ grammar fr.istic.idm.group10.jsondsl.JsonDsl with org.eclipse.xtext.common.Termi
 
 generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
 
-
-
-JSonFile returns JSonFile:
+MainGrammar:
+JSonFile | Commandes
+;
+JSonFile:
 'JSonFile' name=STRING '{' (Contient+=JSonObject*) '}';
 
-Commandes_Impl returns Commandes:
-{Commandes}
+
+
+Commandes:
 'Commandes'
 '{'
-('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+Store | Load | Display | Subset | Projection | Insert | Remove | Modify
 '}';
+
+
 
 
 
 
 JSonObject:
-JsonArray | JsonInteger | JsonBoolean | JSonAttribut_Impl | JSonEnum | JSonString | JSonNull | Operation_Impl | ComplexAttribut_Impl | SimpleAttribut_Impl | Sum | Div | Mult | Sub;
-
-
-
-ComplexAttribut returns ComplexAttribut:
-ComplexAttribut_Impl | JsonArray | JSonEnum;
-
-
-
-JSonAttribut returns JSonAttribut:
-JSonAttribut_Impl | JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Operation_Impl | ComplexAttribut_Impl | SimpleAttribut_Impl | Sum | Div | Mult | Sub;
+JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Sum | Div | Mult | Sub;
 
 
 
 
 
-Store returns Store:
-{Store}
+
+JSonAttribut:
+JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Sum | Div | Mult | Sub;
+
+
+
+
+
+
+/* Load and Store */
+
+
+
+
+
+Store :
 'Store'
-name=STRING
 '{'
-('path' path=STRING)?
-('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+'path' path=STRING ','
+'name' name=STRING
 '}';
 
 
 
-Load returns Load:
-{Load}
+
+
+Load:
 'Load'
 '{'
-('path' path=STRING)?
-('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
+'path' path=STRING ','
+'name' name=STRING
 '}';
 
 
 
-Display returns Display:
+
+
+
+/* Display */
+
+
+
+
+
+Display:
 'Display'
 '{'
-('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-'node' node=[JSonObject]
+'jsonfile' jsonfile+=JSonFile
 '}';
 
 
 
-Subset returns Subset:
+
+
+
+/* Replace */
+
+
+
+
+
+Subset:
 'Subset'
-name=STRING
 '{'
-('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-'listNodes' '(' listNodes+=[JSonObject] ( "," listNodes+=[JSonObject])* ')'
+'jsonfile' jsonfile+=JSonFile ','
+'listNodes' '(' listNodes+=JSonObject ( "," listNodes+=JSonObject)* ')'
 '}';
 
 
 
-Select returns Select:
-'Select'
-name=STRING
-'{'
-('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-'node' node=[JSonObject]
-'}';
 
 
-
-Projection returns Projection:
+Projection:
 'Projection'
-name=STRING
 '{'
-('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-'node' node=[JSonObject]
+'jsonfile' jsonfile+=JSonFile ','
+'node' node=JSonObject
 '}';
 
 
 
-Insert returns Insert:
+
+
+/* Modification On File */
+Insert:
 'Insert'
 '{'
-('value' value=STRING)?
-('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-'node' node=[JSonObject]
-'complexattribut' complexattribut=[ComplexAttribut]
+'(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')' ','
+'Object:' node=JSonObject
 '}';
 
 
 
-Remove returns Remove:
+
+
+Remove:
 'Remove'
 '{'
-('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-'node' node=[JSonObject]
+'JsonFileTarget' jsonfile+=JSonFile ','
+'Object:' node=JSonObject
 '}';
 
 
 
-Modify returns Modify:
+
+
+Modify:
 'Modify'
 '{'
-('value' value=STRING)?
-('jsonfile' '(' jsonfile+=[JSonFile] ( "," jsonfile+=[JSonFile])* ')' )?
-'node' '(' node+=[JSonObject] ( "," node+=[JSonObject])* ')'
+'(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')' ','
+'Object:' node=JSonObject
 '}';
 
 
@@ -127,126 +146,123 @@ Modify returns Modify:
 
 
 
-JSonObject_Impl returns JSonObject:
-{JSonObject}
-'JSonObject'
-;
+
+/* ATTRIBUT COMPLEX */
+
+
 
 
 
 JsonArray:
+'JSonArray'
 name=STRING '{'
 Contient+=JSonAttribut ( "," Contient+=JSonAttribut)*
 '}';
 
 
 
+
+
+
+JSonEnum:
+'JSonEnum'
+name=STRING
+'[' Contient+=JSonAttribut ( "," Contient+=JSonAttribut)* ']'
+;
+
+
+
+
+
+/* ATTRIBUT SIMPLE */
+
+
+
+
+
 JsonInteger:
+'Integer'
 name=STRING
 value=INT
 ;
 
 
 
+
+
 JsonBoolean:
-{JsonBoolean}
-(value?='value')?
-'JsonBoolean'
-name=STRING;
-
-
-
-JSonAttribut_Impl returns JSonAttribut:
-{JSonAttribut}
-'JSonAttribut'
-name=STRING;
-
-
-
-JSonEnum returns JSonEnum:
-'JSonEnum'
+'Boolean'
 name=STRING
-'{'
-'enum' '[' Contient+=JSonAttribut ( "," Contient+=JSonAttribut)* ']'
-'}';
+value=('true' | 'false')
+;
 
 
 
 JSonString:
-'JSonString'
+'String'
 name=STRING
-'{'
-('value' value=STRING)?
-'}';
+value=STRING
+;
 
 
 
-JSonNull returns JSonNull:
-{JSonNull}
-'JSonNull'
+
+
+JSonNull:
+'Null'
 name=STRING;
 
 
 
-Operation_Impl returns Operation:
-{Operation}
-'Operation'
-name=STRING;
 
 
 
-ComplexAttribut_Impl returns ComplexAttribut:
-{ComplexAttribut}
-'ComplexAttribut'
-name=STRING;
-
-
-
-SimpleAttribut_Impl returns SimpleAttribut:
-{SimpleAttribut}
-'SimpleAttribut'
-name=STRING;
-
-
-
-Sum returns Sum:
+/* OPPERATION */
+Sum:
 'Sum'
 name=STRING
 '['
-listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
+listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 ']';
 
 
 
-Div returns Div:
+
+
+Div:
 'Div'
 name=STRING
 '['
-Contient+=[JsonInteger] ( "," Contient+=[JsonInteger])*
+listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 ']';
 
 
 
-Mult returns Mult:
+
+
+Mult :
 'Mult'
 name=STRING
 '['
-"int" listInterger+=JsonInteger ( "," "int" listInterger+=JsonInteger)*
-//listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
+listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 ']';
 
 
 
-Sub returns Sub:
+
+
+Sub:
 'Sub'
 name=STRING
 '['
-listInterger+=[JsonInteger] ( "," listInterger+=[JsonInteger])*
+listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
 ']';
 
 
 
 
 
+
+/* TYPE */
 EBoolean returns EBoolean:
 {EBoolean} 'true' | {EBoolean} 'false';

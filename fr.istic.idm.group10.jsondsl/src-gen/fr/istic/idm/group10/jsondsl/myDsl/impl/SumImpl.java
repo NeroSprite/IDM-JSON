@@ -3,7 +3,6 @@
  */
 package fr.istic.idm.group10.jsondsl.myDsl.impl;
 
-import fr.istic.idm.group10.jsondsl.myDsl.JSonAttribut;
 import fr.istic.idm.group10.jsondsl.myDsl.JsonInteger;
 import fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage;
 import fr.istic.idm.group10.jsondsl.myDsl.Sum;
@@ -11,14 +10,17 @@ import fr.istic.idm.group10.jsondsl.myDsl.Sum;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -57,7 +59,7 @@ public class SumImpl extends JSonObjectImpl implements Sum
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getListInterger() <em>List Interger</em>}' reference list.
+   * The cached value of the '{@link #getListInterger() <em>List Interger</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getListInterger()
@@ -122,9 +124,25 @@ public class SumImpl extends JSonObjectImpl implements Sum
   {
     if (listInterger == null)
     {
-      listInterger = new EObjectResolvingEList<JsonInteger>(JsonInteger.class, this, MyDslPackage.SUM__LIST_INTERGER);
+      listInterger = new EObjectContainmentEList<JsonInteger>(JsonInteger.class, this, MyDslPackage.SUM__LIST_INTERGER);
     }
     return listInterger;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.SUM__LIST_INTERGER:
+        return ((InternalEList<?>)getListInterger()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -203,44 +221,6 @@ public class SumImpl extends JSonObjectImpl implements Sum
         return listInterger != null && !listInterger.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == JSonAttribut.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case MyDslPackage.SUM__NAME: return MyDslPackage.JSON_ATTRIBUT__NAME;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == JSonAttribut.class)
-    {
-      switch (baseFeatureID)
-      {
-        case MyDslPackage.JSON_ATTRIBUT__NAME: return MyDslPackage.SUM__NAME;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**

@@ -76,6 +76,11 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
     new MyDslSwitch<Adapter>()
     {
       @Override
+      public Adapter caseMainGrammar(MainGrammar object)
+      {
+        return createMainGrammarAdapter();
+      }
+      @Override
       public Adapter caseJSonFile(JSonFile object)
       {
         return createJSonFileAdapter();
@@ -89,11 +94,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseJSonObject(JSonObject object)
       {
         return createJSonObjectAdapter();
-      }
-      @Override
-      public Adapter caseComplexAttribut(ComplexAttribut object)
-      {
-        return createComplexAttributAdapter();
       }
       @Override
       public Adapter caseJSonAttribut(JSonAttribut object)
@@ -121,11 +121,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createSubsetAdapter();
       }
       @Override
-      public Adapter caseSelect(Select object)
-      {
-        return createSelectAdapter();
-      }
-      @Override
       public Adapter caseProjection(Projection object)
       {
         return createProjectionAdapter();
@@ -151,6 +146,11 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createJsonArrayAdapter();
       }
       @Override
+      public Adapter caseJSonEnum(JSonEnum object)
+      {
+        return createJSonEnumAdapter();
+      }
+      @Override
       public Adapter caseJsonInteger(JsonInteger object)
       {
         return createJsonIntegerAdapter();
@@ -161,11 +161,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createJsonBooleanAdapter();
       }
       @Override
-      public Adapter caseJSonEnum(JSonEnum object)
-      {
-        return createJSonEnumAdapter();
-      }
-      @Override
       public Adapter caseJSonString(JSonString object)
       {
         return createJSonStringAdapter();
@@ -174,16 +169,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseJSonNull(JSonNull object)
       {
         return createJSonNullAdapter();
-      }
-      @Override
-      public Adapter caseOperation(Operation object)
-      {
-        return createOperationAdapter();
-      }
-      @Override
-      public Adapter caseSimpleAttribut(SimpleAttribut object)
-      {
-        return createSimpleAttributAdapter();
       }
       @Override
       public Adapter caseSum(Sum object)
@@ -233,6 +218,21 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
 
 
   /**
+   * Creates a new adapter for an object of class '{@link fr.istic.idm.group10.jsondsl.myDsl.MainGrammar <em>Main Grammar</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.MainGrammar
+   * @generated
+   */
+  public Adapter createMainGrammarAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonFile <em>JSon File</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -273,21 +273,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createJSonObjectAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.istic.idm.group10.jsondsl.myDsl.ComplexAttribut <em>Complex Attribut</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.ComplexAttribut
-   * @generated
-   */
-  public Adapter createComplexAttributAdapter()
   {
     return null;
   }
@@ -368,21 +353,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link fr.istic.idm.group10.jsondsl.myDsl.Select <em>Select</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Select
-   * @generated
-   */
-  public Adapter createSelectAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link fr.istic.idm.group10.jsondsl.myDsl.Projection <em>Projection</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -458,6 +428,21 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonEnum <em>JSon Enum</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fr.istic.idm.group10.jsondsl.myDsl.JSonEnum
+   * @generated
+   */
+  public Adapter createJSonEnumAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link fr.istic.idm.group10.jsondsl.myDsl.JsonInteger <em>Json Integer</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -488,21 +473,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonEnum <em>JSon Enum</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.JSonEnum
-   * @generated
-   */
-  public Adapter createJSonEnumAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link fr.istic.idm.group10.jsondsl.myDsl.JSonString <em>JSon String</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -528,36 +498,6 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createJSonNullAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.istic.idm.group10.jsondsl.myDsl.Operation <em>Operation</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.Operation
-   * @generated
-   */
-  public Adapter createOperationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fr.istic.idm.group10.jsondsl.myDsl.SimpleAttribut <em>Simple Attribut</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fr.istic.idm.group10.jsondsl.myDsl.SimpleAttribut
-   * @generated
-   */
-  public Adapter createSimpleAttributAdapter()
   {
     return null;
   }

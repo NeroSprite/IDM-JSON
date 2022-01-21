@@ -10,16 +10,15 @@ import fr.istic.idm.group10.jsondsl.myDsl.Subset;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,37 +28,16 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.SubsetImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.SubsetImpl#getJsonfile <em>Jsonfile</em>}</li>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.SubsetImpl#getListNodes <em>List Nodes</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class SubsetImpl extends MinimalEObjectImpl.Container implements Subset
+public class SubsetImpl extends CommandesImpl implements Subset
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getJsonfile() <em>Jsonfile</em>}' reference list.
+   * The cached value of the '{@link #getJsonfile() <em>Jsonfile</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getJsonfile()
@@ -69,7 +47,7 @@ public class SubsetImpl extends MinimalEObjectImpl.Container implements Subset
   protected EList<JSonFile> jsonfile;
 
   /**
-   * The cached value of the '{@link #getListNodes() <em>List Nodes</em>}' reference list.
+   * The cached value of the '{@link #getListNodes() <em>List Nodes</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getListNodes()
@@ -105,36 +83,11 @@ public class SubsetImpl extends MinimalEObjectImpl.Container implements Subset
    * @generated
    */
   @Override
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.SUBSET__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EList<JSonFile> getJsonfile()
   {
     if (jsonfile == null)
     {
-      jsonfile = new EObjectResolvingEList<JSonFile>(JSonFile.class, this, MyDslPackage.SUBSET__JSONFILE);
+      jsonfile = new EObjectContainmentEList<JSonFile>(JSonFile.class, this, MyDslPackage.SUBSET__JSONFILE);
     }
     return jsonfile;
   }
@@ -149,9 +102,27 @@ public class SubsetImpl extends MinimalEObjectImpl.Container implements Subset
   {
     if (listNodes == null)
     {
-      listNodes = new EObjectResolvingEList<JSonObject>(JSonObject.class, this, MyDslPackage.SUBSET__LIST_NODES);
+      listNodes = new EObjectContainmentEList<JSonObject>(JSonObject.class, this, MyDslPackage.SUBSET__LIST_NODES);
     }
     return listNodes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.SUBSET__JSONFILE:
+        return ((InternalEList<?>)getJsonfile()).basicRemove(otherEnd, msgs);
+      case MyDslPackage.SUBSET__LIST_NODES:
+        return ((InternalEList<?>)getListNodes()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -164,8 +135,6 @@ public class SubsetImpl extends MinimalEObjectImpl.Container implements Subset
   {
     switch (featureID)
     {
-      case MyDslPackage.SUBSET__NAME:
-        return getName();
       case MyDslPackage.SUBSET__JSONFILE:
         return getJsonfile();
       case MyDslPackage.SUBSET__LIST_NODES:
@@ -185,9 +154,6 @@ public class SubsetImpl extends MinimalEObjectImpl.Container implements Subset
   {
     switch (featureID)
     {
-      case MyDslPackage.SUBSET__NAME:
-        setName((String)newValue);
-        return;
       case MyDslPackage.SUBSET__JSONFILE:
         getJsonfile().clear();
         getJsonfile().addAll((Collection<? extends JSonFile>)newValue);
@@ -210,9 +176,6 @@ public class SubsetImpl extends MinimalEObjectImpl.Container implements Subset
   {
     switch (featureID)
     {
-      case MyDslPackage.SUBSET__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case MyDslPackage.SUBSET__JSONFILE:
         getJsonfile().clear();
         return;
@@ -233,31 +196,12 @@ public class SubsetImpl extends MinimalEObjectImpl.Container implements Subset
   {
     switch (featureID)
     {
-      case MyDslPackage.SUBSET__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case MyDslPackage.SUBSET__JSONFILE:
         return jsonfile != null && !jsonfile.isEmpty();
       case MyDslPackage.SUBSET__LIST_NODES:
         return listNodes != null && !listNodes.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //SubsetImpl

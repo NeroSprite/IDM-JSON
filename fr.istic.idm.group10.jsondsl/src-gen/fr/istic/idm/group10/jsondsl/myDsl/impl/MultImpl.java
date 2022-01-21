@@ -3,7 +3,6 @@
  */
 package fr.istic.idm.group10.jsondsl.myDsl.impl;
 
-import fr.istic.idm.group10.jsondsl.myDsl.JSonAttribut;
 import fr.istic.idm.group10.jsondsl.myDsl.JsonInteger;
 import fr.istic.idm.group10.jsondsl.myDsl.Mult;
 import fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage;
@@ -222,44 +221,6 @@ public class MultImpl extends JSonObjectImpl implements Mult
         return listInterger != null && !listInterger.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == JSonAttribut.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case MyDslPackage.MULT__NAME: return MyDslPackage.JSON_ATTRIBUT__NAME;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == JSonAttribut.class)
-    {
-      switch (baseFeatureID)
-      {
-        case MyDslPackage.JSON_ATTRIBUT__NAME: return MyDslPackage.MULT__NAME;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**

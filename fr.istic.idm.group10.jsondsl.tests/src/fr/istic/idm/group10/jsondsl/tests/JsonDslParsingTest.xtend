@@ -4,7 +4,6 @@
 package fr.istic.idm.group10.jsondsl.tests
 
 import com.google.inject.Inject
-import fr.istic.idm.group10.jsondsl.myDsl.JSonFile
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.extensions.InjectionExtension
 import org.eclipse.xtext.testing.util.ParseHelper
@@ -12,19 +11,26 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
 
+import fr.istic.idm.group10.jsondsl.tests.BashCompiler
+import fr.istic.idm.group10.jsondsl.myDsl.MainGrammar
+
 @ExtendWith(InjectionExtension)
 @InjectWith(JsonDslInjectorProvider)
 class JsonDslParsingTest {
 	@Inject
-	ParseHelper<JSonFile> parseHelper
+	ParseHelper<MainGrammar> parseH
+import org.junit.jupiter.api.Testelper
 	
 	@Test
 	def void loadModel() {
-		val result = parseHelper.parse('''
-			Hello Xtext!
-		''')
+		val result = parseHelper.parse("Load { path \"foo1.json\" , name \"nameFile\" }");
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+			
+		val BashCompiler cmpBash = new BashCompiler(result)
+		cmpBash.compileAndRun
+		
+
 	}
 }

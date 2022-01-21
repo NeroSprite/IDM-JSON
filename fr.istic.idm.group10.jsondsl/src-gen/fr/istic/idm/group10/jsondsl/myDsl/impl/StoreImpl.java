@@ -3,22 +3,14 @@
  */
 package fr.istic.idm.group10.jsondsl.myDsl.impl;
 
-import fr.istic.idm.group10.jsondsl.myDsl.JSonFile;
 import fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage;
 import fr.istic.idm.group10.jsondsl.myDsl.Store;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,35 +20,14 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.StoreImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.StoreImpl#getPath <em>Path</em>}</li>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.StoreImpl#getJsonfile <em>Jsonfile</em>}</li>
+ *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.StoreImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class StoreImpl extends MinimalEObjectImpl.Container implements Store
+public class StoreImpl extends CommandesImpl implements Store
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -78,14 +49,24 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store
   protected String path = PATH_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getJsonfile() <em>Jsonfile</em>}' reference list.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getJsonfile()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected EList<JSonFile> jsonfile;
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -106,31 +87,6 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.STORE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__NAME, oldName, name));
   }
 
   /**
@@ -164,13 +120,23 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store
    * @generated
    */
   @Override
-  public EList<JSonFile> getJsonfile()
+  public String getName()
   {
-    if (jsonfile == null)
-    {
-      jsonfile = new EObjectResolvingEList<JSonFile>(JSonFile.class, this, MyDslPackage.STORE__JSONFILE);
-    }
-    return jsonfile;
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__NAME, oldName, name));
   }
 
   /**
@@ -183,12 +149,10 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store
   {
     switch (featureID)
     {
-      case MyDslPackage.STORE__NAME:
-        return getName();
       case MyDslPackage.STORE__PATH:
         return getPath();
-      case MyDslPackage.STORE__JSONFILE:
-        return getJsonfile();
+      case MyDslPackage.STORE__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -198,21 +162,16 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case MyDslPackage.STORE__NAME:
-        setName((String)newValue);
-        return;
       case MyDslPackage.STORE__PATH:
         setPath((String)newValue);
         return;
-      case MyDslPackage.STORE__JSONFILE:
-        getJsonfile().clear();
-        getJsonfile().addAll((Collection<? extends JSonFile>)newValue);
+      case MyDslPackage.STORE__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -228,14 +187,11 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store
   {
     switch (featureID)
     {
-      case MyDslPackage.STORE__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case MyDslPackage.STORE__PATH:
         setPath(PATH_EDEFAULT);
         return;
-      case MyDslPackage.STORE__JSONFILE:
-        getJsonfile().clear();
+      case MyDslPackage.STORE__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -251,12 +207,10 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store
   {
     switch (featureID)
     {
-      case MyDslPackage.STORE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case MyDslPackage.STORE__PATH:
         return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
-      case MyDslPackage.STORE__JSONFILE:
-        return jsonfile != null && !jsonfile.isEmpty();
+      case MyDslPackage.STORE__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
   }
@@ -272,10 +226,10 @@ public class StoreImpl extends MinimalEObjectImpl.Container implements Store
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", path: ");
+    result.append(" (path: ");
     result.append(path);
+    result.append(", name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

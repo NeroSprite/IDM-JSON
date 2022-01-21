@@ -3,7 +3,6 @@
  */
 package fr.istic.idm.group10.jsondsl.myDsl.impl;
 
-import fr.istic.idm.group10.jsondsl.myDsl.ComplexAttribut;
 import fr.istic.idm.group10.jsondsl.myDsl.Insert;
 import fr.istic.idm.group10.jsondsl.myDsl.JSonFile;
 import fr.istic.idm.group10.jsondsl.myDsl.JSonObject;
@@ -12,6 +11,7 @@ import fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,38 +31,16 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.InsertImpl#getValue <em>Value</em>}</li>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.InsertImpl#getJsonfile <em>Jsonfile</em>}</li>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.InsertImpl#getNode <em>Node</em>}</li>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.InsertImpl#getComplexattribut <em>Complexattribut</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class InsertImpl extends MinimalEObjectImpl.Container implements Insert
+public class InsertImpl extends CommandesImpl implements Insert
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected static final String VALUE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected String value = VALUE_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getJsonfile() <em>Jsonfile</em>}' reference list.
+   * The cached value of the '{@link #getJsonfile() <em>Jsonfile</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getJsonfile()
@@ -72,7 +50,7 @@ public class InsertImpl extends MinimalEObjectImpl.Container implements Insert
   protected EList<JSonFile> jsonfile;
 
   /**
-   * The cached value of the '{@link #getNode() <em>Node</em>}' reference.
+   * The cached value of the '{@link #getNode() <em>Node</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getNode()
@@ -80,16 +58,6 @@ public class InsertImpl extends MinimalEObjectImpl.Container implements Insert
    * @ordered
    */
   protected JSonObject node;
-
-  /**
-   * The cached value of the '{@link #getComplexattribut() <em>Complexattribut</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getComplexattribut()
-   * @generated
-   * @ordered
-   */
-  protected ComplexAttribut complexattribut;
 
   /**
    * <!-- begin-user-doc -->
@@ -118,36 +86,11 @@ public class InsertImpl extends MinimalEObjectImpl.Container implements Insert
    * @generated
    */
   @Override
-  public String getValue()
-  {
-    return value;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setValue(String newValue)
-  {
-    String oldValue = value;
-    value = newValue;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.INSERT__VALUE, oldValue, value));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EList<JSonFile> getJsonfile()
   {
     if (jsonfile == null)
     {
-      jsonfile = new EObjectResolvingEList<JSonFile>(JSonFile.class, this, MyDslPackage.INSERT__JSONFILE);
+      jsonfile = new EObjectContainmentEList<JSonFile>(JSonFile.class, this, MyDslPackage.INSERT__JSONFILE);
     }
     return jsonfile;
   }
@@ -160,16 +103,6 @@ public class InsertImpl extends MinimalEObjectImpl.Container implements Insert
   @Override
   public JSonObject getNode()
   {
-    if (node != null && node.eIsProxy())
-    {
-      InternalEObject oldNode = (InternalEObject)node;
-      node = (JSonObject)eResolveProxy(oldNode);
-      if (node != oldNode)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, MyDslPackage.INSERT__NODE, oldNode, node));
-      }
-    }
     return node;
   }
 
@@ -178,9 +111,16 @@ public class InsertImpl extends MinimalEObjectImpl.Container implements Insert
    * <!-- end-user-doc -->
    * @generated
    */
-  public JSonObject basicGetNode()
+  public NotificationChain basicSetNode(JSonObject newNode, NotificationChain msgs)
   {
-    return node;
+    JSonObject oldNode = node;
+    node = newNode;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.INSERT__NODE, oldNode, newNode);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -191,41 +131,18 @@ public class InsertImpl extends MinimalEObjectImpl.Container implements Insert
   @Override
   public void setNode(JSonObject newNode)
   {
-    JSonObject oldNode = node;
-    node = newNode;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.INSERT__NODE, oldNode, node));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ComplexAttribut getComplexattribut()
-  {
-    if (complexattribut != null && complexattribut.eIsProxy())
+    if (newNode != node)
     {
-      InternalEObject oldComplexattribut = (InternalEObject)complexattribut;
-      complexattribut = (ComplexAttribut)eResolveProxy(oldComplexattribut);
-      if (complexattribut != oldComplexattribut)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, MyDslPackage.INSERT__COMPLEXATTRIBUT, oldComplexattribut, complexattribut));
-      }
+      NotificationChain msgs = null;
+      if (node != null)
+        msgs = ((InternalEObject)node).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.INSERT__NODE, null, msgs);
+      if (newNode != null)
+        msgs = ((InternalEObject)newNode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.INSERT__NODE, null, msgs);
+      msgs = basicSetNode(newNode, msgs);
+      if (msgs != null) msgs.dispatch();
     }
-    return complexattribut;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ComplexAttribut basicGetComplexattribut()
-  {
-    return complexattribut;
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.INSERT__NODE, newNode, newNode));
   }
 
   /**
@@ -234,12 +151,16 @@ public class InsertImpl extends MinimalEObjectImpl.Container implements Insert
    * @generated
    */
   @Override
-  public void setComplexattribut(ComplexAttribut newComplexattribut)
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    ComplexAttribut oldComplexattribut = complexattribut;
-    complexattribut = newComplexattribut;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.INSERT__COMPLEXATTRIBUT, oldComplexattribut, complexattribut));
+    switch (featureID)
+    {
+      case MyDslPackage.INSERT__JSONFILE:
+        return ((InternalEList<?>)getJsonfile()).basicRemove(otherEnd, msgs);
+      case MyDslPackage.INSERT__NODE:
+        return basicSetNode(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -252,16 +173,10 @@ public class InsertImpl extends MinimalEObjectImpl.Container implements Insert
   {
     switch (featureID)
     {
-      case MyDslPackage.INSERT__VALUE:
-        return getValue();
       case MyDslPackage.INSERT__JSONFILE:
         return getJsonfile();
       case MyDslPackage.INSERT__NODE:
-        if (resolve) return getNode();
-        return basicGetNode();
-      case MyDslPackage.INSERT__COMPLEXATTRIBUT:
-        if (resolve) return getComplexattribut();
-        return basicGetComplexattribut();
+        return getNode();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -277,18 +192,12 @@ public class InsertImpl extends MinimalEObjectImpl.Container implements Insert
   {
     switch (featureID)
     {
-      case MyDslPackage.INSERT__VALUE:
-        setValue((String)newValue);
-        return;
       case MyDslPackage.INSERT__JSONFILE:
         getJsonfile().clear();
         getJsonfile().addAll((Collection<? extends JSonFile>)newValue);
         return;
       case MyDslPackage.INSERT__NODE:
         setNode((JSonObject)newValue);
-        return;
-      case MyDslPackage.INSERT__COMPLEXATTRIBUT:
-        setComplexattribut((ComplexAttribut)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -304,17 +213,11 @@ public class InsertImpl extends MinimalEObjectImpl.Container implements Insert
   {
     switch (featureID)
     {
-      case MyDslPackage.INSERT__VALUE:
-        setValue(VALUE_EDEFAULT);
-        return;
       case MyDslPackage.INSERT__JSONFILE:
         getJsonfile().clear();
         return;
       case MyDslPackage.INSERT__NODE:
         setNode((JSonObject)null);
-        return;
-      case MyDslPackage.INSERT__COMPLEXATTRIBUT:
-        setComplexattribut((ComplexAttribut)null);
         return;
     }
     super.eUnset(featureID);
@@ -330,33 +233,12 @@ public class InsertImpl extends MinimalEObjectImpl.Container implements Insert
   {
     switch (featureID)
     {
-      case MyDslPackage.INSERT__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
       case MyDslPackage.INSERT__JSONFILE:
         return jsonfile != null && !jsonfile.isEmpty();
       case MyDslPackage.INSERT__NODE:
         return node != null;
-      case MyDslPackage.INSERT__COMPLEXATTRIBUT:
-        return complexattribut != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (value: ");
-    result.append(value);
-    result.append(')');
-    return result.toString();
   }
 
 } //InsertImpl

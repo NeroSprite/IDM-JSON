@@ -4,7 +4,6 @@
 package fr.istic.idm.group10.jsondsl.myDsl.impl;
 
 import fr.istic.idm.group10.jsondsl.myDsl.Commandes;
-import fr.istic.idm.group10.jsondsl.myDsl.ComplexAttribut;
 import fr.istic.idm.group10.jsondsl.myDsl.Display;
 import fr.istic.idm.group10.jsondsl.myDsl.Div;
 import fr.istic.idm.group10.jsondsl.myDsl.EBoolean;
@@ -19,15 +18,13 @@ import fr.istic.idm.group10.jsondsl.myDsl.JsonArray;
 import fr.istic.idm.group10.jsondsl.myDsl.JsonBoolean;
 import fr.istic.idm.group10.jsondsl.myDsl.JsonInteger;
 import fr.istic.idm.group10.jsondsl.myDsl.Load;
+import fr.istic.idm.group10.jsondsl.myDsl.MainGrammar;
 import fr.istic.idm.group10.jsondsl.myDsl.Modify;
 import fr.istic.idm.group10.jsondsl.myDsl.Mult;
 import fr.istic.idm.group10.jsondsl.myDsl.MyDslFactory;
 import fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage;
-import fr.istic.idm.group10.jsondsl.myDsl.Operation;
 import fr.istic.idm.group10.jsondsl.myDsl.Projection;
 import fr.istic.idm.group10.jsondsl.myDsl.Remove;
-import fr.istic.idm.group10.jsondsl.myDsl.Select;
-import fr.istic.idm.group10.jsondsl.myDsl.SimpleAttribut;
 import fr.istic.idm.group10.jsondsl.myDsl.Store;
 import fr.istic.idm.group10.jsondsl.myDsl.Sub;
 import fr.istic.idm.group10.jsondsl.myDsl.Subset;
@@ -53,6 +50,13 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass mainGrammarEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass jSonFileEClass = null;
 
   /**
@@ -68,13 +72,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   private EClass jSonObjectEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass complexAttributEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -116,13 +113,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass selectEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass projectionEClass = null;
 
   /**
@@ -158,6 +148,13 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass jSonEnumEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass jsonIntegerEClass = null;
 
   /**
@@ -172,13 +169,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass jSonEnumEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass jSonStringEClass = null;
 
   /**
@@ -187,20 +177,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   private EClass jSonNullEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass operationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass simpleAttributEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -306,6 +282,17 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
+  public EClass getMainGrammar()
+  {
+    return mainGrammarEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getJSonFile()
   {
     return jSonFileEClass;
@@ -350,42 +337,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getCommandes_Jsonfile()
-  {
-    return (EReference)commandesEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getJSonObject()
   {
     return jSonObjectEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getComplexAttribut()
-  {
-    return complexAttributEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getComplexAttribut_Contient()
-  {
-    return (EReference)complexAttributEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -405,17 +359,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EAttribute getJSonAttribut_Name()
-  {
-    return (EAttribute)jSonAttributEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getStore()
   {
     return storeEClass;
@@ -427,7 +370,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EAttribute getStore_Name()
+  public EAttribute getStore_Path()
   {
     return (EAttribute)storeEClass.getEStructuralFeatures().get(0);
   }
@@ -438,20 +381,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EAttribute getStore_Path()
+  public EAttribute getStore_Name()
   {
     return (EAttribute)storeEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getStore_Jsonfile()
-  {
-    return (EReference)storeEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -482,9 +414,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getLoad_Jsonfile()
+  public EAttribute getLoad_Name()
   {
-    return (EReference)loadEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)loadEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -515,17 +447,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getDisplay_Node()
-  {
-    return (EReference)displayEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getSubset()
   {
     return subsetEClass;
@@ -537,20 +458,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EAttribute getSubset_Name()
-  {
-    return (EAttribute)subsetEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getSubset_Jsonfile()
   {
-    return (EReference)subsetEClass.getEStructuralFeatures().get(1);
+    return (EReference)subsetEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -561,51 +471,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
   @Override
   public EReference getSubset_ListNodes()
   {
-    return (EReference)subsetEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getSelect()
-  {
-    return selectEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getSelect_Name()
-  {
-    return (EAttribute)selectEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getSelect_Jsonfile()
-  {
-    return (EReference)selectEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getSelect_Node()
-  {
-    return (EReference)selectEClass.getEStructuralFeatures().get(2);
+    return (EReference)subsetEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -625,20 +491,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EAttribute getProjection_Name()
-  {
-    return (EAttribute)projectionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getProjection_Jsonfile()
   {
-    return (EReference)projectionEClass.getEStructuralFeatures().get(1);
+    return (EReference)projectionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -649,7 +504,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
   @Override
   public EReference getProjection_Node()
   {
-    return (EReference)projectionEClass.getEStructuralFeatures().get(2);
+    return (EReference)projectionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -669,20 +524,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EAttribute getInsert_Value()
-  {
-    return (EAttribute)insertEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getInsert_Jsonfile()
   {
-    return (EReference)insertEClass.getEStructuralFeatures().get(1);
+    return (EReference)insertEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -693,18 +537,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
   @Override
   public EReference getInsert_Node()
   {
-    return (EReference)insertEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getInsert_Complexattribut()
-  {
-    return (EReference)insertEClass.getEStructuralFeatures().get(3);
+    return (EReference)insertEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -757,20 +590,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EAttribute getModify_Value()
-  {
-    return (EAttribute)modifyEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getModify_Jsonfile()
   {
-    return (EReference)modifyEClass.getEStructuralFeatures().get(1);
+    return (EReference)modifyEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -781,7 +603,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
   @Override
   public EReference getModify_Node()
   {
-    return (EReference)modifyEClass.getEStructuralFeatures().get(2);
+    return (EReference)modifyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -801,9 +623,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EClass getJsonInteger()
+  public EAttribute getJsonArray_Name()
   {
-    return jsonIntegerEClass;
+    return (EAttribute)jsonArrayEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -812,31 +634,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EAttribute getJsonInteger_Value()
+  public EReference getJsonArray_Contient()
   {
-    return (EAttribute)jsonIntegerEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getJsonBoolean()
-  {
-    return jsonBooleanEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getJsonBoolean_Value()
-  {
-    return (EAttribute)jsonBooleanEClass.getEStructuralFeatures().get(0);
+    return (EReference)jsonArrayEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -856,6 +656,94 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
+  public EAttribute getJSonEnum_Name()
+  {
+    return (EAttribute)jSonEnumEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getJSonEnum_Contient()
+  {
+    return (EReference)jSonEnumEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getJsonInteger()
+  {
+    return jsonIntegerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getJsonInteger_Name()
+  {
+    return (EAttribute)jsonIntegerEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getJsonInteger_Value()
+  {
+    return (EAttribute)jsonIntegerEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getJsonBoolean()
+  {
+    return jsonBooleanEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getJsonBoolean_Name()
+  {
+    return (EAttribute)jsonBooleanEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getJsonBoolean_Value()
+  {
+    return (EAttribute)jsonBooleanEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getJSonString()
   {
     return jSonStringEClass;
@@ -867,9 +755,20 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EAttribute getJSonString_Value()
+  public EAttribute getJSonString_Name()
   {
     return (EAttribute)jSonStringEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getJSonString_Value()
+  {
+    return (EAttribute)jSonStringEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -889,20 +788,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EClass getOperation()
+  public EAttribute getJSonNull_Name()
   {
-    return operationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getSimpleAttribut()
-  {
-    return simpleAttributEClass;
+    return (EAttribute)jSonNullEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -922,9 +810,20 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
+  public EAttribute getSum_Name()
+  {
+    return (EAttribute)sumEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getSum_ListInterger()
   {
-    return (EReference)sumEClass.getEStructuralFeatures().get(0);
+    return (EReference)sumEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -944,9 +843,20 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getDiv_Contient()
+  public EAttribute getDiv_Name()
   {
-    return (EReference)divEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)divEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDiv_ListInterger()
+  {
+    return (EReference)divEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -966,9 +876,20 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
+  public EAttribute getMult_Name()
+  {
+    return (EAttribute)multEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getMult_ListInterger()
   {
-    return (EReference)multEClass.getEStructuralFeatures().get(0);
+    return (EReference)multEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -988,9 +909,20 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
+  public EAttribute getSub_Name()
+  {
+    return (EAttribute)subEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getSub_ListInterger()
   {
-    return (EReference)subEClass.getEStructuralFeatures().get(0);
+    return (EReference)subEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1035,93 +967,86 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     isCreated = true;
 
     // Create classes and their features
+    mainGrammarEClass = createEClass(MAIN_GRAMMAR);
+
     jSonFileEClass = createEClass(JSON_FILE);
     createEAttribute(jSonFileEClass, JSON_FILE__NAME);
     createEReference(jSonFileEClass, JSON_FILE__CONTIENT);
 
     commandesEClass = createEClass(COMMANDES);
-    createEReference(commandesEClass, COMMANDES__JSONFILE);
 
     jSonObjectEClass = createEClass(JSON_OBJECT);
 
-    complexAttributEClass = createEClass(COMPLEX_ATTRIBUT);
-    createEReference(complexAttributEClass, COMPLEX_ATTRIBUT__CONTIENT);
-
     jSonAttributEClass = createEClass(JSON_ATTRIBUT);
-    createEAttribute(jSonAttributEClass, JSON_ATTRIBUT__NAME);
 
     storeEClass = createEClass(STORE);
-    createEAttribute(storeEClass, STORE__NAME);
     createEAttribute(storeEClass, STORE__PATH);
-    createEReference(storeEClass, STORE__JSONFILE);
+    createEAttribute(storeEClass, STORE__NAME);
 
     loadEClass = createEClass(LOAD);
     createEAttribute(loadEClass, LOAD__PATH);
-    createEReference(loadEClass, LOAD__JSONFILE);
+    createEAttribute(loadEClass, LOAD__NAME);
 
     displayEClass = createEClass(DISPLAY);
     createEReference(displayEClass, DISPLAY__JSONFILE);
-    createEReference(displayEClass, DISPLAY__NODE);
 
     subsetEClass = createEClass(SUBSET);
-    createEAttribute(subsetEClass, SUBSET__NAME);
     createEReference(subsetEClass, SUBSET__JSONFILE);
     createEReference(subsetEClass, SUBSET__LIST_NODES);
 
-    selectEClass = createEClass(SELECT);
-    createEAttribute(selectEClass, SELECT__NAME);
-    createEReference(selectEClass, SELECT__JSONFILE);
-    createEReference(selectEClass, SELECT__NODE);
-
     projectionEClass = createEClass(PROJECTION);
-    createEAttribute(projectionEClass, PROJECTION__NAME);
     createEReference(projectionEClass, PROJECTION__JSONFILE);
     createEReference(projectionEClass, PROJECTION__NODE);
 
     insertEClass = createEClass(INSERT);
-    createEAttribute(insertEClass, INSERT__VALUE);
     createEReference(insertEClass, INSERT__JSONFILE);
     createEReference(insertEClass, INSERT__NODE);
-    createEReference(insertEClass, INSERT__COMPLEXATTRIBUT);
 
     removeEClass = createEClass(REMOVE);
     createEReference(removeEClass, REMOVE__JSONFILE);
     createEReference(removeEClass, REMOVE__NODE);
 
     modifyEClass = createEClass(MODIFY);
-    createEAttribute(modifyEClass, MODIFY__VALUE);
     createEReference(modifyEClass, MODIFY__JSONFILE);
     createEReference(modifyEClass, MODIFY__NODE);
 
     jsonArrayEClass = createEClass(JSON_ARRAY);
+    createEAttribute(jsonArrayEClass, JSON_ARRAY__NAME);
+    createEReference(jsonArrayEClass, JSON_ARRAY__CONTIENT);
+
+    jSonEnumEClass = createEClass(JSON_ENUM);
+    createEAttribute(jSonEnumEClass, JSON_ENUM__NAME);
+    createEReference(jSonEnumEClass, JSON_ENUM__CONTIENT);
 
     jsonIntegerEClass = createEClass(JSON_INTEGER);
+    createEAttribute(jsonIntegerEClass, JSON_INTEGER__NAME);
     createEAttribute(jsonIntegerEClass, JSON_INTEGER__VALUE);
 
     jsonBooleanEClass = createEClass(JSON_BOOLEAN);
+    createEAttribute(jsonBooleanEClass, JSON_BOOLEAN__NAME);
     createEAttribute(jsonBooleanEClass, JSON_BOOLEAN__VALUE);
 
-    jSonEnumEClass = createEClass(JSON_ENUM);
-
     jSonStringEClass = createEClass(JSON_STRING);
+    createEAttribute(jSonStringEClass, JSON_STRING__NAME);
     createEAttribute(jSonStringEClass, JSON_STRING__VALUE);
 
     jSonNullEClass = createEClass(JSON_NULL);
-
-    operationEClass = createEClass(OPERATION);
-
-    simpleAttributEClass = createEClass(SIMPLE_ATTRIBUT);
+    createEAttribute(jSonNullEClass, JSON_NULL__NAME);
 
     sumEClass = createEClass(SUM);
+    createEAttribute(sumEClass, SUM__NAME);
     createEReference(sumEClass, SUM__LIST_INTERGER);
 
     divEClass = createEClass(DIV);
-    createEReference(divEClass, DIV__CONTIENT);
+    createEAttribute(divEClass, DIV__NAME);
+    createEReference(divEClass, DIV__LIST_INTERGER);
 
     multEClass = createEClass(MULT);
+    createEAttribute(multEClass, MULT__NAME);
     createEReference(multEClass, MULT__LIST_INTERGER);
 
     subEClass = createEClass(SUB);
+    createEAttribute(subEClass, SUB__NAME);
     createEReference(subEClass, SUB__LIST_INTERGER);
 
     eBooleanEClass = createEClass(EBOOLEAN);
@@ -1156,27 +1081,28 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    complexAttributEClass.getESuperTypes().add(this.getJSonObject());
-    complexAttributEClass.getESuperTypes().add(this.getJSonAttribut());
-    jSonAttributEClass.getESuperTypes().add(this.getJSonObject());
+    jSonFileEClass.getESuperTypes().add(this.getMainGrammar());
+    commandesEClass.getESuperTypes().add(this.getMainGrammar());
+    storeEClass.getESuperTypes().add(this.getCommandes());
+    loadEClass.getESuperTypes().add(this.getCommandes());
+    displayEClass.getESuperTypes().add(this.getCommandes());
+    subsetEClass.getESuperTypes().add(this.getCommandes());
+    projectionEClass.getESuperTypes().add(this.getCommandes());
+    insertEClass.getESuperTypes().add(this.getCommandes());
+    removeEClass.getESuperTypes().add(this.getCommandes());
+    modifyEClass.getESuperTypes().add(this.getCommandes());
     jsonArrayEClass.getESuperTypes().add(this.getJSonObject());
-    jsonArrayEClass.getESuperTypes().add(this.getComplexAttribut());
     jsonArrayEClass.getESuperTypes().add(this.getJSonAttribut());
+    jSonEnumEClass.getESuperTypes().add(this.getJSonObject());
+    jSonEnumEClass.getESuperTypes().add(this.getJSonAttribut());
     jsonIntegerEClass.getESuperTypes().add(this.getJSonObject());
     jsonIntegerEClass.getESuperTypes().add(this.getJSonAttribut());
     jsonBooleanEClass.getESuperTypes().add(this.getJSonObject());
     jsonBooleanEClass.getESuperTypes().add(this.getJSonAttribut());
-    jSonEnumEClass.getESuperTypes().add(this.getJSonObject());
-    jSonEnumEClass.getESuperTypes().add(this.getComplexAttribut());
-    jSonEnumEClass.getESuperTypes().add(this.getJSonAttribut());
     jSonStringEClass.getESuperTypes().add(this.getJSonObject());
     jSonStringEClass.getESuperTypes().add(this.getJSonAttribut());
     jSonNullEClass.getESuperTypes().add(this.getJSonObject());
     jSonNullEClass.getESuperTypes().add(this.getJSonAttribut());
-    operationEClass.getESuperTypes().add(this.getJSonObject());
-    operationEClass.getESuperTypes().add(this.getJSonAttribut());
-    simpleAttributEClass.getESuperTypes().add(this.getJSonObject());
-    simpleAttributEClass.getESuperTypes().add(this.getJSonAttribut());
     sumEClass.getESuperTypes().add(this.getJSonObject());
     sumEClass.getESuperTypes().add(this.getJSonAttribut());
     divEClass.getESuperTypes().add(this.getJSonObject());
@@ -1187,94 +1113,87 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     subEClass.getESuperTypes().add(this.getJSonAttribut());
 
     // Initialize classes and features; add operations and parameters
+    initEClass(mainGrammarEClass, MainGrammar.class, "MainGrammar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(jSonFileEClass, JSonFile.class, "JSonFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getJSonFile_Name(), ecorePackage.getEString(), "name", null, 0, 1, JSonFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getJSonFile_Contient(), this.getJSonObject(), null, "Contient", null, 0, -1, JSonFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(commandesEClass, Commandes.class, "Commandes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCommandes_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Commandes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(jSonObjectEClass, JSonObject.class, "JSonObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(complexAttributEClass, ComplexAttribut.class, "ComplexAttribut", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getComplexAttribut_Contient(), this.getJSonAttribut(), null, "Contient", null, 0, -1, ComplexAttribut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(jSonAttributEClass, JSonAttribut.class, "JSonAttribut", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getJSonAttribut_Name(), ecorePackage.getEString(), "name", null, 0, 1, JSonAttribut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(storeEClass, Store.class, "Store", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getStore_Name(), ecorePackage.getEString(), "name", null, 0, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getStore_Path(), ecorePackage.getEString(), "path", null, 0, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getStore_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStore_Name(), ecorePackage.getEString(), "name", null, 0, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(loadEClass, Load.class, "Load", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLoad_Path(), ecorePackage.getEString(), "path", null, 0, 1, Load.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLoad_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Load.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLoad_Name(), ecorePackage.getEString(), "name", null, 0, 1, Load.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(displayEClass, Display.class, "Display", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDisplay_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Display.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDisplay_Node(), this.getJSonObject(), null, "node", null, 0, 1, Display.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDisplay_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Display.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(subsetEClass, Subset.class, "Subset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSubset_Name(), ecorePackage.getEString(), "name", null, 0, 1, Subset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSubset_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Subset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSubset_ListNodes(), this.getJSonObject(), null, "listNodes", null, 0, -1, Subset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(selectEClass, Select.class, "Select", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSelect_Name(), ecorePackage.getEString(), "name", null, 0, 1, Select.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSelect_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Select.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSelect_Node(), this.getJSonObject(), null, "node", null, 0, 1, Select.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSubset_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Subset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSubset_ListNodes(), this.getJSonObject(), null, "listNodes", null, 0, -1, Subset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(projectionEClass, Projection.class, "Projection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProjection_Name(), ecorePackage.getEString(), "name", null, 0, 1, Projection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProjection_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Projection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProjection_Node(), this.getJSonObject(), null, "node", null, 0, 1, Projection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProjection_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Projection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProjection_Node(), this.getJSonObject(), null, "node", null, 0, 1, Projection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(insertEClass, Insert.class, "Insert", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getInsert_Value(), ecorePackage.getEString(), "value", null, 0, 1, Insert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInsert_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Insert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInsert_Node(), this.getJSonObject(), null, "node", null, 0, 1, Insert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInsert_Complexattribut(), this.getComplexAttribut(), null, "complexattribut", null, 0, 1, Insert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInsert_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Insert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInsert_Node(), this.getJSonObject(), null, "node", null, 0, 1, Insert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(removeEClass, Remove.class, "Remove", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getRemove_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Remove.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRemove_Node(), this.getJSonObject(), null, "node", null, 0, 1, Remove.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRemove_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Remove.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRemove_Node(), this.getJSonObject(), null, "node", null, 0, 1, Remove.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(modifyEClass, Modify.class, "Modify", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getModify_Value(), ecorePackage.getEString(), "value", null, 0, 1, Modify.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModify_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Modify.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModify_Node(), this.getJSonObject(), null, "node", null, 0, -1, Modify.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModify_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Modify.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModify_Node(), this.getJSonObject(), null, "node", null, 0, 1, Modify.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(jsonArrayEClass, JsonArray.class, "JsonArray", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getJsonArray_Name(), ecorePackage.getEString(), "name", null, 0, 1, JsonArray.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJsonArray_Contient(), this.getJSonAttribut(), null, "Contient", null, 0, -1, JsonArray.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(jSonEnumEClass, JSonEnum.class, "JSonEnum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getJSonEnum_Name(), ecorePackage.getEString(), "name", null, 0, 1, JSonEnum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJSonEnum_Contient(), this.getJSonAttribut(), null, "Contient", null, 0, -1, JSonEnum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(jsonIntegerEClass, JsonInteger.class, "JsonInteger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getJsonInteger_Name(), ecorePackage.getEString(), "name", null, 0, 1, JsonInteger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getJsonInteger_Value(), ecorePackage.getEInt(), "value", null, 0, 1, JsonInteger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(jsonBooleanEClass, JsonBoolean.class, "JsonBoolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getJsonBoolean_Value(), ecorePackage.getEBoolean(), "value", null, 0, 1, JsonBoolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(jSonEnumEClass, JSonEnum.class, "JSonEnum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getJsonBoolean_Name(), ecorePackage.getEString(), "name", null, 0, 1, JsonBoolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getJsonBoolean_Value(), ecorePackage.getEString(), "value", null, 0, 1, JsonBoolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(jSonStringEClass, JSonString.class, "JSonString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getJSonString_Name(), ecorePackage.getEString(), "name", null, 0, 1, JSonString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getJSonString_Value(), ecorePackage.getEString(), "value", null, 0, 1, JSonString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(jSonNullEClass, JSonNull.class, "JSonNull", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(simpleAttributEClass, SimpleAttribut.class, "SimpleAttribut", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getJSonNull_Name(), ecorePackage.getEString(), "name", null, 0, 1, JSonNull.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(sumEClass, Sum.class, "Sum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSum_ListInterger(), this.getJsonInteger(), null, "listInterger", null, 0, -1, Sum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSum_Name(), ecorePackage.getEString(), "name", null, 0, 1, Sum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSum_ListInterger(), this.getJsonInteger(), null, "listInterger", null, 0, -1, Sum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(divEClass, Div.class, "Div", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDiv_Contient(), this.getJsonInteger(), null, "Contient", null, 0, -1, Div.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDiv_Name(), ecorePackage.getEString(), "name", null, 0, 1, Div.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDiv_ListInterger(), this.getJsonInteger(), null, "listInterger", null, 0, -1, Div.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(multEClass, Mult.class, "Mult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMult_Name(), ecorePackage.getEString(), "name", null, 0, 1, Mult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMult_ListInterger(), this.getJsonInteger(), null, "listInterger", null, 0, -1, Mult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(subEClass, Sub.class, "Sub", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSub_ListInterger(), this.getJsonInteger(), null, "listInterger", null, 0, -1, Sub.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSub_Name(), ecorePackage.getEString(), "name", null, 0, 1, Sub.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSub_ListInterger(), this.getJsonInteger(), null, "listInterger", null, 0, -1, Sub.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(eBooleanEClass, EBoolean.class, "EBoolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

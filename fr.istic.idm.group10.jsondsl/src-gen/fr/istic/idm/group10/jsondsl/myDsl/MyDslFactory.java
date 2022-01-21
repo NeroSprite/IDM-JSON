@@ -24,6 +24,15 @@ public interface MyDslFactory extends EFactory
   MyDslFactory eINSTANCE = fr.istic.idm.group10.jsondsl.myDsl.impl.MyDslFactoryImpl.init();
 
   /**
+   * Returns a new object of class '<em>Main Grammar</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Main Grammar</em>'.
+   * @generated
+   */
+  MainGrammar createMainGrammar();
+
+  /**
    * Returns a new object of class '<em>JSon File</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -49,15 +58,6 @@ public interface MyDslFactory extends EFactory
    * @generated
    */
   JSonObject createJSonObject();
-
-  /**
-   * Returns a new object of class '<em>Complex Attribut</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Complex Attribut</em>'.
-   * @generated
-   */
-  ComplexAttribut createComplexAttribut();
 
   /**
    * Returns a new object of class '<em>JSon Attribut</em>'.
@@ -105,15 +105,6 @@ public interface MyDslFactory extends EFactory
   Subset createSubset();
 
   /**
-   * Returns a new object of class '<em>Select</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Select</em>'.
-   * @generated
-   */
-  Select createSelect();
-
-  /**
    * Returns a new object of class '<em>Projection</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -159,6 +150,15 @@ public interface MyDslFactory extends EFactory
   JsonArray createJsonArray();
 
   /**
+   * Returns a new object of class '<em>JSon Enum</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>JSon Enum</em>'.
+   * @generated
+   */
+  JSonEnum createJSonEnum();
+
+  /**
    * Returns a new object of class '<em>Json Integer</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -177,15 +177,6 @@ public interface MyDslFactory extends EFactory
   JsonBoolean createJsonBoolean();
 
   /**
-   * Returns a new object of class '<em>JSon Enum</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>JSon Enum</em>'.
-   * @generated
-   */
-  JSonEnum createJSonEnum();
-
-  /**
    * Returns a new object of class '<em>JSon String</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -202,24 +193,6 @@ public interface MyDslFactory extends EFactory
    * @generated
    */
   JSonNull createJSonNull();
-
-  /**
-   * Returns a new object of class '<em>Operation</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Operation</em>'.
-   * @generated
-   */
-  Operation createOperation();
-
-  /**
-   * Returns a new object of class '<em>Simple Attribut</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Simple Attribut</em>'.
-   * @generated
-   */
-  SimpleAttribut createSimpleAttribut();
 
   /**
    * Returns a new object of class '<em>Sum</em>'.

@@ -3,7 +3,6 @@
  */
 package fr.istic.idm.group10.jsondsl.myDsl.impl;
 
-import fr.istic.idm.group10.jsondsl.myDsl.JSonAttribut;
 import fr.istic.idm.group10.jsondsl.myDsl.JSonString;
 import fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage;
 
@@ -214,44 +213,6 @@ public class JSonStringImpl extends JSonObjectImpl implements JSonString
         return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == JSonAttribut.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case MyDslPackage.JSON_STRING__NAME: return MyDslPackage.JSON_ATTRIBUT__NAME;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == JSonAttribut.class)
-    {
-      switch (baseFeatureID)
-      {
-        case MyDslPackage.JSON_ATTRIBUT__NAME: return MyDslPackage.JSON_STRING__NAME;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**

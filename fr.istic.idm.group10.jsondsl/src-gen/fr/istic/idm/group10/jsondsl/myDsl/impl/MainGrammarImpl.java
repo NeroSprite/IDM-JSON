@@ -3,7 +3,7 @@
  */
 package fr.istic.idm.group10.jsondsl.myDsl.impl;
 
-import fr.istic.idm.group10.jsondsl.myDsl.JSonAttribut;
+import fr.istic.idm.group10.jsondsl.myDsl.MainGrammar;
 import fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage;
 
 import org.eclipse.emf.ecore.EClass;
@@ -12,19 +12,19 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>JSon Attribut</b></em>'.
+ * An implementation of the model object '<em><b>Main Grammar</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class JSonAttributImpl extends MinimalEObjectImpl.Container implements JSonAttribut
+public class MainGrammarImpl extends MinimalEObjectImpl.Container implements MainGrammar
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected JSonAttributImpl()
+  protected MainGrammarImpl()
   {
     super();
   }
@@ -37,7 +37,7 @@ public class JSonAttributImpl extends MinimalEObjectImpl.Container implements JS
   @Override
   protected EClass eStaticClass()
   {
-    return MyDslPackage.Literals.JSON_ATTRIBUT;
+    return MyDslPackage.Literals.MAIN_GRAMMAR;
   }
 
-} //JSonAttributImpl
+} //MainGrammarImpl

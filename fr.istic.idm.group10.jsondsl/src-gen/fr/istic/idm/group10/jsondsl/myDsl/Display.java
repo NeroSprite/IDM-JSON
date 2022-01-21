@@ -5,8 +5,6 @@ package fr.istic.idm.group10.jsondsl.myDsl;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Display</b></em>'.
@@ -17,47 +15,24 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.Display#getJsonfile <em>Jsonfile</em>}</li>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.Display#getNode <em>Node</em>}</li>
  * </ul>
  *
  * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getDisplay()
  * @model
  * @generated
  */
-public interface Display extends EObject
+public interface Display extends Commandes
 {
   /**
-   * Returns the value of the '<em><b>Jsonfile</b></em>' reference list.
+   * Returns the value of the '<em><b>Jsonfile</b></em>' containment reference list.
    * The list contents are of type {@link fr.istic.idm.group10.jsondsl.myDsl.JSonFile}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Jsonfile</em>' reference list.
+   * @return the value of the '<em>Jsonfile</em>' containment reference list.
    * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getDisplay_Jsonfile()
-   * @model
+   * @model containment="true"
    * @generated
    */
   EList<JSonFile> getJsonfile();
-
-  /**
-   * Returns the value of the '<em><b>Node</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Node</em>' reference.
-   * @see #setNode(JSonObject)
-   * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getDisplay_Node()
-   * @model
-   * @generated
-   */
-  JSonObject getNode();
-
-  /**
-   * Sets the value of the '{@link fr.istic.idm.group10.jsondsl.myDsl.Display#getNode <em>Node</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Node</em>' reference.
-   * @see #getNode()
-   * @generated
-   */
-  void setNode(JSonObject value);
 
 } // Display

@@ -73,10 +73,18 @@ public class MyDslSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
+      case MyDslPackage.MAIN_GRAMMAR:
+      {
+        MainGrammar mainGrammar = (MainGrammar)theEObject;
+        T result = caseMainGrammar(mainGrammar);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MyDslPackage.JSON_FILE:
       {
         JSonFile jSonFile = (JSonFile)theEObject;
         T result = caseJSonFile(jSonFile);
+        if (result == null) result = caseMainGrammar(jSonFile);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -84,6 +92,7 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Commandes commandes = (Commandes)theEObject;
         T result = caseCommandes(commandes);
+        if (result == null) result = caseMainGrammar(commandes);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -94,20 +103,10 @@ public class MyDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case MyDslPackage.COMPLEX_ATTRIBUT:
-      {
-        ComplexAttribut complexAttribut = (ComplexAttribut)theEObject;
-        T result = caseComplexAttribut(complexAttribut);
-        if (result == null) result = caseJSonAttribut(complexAttribut);
-        if (result == null) result = caseJSonObject(complexAttribut);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case MyDslPackage.JSON_ATTRIBUT:
       {
         JSonAttribut jSonAttribut = (JSonAttribut)theEObject;
         T result = caseJSonAttribut(jSonAttribut);
-        if (result == null) result = caseJSonObject(jSonAttribut);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -115,6 +114,8 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Store store = (Store)theEObject;
         T result = caseStore(store);
+        if (result == null) result = caseCommandes(store);
+        if (result == null) result = caseMainGrammar(store);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -122,6 +123,8 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Load load = (Load)theEObject;
         T result = caseLoad(load);
+        if (result == null) result = caseCommandes(load);
+        if (result == null) result = caseMainGrammar(load);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -129,6 +132,8 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Display display = (Display)theEObject;
         T result = caseDisplay(display);
+        if (result == null) result = caseCommandes(display);
+        if (result == null) result = caseMainGrammar(display);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -136,13 +141,8 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Subset subset = (Subset)theEObject;
         T result = caseSubset(subset);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.SELECT:
-      {
-        Select select = (Select)theEObject;
-        T result = caseSelect(select);
+        if (result == null) result = caseCommandes(subset);
+        if (result == null) result = caseMainGrammar(subset);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -150,6 +150,8 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Projection projection = (Projection)theEObject;
         T result = caseProjection(projection);
+        if (result == null) result = caseCommandes(projection);
+        if (result == null) result = caseMainGrammar(projection);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -157,6 +159,8 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Insert insert = (Insert)theEObject;
         T result = caseInsert(insert);
+        if (result == null) result = caseCommandes(insert);
+        if (result == null) result = caseMainGrammar(insert);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -164,6 +168,8 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Remove remove = (Remove)theEObject;
         T result = caseRemove(remove);
+        if (result == null) result = caseCommandes(remove);
+        if (result == null) result = caseMainGrammar(remove);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -171,6 +177,8 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Modify modify = (Modify)theEObject;
         T result = caseModify(modify);
+        if (result == null) result = caseCommandes(modify);
+        if (result == null) result = caseMainGrammar(modify);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -178,27 +186,8 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         JsonArray jsonArray = (JsonArray)theEObject;
         T result = caseJsonArray(jsonArray);
-        if (result == null) result = caseComplexAttribut(jsonArray);
-        if (result == null) result = caseJSonAttribut(jsonArray);
         if (result == null) result = caseJSonObject(jsonArray);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.JSON_INTEGER:
-      {
-        JsonInteger jsonInteger = (JsonInteger)theEObject;
-        T result = caseJsonInteger(jsonInteger);
-        if (result == null) result = caseJSonAttribut(jsonInteger);
-        if (result == null) result = caseJSonObject(jsonInteger);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.JSON_BOOLEAN:
-      {
-        JsonBoolean jsonBoolean = (JsonBoolean)theEObject;
-        T result = caseJsonBoolean(jsonBoolean);
-        if (result == null) result = caseJSonAttribut(jsonBoolean);
-        if (result == null) result = caseJSonObject(jsonBoolean);
+        if (result == null) result = caseJSonAttribut(jsonArray);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -206,9 +195,26 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         JSonEnum jSonEnum = (JSonEnum)theEObject;
         T result = caseJSonEnum(jSonEnum);
-        if (result == null) result = caseComplexAttribut(jSonEnum);
-        if (result == null) result = caseJSonAttribut(jSonEnum);
         if (result == null) result = caseJSonObject(jSonEnum);
+        if (result == null) result = caseJSonAttribut(jSonEnum);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MyDslPackage.JSON_INTEGER:
+      {
+        JsonInteger jsonInteger = (JsonInteger)theEObject;
+        T result = caseJsonInteger(jsonInteger);
+        if (result == null) result = caseJSonObject(jsonInteger);
+        if (result == null) result = caseJSonAttribut(jsonInteger);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MyDslPackage.JSON_BOOLEAN:
+      {
+        JsonBoolean jsonBoolean = (JsonBoolean)theEObject;
+        T result = caseJsonBoolean(jsonBoolean);
+        if (result == null) result = caseJSonObject(jsonBoolean);
+        if (result == null) result = caseJSonAttribut(jsonBoolean);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -216,8 +222,8 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         JSonString jSonString = (JSonString)theEObject;
         T result = caseJSonString(jSonString);
-        if (result == null) result = caseJSonAttribut(jSonString);
         if (result == null) result = caseJSonObject(jSonString);
+        if (result == null) result = caseJSonAttribut(jSonString);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -225,26 +231,8 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         JSonNull jSonNull = (JSonNull)theEObject;
         T result = caseJSonNull(jSonNull);
-        if (result == null) result = caseJSonAttribut(jSonNull);
         if (result == null) result = caseJSonObject(jSonNull);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.OPERATION:
-      {
-        Operation operation = (Operation)theEObject;
-        T result = caseOperation(operation);
-        if (result == null) result = caseJSonAttribut(operation);
-        if (result == null) result = caseJSonObject(operation);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MyDslPackage.SIMPLE_ATTRIBUT:
-      {
-        SimpleAttribut simpleAttribut = (SimpleAttribut)theEObject;
-        T result = caseSimpleAttribut(simpleAttribut);
-        if (result == null) result = caseJSonAttribut(simpleAttribut);
-        if (result == null) result = caseJSonObject(simpleAttribut);
+        if (result == null) result = caseJSonAttribut(jSonNull);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -252,8 +240,8 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Sum sum = (Sum)theEObject;
         T result = caseSum(sum);
-        if (result == null) result = caseJSonAttribut(sum);
         if (result == null) result = caseJSonObject(sum);
+        if (result == null) result = caseJSonAttribut(sum);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -261,8 +249,8 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Div div = (Div)theEObject;
         T result = caseDiv(div);
-        if (result == null) result = caseJSonAttribut(div);
         if (result == null) result = caseJSonObject(div);
+        if (result == null) result = caseJSonAttribut(div);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -270,8 +258,8 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Mult mult = (Mult)theEObject;
         T result = caseMult(mult);
-        if (result == null) result = caseJSonAttribut(mult);
         if (result == null) result = caseJSonObject(mult);
+        if (result == null) result = caseJSonAttribut(mult);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -279,8 +267,8 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Sub sub = (Sub)theEObject;
         T result = caseSub(sub);
-        if (result == null) result = caseJSonAttribut(sub);
         if (result == null) result = caseJSonObject(sub);
+        if (result == null) result = caseJSonAttribut(sub);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -293,6 +281,22 @@ public class MyDslSwitch<T> extends Switch<T>
       }
       default: return defaultCase(theEObject);
     }
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Main Grammar</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Main Grammar</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMainGrammar(MainGrammar object)
+  {
+    return null;
   }
 
   /**
@@ -339,22 +343,6 @@ public class MyDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseJSonObject(JSonObject object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Complex Attribut</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Complex Attribut</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseComplexAttribut(ComplexAttribut object)
   {
     return null;
   }
@@ -440,22 +428,6 @@ public class MyDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Select</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Select</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSelect(Select object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Projection</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -536,6 +508,22 @@ public class MyDslSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>JSon Enum</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>JSon Enum</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseJSonEnum(JSonEnum object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Json Integer</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -568,22 +556,6 @@ public class MyDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>JSon Enum</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>JSon Enum</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseJSonEnum(JSonEnum object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>JSon String</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -611,38 +583,6 @@ public class MyDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseJSonNull(JSonNull object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Operation</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Operation</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseOperation(Operation object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Simple Attribut</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Simple Attribut</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSimpleAttribut(SimpleAttribut object)
   {
     return null;
   }

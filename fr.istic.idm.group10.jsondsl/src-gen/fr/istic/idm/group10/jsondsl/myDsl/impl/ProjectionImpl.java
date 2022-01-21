@@ -11,6 +11,7 @@ import fr.istic.idm.group10.jsondsl.myDsl.Projection;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -18,9 +19,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,37 +31,16 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.ProjectionImpl#getName <em>Name</em>}</li>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.ProjectionImpl#getJsonfile <em>Jsonfile</em>}</li>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.ProjectionImpl#getNode <em>Node</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ProjectionImpl extends MinimalEObjectImpl.Container implements Projection
+public class ProjectionImpl extends CommandesImpl implements Projection
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getJsonfile() <em>Jsonfile</em>}' reference list.
+   * The cached value of the '{@link #getJsonfile() <em>Jsonfile</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getJsonfile()
@@ -70,7 +50,7 @@ public class ProjectionImpl extends MinimalEObjectImpl.Container implements Proj
   protected EList<JSonFile> jsonfile;
 
   /**
-   * The cached value of the '{@link #getNode() <em>Node</em>}' reference.
+   * The cached value of the '{@link #getNode() <em>Node</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getNode()
@@ -106,36 +86,11 @@ public class ProjectionImpl extends MinimalEObjectImpl.Container implements Proj
    * @generated
    */
   @Override
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PROJECTION__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EList<JSonFile> getJsonfile()
   {
     if (jsonfile == null)
     {
-      jsonfile = new EObjectResolvingEList<JSonFile>(JSonFile.class, this, MyDslPackage.PROJECTION__JSONFILE);
+      jsonfile = new EObjectContainmentEList<JSonFile>(JSonFile.class, this, MyDslPackage.PROJECTION__JSONFILE);
     }
     return jsonfile;
   }
@@ -148,16 +103,6 @@ public class ProjectionImpl extends MinimalEObjectImpl.Container implements Proj
   @Override
   public JSonObject getNode()
   {
-    if (node != null && node.eIsProxy())
-    {
-      InternalEObject oldNode = (InternalEObject)node;
-      node = (JSonObject)eResolveProxy(oldNode);
-      if (node != oldNode)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, MyDslPackage.PROJECTION__NODE, oldNode, node));
-      }
-    }
     return node;
   }
 
@@ -166,9 +111,16 @@ public class ProjectionImpl extends MinimalEObjectImpl.Container implements Proj
    * <!-- end-user-doc -->
    * @generated
    */
-  public JSonObject basicGetNode()
+  public NotificationChain basicSetNode(JSonObject newNode, NotificationChain msgs)
   {
-    return node;
+    JSonObject oldNode = node;
+    node = newNode;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.PROJECTION__NODE, oldNode, newNode);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -179,10 +131,36 @@ public class ProjectionImpl extends MinimalEObjectImpl.Container implements Proj
   @Override
   public void setNode(JSonObject newNode)
   {
-    JSonObject oldNode = node;
-    node = newNode;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PROJECTION__NODE, oldNode, node));
+    if (newNode != node)
+    {
+      NotificationChain msgs = null;
+      if (node != null)
+        msgs = ((InternalEObject)node).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PROJECTION__NODE, null, msgs);
+      if (newNode != null)
+        msgs = ((InternalEObject)newNode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PROJECTION__NODE, null, msgs);
+      msgs = basicSetNode(newNode, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PROJECTION__NODE, newNode, newNode));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.PROJECTION__JSONFILE:
+        return ((InternalEList<?>)getJsonfile()).basicRemove(otherEnd, msgs);
+      case MyDslPackage.PROJECTION__NODE:
+        return basicSetNode(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -195,13 +173,10 @@ public class ProjectionImpl extends MinimalEObjectImpl.Container implements Proj
   {
     switch (featureID)
     {
-      case MyDslPackage.PROJECTION__NAME:
-        return getName();
       case MyDslPackage.PROJECTION__JSONFILE:
         return getJsonfile();
       case MyDslPackage.PROJECTION__NODE:
-        if (resolve) return getNode();
-        return basicGetNode();
+        return getNode();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -217,9 +192,6 @@ public class ProjectionImpl extends MinimalEObjectImpl.Container implements Proj
   {
     switch (featureID)
     {
-      case MyDslPackage.PROJECTION__NAME:
-        setName((String)newValue);
-        return;
       case MyDslPackage.PROJECTION__JSONFILE:
         getJsonfile().clear();
         getJsonfile().addAll((Collection<? extends JSonFile>)newValue);
@@ -241,9 +213,6 @@ public class ProjectionImpl extends MinimalEObjectImpl.Container implements Proj
   {
     switch (featureID)
     {
-      case MyDslPackage.PROJECTION__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case MyDslPackage.PROJECTION__JSONFILE:
         getJsonfile().clear();
         return;
@@ -264,31 +233,12 @@ public class ProjectionImpl extends MinimalEObjectImpl.Container implements Proj
   {
     switch (featureID)
     {
-      case MyDslPackage.PROJECTION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case MyDslPackage.PROJECTION__JSONFILE:
         return jsonfile != null && !jsonfile.isEmpty();
       case MyDslPackage.PROJECTION__NODE:
         return node != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //ProjectionImpl

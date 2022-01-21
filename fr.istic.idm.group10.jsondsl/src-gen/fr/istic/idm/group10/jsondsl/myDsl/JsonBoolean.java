@@ -13,7 +13,8 @@ package fr.istic.idm.group10.jsondsl.myDsl;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.JsonBoolean#isValue <em>Value</em>}</li>
+ *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.JsonBoolean#getName <em>Name</em>}</li>
+ *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.JsonBoolean#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getJsonBoolean()
@@ -23,25 +24,47 @@ package fr.istic.idm.group10.jsondsl.myDsl;
 public interface JsonBoolean extends JSonObject, JSonAttribut
 {
   /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getJsonBoolean_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link fr.istic.idm.group10.jsondsl.myDsl.JsonBoolean#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
+  /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(boolean)
+   * @see #setValue(String)
    * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getJsonBoolean_Value()
    * @model
    * @generated
    */
-  boolean isValue();
+  String getValue();
 
   /**
-   * Sets the value of the '{@link fr.istic.idm.group10.jsondsl.myDsl.JsonBoolean#isValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link fr.istic.idm.group10.jsondsl.myDsl.JsonBoolean#getValue <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Value</em>' attribute.
-   * @see #isValue()
+   * @see #getValue()
    * @generated
    */
-  void setValue(boolean value);
+  void setValue(String value);
 
 } // JsonBoolean

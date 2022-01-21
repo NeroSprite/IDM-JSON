@@ -6,88 +6,83 @@
     complianceLevel="8.0" copyrightFields="false" runtimeVersion="2.20">
   <genPackages prefix="MyDsl" basePackage="fr.istic.idm.group10.jsondsl" disposableProviderFactory="true"
       fileExtensions="myjsondsl" ecorePackage="JsonDsl.ecore#/">
+    <genClasses ecoreClass="JsonDsl.ecore#//MainGrammar"/>
     <genClasses ecoreClass="JsonDsl.ecore#//JSonFile">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//JSonFile/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//JSonFile/Contient"/>
     </genClasses>
-    <genClasses ecoreClass="JsonDsl.ecore#//Commandes">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Commandes/jsonfile"/>
-    </genClasses>
+    <genClasses ecoreClass="JsonDsl.ecore#//Commandes"/>
     <genClasses ecoreClass="JsonDsl.ecore#//JSonObject"/>
-    <genClasses ecoreClass="JsonDsl.ecore#//ComplexAttribut">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//ComplexAttribut/Contient"/>
-    </genClasses>
-    <genClasses ecoreClass="JsonDsl.ecore#//JSonAttribut">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//JSonAttribut/name"/>
-    </genClasses>
+    <genClasses ecoreClass="JsonDsl.ecore#//JSonAttribut"/>
     <genClasses ecoreClass="JsonDsl.ecore#//Store">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//Store/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//Store/path"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Store/jsonfile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//Store/name"/>
     </genClasses>
     <genClasses ecoreClass="JsonDsl.ecore#//Load">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//Load/path"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Load/jsonfile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//Load/name"/>
     </genClasses>
     <genClasses ecoreClass="JsonDsl.ecore#//Display">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Display/jsonfile"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Display/node"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Display/jsonfile"/>
     </genClasses>
     <genClasses ecoreClass="JsonDsl.ecore#//Subset">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//Subset/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Subset/jsonfile"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Subset/listNodes"/>
-    </genClasses>
-    <genClasses ecoreClass="JsonDsl.ecore#//Select">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//Select/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Select/jsonfile"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Select/node"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Subset/jsonfile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Subset/listNodes"/>
     </genClasses>
     <genClasses ecoreClass="JsonDsl.ecore#//Projection">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//Projection/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Projection/jsonfile"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Projection/node"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Projection/jsonfile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Projection/node"/>
     </genClasses>
     <genClasses ecoreClass="JsonDsl.ecore#//Insert">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//Insert/value"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Insert/jsonfile"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Insert/node"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Insert/complexattribut"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Insert/jsonfile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Insert/node"/>
     </genClasses>
     <genClasses ecoreClass="JsonDsl.ecore#//Remove">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Remove/jsonfile"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Remove/node"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Remove/jsonfile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Remove/node"/>
     </genClasses>
     <genClasses ecoreClass="JsonDsl.ecore#//Modify">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//Modify/value"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Modify/jsonfile"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Modify/node"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Modify/jsonfile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Modify/node"/>
     </genClasses>
-    <genClasses ecoreClass="JsonDsl.ecore#//JsonArray"/>
+    <genClasses ecoreClass="JsonDsl.ecore#//JsonArray">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//JsonArray/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//JsonArray/Contient"/>
+    </genClasses>
+    <genClasses ecoreClass="JsonDsl.ecore#//JSonEnum">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//JSonEnum/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//JSonEnum/Contient"/>
+    </genClasses>
     <genClasses ecoreClass="JsonDsl.ecore#//JsonInteger">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//JsonInteger/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//JsonInteger/value"/>
     </genClasses>
     <genClasses ecoreClass="JsonDsl.ecore#//JsonBoolean">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//JsonBoolean/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//JsonBoolean/value"/>
     </genClasses>
-    <genClasses ecoreClass="JsonDsl.ecore#//JSonEnum"/>
     <genClasses ecoreClass="JsonDsl.ecore#//JSonString">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//JSonString/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//JSonString/value"/>
     </genClasses>
-    <genClasses ecoreClass="JsonDsl.ecore#//JSonNull"/>
-    <genClasses ecoreClass="JsonDsl.ecore#//Operation"/>
-    <genClasses ecoreClass="JsonDsl.ecore#//SimpleAttribut"/>
+    <genClasses ecoreClass="JsonDsl.ecore#//JSonNull">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//JSonNull/name"/>
+    </genClasses>
     <genClasses ecoreClass="JsonDsl.ecore#//Sum">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Sum/listInterger"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//Sum/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Sum/listInterger"/>
     </genClasses>
     <genClasses ecoreClass="JsonDsl.ecore#//Div">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Div/Contient"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//Div/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Div/listInterger"/>
     </genClasses>
     <genClasses ecoreClass="JsonDsl.ecore#//Mult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//Mult/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Mult/listInterger"/>
     </genClasses>
     <genClasses ecoreClass="JsonDsl.ecore#//Sub">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Sub/listInterger"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JsonDsl.ecore#//Sub/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JsonDsl.ecore#//Sub/listInterger"/>
     </genClasses>
     <genClasses ecoreClass="JsonDsl.ecore#//EBoolean"/>
   </genPackages>

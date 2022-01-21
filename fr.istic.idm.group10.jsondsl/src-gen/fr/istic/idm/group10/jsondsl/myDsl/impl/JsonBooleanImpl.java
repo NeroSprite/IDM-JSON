@@ -3,7 +3,6 @@
  */
 package fr.istic.idm.group10.jsondsl.myDsl.impl;
 
-import fr.istic.idm.group10.jsondsl.myDsl.JSonAttribut;
 import fr.istic.idm.group10.jsondsl.myDsl.JsonBoolean;
 import fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage;
 
@@ -22,7 +21,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JsonBooleanImpl#getName <em>Name</em>}</li>
- *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JsonBooleanImpl#isValue <em>Value</em>}</li>
+ *   <li>{@link fr.istic.idm.group10.jsondsl.myDsl.impl.JsonBooleanImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -50,24 +49,24 @@ public class JsonBooleanImpl extends JSonObjectImpl implements JsonBoolean
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isValue() <em>Value</em>}' attribute.
+   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isValue()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected static final boolean VALUE_EDEFAULT = false;
+  protected static final String VALUE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #isValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isValue()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected boolean value = VALUE_EDEFAULT;
+  protected String value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -121,7 +120,7 @@ public class JsonBooleanImpl extends JSonObjectImpl implements JsonBoolean
    * @generated
    */
   @Override
-  public boolean isValue()
+  public String getValue()
   {
     return value;
   }
@@ -132,9 +131,9 @@ public class JsonBooleanImpl extends JSonObjectImpl implements JsonBoolean
    * @generated
    */
   @Override
-  public void setValue(boolean newValue)
+  public void setValue(String newValue)
   {
-    boolean oldValue = value;
+    String oldValue = value;
     value = newValue;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.JSON_BOOLEAN__VALUE, oldValue, value));
@@ -153,7 +152,7 @@ public class JsonBooleanImpl extends JSonObjectImpl implements JsonBoolean
       case MyDslPackage.JSON_BOOLEAN__NAME:
         return getName();
       case MyDslPackage.JSON_BOOLEAN__VALUE:
-        return isValue();
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -172,7 +171,7 @@ public class JsonBooleanImpl extends JSonObjectImpl implements JsonBoolean
         setName((String)newValue);
         return;
       case MyDslPackage.JSON_BOOLEAN__VALUE:
-        setValue((Boolean)newValue);
+        setValue((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -211,47 +210,9 @@ public class JsonBooleanImpl extends JSonObjectImpl implements JsonBoolean
       case MyDslPackage.JSON_BOOLEAN__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case MyDslPackage.JSON_BOOLEAN__VALUE:
-        return value != VALUE_EDEFAULT;
+        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == JSonAttribut.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case MyDslPackage.JSON_BOOLEAN__NAME: return MyDslPackage.JSON_ATTRIBUT__NAME;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == JSonAttribut.class)
-    {
-      switch (baseFeatureID)
-      {
-        case MyDslPackage.JSON_ATTRIBUT__NAME: return MyDslPackage.JSON_BOOLEAN__NAME;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**

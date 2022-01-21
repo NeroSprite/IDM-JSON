@@ -7,14 +7,14 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>JSon Attribut</b></em>'.
+ * A representation of the model object '<em><b>Main Grammar</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getJSonAttribut()
+ * @see fr.istic.idm.group10.jsondsl.myDsl.MyDslPackage#getMainGrammar()
  * @model
  * @generated
  */
-public interface JSonAttribut extends EObject
+public interface MainGrammar extends EObject
 {
-} // JSonAttribut
+} // MainGrammar
