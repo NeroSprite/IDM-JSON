@@ -21,6 +21,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Display" eSuperTypes="#//Commandes">
     <eStructuralFeatures xsi:type="ecore:EReference" name="jsonfile" upperBound="-1"
         eType="#//JSonFile" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Subset" eSuperTypes="#//Commandes">
     <eStructuralFeatures xsi:type="ecore:EReference" name="jsonfile" upperBound="-1"
@@ -29,8 +30,7 @@
         eType="#//JSonObject" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Projection" eSuperTypes="#//Commandes">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="jsonfile" upperBound="-1"
-        eType="#//JSonFile" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//JSonObject"
         containment="true"/>
   </eClassifiers>

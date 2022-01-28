@@ -6,12 +6,10 @@ package org.xtext.example.mydsl.tests;
 import com.google.inject.Inject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.eclipse.xtext.testing.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,37 +22,25 @@ public class MyDslParsingTest {
   @Inject
   private ParseHelper<MainGrammar> parseHelper;
   
+  /**
+   * @Test
+   * def void DisplayModel() {
+   * val result = parseHelper.parse("Display { jsonfile JSonFile \"Test\" { String \"Test\" \"HelloWorld\" } }");
+   * Assertions.assertNotNull(result)
+   * val errors = result.eResource.errors
+   * //Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+   * 
+   * 
+   * val JavaCompiler cmpJava = new JavaCompiler(result)
+   * cmpJava.compileAndRun
+   * }
+   */
   @Test
-  public void loadModel() {
+  public void ArrayTest() {
     try {
-      final MainGrammar result = this.parseHelper.parse("Load { path \"foo.json\" , name \"nameFile\" }");
+      final MainGrammar result = this.parseHelper.parse("Display { jsonfile JSonFile \"Test\" { String \"Test\" \"HelloWorld\" } }");
       Assertions.assertNotNull(result);
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
-      boolean _isEmpty = errors.isEmpty();
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Unexpected errors: ");
-      String _join = IterableExtensions.join(errors, ", ");
-      _builder.append(_join);
-      Assertions.assertTrue(_isEmpty, _builder.toString());
-      final JavaCompiler cmpJava = new JavaCompiler(result);
-      cmpJava.compileAndRun();
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
-  
-  @Test
-  public void DisplayModel() {
-    try {
-      final MainGrammar result = this.parseHelper.parse("Display { \'jsonfile\'  } ");
-      Assertions.assertNotNull(result);
-      final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
-      boolean _isEmpty = errors.isEmpty();
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Unexpected errors: ");
-      String _join = IterableExtensions.join(errors, ", ");
-      _builder.append(_join);
-      Assertions.assertTrue(_isEmpty, _builder.toString());
       final JavaCompiler cmpJava = new JavaCompiler(result);
       cmpJava.compileAndRun();
     } catch (Throwable _e) {

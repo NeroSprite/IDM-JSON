@@ -447,6 +447,17 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
+  public EAttribute getDisplay_Name()
+  {
+    return (EAttribute)displayEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getSubset()
   {
     return subsetEClass;
@@ -491,9 +502,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getProjection_Jsonfile()
+  public EAttribute getProjection_Name()
   {
-    return (EReference)projectionEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)projectionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -989,13 +1000,14 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     displayEClass = createEClass(DISPLAY);
     createEReference(displayEClass, DISPLAY__JSONFILE);
+    createEAttribute(displayEClass, DISPLAY__NAME);
 
     subsetEClass = createEClass(SUBSET);
     createEReference(subsetEClass, SUBSET__JSONFILE);
     createEReference(subsetEClass, SUBSET__LIST_NODES);
 
     projectionEClass = createEClass(PROJECTION);
-    createEReference(projectionEClass, PROJECTION__JSONFILE);
+    createEAttribute(projectionEClass, PROJECTION__NAME);
     createEReference(projectionEClass, PROJECTION__NODE);
 
     insertEClass = createEClass(INSERT);
@@ -1135,13 +1147,14 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     initEClass(displayEClass, Display.class, "Display", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDisplay_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Display.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDisplay_Name(), ecorePackage.getEString(), "name", null, 0, 1, Display.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(subsetEClass, Subset.class, "Subset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSubset_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Subset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSubset_ListNodes(), this.getJSonObject(), null, "listNodes", null, 0, -1, Subset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(projectionEClass, Projection.class, "Projection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getProjection_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Projection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProjection_Name(), ecorePackage.getEString(), "name", null, 0, 1, Projection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProjection_Node(), this.getJSonObject(), null, "node", null, 0, 1, Projection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(insertEClass, Insert.class, "Insert", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

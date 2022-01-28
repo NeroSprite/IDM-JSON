@@ -19,7 +19,7 @@ import org.xtext.example.mydsl.myDsl.MainGrammar
 class MyDslParsingTest {
 	@Inject
 	ParseHelper<MainGrammar> parseHelper
-	
+	/*
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse("Load { path \"foo.json\" , name \"nameFile\" }");
@@ -30,14 +30,26 @@ class MyDslParsingTest {
 				
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
-	}
-	
+	}*/
+	/*
 	@Test
 	def void DisplayModel() {
-		val result = parseHelper.parse("Display { 'jsonfile'  } ");
+		val result = parseHelper.parse("Display { jsonfile JSonFile \"Test\" { String \"Test\" \"HelloWorld\" } }");
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
-		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		//Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		
+				
+		val JavaCompiler cmpJava = new JavaCompiler(result)
+		cmpJava.compileAndRun
+	}*/
+	
+	@Test
+	def void ArrayTest() {
+		val result = parseHelper.parse("Display { jsonfile JSonFile \"Test\" { String \"Test\" \"HelloWorld\" } }");
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		//Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 		
 				
 		val JavaCompiler cmpJava = new JavaCompiler(result)

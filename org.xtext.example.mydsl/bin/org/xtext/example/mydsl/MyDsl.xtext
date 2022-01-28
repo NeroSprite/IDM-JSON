@@ -16,11 +16,7 @@ Commandes:
 
 
 JSonObject:
-	'Object'
-	'{'
-	
-		JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Sum | Div | Mult | Sub
-	'}';
+		JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Sum | Div | Mult | Sub;
 
 
 JSonAttribut:
@@ -49,7 +45,8 @@ Load:
 Display:
 	'Display'
 	'{'
-		'jsonfile' jsonfile+=JSonFile
+		'jsonfile' jsonfile+=JSonFile','
+		'name' name=STRING
 	'}';
 
 
@@ -65,7 +62,7 @@ Subset:
 Projection:
 	'Projection'
 	'{'
-		'jsonfile'  jsonfile+=JSonFile  ','
+		'name' name=STRING ','
 		'node' node=JSonObject
 	'}';
 

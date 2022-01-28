@@ -264,13 +264,22 @@ public interface MyDslPackage extends EPackage
   int DISPLAY__JSONFILE = COMMANDES_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DISPLAY__NAME = COMMANDES_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>Display</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DISPLAY_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 1;
+  int DISPLAY_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.SubsetImpl <em>Subset</em>}' class.
@@ -320,13 +329,13 @@ public interface MyDslPackage extends EPackage
   int PROJECTION = 9;
 
   /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROJECTION__JSONFILE = COMMANDES_FEATURE_COUNT + 0;
+  int PROJECTION__NAME = COMMANDES_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' containment reference.
@@ -996,6 +1005,17 @@ public interface MyDslPackage extends EPackage
   EReference getDisplay_Jsonfile();
 
   /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Display#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Display#getName()
+   * @see #getDisplay()
+   * @generated
+   */
+  EAttribute getDisplay_Name();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Subset <em>Subset</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1038,15 +1058,15 @@ public interface MyDslPackage extends EPackage
   EClass getProjection();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.Projection#getJsonfile <em>Jsonfile</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Projection#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Jsonfile</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Projection#getJsonfile()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Projection#getName()
    * @see #getProjection()
    * @generated
    */
-  EReference getProjection_Jsonfile();
+  EAttribute getProjection_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Projection#getNode <em>Node</em>}'.
@@ -1634,6 +1654,14 @@ public interface MyDslPackage extends EPackage
     EReference DISPLAY__JSONFILE = eINSTANCE.getDisplay_Jsonfile();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DISPLAY__NAME = eINSTANCE.getDisplay_Name();
+
+    /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.SubsetImpl <em>Subset</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1670,12 +1698,12 @@ public interface MyDslPackage extends EPackage
     EClass PROJECTION = eINSTANCE.getProjection();
 
     /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROJECTION__JSONFILE = eINSTANCE.getProjection_Jsonfile();
+    EAttribute PROJECTION__NAME = eINSTANCE.getProjection_Name();
 
     /**
      * The meta object literal for the '<em><b>Node</b></em>' containment reference feature.

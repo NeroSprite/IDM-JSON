@@ -3,22 +3,14 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.xtext.example.mydsl.myDsl.JSonFile;
 import org.xtext.example.mydsl.myDsl.JSonObject;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.Projection;
@@ -31,7 +23,7 @@ import org.xtext.example.mydsl.myDsl.Projection;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ProjectionImpl#getJsonfile <em>Jsonfile</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ProjectionImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ProjectionImpl#getNode <em>Node</em>}</li>
  * </ul>
  *
@@ -40,14 +32,24 @@ import org.xtext.example.mydsl.myDsl.Projection;
 public class ProjectionImpl extends CommandesImpl implements Projection
 {
   /**
-   * The cached value of the '{@link #getJsonfile() <em>Jsonfile</em>}' containment reference list.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getJsonfile()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected EList<JSonFile> jsonfile;
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getNode() <em>Node</em>}' containment reference.
@@ -86,13 +88,23 @@ public class ProjectionImpl extends CommandesImpl implements Projection
    * @generated
    */
   @Override
-  public EList<JSonFile> getJsonfile()
+  public String getName()
   {
-    if (jsonfile == null)
-    {
-      jsonfile = new EObjectContainmentEList<JSonFile>(JSonFile.class, this, MyDslPackage.PROJECTION__JSONFILE);
-    }
-    return jsonfile;
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PROJECTION__NAME, oldName, name));
   }
 
   /**
@@ -155,8 +167,6 @@ public class ProjectionImpl extends CommandesImpl implements Projection
   {
     switch (featureID)
     {
-      case MyDslPackage.PROJECTION__JSONFILE:
-        return ((InternalEList<?>)getJsonfile()).basicRemove(otherEnd, msgs);
       case MyDslPackage.PROJECTION__NODE:
         return basicSetNode(null, msgs);
     }
@@ -173,8 +183,8 @@ public class ProjectionImpl extends CommandesImpl implements Projection
   {
     switch (featureID)
     {
-      case MyDslPackage.PROJECTION__JSONFILE:
-        return getJsonfile();
+      case MyDslPackage.PROJECTION__NAME:
+        return getName();
       case MyDslPackage.PROJECTION__NODE:
         return getNode();
     }
@@ -186,15 +196,13 @@ public class ProjectionImpl extends CommandesImpl implements Projection
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case MyDslPackage.PROJECTION__JSONFILE:
-        getJsonfile().clear();
-        getJsonfile().addAll((Collection<? extends JSonFile>)newValue);
+      case MyDslPackage.PROJECTION__NAME:
+        setName((String)newValue);
         return;
       case MyDslPackage.PROJECTION__NODE:
         setNode((JSonObject)newValue);
@@ -213,8 +221,8 @@ public class ProjectionImpl extends CommandesImpl implements Projection
   {
     switch (featureID)
     {
-      case MyDslPackage.PROJECTION__JSONFILE:
-        getJsonfile().clear();
+      case MyDslPackage.PROJECTION__NAME:
+        setName(NAME_EDEFAULT);
         return;
       case MyDslPackage.PROJECTION__NODE:
         setNode((JSonObject)null);
@@ -233,12 +241,29 @@ public class ProjectionImpl extends CommandesImpl implements Projection
   {
     switch (featureID)
     {
-      case MyDslPackage.PROJECTION__JSONFILE:
-        return jsonfile != null && !jsonfile.isEmpty();
+      case MyDslPackage.PROJECTION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case MyDslPackage.PROJECTION__NODE:
         return node != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //ProjectionImpl

@@ -24,13 +24,14 @@
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Display">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Display/jsonfile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Display/name"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Subset">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Subset/jsonfile"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Subset/listNodes"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Projection">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Projection/jsonfile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Projection/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Projection/node"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Insert">

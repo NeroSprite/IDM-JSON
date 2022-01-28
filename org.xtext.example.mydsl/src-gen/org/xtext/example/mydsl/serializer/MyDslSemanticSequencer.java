@@ -123,7 +123,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Display returns Display
 	 *
 	 * Constraint:
-	 *     jsonfile+=JSonFile
+	 *     (jsonfile+=JSonFile name=STRING)
 	 */
 	protected void sequence_Display(ISerializationContext context, Display semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -349,10 +349,19 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Projection returns Projection
 	 *
 	 * Constraint:
-	 *     (jsonfile+=JSonFile node=JSonObject)
+	 *     (name=STRING node=JSonObject)
 	 */
 	protected void sequence_Projection(ISerializationContext context, Projection semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.PROJECTION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.PROJECTION__NAME));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.PROJECTION__NODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.PROJECTION__NODE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getProjectionAccess().getNameSTRINGTerminalRuleCall_3_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getProjectionAccess().getNodeJSonObjectParserRuleCall_6_0(), semanticObject.getNode());
+		feeder.finish();
 	}
 	
 	

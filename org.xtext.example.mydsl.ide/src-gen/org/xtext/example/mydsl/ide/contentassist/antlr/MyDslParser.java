@@ -40,8 +40,6 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getJSonFileAccess().getGroup(), "rule__JSonFile__Group__0");
 			builder.put(grammarAccess.getCommandesAccess().getGroup_0(), "rule__Commandes__Group_0__0");
 			builder.put(grammarAccess.getCommandesAccess().getGroup_7(), "rule__Commandes__Group_7__0");
-			builder.put(grammarAccess.getJSonObjectAccess().getGroup_0(), "rule__JSonObject__Group_0__0");
-			builder.put(grammarAccess.getJSonObjectAccess().getGroup_9(), "rule__JSonObject__Group_9__0");
 			builder.put(grammarAccess.getStoreAccess().getGroup(), "rule__Store__Group__0");
 			builder.put(grammarAccess.getLoadAccess().getGroup(), "rule__Load__Group__0");
 			builder.put(grammarAccess.getDisplayAccess().getGroup(), "rule__Display__Group__0");
@@ -76,10 +74,11 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getLoadAccess().getPathAssignment_3(), "rule__Load__PathAssignment_3");
 			builder.put(grammarAccess.getLoadAccess().getNameAssignment_6(), "rule__Load__NameAssignment_6");
 			builder.put(grammarAccess.getDisplayAccess().getJsonfileAssignment_3(), "rule__Display__JsonfileAssignment_3");
+			builder.put(grammarAccess.getDisplayAccess().getNameAssignment_6(), "rule__Display__NameAssignment_6");
 			builder.put(grammarAccess.getSubsetAccess().getJsonfileAssignment_3(), "rule__Subset__JsonfileAssignment_3");
 			builder.put(grammarAccess.getSubsetAccess().getListNodesAssignment_7(), "rule__Subset__ListNodesAssignment_7");
 			builder.put(grammarAccess.getSubsetAccess().getListNodesAssignment_8_1(), "rule__Subset__ListNodesAssignment_8_1");
-			builder.put(grammarAccess.getProjectionAccess().getJsonfileAssignment_3(), "rule__Projection__JsonfileAssignment_3");
+			builder.put(grammarAccess.getProjectionAccess().getNameAssignment_3(), "rule__Projection__NameAssignment_3");
 			builder.put(grammarAccess.getProjectionAccess().getNodeAssignment_6(), "rule__Projection__NodeAssignment_6");
 			builder.put(grammarAccess.getInsertAccess().getJsonfileAssignment_4(), "rule__Insert__JsonfileAssignment_4");
 			builder.put(grammarAccess.getInsertAccess().getJsonfileAssignment_7(), "rule__Insert__JsonfileAssignment_7");
