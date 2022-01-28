@@ -22,18 +22,21 @@ class MyDslParsingTest {
 	
 	@Test
 	def void loadModel() {
-		val result = parseHelper.parse("Load { path \"foo.json\" , name \"nameFile\" }");
+		val result = parseHelper.parse("Load { path \"example.json\" , name \"nameFile\" }");
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 		
 				
-		val JavaCompiler cmpJava = new JavaCompiler(result)
-		cmpJava.compileAndRun
+		//val JavaCompiler cmpJava = new JavaCompiler(result)
+		//cmpJava.compileAndRun
+		
+		val BashCompiler cmpBash = new BashCompiler(result)
+		cmpBash.compileAndRun
 	}
 	
-	@Test
-	def void DisplayModel() {
+	/*@Test
+	def void displayModel() {
 		val result = parseHelper.parse("Display { 'jsonfile'  } ");
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
@@ -42,7 +45,7 @@ class MyDslParsingTest {
 				
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
-	}
+	}*/
 	
 	
 }

@@ -2,7 +2,14 @@ package org.xtext.example.mydsl.tests;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.PosixFilePermission;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.xtext.example.mydsl.myDsl.Commandes;
 import org.xtext.example.mydsl.myDsl.Display;
@@ -16,7 +23,7 @@ import org.xtext.example.mydsl.myDsl.Remove;
 import org.xtext.example.mydsl.myDsl.Store;
 import org.xtext.example.mydsl.myDsl.Subset;
 
-import com.google.common.io.Files;
+//import com.google.common.io.Files;
 
 public class BashCompiler {
 	
@@ -76,17 +83,34 @@ public class BashCompiler {
 		//		"print(df)";	
 		
 		// serialize code into Bash filename
-		String BASH_OUTPUT = "exampleBash.sh";		
-		String BASH_INPUT = "./exampleBash";	
+		Path BASH_OUTPUT = Paths.get("exampleBash.sh");		
+		String BASH_INPUT = "./exampleBash.sh";	
 		
-		/*
+		/*resolve
 		FileWriter fw = new FileWriter(PYTHON_OUTPUT);
 		fw.write(pythonCode);
 		fw.flush();
 		fw.close();	
 		*/
 		// or shorter
-		Files.write(bashCodeFinal.getBytes(), new File(BASH_OUTPUT));
+		
+		Set<PosixFilePermission> perms = new HashSet<>();
+		perms.add(PosixFilePermission.OWNER_READ);
+	    perms.add(PosixFilePermission.OWNER_WRITE);
+	    perms.add(PosixFilePermission.OWNER_EXECUTE);
+
+	    perms.add(PosixFilePermission.OTHERS_READ);
+	    perms.add(PosixFilePermission.OTHERS_WRITE);
+	    perms.add(PosixFilePermission.OTHERS_EXECUTE);
+
+	    perms.add(PosixFilePermission.GROUP_READ);
+	    perms.add(PosixFilePermission.GROUP_WRITE);
+	    perms.add(PosixFilePermission.GROUP_EXECUTE);
+		
+	    Files.deleteIfExists(BASH_OUTPUT);
+		Files.createFile(BASH_OUTPUT);
+		Files.setPosixFilePermissions(BASH_OUTPUT, perms);
+		Files.write(BASH_OUTPUT, bashCodeFinal.getBytes());
 		
 		// execute the generated Python code
 		// roughly: exec "python foo.py"
@@ -110,6 +134,8 @@ public class BashCompiler {
 		while ((err = stdError.readLine()) != null) {
 	        System.out.println(err);
 	    }
+		
+		
 	}
 	
 

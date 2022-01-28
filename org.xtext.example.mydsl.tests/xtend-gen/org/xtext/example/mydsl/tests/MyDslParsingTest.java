@@ -27,7 +27,7 @@ public class MyDslParsingTest {
   @Test
   public void loadModel() {
     try {
-      final MainGrammar result = this.parseHelper.parse("Load { path \"foo.json\" , name \"nameFile\" }");
+      final MainGrammar result = this.parseHelper.parse("Load { path \"example.json\" , name \"nameFile\" }");
       Assertions.assertNotNull(result);
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       boolean _isEmpty = errors.isEmpty();
@@ -36,27 +36,8 @@ public class MyDslParsingTest {
       String _join = IterableExtensions.join(errors, ", ");
       _builder.append(_join);
       Assertions.assertTrue(_isEmpty, _builder.toString());
-      final JavaCompiler cmpJava = new JavaCompiler(result);
-      cmpJava.compileAndRun();
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
-  
-  @Test
-  public void DisplayModel() {
-    try {
-      final MainGrammar result = this.parseHelper.parse("Display { \'jsonfile\'  } ");
-      Assertions.assertNotNull(result);
-      final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
-      boolean _isEmpty = errors.isEmpty();
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Unexpected errors: ");
-      String _join = IterableExtensions.join(errors, ", ");
-      _builder.append(_join);
-      Assertions.assertTrue(_isEmpty, _builder.toString());
-      final JavaCompiler cmpJava = new JavaCompiler(result);
-      cmpJava.compileAndRun();
+      final BashCompiler cmpBash = new BashCompiler(result);
+      cmpBash.compileAndRun();
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
