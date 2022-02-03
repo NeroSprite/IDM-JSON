@@ -180,93 +180,91 @@ ruleCommandes returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		otherlv_0='Commandes'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getCommandesAccess().getCommandesKeyword_0());
+		}
+		otherlv_1='{'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getCommandesAccess().getLeftCurlyBracketKeyword_1());
+		}
 		(
-			otherlv_0='Commandes'
 			{
-				newLeafNode(otherlv_0, grammarAccess.getCommandesAccess().getCommandesKeyword_0_0());
-			}
-			otherlv_1='{'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getCommandesAccess().getLeftCurlyBracketKeyword_0_1());
-			}
-			{
-				newCompositeNode(grammarAccess.getCommandesAccess().getStoreParserRuleCall_0_2());
+				newCompositeNode(grammarAccess.getCommandesAccess().getStoreParserRuleCall_2_0());
 			}
 			this_Store_2=ruleStore
 			{
 				$current = $this_Store_2.current;
 				afterParserOrEnumRuleCall();
 			}
-		)
-		    |
-		{
-			newCompositeNode(grammarAccess.getCommandesAccess().getLoadParserRuleCall_1());
-		}
-		this_Load_3=ruleLoad
-		{
-			$current = $this_Load_3.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getCommandesAccess().getDisplayParserRuleCall_2());
-		}
-		this_Display_4=ruleDisplay
-		{
-			$current = $this_Display_4.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getCommandesAccess().getSubsetParserRuleCall_3());
-		}
-		this_Subset_5=ruleSubset
-		{
-			$current = $this_Subset_5.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getCommandesAccess().getProjectionParserRuleCall_4());
-		}
-		this_Projection_6=ruleProjection
-		{
-			$current = $this_Projection_6.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getCommandesAccess().getInsertParserRuleCall_5());
-		}
-		this_Insert_7=ruleInsert
-		{
-			$current = $this_Insert_7.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getCommandesAccess().getRemoveParserRuleCall_6());
-		}
-		this_Remove_8=ruleRemove
-		{
-			$current = $this_Remove_8.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		(
+			    |
 			{
-				newCompositeNode(grammarAccess.getCommandesAccess().getModifyParserRuleCall_7_0());
+				newCompositeNode(grammarAccess.getCommandesAccess().getLoadParserRuleCall_2_1());
+			}
+			this_Load_3=ruleLoad
+			{
+				$current = $this_Load_3.current;
+				afterParserOrEnumRuleCall();
+			}
+			    |
+			{
+				newCompositeNode(grammarAccess.getCommandesAccess().getDisplayParserRuleCall_2_2());
+			}
+			this_Display_4=ruleDisplay
+			{
+				$current = $this_Display_4.current;
+				afterParserOrEnumRuleCall();
+			}
+			    |
+			{
+				newCompositeNode(grammarAccess.getCommandesAccess().getSubsetParserRuleCall_2_3());
+			}
+			this_Subset_5=ruleSubset
+			{
+				$current = $this_Subset_5.current;
+				afterParserOrEnumRuleCall();
+			}
+			    |
+			{
+				newCompositeNode(grammarAccess.getCommandesAccess().getProjectionParserRuleCall_2_4());
+			}
+			this_Projection_6=ruleProjection
+			{
+				$current = $this_Projection_6.current;
+				afterParserOrEnumRuleCall();
+			}
+			    |
+			{
+				newCompositeNode(grammarAccess.getCommandesAccess().getInsertParserRuleCall_2_5());
+			}
+			this_Insert_7=ruleInsert
+			{
+				$current = $this_Insert_7.current;
+				afterParserOrEnumRuleCall();
+			}
+			    |
+			{
+				newCompositeNode(grammarAccess.getCommandesAccess().getRemoveParserRuleCall_2_6());
+			}
+			this_Remove_8=ruleRemove
+			{
+				$current = $this_Remove_8.current;
+				afterParserOrEnumRuleCall();
+			}
+			    |
+			{
+				newCompositeNode(grammarAccess.getCommandesAccess().getModifyParserRuleCall_2_7());
 			}
 			this_Modify_9=ruleModify
 			{
 				$current = $this_Modify_9.current;
 				afterParserOrEnumRuleCall();
 			}
-			otherlv_10='}'
-			{
-				newLeafNode(otherlv_10, grammarAccess.getCommandesAccess().getRightCurlyBracketKeyword_7_1());
-			}
 		)
+		otherlv_10='}'
+		{
+			newLeafNode(otherlv_10, grammarAccess.getCommandesAccess().getRightCurlyBracketKeyword_3());
+		}
 	)
 ;
 

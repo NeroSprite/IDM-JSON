@@ -38,7 +38,7 @@ public class MyDslParsingTest {
   @Test
   public void ArrayTest() {
     try {
-      final MainGrammar result = this.parseHelper.parse("Display { jsonfile JSonFile \"Test\" { String \"Test\" \"HelloWorld\" } }");
+      final MainGrammar result = this.parseHelper.parse("JSonFile \"File\" {\n\tJSonArray \"MyArray\" {\n\t\tInteger \"MyInteger\" 2  ,\n\t\tInteger \"MyInteger\" 5 ,\n\t\tBoolean \"MyBoolean\" false ,\n\t\tNull \"MyNullObject\",\n\t\tJSonArray \"MyArray2\" {\n\t\tInteger \"MyInteger2\" 2 ,\n\t\tJSonArray \"MyArray3\" {\n\t\tInteger \"MyInteger3\" 2 }\n\t\t}\n\t}\n}");
       Assertions.assertNotNull(result);
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       final JavaCompiler cmpJava = new JavaCompiler(result);

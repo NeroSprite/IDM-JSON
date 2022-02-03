@@ -32,14 +32,13 @@ public class MyDslParser extends AbstractContentAssistParser {
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, MyDslGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getMainGrammarAccess().getAlternatives(), "rule__MainGrammar__Alternatives");
-			builder.put(grammarAccess.getCommandesAccess().getAlternatives(), "rule__Commandes__Alternatives");
+			builder.put(grammarAccess.getCommandesAccess().getAlternatives_2(), "rule__Commandes__Alternatives_2");
 			builder.put(grammarAccess.getJSonObjectAccess().getAlternatives(), "rule__JSonObject__Alternatives");
 			builder.put(grammarAccess.getJSonAttributAccess().getAlternatives(), "rule__JSonAttribut__Alternatives");
 			builder.put(grammarAccess.getJsonBooleanAccess().getValueAlternatives_2_0(), "rule__JsonBoolean__ValueAlternatives_2_0");
 			builder.put(grammarAccess.getEBooleanAccess().getAlternatives(), "rule__EBoolean__Alternatives");
 			builder.put(grammarAccess.getJSonFileAccess().getGroup(), "rule__JSonFile__Group__0");
-			builder.put(grammarAccess.getCommandesAccess().getGroup_0(), "rule__Commandes__Group_0__0");
-			builder.put(grammarAccess.getCommandesAccess().getGroup_7(), "rule__Commandes__Group_7__0");
+			builder.put(grammarAccess.getCommandesAccess().getGroup(), "rule__Commandes__Group__0");
 			builder.put(grammarAccess.getStoreAccess().getGroup(), "rule__Store__Group__0");
 			builder.put(grammarAccess.getLoadAccess().getGroup(), "rule__Load__Group__0");
 			builder.put(grammarAccess.getDisplayAccess().getGroup(), "rule__Display__Group__0");

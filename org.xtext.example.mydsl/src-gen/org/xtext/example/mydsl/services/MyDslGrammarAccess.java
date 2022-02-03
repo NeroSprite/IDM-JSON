@@ -84,75 +84,68 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	public class CommandesElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.Commandes");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cCommandesKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final RuleCall cStoreParserRuleCall_0_2 = (RuleCall)cGroup_0.eContents().get(2);
-		private final RuleCall cLoadParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cDisplayParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cSubsetParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cProjectionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cInsertParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cRemoveParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		private final Group cGroup_7 = (Group)cAlternatives.eContents().get(7);
-		private final RuleCall cModifyParserRuleCall_7_0 = (RuleCall)cGroup_7.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cCommandesKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final RuleCall cStoreParserRuleCall_2_0 = (RuleCall)cAlternatives_2.eContents().get(0);
+		private final RuleCall cLoadParserRuleCall_2_1 = (RuleCall)cAlternatives_2.eContents().get(1);
+		private final RuleCall cDisplayParserRuleCall_2_2 = (RuleCall)cAlternatives_2.eContents().get(2);
+		private final RuleCall cSubsetParserRuleCall_2_3 = (RuleCall)cAlternatives_2.eContents().get(3);
+		private final RuleCall cProjectionParserRuleCall_2_4 = (RuleCall)cAlternatives_2.eContents().get(4);
+		private final RuleCall cInsertParserRuleCall_2_5 = (RuleCall)cAlternatives_2.eContents().get(5);
+		private final RuleCall cRemoveParserRuleCall_2_6 = (RuleCall)cAlternatives_2.eContents().get(6);
+		private final RuleCall cModifyParserRuleCall_2_7 = (RuleCall)cAlternatives_2.eContents().get(7);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Commandes:
 		//    'Commandes'
 		//    '{'
-		//        Store | Load | Display | Subset | Projection | Insert | Remove | Modify
+		//        (Store | Load | Display | Subset | Projection | Insert | Remove | Modify)
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Commandes'
 		//'{'
-		//    Store | Load | Display | Subset | Projection | Insert | Remove | Modify
+		//    (Store | Load | Display | Subset | Projection | Insert | Remove | Modify)
 		//'}'
-		public Alternatives getAlternatives() { return cAlternatives; }
+		public Group getGroup() { return cGroup; }
 		
 		//'Commandes'
-		//'{'
-		//    Store
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//'Commandes'
-		public Keyword getCommandesKeyword_0_0() { return cCommandesKeyword_0_0; }
+		public Keyword getCommandesKeyword_0() { return cCommandesKeyword_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_0_1() { return cLeftCurlyBracketKeyword_0_1; }
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
+		//(Store | Load | Display | Subset | Projection | Insert | Remove | Modify)
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
 		//Store
-		public RuleCall getStoreParserRuleCall_0_2() { return cStoreParserRuleCall_0_2; }
+		public RuleCall getStoreParserRuleCall_2_0() { return cStoreParserRuleCall_2_0; }
 		
 		//Load
-		public RuleCall getLoadParserRuleCall_1() { return cLoadParserRuleCall_1; }
+		public RuleCall getLoadParserRuleCall_2_1() { return cLoadParserRuleCall_2_1; }
 		
 		//Display
-		public RuleCall getDisplayParserRuleCall_2() { return cDisplayParserRuleCall_2; }
+		public RuleCall getDisplayParserRuleCall_2_2() { return cDisplayParserRuleCall_2_2; }
 		
 		//Subset
-		public RuleCall getSubsetParserRuleCall_3() { return cSubsetParserRuleCall_3; }
+		public RuleCall getSubsetParserRuleCall_2_3() { return cSubsetParserRuleCall_2_3; }
 		
 		//Projection
-		public RuleCall getProjectionParserRuleCall_4() { return cProjectionParserRuleCall_4; }
+		public RuleCall getProjectionParserRuleCall_2_4() { return cProjectionParserRuleCall_2_4; }
 		
 		//Insert
-		public RuleCall getInsertParserRuleCall_5() { return cInsertParserRuleCall_5; }
+		public RuleCall getInsertParserRuleCall_2_5() { return cInsertParserRuleCall_2_5; }
 		
 		//Remove
-		public RuleCall getRemoveParserRuleCall_6() { return cRemoveParserRuleCall_6; }
+		public RuleCall getRemoveParserRuleCall_2_6() { return cRemoveParserRuleCall_2_6; }
 		
 		//Modify
-		//   '}'
-		public Group getGroup_7() { return cGroup_7; }
-		
-		//Modify
-		public RuleCall getModifyParserRuleCall_7_0() { return cModifyParserRuleCall_7_0; }
+		public RuleCall getModifyParserRuleCall_2_7() { return cModifyParserRuleCall_2_7; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_7_1() { return cRightCurlyBracketKeyword_7_1; }
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 	public class JSonObjectElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.JSonObject");
@@ -1470,7 +1463,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//Commandes:
 	//    'Commandes'
 	//    '{'
-	//        Store | Load | Display | Subset | Projection | Insert | Remove | Modify
+	//        (Store | Load | Display | Subset | Projection | Insert | Remove | Modify)
 	//    '}';
 	public CommandesElements getCommandesAccess() {
 		return pCommandes;

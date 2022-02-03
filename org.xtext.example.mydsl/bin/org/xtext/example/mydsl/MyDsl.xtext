@@ -11,7 +11,7 @@ JSonFile:
 Commandes:
 	'Commandes'
 	'{'
-		Store | Load | Display | Subset | Projection | Insert | Remove | Modify
+		(Store | Load | Display | Subset | Projection | Insert | Remove | Modify)
 	'}';
 
 
