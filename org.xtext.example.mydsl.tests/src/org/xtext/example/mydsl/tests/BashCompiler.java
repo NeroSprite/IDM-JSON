@@ -11,17 +11,29 @@ import java.nio.file.attribute.PosixFilePermission;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.xtext.example.mydsl.myDsl.Commandes;
 import org.xtext.example.mydsl.myDsl.Display;
+import org.xtext.example.mydsl.myDsl.Div;
 import org.xtext.example.mydsl.myDsl.Insert;
+import org.xtext.example.mydsl.myDsl.JSonEnum;
 import org.xtext.example.mydsl.myDsl.JSonFile;
+import org.xtext.example.mydsl.myDsl.JSonNull;
+import org.xtext.example.mydsl.myDsl.JSonObject;
+import org.xtext.example.mydsl.myDsl.JSonString;
+import org.xtext.example.mydsl.myDsl.JsonArray;
+import org.xtext.example.mydsl.myDsl.JsonBoolean;
+import org.xtext.example.mydsl.myDsl.JsonInteger;
 import org.xtext.example.mydsl.myDsl.Load;
 import org.xtext.example.mydsl.myDsl.MainGrammar;
 import org.xtext.example.mydsl.myDsl.Modify;
+import org.xtext.example.mydsl.myDsl.Mult;
 import org.xtext.example.mydsl.myDsl.Projection;
 import org.xtext.example.mydsl.myDsl.Remove;
 import org.xtext.example.mydsl.myDsl.Store;
+import org.xtext.example.mydsl.myDsl.Sub;
 import org.xtext.example.mydsl.myDsl.Subset;
+import org.xtext.example.mydsl.myDsl.Sum;
 
 //import com.google.common.io.Files;
 
@@ -38,13 +50,65 @@ public class BashCompiler {
 		// code generation
 		
 		String bashCodeFinal = "";
-		
+		String jsonReferenceTMP = "";
 		// String csvFilename = _model.getData();
 		
 		if (_model instanceof JSonFile) {
-			JSonFile j = (JSonFile) _model;
-			j.getContient();
+			JSonFile f = (JSonFile) _model;
+			bashCodeFinal += "echo '{";
+			//jsonReferenceTMP = f.getName();
+			EList<JSonObject> list = f.getContient();
+			for (JSonObject jo : list) { 
+				if( jo instanceof JsonArray) {
+					/*JsonArray a = (JsonArray) jo;
+					
+					bashCodeFinal+=jsonArrayRecursive(a,a);
+					bashCodeFinal+=indentCode(lvlIndenteCode)+f.getName()+".put("+a.getName()+"); \n";
+					tmpCode ="";*/
+				}
+				if( jo instanceof JsonInteger) {
+					JsonInteger a = (JsonInteger) jo;
+					bashCodeFinal += jsonReferenceTMP + "\"" + a.getName() + "\" : \"" + a.getValue() + "\"" ;
+				}
+				if( jo instanceof JsonBoolean) {
+					JsonBoolean a = (JsonBoolean) jo;
+					bashCodeFinal += jsonReferenceTMP + "\"" + a.getName() + "\" : \"" + a.getValue() + "\"" ;
+				}
+				if( jo instanceof JSonEnum) {
+					JSonEnum a = (JSonEnum) jo;
+					bashCodeFinal += "JSONObject "+ a.getName() +" = new JSONObject(); \n";
+					jsonReferenceTMP = a.getName();
+				}
+				if( jo instanceof JSonString) {
+					JSonString a = (JSonString) jo;
+					bashCodeFinal += jsonReferenceTMP + "\"" + a.getName() + "\" : \"" + a.getValue() + "\"" ;
+				}
+				if( jo instanceof JSonNull) {
+					JSonNull a = (JSonNull) jo;
+					bashCodeFinal += jsonReferenceTMP + "\"" + a.getName() + "\" : null" ;
+				}
+				if( jo instanceof Sum) {
+					Sum a = (Sum) jo;
+					bashCodeFinal += "TODO";
+				}
+				if( jo instanceof Div) {
+					Div a = (Div) jo;
+					bashCodeFinal += "//TODO";
+				}
+				if( jo instanceof Mult) {
+					Mult a = (Mult) jo;
+					bashCodeFinal += "//TODO";
+				}
+				if( jo instanceof Sub) {
+					Sub a = (Sub) jo;
+					bashCodeFinal += "//TODO";
+				}
+			}
+			
+			bashCodeFinal += "}'";
+
 		}
+		
 		if(_model instanceof Commandes) {
 			if( _model instanceof Load) {
 				Load l = (Load) _model;
