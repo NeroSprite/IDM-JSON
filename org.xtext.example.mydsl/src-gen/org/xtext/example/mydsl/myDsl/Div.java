@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Div extends JSonObject, JSonAttribut, JSonOperator
+public interface Div extends JSonObject, JSonAttribut, JSonEnumField, JSonOperator
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

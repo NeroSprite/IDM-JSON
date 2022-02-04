@@ -31,10 +31,43 @@ class MyDslParsingTest {
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}*/
-	/* 
+	
 	@Test
 	def void DisplayModel() {
-		val result = parseHelper.parse("Display { jsonfile JSonFile \"Test\" { String \"Test\" \"HelloWorld\" } }");
+		val result = parseHelper.parse("Commandes { Display { jsonfile JSonFile \"Test\" { Integer \"Test2\" 2 } } }");
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		//Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		
+				
+		val JavaCompiler cmpJava = new JavaCompiler(result)
+		cmpJava.compileAndRun
+	}
+	
+	/*
+	@Test
+	def void EnumTest() {
+		val result = parseHelper.parse("Commandes { Display { jsonfile JSonFile \"Name\" {
+	JSonEnum \"enurm\" [
+		Integer \"Nae\" 1,
+		Sum\"Naf\" [
+			Integer \"N\" 2,
+			Integer \"e\" 4
+		]
+	]
+} } }");
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		//Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		
+				
+		val JavaCompiler cmpJava = new JavaCompiler(result)
+		cmpJava.compileAndRun
+	}*/
+	/* 
+		@Test
+	def void DisplayModelJson() {
+		val result = parseHelper.parse("JSonFile \"Test\" { String \"Test2\" \"HelloWorld\" }");
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
 		//Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
@@ -44,30 +77,32 @@ class MyDslParsingTest {
 		cmpJava.compileAndRun
 	}*/
 	
-	/*
+	
+	
+	 /*
 	@Test
 	def void ArrayTest() {
 		val result = parseHelper.parse("JSonFile \"File\" {
 	JSonArray \"MyArray\" {
 		Integer \"MyInteger\" 2  ,
-		Integer \"MyInteger\" 5 ,
+		Integer \"MyInteger2\" 5 ,
 		Boolean \"MyBoolean\" false ,
 		Null \"MyNullObject\",
 		JSonArray \"MyArray2\" {
-		Integer \"MyInteger2\" 2 ,
+		Integer \"integ1\" 2 ,
 		JSonArray \"MyArray3\" {
-		Integer \"MyInteger3\" 2 ,
-		Sum\"Name\"[
-		Integer \"fr\" 1,
-		Integer \"Name\" 5,
-		Div\"Name2\"[
-		Integer \"fr2\" 1,
-		Integer \"Name3\" 5
+		Integer \"integ2\" 2 ,
+		Sum\"sum\"[
+		Integer \"sum1\" 1,
+		Integer \"sum2\" 5,
+		Div\"divi\"[
+		Integer \"divi1\" 1,
+		Integer \"divi2\" 5
 		],
-		Mult\"Name2\"[
-		Integer \"fr2\" 1,
-		Integer \"Name3\" 5,
-		Integer \"Name3\" 2
+		Mult\"multi\"[
+		Integer \"mult1\" 1,
+		Integer \"mult2\" 5,
+		Integer \"mult3\" 2
 	]
 		]}
 		}
@@ -81,7 +116,6 @@ class MyDslParsingTest {
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}*/
-	
 	
 	/*
 	
@@ -106,7 +140,7 @@ Div\"Name2\"[
 	}
 	*/
 	
-	
+	/* 
 	
 	@Test
 	def void DEBUGtest() {
@@ -123,6 +157,6 @@ Div\"Name2\"[
 				
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
-	}
+	}*/
 	
 }

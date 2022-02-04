@@ -70,6 +70,7 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       case MyDslPackage.COMMANDES: return createCommandes();
       case MyDslPackage.JSON_OBJECT: return createJSonObject();
       case MyDslPackage.JSON_ATTRIBUT: return createJSonAttribut();
+      case MyDslPackage.JSON_ENUM_FIELD: return createJSonEnumField();
       case MyDslPackage.STORE: return createStore();
       case MyDslPackage.LOAD: return createLoad();
       case MyDslPackage.DISPLAY: return createDisplay();
@@ -153,6 +154,18 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     JSonAttributImpl jSonAttribut = new JSonAttributImpl();
     return jSonAttribut;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public JSonEnumField createJSonEnumField()
+  {
+    JSonEnumFieldImpl jSonEnumField = new JSonEnumFieldImpl();
+    return jSonEnumField;
   }
 
   /**

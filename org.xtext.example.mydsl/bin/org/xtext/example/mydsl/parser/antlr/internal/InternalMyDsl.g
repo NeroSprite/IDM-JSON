@@ -484,6 +484,96 @@ ruleJSonAttribut returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleJSonEnumField
+entryRuleJSonEnumField returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getJSonEnumFieldRule()); }
+	iv_ruleJSonEnumField=ruleJSonEnumField
+	{ $current=$iv_ruleJSonEnumField.current; }
+	EOF;
+
+// Rule JSonEnumField
+ruleJSonEnumField returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getJSonEnumFieldAccess().getJsonIntegerParserRuleCall_0());
+		}
+		this_JsonInteger_0=ruleJsonInteger
+		{
+			$current = $this_JsonInteger_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getJSonEnumFieldAccess().getJsonBooleanParserRuleCall_1());
+		}
+		this_JsonBoolean_1=ruleJsonBoolean
+		{
+			$current = $this_JsonBoolean_1.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getJSonEnumFieldAccess().getJSonStringParserRuleCall_2());
+		}
+		this_JSonString_2=ruleJSonString
+		{
+			$current = $this_JSonString_2.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getJSonEnumFieldAccess().getJSonNullParserRuleCall_3());
+		}
+		this_JSonNull_3=ruleJSonNull
+		{
+			$current = $this_JSonNull_3.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getJSonEnumFieldAccess().getSumParserRuleCall_4());
+		}
+		this_Sum_4=ruleSum
+		{
+			$current = $this_Sum_4.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getJSonEnumFieldAccess().getDivParserRuleCall_5());
+		}
+		this_Div_5=ruleDiv
+		{
+			$current = $this_Div_5.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getJSonEnumFieldAccess().getMultParserRuleCall_6());
+		}
+		this_Mult_6=ruleMult
+		{
+			$current = $this_Mult_6.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getJSonEnumFieldAccess().getSubParserRuleCall_7());
+		}
+		this_Sub_7=ruleSub
+		{
+			$current = $this_Sub_7.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
 // Entry rule entryRuleStore
 entryRuleStore returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getStoreRule()); }
@@ -1367,9 +1457,9 @@ ruleJSonEnum returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getJSonEnumAccess().getContientJSonAttributParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getJSonEnumAccess().getContientJSonEnumFieldParserRuleCall_3_0());
 				}
-				lv_Contient_3_0=ruleJSonAttribut
+				lv_Contient_3_0=ruleJSonEnumField
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getJSonEnumRule());
@@ -1378,7 +1468,7 @@ ruleJSonEnum returns [EObject current=null]
 						$current,
 						"Contient",
 						lv_Contient_3_0,
-						"org.xtext.example.mydsl.MyDsl.JSonAttribut");
+						"org.xtext.example.mydsl.MyDsl.JSonEnumField");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -1391,9 +1481,9 @@ ruleJSonEnum returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getJSonEnumAccess().getContientJSonAttributParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getJSonEnumAccess().getContientJSonEnumFieldParserRuleCall_4_1_0());
 					}
-					lv_Contient_5_0=ruleJSonAttribut
+					lv_Contient_5_0=ruleJSonEnumField
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getJSonEnumRule());
@@ -1402,7 +1492,7 @@ ruleJSonEnum returns [EObject current=null]
 							$current,
 							"Contient",
 							lv_Contient_5_0,
-							"org.xtext.example.mydsl.MyDsl.JSonAttribut");
+							"org.xtext.example.mydsl.MyDsl.JSonEnumField");
 						afterParserOrEnumRuleCall();
 					}
 				)

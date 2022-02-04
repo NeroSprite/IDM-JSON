@@ -69,6 +69,15 @@ public interface MyDslFactory extends EFactory
   JSonAttribut createJSonAttribut();
 
   /**
+   * Returns a new object of class '<em>JSon Enum Field</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>JSon Enum Field</em>'.
+   * @generated
+   */
+  JSonEnumField createJSonEnumField();
+
+  /**
    * Returns a new object of class '<em>Store</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

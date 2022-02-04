@@ -171,6 +171,25 @@ public interface MyDslPackage extends EPackage
   int JSON_ATTRIBUT_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.JSonEnumFieldImpl <em>JSon Enum Field</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.myDsl.impl.JSonEnumFieldImpl
+   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getJSonEnumField()
+   * @generated
+   */
+  int JSON_ENUM_FIELD = 5;
+
+  /**
+   * The number of structural features of the '<em>JSon Enum Field</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int JSON_ENUM_FIELD_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl <em>Store</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -178,7 +197,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getStore()
    * @generated
    */
-  int STORE = 5;
+  int STORE = 6;
 
   /**
    * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -215,7 +234,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getLoad()
    * @generated
    */
-  int LOAD = 6;
+  int LOAD = 7;
 
   /**
    * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -252,7 +271,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getDisplay()
    * @generated
    */
-  int DISPLAY = 7;
+  int DISPLAY = 8;
 
   /**
    * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
@@ -289,7 +308,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getSubset()
    * @generated
    */
-  int SUBSET = 8;
+  int SUBSET = 9;
 
   /**
    * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
@@ -326,7 +345,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getProjection()
    * @generated
    */
-  int PROJECTION = 9;
+  int PROJECTION = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -363,7 +382,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getInsert()
    * @generated
    */
-  int INSERT = 10;
+  int INSERT = 11;
 
   /**
    * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
@@ -400,7 +419,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getRemove()
    * @generated
    */
-  int REMOVE = 11;
+  int REMOVE = 12;
 
   /**
    * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
@@ -437,7 +456,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getModify()
    * @generated
    */
-  int MODIFY = 12;
+  int MODIFY = 13;
 
   /**
    * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
@@ -474,7 +493,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getJsonArray()
    * @generated
    */
-  int JSON_ARRAY = 13;
+  int JSON_ARRAY = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -511,7 +530,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getJSonEnum()
    * @generated
    */
-  int JSON_ENUM = 14;
+  int JSON_ENUM = 15;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -548,7 +567,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getJsonInteger()
    * @generated
    */
-  int JSON_INTEGER = 15;
+  int JSON_INTEGER = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -585,7 +604,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getJsonBoolean()
    * @generated
    */
-  int JSON_BOOLEAN = 16;
+  int JSON_BOOLEAN = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -622,7 +641,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getJSonString()
    * @generated
    */
-  int JSON_STRING = 17;
+  int JSON_STRING = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -659,7 +678,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getJSonNull()
    * @generated
    */
-  int JSON_NULL = 18;
+  int JSON_NULL = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -687,7 +706,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getJSonOperator()
    * @generated
    */
-  int JSON_OPERATOR = 19;
+  int JSON_OPERATOR = 20;
 
   /**
    * The number of structural features of the '<em>JSon Operator</em>' class.
@@ -706,7 +725,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getSum()
    * @generated
    */
-  int SUM = 20;
+  int SUM = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -743,7 +762,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getDiv()
    * @generated
    */
-  int DIV = 21;
+  int DIV = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -780,7 +799,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getMult()
    * @generated
    */
-  int MULT = 22;
+  int MULT = 23;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -817,7 +836,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getSub()
    * @generated
    */
-  int SUB = 23;
+  int SUB = 24;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -854,7 +873,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getEBoolean()
    * @generated
    */
-  int EBOOLEAN = 24;
+  int EBOOLEAN = 25;
 
   /**
    * The number of structural features of the '<em>EBoolean</em>' class.
@@ -937,6 +956,16 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EClass getJSonAttribut();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.JSonEnumField <em>JSon Enum Field</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>JSon Enum Field</em>'.
+   * @see org.xtext.example.mydsl.myDsl.JSonEnumField
+   * @generated
+   */
+  EClass getJSonEnumField();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Store <em>Store</em>}'.
@@ -1611,6 +1640,16 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EClass JSON_ATTRIBUT = eINSTANCE.getJSonAttribut();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.JSonEnumFieldImpl <em>JSon Enum Field</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.myDsl.impl.JSonEnumFieldImpl
+     * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getJSonEnumField()
+     * @generated
+     */
+    EClass JSON_ENUM_FIELD = eINSTANCE.getJSonEnumField();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl <em>Store</em>}' class.

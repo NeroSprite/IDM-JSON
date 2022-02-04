@@ -101,6 +101,11 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createJSonAttributAdapter();
       }
       @Override
+      public Adapter caseJSonEnumField(JSonEnumField object)
+      {
+        return createJSonEnumFieldAdapter();
+      }
+      @Override
       public Adapter caseStore(Store object)
       {
         return createStoreAdapter();
@@ -293,6 +298,21 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createJSonAttributAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.JSonEnumField <em>JSon Enum Field</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.JSonEnumField
+   * @generated
+   */
+  public Adapter createJSonEnumFieldAdapter()
   {
     return null;
   }

@@ -20,7 +20,7 @@ package org.xtext.example.mydsl.myDsl;
  * @model
  * @generated
  */
-public interface JSonNull extends JSonObject, JSonAttribut
+public interface JSonNull extends JSonObject, JSonAttribut, JSonEnumField
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

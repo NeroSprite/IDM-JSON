@@ -22,6 +22,9 @@ JSonObject:
 JSonAttribut:
 	JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Sum | Div | Mult | Sub;
 
+JSonEnumField:
+	JsonInteger | JsonBoolean | JSonString | JSonNull | Sum | Div | Mult | Sub;
+
 /* Load and Store */
 
 Store :
@@ -101,7 +104,7 @@ JsonArray:
 JSonEnum:
 	'JSonEnum'
 	name=STRING
-	'[' Contient+=JSonAttribut ( "," Contient+=JSonAttribut)* ']' 
+	'[' Contient+=JSonEnumField ( "," Contient+=JSonEnumField)* ']' 
 	;
 	
 	

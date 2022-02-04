@@ -249,6 +249,49 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//Sub
 		public RuleCall getSubParserRuleCall_9() { return cSubParserRuleCall_9; }
 	}
+	public class JSonEnumFieldElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.JSonEnumField");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cJsonIntegerParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cJsonBooleanParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cJSonStringParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cJSonNullParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cSumParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cDivParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cMultParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cSubParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		
+		//JSonEnumField:
+		//    JsonInteger | JsonBoolean | JSonString | JSonNull | Sum | Div | Mult | Sub;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//JsonInteger | JsonBoolean | JSonString | JSonNull | Sum | Div | Mult | Sub
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//JsonInteger
+		public RuleCall getJsonIntegerParserRuleCall_0() { return cJsonIntegerParserRuleCall_0; }
+		
+		//JsonBoolean
+		public RuleCall getJsonBooleanParserRuleCall_1() { return cJsonBooleanParserRuleCall_1; }
+		
+		//JSonString
+		public RuleCall getJSonStringParserRuleCall_2() { return cJSonStringParserRuleCall_2; }
+		
+		//JSonNull
+		public RuleCall getJSonNullParserRuleCall_3() { return cJSonNullParserRuleCall_3; }
+		
+		//Sum
+		public RuleCall getSumParserRuleCall_4() { return cSumParserRuleCall_4; }
+		
+		//Div
+		public RuleCall getDivParserRuleCall_5() { return cDivParserRuleCall_5; }
+		
+		//Mult
+		public RuleCall getMultParserRuleCall_6() { return cMultParserRuleCall_6; }
+		
+		//Sub
+		public RuleCall getSubParserRuleCall_7() { return cSubParserRuleCall_7; }
+	}
 	public class StoreElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.Store");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -867,23 +910,23 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cContientAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cContientJSonAttributParserRuleCall_3_0 = (RuleCall)cContientAssignment_3.eContents().get(0);
+		private final RuleCall cContientJSonEnumFieldParserRuleCall_3_0 = (RuleCall)cContientAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cContientAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cContientJSonAttributParserRuleCall_4_1_0 = (RuleCall)cContientAssignment_4_1.eContents().get(0);
+		private final RuleCall cContientJSonEnumFieldParserRuleCall_4_1_0 = (RuleCall)cContientAssignment_4_1.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//JSonEnum:
 		//    'JSonEnum'
 		//    name=STRING
-		//    '[' Contient+=JSonAttribut ( "," Contient+=JSonAttribut)* ']'
+		//    '[' Contient+=JSonEnumField ( "," Contient+=JSonEnumField)* ']'
 		//    ;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'JSonEnum'
 		//name=STRING
-		//'[' Contient+=JSonAttribut ( "," Contient+=JSonAttribut)* ']'
+		//'[' Contient+=JSonEnumField ( "," Contient+=JSonEnumField)* ']'
 		public Group getGroup() { return cGroup; }
 		
 		//'JSonEnum'
@@ -898,23 +941,23 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'['
 		public Keyword getLeftSquareBracketKeyword_2() { return cLeftSquareBracketKeyword_2; }
 		
-		//Contient+=JSonAttribut
+		//Contient+=JSonEnumField
 		public Assignment getContientAssignment_3() { return cContientAssignment_3; }
 		
-		//JSonAttribut
-		public RuleCall getContientJSonAttributParserRuleCall_3_0() { return cContientJSonAttributParserRuleCall_3_0; }
+		//JSonEnumField
+		public RuleCall getContientJSonEnumFieldParserRuleCall_3_0() { return cContientJSonEnumFieldParserRuleCall_3_0; }
 		
-		//( "," Contient+=JSonAttribut)*
+		//( "," Contient+=JSonEnumField)*
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//","
 		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 		
-		//Contient+=JSonAttribut
+		//Contient+=JSonEnumField
 		public Assignment getContientAssignment_4_1() { return cContientAssignment_4_1; }
 		
-		//JSonAttribut
-		public RuleCall getContientJSonAttributParserRuleCall_4_1_0() { return cContientJSonAttributParserRuleCall_4_1_0; }
+		//JSonEnumField
+		public RuleCall getContientJSonEnumFieldParserRuleCall_4_1_0() { return cContientJSonEnumFieldParserRuleCall_4_1_0; }
 		
 		//']'
 		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
@@ -1388,6 +1431,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	private final CommandesElements pCommandes;
 	private final JSonObjectElements pJSonObject;
 	private final JSonAttributElements pJSonAttribut;
+	private final JSonEnumFieldElements pJSonEnumField;
 	private final StoreElements pStore;
 	private final LoadElements pLoad;
 	private final DisplayElements pDisplay;
@@ -1423,6 +1467,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		this.pCommandes = new CommandesElements();
 		this.pJSonObject = new JSonObjectElements();
 		this.pJSonAttribut = new JSonAttributElements();
+		this.pJSonEnumField = new JSonEnumFieldElements();
 		this.pStore = new StoreElements();
 		this.pLoad = new LoadElements();
 		this.pDisplay = new DisplayElements();
@@ -1524,6 +1569,16 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	
 	public ParserRule getJSonAttributRule() {
 		return getJSonAttributAccess().getRule();
+	}
+	
+	//JSonEnumField:
+	//    JsonInteger | JsonBoolean | JSonString | JSonNull | Sum | Div | Mult | Sub;
+	public JSonEnumFieldElements getJSonEnumFieldAccess() {
+		return pJSonEnumField;
+	}
+	
+	public ParserRule getJSonEnumFieldRule() {
+		return getJSonEnumFieldAccess().getRule();
 	}
 	
 	///* Load and Store */
@@ -1659,7 +1714,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//JSonEnum:
 	//    'JSonEnum'
 	//    name=STRING
-	//    '[' Contient+=JSonAttribut ( "," Contient+=JSonAttribut)* ']'
+	//    '[' Contient+=JSonEnumField ( "," Contient+=JSonEnumField)* ']'
 	//    ;
 	public JSonEnumElements getJSonEnumAccess() {
 		return pJSonEnum;

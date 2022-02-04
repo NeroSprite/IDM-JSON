@@ -48,7 +48,7 @@ public interface JSonEnum extends JSonObject, JSonAttribut
 
   /**
    * Returns the value of the '<em><b>Contient</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.JSonAttribut}.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.JSonEnumField}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Contient</em>' containment reference list.
@@ -56,6 +56,6 @@ public interface JSonEnum extends JSonObject, JSonAttribut
    * @model containment="true"
    * @generated
    */
-  EList<JSonAttribut> getContient();
+  EList<JSonEnumField> getContient();
 
 } // JSonEnum

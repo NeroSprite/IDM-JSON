@@ -24,29 +24,21 @@ public class MyDslParsingTest {
   
   /**
    * @Test
-   * def void OperationTest() {
-   * val result = parseHelper.parse("JSonFile \"Name\" {
-   * Sum\"Name\"[
-   * Integer \"fr\" 1,
-   * Integer \"Name\" 5 ,
-   * Div\"Name2\"[
-   * Integer \"fr2\" 1,
-   * Integer \"Name3\" 5
-   * ]
-   * ]
-   * }");
+   * def void loadModel() {
+   * val result = parseHelper.parse("Commandes { Load { path \"foo.json\" , name \"nameFile\" } }");
    * Assertions.assertNotNull(result)
    * val errors = result.eResource.errors
    * //Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+   * 
    * 
    * val JavaCompiler cmpJava = new JavaCompiler(result)
    * cmpJava.compileAndRun
    * }
    */
   @Test
-  public void DEBUGtest() {
+  public void DisplayModel() {
     try {
-      final MainGrammar result = this.parseHelper.parse("JSonFile \"File\" {\n\tJSonArray \"MyArray\" {\n\t\tInteger \"MyInteger\" 2  \n\t\t}\n\t\n}");
+      final MainGrammar result = this.parseHelper.parse("Commandes { Display { jsonfile JSonFile \"Test\" { Integer \"Test2\" 2 } } }");
       Assertions.assertNotNull(result);
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       final JavaCompiler cmpJava = new JavaCompiler(result);

@@ -134,6 +134,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 * Contexts:
 	 *     JSonObject returns Div
 	 *     JSonAttribut returns Div
+	 *     JSonEnumField returns Div
 	 *     JSonOperator returns Div
 	 *     Div returns Div
 	 *
@@ -178,7 +179,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     JSonEnum returns JSonEnum
 	 *
 	 * Constraint:
-	 *     (name=STRING Contient+=JSonAttribut Contient+=JSonAttribut*)
+	 *     (name=STRING Contient+=JSonEnumField Contient+=JSonEnumField*)
 	 */
 	protected void sequence_JSonEnum(ISerializationContext context, JSonEnum semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -202,6 +203,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 * Contexts:
 	 *     JSonObject returns JSonNull
 	 *     JSonAttribut returns JSonNull
+	 *     JSonEnumField returns JSonNull
 	 *     JSonNull returns JSonNull
 	 *
 	 * Constraint:
@@ -222,6 +224,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 * Contexts:
 	 *     JSonObject returns JSonString
 	 *     JSonAttribut returns JSonString
+	 *     JSonEnumField returns JSonString
 	 *     JSonString returns JSonString
 	 *
 	 * Constraint:
@@ -259,6 +262,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 * Contexts:
 	 *     JSonObject returns JsonBoolean
 	 *     JSonAttribut returns JsonBoolean
+	 *     JSonEnumField returns JsonBoolean
 	 *     JsonBoolean returns JsonBoolean
 	 *
 	 * Constraint:
@@ -273,6 +277,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 * Contexts:
 	 *     JSonObject returns JsonInteger
 	 *     JSonAttribut returns JsonInteger
+	 *     JSonEnumField returns JsonInteger
 	 *     JsonInteger returns JsonInteger
 	 *     JSonOperator returns JsonInteger
 	 *
@@ -334,6 +339,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 * Contexts:
 	 *     JSonObject returns Mult
 	 *     JSonAttribut returns Mult
+	 *     JSonEnumField returns Mult
 	 *     JSonOperator returns Mult
 	 *     Mult returns Mult
 	 *
@@ -409,6 +415,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 * Contexts:
 	 *     JSonObject returns Sub
 	 *     JSonAttribut returns Sub
+	 *     JSonEnumField returns Sub
 	 *     JSonOperator returns Sub
 	 *     Sub returns Sub
 	 *
@@ -438,6 +445,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 * Contexts:
 	 *     JSonObject returns Sum
 	 *     JSonAttribut returns Sum
+	 *     JSonEnumField returns Sum
 	 *     JSonOperator returns Sum
 	 *     Sum returns Sum
 	 *

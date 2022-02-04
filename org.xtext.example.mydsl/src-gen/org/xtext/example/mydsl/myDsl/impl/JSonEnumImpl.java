@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.xtext.example.mydsl.myDsl.JSonAttribut;
 import org.xtext.example.mydsl.myDsl.JSonEnum;
+import org.xtext.example.mydsl.myDsl.JSonEnumField;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 
 /**
@@ -66,7 +66,7 @@ public class JSonEnumImpl extends JSonObjectImpl implements JSonEnum
    * @generated
    * @ordered
    */
-  protected EList<JSonAttribut> contient;
+  protected EList<JSonEnumField> contient;
 
   /**
    * <!-- begin-user-doc -->
@@ -120,11 +120,11 @@ public class JSonEnumImpl extends JSonObjectImpl implements JSonEnum
    * @generated
    */
   @Override
-  public EList<JSonAttribut> getContient()
+  public EList<JSonEnumField> getContient()
   {
     if (contient == null)
     {
-      contient = new EObjectContainmentEList<JSonAttribut>(JSonAttribut.class, this, MyDslPackage.JSON_ENUM__CONTIENT);
+      contient = new EObjectContainmentEList<JSonEnumField>(JSonEnumField.class, this, MyDslPackage.JSON_ENUM__CONTIENT);
     }
     return contient;
   }
@@ -179,7 +179,7 @@ public class JSonEnumImpl extends JSonObjectImpl implements JSonEnum
         return;
       case MyDslPackage.JSON_ENUM__CONTIENT:
         getContient().clear();
-        getContient().addAll((Collection<? extends JSonAttribut>)newValue);
+        getContient().addAll((Collection<? extends JSonEnumField>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

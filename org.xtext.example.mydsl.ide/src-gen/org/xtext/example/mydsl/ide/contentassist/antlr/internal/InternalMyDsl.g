@@ -174,6 +174,31 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Entry rule entryRuleJSonEnumField
+entryRuleJSonEnumField
+:
+{ before(grammarAccess.getJSonEnumFieldRule()); }
+	 ruleJSonEnumField
+{ after(grammarAccess.getJSonEnumFieldRule()); } 
+	 EOF 
+;
+
+// Rule JSonEnumField
+ruleJSonEnumField 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getJSonEnumFieldAccess().getAlternatives()); }
+		(rule__JSonEnumField__Alternatives)
+		{ after(grammarAccess.getJSonEnumFieldAccess().getAlternatives()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 // Entry rule entryRuleStore
 entryRuleStore
 :
@@ -859,6 +884,63 @@ rule__JSonAttribut__Alternatives
 		{ before(grammarAccess.getJSonAttributAccess().getSubParserRuleCall_9()); }
 		ruleSub
 		{ after(grammarAccess.getJSonAttributAccess().getSubParserRuleCall_9()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__JSonEnumField__Alternatives
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getJSonEnumFieldAccess().getJsonIntegerParserRuleCall_0()); }
+		ruleJsonInteger
+		{ after(grammarAccess.getJSonEnumFieldAccess().getJsonIntegerParserRuleCall_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getJSonEnumFieldAccess().getJsonBooleanParserRuleCall_1()); }
+		ruleJsonBoolean
+		{ after(grammarAccess.getJSonEnumFieldAccess().getJsonBooleanParserRuleCall_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getJSonEnumFieldAccess().getJSonStringParserRuleCall_2()); }
+		ruleJSonString
+		{ after(grammarAccess.getJSonEnumFieldAccess().getJSonStringParserRuleCall_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getJSonEnumFieldAccess().getJSonNullParserRuleCall_3()); }
+		ruleJSonNull
+		{ after(grammarAccess.getJSonEnumFieldAccess().getJSonNullParserRuleCall_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getJSonEnumFieldAccess().getSumParserRuleCall_4()); }
+		ruleSum
+		{ after(grammarAccess.getJSonEnumFieldAccess().getSumParserRuleCall_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getJSonEnumFieldAccess().getDivParserRuleCall_5()); }
+		ruleDiv
+		{ after(grammarAccess.getJSonEnumFieldAccess().getDivParserRuleCall_5()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getJSonEnumFieldAccess().getMultParserRuleCall_6()); }
+		ruleMult
+		{ after(grammarAccess.getJSonEnumFieldAccess().getMultParserRuleCall_6()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getJSonEnumFieldAccess().getSubParserRuleCall_7()); }
+		ruleSub
+		{ after(grammarAccess.getJSonEnumFieldAccess().getSubParserRuleCall_7()); }
 	)
 ;
 finally {
@@ -5275,9 +5357,9 @@ rule__JSonEnum__ContientAssignment_3
 	}
 :
 	(
-		{ before(grammarAccess.getJSonEnumAccess().getContientJSonAttributParserRuleCall_3_0()); }
-		ruleJSonAttribut
-		{ after(grammarAccess.getJSonEnumAccess().getContientJSonAttributParserRuleCall_3_0()); }
+		{ before(grammarAccess.getJSonEnumAccess().getContientJSonEnumFieldParserRuleCall_3_0()); }
+		ruleJSonEnumField
+		{ after(grammarAccess.getJSonEnumAccess().getContientJSonEnumFieldParserRuleCall_3_0()); }
 	)
 ;
 finally {
@@ -5290,9 +5372,9 @@ rule__JSonEnum__ContientAssignment_4_1
 	}
 :
 	(
-		{ before(grammarAccess.getJSonEnumAccess().getContientJSonAttributParserRuleCall_4_1_0()); }
-		ruleJSonAttribut
-		{ after(grammarAccess.getJSonEnumAccess().getContientJSonAttributParserRuleCall_4_1_0()); }
+		{ before(grammarAccess.getJSonEnumAccess().getContientJSonEnumFieldParserRuleCall_4_1_0()); }
+		ruleJSonEnumField
+		{ after(grammarAccess.getJSonEnumAccess().getContientJSonEnumFieldParserRuleCall_4_1_0()); }
 	)
 ;
 finally {

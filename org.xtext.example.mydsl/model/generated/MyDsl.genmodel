@@ -14,6 +14,7 @@
     <genClasses ecoreClass="MyDsl.ecore#//Commandes"/>
     <genClasses ecoreClass="MyDsl.ecore#//JSonObject"/>
     <genClasses ecoreClass="MyDsl.ecore#//JSonAttribut"/>
+    <genClasses ecoreClass="MyDsl.ecore#//JSonEnumField"/>
     <genClasses ecoreClass="MyDsl.ecore#//Store">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Store/path"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Store/name"/>

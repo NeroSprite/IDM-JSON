@@ -110,6 +110,13 @@ public class MyDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case MyDslPackage.JSON_ENUM_FIELD:
+      {
+        JSonEnumField jSonEnumField = (JSonEnumField)theEObject;
+        T result = caseJSonEnumField(jSonEnumField);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MyDslPackage.STORE:
       {
         Store store = (Store)theEObject;
@@ -206,6 +213,7 @@ public class MyDslSwitch<T> extends Switch<T>
         T result = caseJsonInteger(jsonInteger);
         if (result == null) result = caseJSonObject(jsonInteger);
         if (result == null) result = caseJSonAttribut(jsonInteger);
+        if (result == null) result = caseJSonEnumField(jsonInteger);
         if (result == null) result = caseJSonOperator(jsonInteger);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -216,6 +224,7 @@ public class MyDslSwitch<T> extends Switch<T>
         T result = caseJsonBoolean(jsonBoolean);
         if (result == null) result = caseJSonObject(jsonBoolean);
         if (result == null) result = caseJSonAttribut(jsonBoolean);
+        if (result == null) result = caseJSonEnumField(jsonBoolean);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -225,6 +234,7 @@ public class MyDslSwitch<T> extends Switch<T>
         T result = caseJSonString(jSonString);
         if (result == null) result = caseJSonObject(jSonString);
         if (result == null) result = caseJSonAttribut(jSonString);
+        if (result == null) result = caseJSonEnumField(jSonString);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -234,6 +244,7 @@ public class MyDslSwitch<T> extends Switch<T>
         T result = caseJSonNull(jSonNull);
         if (result == null) result = caseJSonObject(jSonNull);
         if (result == null) result = caseJSonAttribut(jSonNull);
+        if (result == null) result = caseJSonEnumField(jSonNull);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -250,6 +261,7 @@ public class MyDslSwitch<T> extends Switch<T>
         T result = caseSum(sum);
         if (result == null) result = caseJSonObject(sum);
         if (result == null) result = caseJSonAttribut(sum);
+        if (result == null) result = caseJSonEnumField(sum);
         if (result == null) result = caseJSonOperator(sum);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -260,6 +272,7 @@ public class MyDslSwitch<T> extends Switch<T>
         T result = caseDiv(div);
         if (result == null) result = caseJSonObject(div);
         if (result == null) result = caseJSonAttribut(div);
+        if (result == null) result = caseJSonEnumField(div);
         if (result == null) result = caseJSonOperator(div);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -270,6 +283,7 @@ public class MyDslSwitch<T> extends Switch<T>
         T result = caseMult(mult);
         if (result == null) result = caseJSonObject(mult);
         if (result == null) result = caseJSonAttribut(mult);
+        if (result == null) result = caseJSonEnumField(mult);
         if (result == null) result = caseJSonOperator(mult);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -280,6 +294,7 @@ public class MyDslSwitch<T> extends Switch<T>
         T result = caseSub(sub);
         if (result == null) result = caseJSonObject(sub);
         if (result == null) result = caseJSonAttribut(sub);
+        if (result == null) result = caseJSonEnumField(sub);
         if (result == null) result = caseJSonOperator(sub);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -371,6 +386,22 @@ public class MyDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseJSonAttribut(JSonAttribut object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>JSon Enum Field</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>JSon Enum Field</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseJSonEnumField(JSonEnumField object)
   {
     return null;
   }

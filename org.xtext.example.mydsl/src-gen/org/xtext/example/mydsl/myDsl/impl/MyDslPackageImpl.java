@@ -17,6 +17,7 @@ import org.xtext.example.mydsl.myDsl.EBoolean;
 import org.xtext.example.mydsl.myDsl.Insert;
 import org.xtext.example.mydsl.myDsl.JSonAttribut;
 import org.xtext.example.mydsl.myDsl.JSonEnum;
+import org.xtext.example.mydsl.myDsl.JSonEnumField;
 import org.xtext.example.mydsl.myDsl.JSonFile;
 import org.xtext.example.mydsl.myDsl.JSonNull;
 import org.xtext.example.mydsl.myDsl.JSonObject;
@@ -80,6 +81,13 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   private EClass jSonAttributEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass jSonEnumFieldEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -359,6 +367,17 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
   public EClass getJSonAttribut()
   {
     return jSonAttributEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getJSonEnumField()
+  {
+    return jSonEnumFieldEClass;
   }
 
   /**
@@ -1009,6 +1028,8 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     jSonAttributEClass = createEClass(JSON_ATTRIBUT);
 
+    jSonEnumFieldEClass = createEClass(JSON_ENUM_FIELD);
+
     storeEClass = createEClass(STORE);
     createEAttribute(storeEClass, STORE__PATH);
     createEAttribute(storeEClass, STORE__NAME);
@@ -1130,24 +1151,32 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     jSonEnumEClass.getESuperTypes().add(this.getJSonAttribut());
     jsonIntegerEClass.getESuperTypes().add(this.getJSonObject());
     jsonIntegerEClass.getESuperTypes().add(this.getJSonAttribut());
+    jsonIntegerEClass.getESuperTypes().add(this.getJSonEnumField());
     jsonIntegerEClass.getESuperTypes().add(this.getJSonOperator());
     jsonBooleanEClass.getESuperTypes().add(this.getJSonObject());
     jsonBooleanEClass.getESuperTypes().add(this.getJSonAttribut());
+    jsonBooleanEClass.getESuperTypes().add(this.getJSonEnumField());
     jSonStringEClass.getESuperTypes().add(this.getJSonObject());
     jSonStringEClass.getESuperTypes().add(this.getJSonAttribut());
+    jSonStringEClass.getESuperTypes().add(this.getJSonEnumField());
     jSonNullEClass.getESuperTypes().add(this.getJSonObject());
     jSonNullEClass.getESuperTypes().add(this.getJSonAttribut());
+    jSonNullEClass.getESuperTypes().add(this.getJSonEnumField());
     sumEClass.getESuperTypes().add(this.getJSonObject());
     sumEClass.getESuperTypes().add(this.getJSonAttribut());
+    sumEClass.getESuperTypes().add(this.getJSonEnumField());
     sumEClass.getESuperTypes().add(this.getJSonOperator());
     divEClass.getESuperTypes().add(this.getJSonObject());
     divEClass.getESuperTypes().add(this.getJSonAttribut());
+    divEClass.getESuperTypes().add(this.getJSonEnumField());
     divEClass.getESuperTypes().add(this.getJSonOperator());
     multEClass.getESuperTypes().add(this.getJSonObject());
     multEClass.getESuperTypes().add(this.getJSonAttribut());
+    multEClass.getESuperTypes().add(this.getJSonEnumField());
     multEClass.getESuperTypes().add(this.getJSonOperator());
     subEClass.getESuperTypes().add(this.getJSonObject());
     subEClass.getESuperTypes().add(this.getJSonAttribut());
+    subEClass.getESuperTypes().add(this.getJSonEnumField());
     subEClass.getESuperTypes().add(this.getJSonOperator());
 
     // Initialize classes and features; add operations and parameters
@@ -1162,6 +1191,8 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEClass(jSonObjectEClass, JSonObject.class, "JSonObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(jSonAttributEClass, JSonAttribut.class, "JSonAttribut", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(jSonEnumFieldEClass, JSonEnumField.class, "JSonEnumField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(storeEClass, Store.class, "Store", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStore_Path(), ecorePackage.getEString(), "path", null, 0, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1201,7 +1232,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     initEClass(jSonEnumEClass, JSonEnum.class, "JSonEnum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getJSonEnum_Name(), ecorePackage.getEString(), "name", null, 0, 1, JSonEnum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getJSonEnum_Contient(), this.getJSonAttribut(), null, "Contient", null, 0, -1, JSonEnum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getJSonEnum_Contient(), this.getJSonEnumField(), null, "Contient", null, 0, -1, JSonEnum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(jsonIntegerEClass, JsonInteger.class, "JsonInteger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getJsonInteger_Name(), ecorePackage.getEString(), "name", null, 0, 1, JsonInteger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
