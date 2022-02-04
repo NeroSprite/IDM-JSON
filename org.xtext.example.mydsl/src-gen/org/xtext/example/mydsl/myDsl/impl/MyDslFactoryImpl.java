@@ -84,6 +84,7 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       case MyDslPackage.JSON_BOOLEAN: return createJsonBoolean();
       case MyDslPackage.JSON_STRING: return createJSonString();
       case MyDslPackage.JSON_NULL: return createJSonNull();
+      case MyDslPackage.JSON_OPERATOR: return createJSonOperator();
       case MyDslPackage.SUM: return createSum();
       case MyDslPackage.DIV: return createDiv();
       case MyDslPackage.MULT: return createMult();
@@ -320,6 +321,18 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     JSonNullImpl jSonNull = new JSonNullImpl();
     return jSonNull;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public JSonOperator createJSonOperator()
+  {
+    JSonOperatorImpl jSonOperator = new JSonOperatorImpl();
+    return jSonOperator;
   }
 
   /**

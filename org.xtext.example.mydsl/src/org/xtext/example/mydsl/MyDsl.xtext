@@ -22,7 +22,6 @@ JSonObject:
 JSonAttribut:
 	JsonArray | JsonInteger | JsonBoolean | JSonEnum | JSonString | JSonNull | Sum | Div | Mult | Sub;
 
-
 /* Load and Store */
 
 Store :
@@ -133,32 +132,37 @@ JSonNull:
 
 
 /* OPPERATION */
+
+JSonOperator:
+	JsonInteger | Sum | Div | Mult | Sub;
+
+
 Sum:
 	'Sum'
 	name=STRING
 	'['
-		listInterger+=JsonInteger ( "," listInterger+=JsonInteger)* 
+		listInterger+=JSonOperator ( "," listInterger+=JSonOperator)* 
 	']';
 
 Div:
 	'Div'
 	name=STRING
 	'['
-		listInterger+=JsonInteger ( "," listInterger+=JsonInteger)* 
+		listInterger+=JSonOperator ( "," listInterger+=JSonOperator)* 
 	']';
 
 Mult :
 	'Mult'
 	name=STRING
 	'['
-		listInterger+=JsonInteger ( "," listInterger+=JsonInteger)* 
+		listInterger+=JSonOperator ( "," listInterger+=JSonOperator)* 
 	']';
 
 Sub:
 	'Sub'
 	name=STRING
 	'['
-		listInterger+=JsonInteger ( "," listInterger+=JsonInteger)* 
+		listInterger+=JSonOperator ( "," listInterger+=JSonOperator)* 
 	']';
 
 

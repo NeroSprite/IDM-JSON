@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.myDsl.Div;
-import org.xtext.example.mydsl.myDsl.JsonInteger;
+import org.xtext.example.mydsl.myDsl.JSonOperator;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 
 /**
@@ -66,7 +66,7 @@ public class DivImpl extends JSonObjectImpl implements Div
    * @generated
    * @ordered
    */
-  protected EList<JsonInteger> listInterger;
+  protected EList<JSonOperator> listInterger;
 
   /**
    * <!-- begin-user-doc -->
@@ -120,11 +120,11 @@ public class DivImpl extends JSonObjectImpl implements Div
    * @generated
    */
   @Override
-  public EList<JsonInteger> getListInterger()
+  public EList<JSonOperator> getListInterger()
   {
     if (listInterger == null)
     {
-      listInterger = new EObjectContainmentEList<JsonInteger>(JsonInteger.class, this, MyDslPackage.DIV__LIST_INTERGER);
+      listInterger = new EObjectContainmentEList<JSonOperator>(JSonOperator.class, this, MyDslPackage.DIV__LIST_INTERGER);
     }
     return listInterger;
   }
@@ -179,7 +179,7 @@ public class DivImpl extends JSonObjectImpl implements Div
         return;
       case MyDslPackage.DIV__LIST_INTERGER:
         getListInterger().clear();
-        getListInterger().addAll((Collection<? extends JsonInteger>)newValue);
+        getListInterger().addAll((Collection<? extends JSonOperator>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

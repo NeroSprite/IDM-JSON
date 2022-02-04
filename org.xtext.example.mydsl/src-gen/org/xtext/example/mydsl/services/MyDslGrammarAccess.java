@@ -1061,6 +1061,38 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//STRING
 		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
 	}
+	public class JSonOperatorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.JSonOperator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cJsonIntegerParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cSumParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cDivParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cMultParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cSubParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		
+		///* OPPERATION */
+		//JSonOperator:
+		//    JsonInteger | Sum | Div | Mult | Sub;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//JsonInteger | Sum | Div | Mult | Sub
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//JsonInteger
+		public RuleCall getJsonIntegerParserRuleCall_0() { return cJsonIntegerParserRuleCall_0; }
+		
+		//Sum
+		public RuleCall getSumParserRuleCall_1() { return cSumParserRuleCall_1; }
+		
+		//Div
+		public RuleCall getDivParserRuleCall_2() { return cDivParserRuleCall_2; }
+		
+		//Mult
+		public RuleCall getMultParserRuleCall_3() { return cMultParserRuleCall_3; }
+		
+		//Sub
+		public RuleCall getSubParserRuleCall_4() { return cSubParserRuleCall_4; }
+	}
 	public class SumElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.Sum");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1069,26 +1101,25 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cListIntergerAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cListIntergerJsonIntegerParserRuleCall_3_0 = (RuleCall)cListIntergerAssignment_3.eContents().get(0);
+		private final RuleCall cListIntergerJSonOperatorParserRuleCall_3_0 = (RuleCall)cListIntergerAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cListIntergerAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cListIntergerJsonIntegerParserRuleCall_4_1_0 = (RuleCall)cListIntergerAssignment_4_1.eContents().get(0);
+		private final RuleCall cListIntergerJSonOperatorParserRuleCall_4_1_0 = (RuleCall)cListIntergerAssignment_4_1.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		///* OPPERATION */
 		//Sum:
 		//    'Sum'
 		//    name=STRING
 		//    '['
-		//        listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
+		//        listInterger+=JSonOperator ( "," listInterger+=JSonOperator)*
 		//    ']';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Sum'
 		//name=STRING
 		//'['
-		//    listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
+		//    listInterger+=JSonOperator ( "," listInterger+=JSonOperator)*
 		//']'
 		public Group getGroup() { return cGroup; }
 		
@@ -1104,23 +1135,23 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'['
 		public Keyword getLeftSquareBracketKeyword_2() { return cLeftSquareBracketKeyword_2; }
 		
-		//listInterger+=JsonInteger
+		//listInterger+=JSonOperator
 		public Assignment getListIntergerAssignment_3() { return cListIntergerAssignment_3; }
 		
-		//JsonInteger
-		public RuleCall getListIntergerJsonIntegerParserRuleCall_3_0() { return cListIntergerJsonIntegerParserRuleCall_3_0; }
+		//JSonOperator
+		public RuleCall getListIntergerJSonOperatorParserRuleCall_3_0() { return cListIntergerJSonOperatorParserRuleCall_3_0; }
 		
-		//( "," listInterger+=JsonInteger)*
+		//( "," listInterger+=JSonOperator)*
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//","
 		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 		
-		//listInterger+=JsonInteger
+		//listInterger+=JSonOperator
 		public Assignment getListIntergerAssignment_4_1() { return cListIntergerAssignment_4_1; }
 		
-		//JsonInteger
-		public RuleCall getListIntergerJsonIntegerParserRuleCall_4_1_0() { return cListIntergerJsonIntegerParserRuleCall_4_1_0; }
+		//JSonOperator
+		public RuleCall getListIntergerJSonOperatorParserRuleCall_4_1_0() { return cListIntergerJSonOperatorParserRuleCall_4_1_0; }
 		
 		//']'
 		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
@@ -1133,25 +1164,25 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cListIntergerAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cListIntergerJsonIntegerParserRuleCall_3_0 = (RuleCall)cListIntergerAssignment_3.eContents().get(0);
+		private final RuleCall cListIntergerJSonOperatorParserRuleCall_3_0 = (RuleCall)cListIntergerAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cListIntergerAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cListIntergerJsonIntegerParserRuleCall_4_1_0 = (RuleCall)cListIntergerAssignment_4_1.eContents().get(0);
+		private final RuleCall cListIntergerJSonOperatorParserRuleCall_4_1_0 = (RuleCall)cListIntergerAssignment_4_1.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Div:
 		//    'Div'
 		//    name=STRING
 		//    '['
-		//        listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
+		//        listInterger+=JSonOperator ( "," listInterger+=JSonOperator)*
 		//    ']';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Div'
 		//name=STRING
 		//'['
-		//    listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
+		//    listInterger+=JSonOperator ( "," listInterger+=JSonOperator)*
 		//']'
 		public Group getGroup() { return cGroup; }
 		
@@ -1167,23 +1198,23 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'['
 		public Keyword getLeftSquareBracketKeyword_2() { return cLeftSquareBracketKeyword_2; }
 		
-		//listInterger+=JsonInteger
+		//listInterger+=JSonOperator
 		public Assignment getListIntergerAssignment_3() { return cListIntergerAssignment_3; }
 		
-		//JsonInteger
-		public RuleCall getListIntergerJsonIntegerParserRuleCall_3_0() { return cListIntergerJsonIntegerParserRuleCall_3_0; }
+		//JSonOperator
+		public RuleCall getListIntergerJSonOperatorParserRuleCall_3_0() { return cListIntergerJSonOperatorParserRuleCall_3_0; }
 		
-		//( "," listInterger+=JsonInteger)*
+		//( "," listInterger+=JSonOperator)*
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//","
 		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 		
-		//listInterger+=JsonInteger
+		//listInterger+=JSonOperator
 		public Assignment getListIntergerAssignment_4_1() { return cListIntergerAssignment_4_1; }
 		
-		//JsonInteger
-		public RuleCall getListIntergerJsonIntegerParserRuleCall_4_1_0() { return cListIntergerJsonIntegerParserRuleCall_4_1_0; }
+		//JSonOperator
+		public RuleCall getListIntergerJSonOperatorParserRuleCall_4_1_0() { return cListIntergerJSonOperatorParserRuleCall_4_1_0; }
 		
 		//']'
 		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
@@ -1196,25 +1227,25 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cListIntergerAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cListIntergerJsonIntegerParserRuleCall_3_0 = (RuleCall)cListIntergerAssignment_3.eContents().get(0);
+		private final RuleCall cListIntergerJSonOperatorParserRuleCall_3_0 = (RuleCall)cListIntergerAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cListIntergerAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cListIntergerJsonIntegerParserRuleCall_4_1_0 = (RuleCall)cListIntergerAssignment_4_1.eContents().get(0);
+		private final RuleCall cListIntergerJSonOperatorParserRuleCall_4_1_0 = (RuleCall)cListIntergerAssignment_4_1.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Mult :
 		//    'Mult'
 		//    name=STRING
 		//    '['
-		//        listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
+		//        listInterger+=JSonOperator ( "," listInterger+=JSonOperator)*
 		//    ']';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Mult'
 		//name=STRING
 		//'['
-		//    listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
+		//    listInterger+=JSonOperator ( "," listInterger+=JSonOperator)*
 		//']'
 		public Group getGroup() { return cGroup; }
 		
@@ -1230,23 +1261,23 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'['
 		public Keyword getLeftSquareBracketKeyword_2() { return cLeftSquareBracketKeyword_2; }
 		
-		//listInterger+=JsonInteger
+		//listInterger+=JSonOperator
 		public Assignment getListIntergerAssignment_3() { return cListIntergerAssignment_3; }
 		
-		//JsonInteger
-		public RuleCall getListIntergerJsonIntegerParserRuleCall_3_0() { return cListIntergerJsonIntegerParserRuleCall_3_0; }
+		//JSonOperator
+		public RuleCall getListIntergerJSonOperatorParserRuleCall_3_0() { return cListIntergerJSonOperatorParserRuleCall_3_0; }
 		
-		//( "," listInterger+=JsonInteger)*
+		//( "," listInterger+=JSonOperator)*
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//","
 		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 		
-		//listInterger+=JsonInteger
+		//listInterger+=JSonOperator
 		public Assignment getListIntergerAssignment_4_1() { return cListIntergerAssignment_4_1; }
 		
-		//JsonInteger
-		public RuleCall getListIntergerJsonIntegerParserRuleCall_4_1_0() { return cListIntergerJsonIntegerParserRuleCall_4_1_0; }
+		//JSonOperator
+		public RuleCall getListIntergerJSonOperatorParserRuleCall_4_1_0() { return cListIntergerJSonOperatorParserRuleCall_4_1_0; }
 		
 		//']'
 		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
@@ -1259,25 +1290,25 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cListIntergerAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cListIntergerJsonIntegerParserRuleCall_3_0 = (RuleCall)cListIntergerAssignment_3.eContents().get(0);
+		private final RuleCall cListIntergerJSonOperatorParserRuleCall_3_0 = (RuleCall)cListIntergerAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cListIntergerAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cListIntergerJsonIntegerParserRuleCall_4_1_0 = (RuleCall)cListIntergerAssignment_4_1.eContents().get(0);
+		private final RuleCall cListIntergerJSonOperatorParserRuleCall_4_1_0 = (RuleCall)cListIntergerAssignment_4_1.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Sub:
 		//    'Sub'
 		//    name=STRING
 		//    '['
-		//        listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
+		//        listInterger+=JSonOperator ( "," listInterger+=JSonOperator)*
 		//    ']';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Sub'
 		//name=STRING
 		//'['
-		//    listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
+		//    listInterger+=JSonOperator ( "," listInterger+=JSonOperator)*
 		//']'
 		public Group getGroup() { return cGroup; }
 		
@@ -1293,23 +1324,23 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'['
 		public Keyword getLeftSquareBracketKeyword_2() { return cLeftSquareBracketKeyword_2; }
 		
-		//listInterger+=JsonInteger
+		//listInterger+=JSonOperator
 		public Assignment getListIntergerAssignment_3() { return cListIntergerAssignment_3; }
 		
-		//JsonInteger
-		public RuleCall getListIntergerJsonIntegerParserRuleCall_3_0() { return cListIntergerJsonIntegerParserRuleCall_3_0; }
+		//JSonOperator
+		public RuleCall getListIntergerJSonOperatorParserRuleCall_3_0() { return cListIntergerJSonOperatorParserRuleCall_3_0; }
 		
-		//( "," listInterger+=JsonInteger)*
+		//( "," listInterger+=JSonOperator)*
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//","
 		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 		
-		//listInterger+=JsonInteger
+		//listInterger+=JSonOperator
 		public Assignment getListIntergerAssignment_4_1() { return cListIntergerAssignment_4_1; }
 		
-		//JsonInteger
-		public RuleCall getListIntergerJsonIntegerParserRuleCall_4_1_0() { return cListIntergerJsonIntegerParserRuleCall_4_1_0; }
+		//JSonOperator
+		public RuleCall getListIntergerJSonOperatorParserRuleCall_4_1_0() { return cListIntergerJSonOperatorParserRuleCall_4_1_0; }
 		
 		//']'
 		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
@@ -1371,6 +1402,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	private final JsonBooleanElements pJsonBoolean;
 	private final JSonStringElements pJSonString;
 	private final JSonNullElements pJSonNull;
+	private final JSonOperatorElements pJSonOperator;
 	private final SumElements pSum;
 	private final DivElements pDiv;
 	private final MultElements pMult;
@@ -1405,6 +1437,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		this.pJsonBoolean = new JsonBooleanElements();
 		this.pJSonString = new JSonStringElements();
 		this.pJSonNull = new JSonNullElements();
+		this.pJSonOperator = new JSonOperatorElements();
 		this.pSum = new SumElements();
 		this.pDiv = new DivElements();
 		this.pMult = new MultElements();
@@ -1688,11 +1721,21 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	///* OPPERATION */
+	//JSonOperator:
+	//    JsonInteger | Sum | Div | Mult | Sub;
+	public JSonOperatorElements getJSonOperatorAccess() {
+		return pJSonOperator;
+	}
+	
+	public ParserRule getJSonOperatorRule() {
+		return getJSonOperatorAccess().getRule();
+	}
+	
 	//Sum:
 	//    'Sum'
 	//    name=STRING
 	//    '['
-	//        listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
+	//        listInterger+=JSonOperator ( "," listInterger+=JSonOperator)*
 	//    ']';
 	public SumElements getSumAccess() {
 		return pSum;
@@ -1706,7 +1749,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//    'Div'
 	//    name=STRING
 	//    '['
-	//        listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
+	//        listInterger+=JSonOperator ( "," listInterger+=JSonOperator)*
 	//    ']';
 	public DivElements getDivAccess() {
 		return pDiv;
@@ -1720,7 +1763,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//    'Mult'
 	//    name=STRING
 	//    '['
-	//        listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
+	//        listInterger+=JSonOperator ( "," listInterger+=JSonOperator)*
 	//    ']';
 	public MultElements getMultAccess() {
 		return pMult;
@@ -1734,7 +1777,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//    'Sub'
 	//    name=STRING
 	//    '['
-	//        listInterger+=JsonInteger ( "," listInterger+=JsonInteger)*
+	//        listInterger+=JSonOperator ( "," listInterger+=JSonOperator)*
 	//    ']';
 	public SubElements getSubAccess() {
 		return pSub;

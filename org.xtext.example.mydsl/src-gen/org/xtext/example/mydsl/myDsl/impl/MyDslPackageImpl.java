@@ -20,6 +20,7 @@ import org.xtext.example.mydsl.myDsl.JSonEnum;
 import org.xtext.example.mydsl.myDsl.JSonFile;
 import org.xtext.example.mydsl.myDsl.JSonNull;
 import org.xtext.example.mydsl.myDsl.JSonObject;
+import org.xtext.example.mydsl.myDsl.JSonOperator;
 import org.xtext.example.mydsl.myDsl.JSonString;
 import org.xtext.example.mydsl.myDsl.JsonArray;
 import org.xtext.example.mydsl.myDsl.JsonBoolean;
@@ -177,6 +178,13 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   private EClass jSonNullEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass jSonOperatorEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -810,6 +818,17 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
+  public EClass getJSonOperator()
+  {
+    return jSonOperatorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getSum()
   {
     return sumEClass;
@@ -1045,6 +1064,8 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     jSonNullEClass = createEClass(JSON_NULL);
     createEAttribute(jSonNullEClass, JSON_NULL__NAME);
 
+    jSonOperatorEClass = createEClass(JSON_OPERATOR);
+
     sumEClass = createEClass(SUM);
     createEAttribute(sumEClass, SUM__NAME);
     createEReference(sumEClass, SUM__LIST_INTERGER);
@@ -1109,6 +1130,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     jSonEnumEClass.getESuperTypes().add(this.getJSonAttribut());
     jsonIntegerEClass.getESuperTypes().add(this.getJSonObject());
     jsonIntegerEClass.getESuperTypes().add(this.getJSonAttribut());
+    jsonIntegerEClass.getESuperTypes().add(this.getJSonOperator());
     jsonBooleanEClass.getESuperTypes().add(this.getJSonObject());
     jsonBooleanEClass.getESuperTypes().add(this.getJSonAttribut());
     jSonStringEClass.getESuperTypes().add(this.getJSonObject());
@@ -1117,12 +1139,16 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     jSonNullEClass.getESuperTypes().add(this.getJSonAttribut());
     sumEClass.getESuperTypes().add(this.getJSonObject());
     sumEClass.getESuperTypes().add(this.getJSonAttribut());
+    sumEClass.getESuperTypes().add(this.getJSonOperator());
     divEClass.getESuperTypes().add(this.getJSonObject());
     divEClass.getESuperTypes().add(this.getJSonAttribut());
+    divEClass.getESuperTypes().add(this.getJSonOperator());
     multEClass.getESuperTypes().add(this.getJSonObject());
     multEClass.getESuperTypes().add(this.getJSonAttribut());
+    multEClass.getESuperTypes().add(this.getJSonOperator());
     subEClass.getESuperTypes().add(this.getJSonObject());
     subEClass.getESuperTypes().add(this.getJSonAttribut());
+    subEClass.getESuperTypes().add(this.getJSonOperator());
 
     // Initialize classes and features; add operations and parameters
     initEClass(mainGrammarEClass, MainGrammar.class, "MainGrammar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1192,21 +1218,23 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEClass(jSonNullEClass, JSonNull.class, "JSonNull", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getJSonNull_Name(), ecorePackage.getEString(), "name", null, 0, 1, JSonNull.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(jSonOperatorEClass, JSonOperator.class, "JSonOperator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(sumEClass, Sum.class, "Sum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSum_Name(), ecorePackage.getEString(), "name", null, 0, 1, Sum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSum_ListInterger(), this.getJsonInteger(), null, "listInterger", null, 0, -1, Sum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSum_ListInterger(), this.getJSonOperator(), null, "listInterger", null, 0, -1, Sum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(divEClass, Div.class, "Div", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDiv_Name(), ecorePackage.getEString(), "name", null, 0, 1, Div.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDiv_ListInterger(), this.getJsonInteger(), null, "listInterger", null, 0, -1, Div.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDiv_ListInterger(), this.getJSonOperator(), null, "listInterger", null, 0, -1, Div.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(multEClass, Mult.class, "Mult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMult_Name(), ecorePackage.getEString(), "name", null, 0, 1, Mult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMult_ListInterger(), this.getJsonInteger(), null, "listInterger", null, 0, -1, Mult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMult_ListInterger(), this.getJSonOperator(), null, "listInterger", null, 0, -1, Mult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(subEClass, Sub.class, "Sub", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSub_Name(), ecorePackage.getEString(), "name", null, 0, 1, Sub.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSub_ListInterger(), this.getJsonInteger(), null, "listInterger", null, 0, -1, Sub.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSub_ListInterger(), this.getJSonOperator(), null, "listInterger", null, 0, -1, Sub.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(eBooleanEClass, EBoolean.class, "EBoolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

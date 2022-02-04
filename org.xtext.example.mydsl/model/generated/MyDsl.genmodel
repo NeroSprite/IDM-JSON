@@ -69,6 +69,7 @@
     <genClasses ecoreClass="MyDsl.ecore#//JSonNull">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//JSonNull/name"/>
     </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//JSonOperator"/>
     <genClasses ecoreClass="MyDsl.ecore#//Sum">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Sum/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Sum/listInterger"/>

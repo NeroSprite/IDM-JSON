@@ -195,6 +195,15 @@ public interface MyDslFactory extends EFactory
   JSonNull createJSonNull();
 
   /**
+   * Returns a new object of class '<em>JSon Operator</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>JSon Operator</em>'.
+   * @generated
+   */
+  JSonOperator createJSonOperator();
+
+  /**
    * Returns a new object of class '<em>Sum</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

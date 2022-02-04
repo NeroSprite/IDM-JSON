@@ -18,6 +18,7 @@ import org.xtext.example.mydsl.myDsl.JSonEnum;
 import org.xtext.example.mydsl.myDsl.JSonFile;
 import org.xtext.example.mydsl.myDsl.JSonNull;
 import org.xtext.example.mydsl.myDsl.JSonObject;
+import org.xtext.example.mydsl.myDsl.JSonOperator;
 import org.xtext.example.mydsl.myDsl.JSonString;
 import org.xtext.example.mydsl.myDsl.JsonArray;
 import org.xtext.example.mydsl.myDsl.JsonBoolean;
@@ -49,10 +50,10 @@ public class JavaCompiler {
 		String jsonReferenceTMP = "";
 		int i = 0;
 
-		
-		
 
 		//Debut Generation code
+		
+		javaCodeFinal+="import org.json.JSONArray;\nimport org.json.JSONObject;\n\n";
 		javaCodeFinal+="public class Java {\n";
 		lvlIndenteCode++;
 		javaCodeFinal+=indentCode(lvlIndenteCode)+"public static void main(String args[]) {\n";
@@ -62,26 +63,21 @@ public class JavaCompiler {
 			javaCodeFinal += indentCode(lvlIndenteCode)+"JSONObject "+ f.getName() +" = new JSONObject(); \n";
 			jsonReferenceTMP = f.getName();
 			EList<JSonObject> list = f.getContient();
-			/*int p = 0;
-			while(list.size() == p) {
-				javaCodeFinal+=list.get(p)+"\n";
-				p++;
-			}*/
 			for (JSonObject jo : list) { 
 				if( jo instanceof JsonArray) {
 					JsonArray a = (JsonArray) jo;
 					
 					javaCodeFinal+=jsonArrayRecursive(a,a);
-					javaCodeFinal+=indentCode(lvlIndenteCode)+f.getName()+".put("+a.getName()+"); \n";
+					javaCodeFinal+=indentCode(lvlIndenteCode)+f.getName()+".put(\""+a.getName()+"\","+a.getName()+"); \n";
 					tmpCode ="";
 				}
 				if( jo instanceof JsonInteger) {
 					JsonInteger a = (JsonInteger) jo;
-					javaCodeFinal = indentCode(lvlIndenteCode)+jsonReferenceTMP+".put("+a.getName()+", new Double("+a.getValue()+")); \n";
+					javaCodeFinal = indentCode(lvlIndenteCode)+jsonReferenceTMP+".put(\""+a.getName()+"\", new Double("+a.getValue()+")); \n";
 				}
 				if( jo instanceof JsonBoolean) {
 					JsonBoolean a = (JsonBoolean) jo;
-					javaCodeFinal = indentCode(lvlIndenteCode)+jsonReferenceTMP+".put("+a.getName()+", new Boolean("+a.getValue()+")); \n";
+					javaCodeFinal = indentCode(lvlIndenteCode)+jsonReferenceTMP+".put(\""+a.getName()+"\", new Boolean("+a.getValue()+")); \n";
 				}
 				if( jo instanceof JSonEnum) {
 					JSonEnum a = (JSonEnum) jo;
@@ -90,27 +86,39 @@ public class JavaCompiler {
 				}
 				if( jo instanceof JSonString) {
 					JSonString a = (JSonString) jo;
-					javaCodeFinal = indentCode(lvlIndenteCode)+jsonReferenceTMP+".put("+a.getName()+", " + a.getValue()+"); \n";
+					javaCodeFinal = indentCode(lvlIndenteCode)+jsonReferenceTMP+".put(\""+a.getName()+"\", " + a.getValue()+"); \n";
 				}
 				if( jo instanceof JSonNull) {
 					JSonNull a = (JSonNull) jo;
-					javaCodeFinal = indentCode(lvlIndenteCode)+jsonReferenceTMP+".put("+a.getName()+", null); \n";
+					javaCodeFinal = indentCode(lvlIndenteCode)+jsonReferenceTMP+".put(\""+a.getName()+"\", null); \n";
 				}
 				if( jo instanceof Sum) {
 					Sum a = (Sum) jo;
-					javaCodeFinal += indentCode(lvlIndenteCode)+"//TODO";
+					EList<JSonOperator> sumlist = a.getListInterger();
+					javaCodeFinal += indentCode(lvlIndenteCode)+jsonReferenceTMP+".put(\""+a.getName()+"\", new Double(";
+					javaCodeFinal += Operation(sumlist,"+");
+					javaCodeFinal += ")); \n";
 				}
 				if( jo instanceof Div) {
 					Div a = (Div) jo;
-					javaCodeFinal += indentCode(lvlIndenteCode)+"//TODO";
+					EList<JSonOperator> sumlist = a.getListInterger();
+					javaCodeFinal += indentCode(lvlIndenteCode)+jsonReferenceTMP+".put(\""+a.getName()+"\", new Double(";
+					javaCodeFinal += Operation(sumlist,"/");
+					javaCodeFinal += ")); \n";
 				}
 				if( jo instanceof Mult) {
 					Mult a = (Mult) jo;
-					javaCodeFinal += indentCode(lvlIndenteCode)+"//TODO";
+					EList<JSonOperator> sumlist = a.getListInterger();
+					javaCodeFinal += indentCode(lvlIndenteCode)+jsonReferenceTMP+".put(\""+a.getName()+"\", new Double(";
+					javaCodeFinal += Operation(sumlist,"*");
+					javaCodeFinal += ")); \n";
 				}
 				if( jo instanceof Sub) {
 					Sub a = (Sub) jo;
-					javaCodeFinal += indentCode(lvlIndenteCode)+"//TODO";
+					EList<JSonOperator> sumlist = a.getListInterger();
+					javaCodeFinal += indentCode(lvlIndenteCode)+jsonReferenceTMP+".put(\""+a.getName()+"\", new Double(";
+					javaCodeFinal += Operation(sumlist,"-");
+					javaCodeFinal += ")); \n";
 				}
 			}
 
@@ -162,7 +170,8 @@ public class JavaCompiler {
 		//		"print(df)";	
 
 		// serialize code into Python filename
-		String JAVA_OUTPUT = "Java.java";			
+		String JAVA_OUTPUT = "Java.java";
+		String JAVA_INPUT = "javac -cp json.jar Java.java";
 		/*
 		FileWriter fw = new FileWriter(PYTHON_OUTPUT);
 		fw.write(pythonCode);
@@ -175,7 +184,7 @@ public class JavaCompiler {
 		// execute the generated Python code
 		// roughly: exec "python foo.py"
 
-		Process p = Runtime.getRuntime().exec("java " + JAVA_OUTPUT);
+		Process p = Runtime.getRuntime().exec(JAVA_INPUT);
 
 		// output
 		BufferedReader stdInput = new BufferedReader(new 
@@ -196,31 +205,94 @@ public class JavaCompiler {
 		}
 	}
 	
+	
+	public String Operation(EList<JSonOperator> sumlist, String operator) {
+		String res = "";
+		for (JSonOperator jo : sumlist) { 
+			if( jo instanceof JsonInteger) {
+				JsonInteger a = (JsonInteger) jo;
+				res+= a.getValue()+operator;
+			}
+			else if( jo instanceof Sum) {
+				Sum a = (Sum) jo;
+				res+= "("+Operation(a.getListInterger(), "+")+")+";
+			}
+			else if( jo instanceof Div) {
+				Div a = (Div) jo;
+				res+= "("+Operation(a.getListInterger(), "/")+")+";
+			}
+			else if( jo instanceof Mult) {
+				Mult a = (Mult) jo;
+				res+= "("+Operation(a.getListInterger(), "*")+")+";
+			}
+			else if( jo instanceof Sub) {
+				Sub a = (Sub) jo;
+				res+= "("+Operation(a.getListInterger(), "-")+")+";
+			}
+			
+		}
+		if(sumlist.size()!=0) {
+			res=res.substring(0,res.length()-1);
+		}
+		return res;
+	}
+	
+	
 	public String jsonArrayRecursive(JsonArray a,JsonArray f ) {
 		tmpCode += indentCode(lvlIndenteCode)+"JSONArray "+ a.getName() +" = new JSONArray(); \n";
 		EList<JSonAttribut> listArray = a.getContient();
 		for (JSonAttribut att : listArray) {
 			if( att instanceof JsonBoolean) {
 				JsonBoolean b = (JsonBoolean) att;
-				tmpCode += indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+", new Boolean("+b.getValue()+")); \n";
+				tmpCode += indentCode(lvlIndenteCode)+a.getName()+".put(\""+b.getName()+"\", new Boolean("+b.getValue()+")); \n";
 			}
 			else if( att instanceof JsonInteger) {
-				JsonInteger b = (JsonInteger) att;
-				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+", new Double("+b.getValue()+")); \n";
+				JsonInteger b = (JsonInteger) att;//
+				//tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+ f.getName() +" = new JSONObject().put(\""+f.getName()+""\", \""+ b.getValue()+"\");";
+				//tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+".put(0, new Double("+b.getValue()+")); \n";
+				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put(0, new Double("+b.getValue()+")); \n";
 			}
 
 			else if( att instanceof JSonString) {
 				JSonString b = (JSonString) att;
-				tmpCode += indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+", " + b.getValue()+"); \n";
+				tmpCode += indentCode(lvlIndenteCode)+a.getName()+".put(\""+b.getName()+"\", " + b.getValue()+"); \n";
 			}
 			else if( att instanceof JSonNull) {
 				JSonNull b = (JSonNull) att;
-				tmpCode += indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+", null); \n";
+				tmpCode += indentCode(lvlIndenteCode)+a.getName()+".put(\""+b.getName()+"\", null); \n";
 			}
 			else if( att instanceof JsonArray) {
 				JsonArray b = (JsonArray) att;
 				tmpCode= jsonArrayRecursive(b,a);
 				//tmpCode ="";
+			}
+			else if( att instanceof Sum) {
+				Sum b = (Sum) att;
+				EList<JSonOperator> sumlist = b.getListInterger();
+				tmpCode += indentCode(lvlIndenteCode)+a.getName()+".put(\""+b.getName()+"\", new Double(";
+				tmpCode += Operation(sumlist,"+");
+				tmpCode += ")); \n";
+			}
+			else if( att instanceof Div) {
+				Div b = (Div) att;
+				EList<JSonOperator> sumlist = b.getListInterger();
+				tmpCode += indentCode(lvlIndenteCode)+a.getName()+".put(\""+b.getName()+"\", new Double(";
+				tmpCode += Operation(sumlist,"/");
+				tmpCode += ")); \n";
+			}
+			else if( att instanceof Mult) {
+				Mult b = (Mult) att;
+				EList<JSonOperator> sumlist = b.getListInterger();
+				tmpCode += indentCode(lvlIndenteCode)+a.getName()+".put(\""+b.getName()+"\", new Double(";
+				tmpCode += Operation(sumlist,"*");
+				tmpCode += ")); \n";
+			}
+			else if( att instanceof Sub) {
+				Sub b = (Sub) att;
+				EList<JSonOperator> sumlist = b.getListInterger();
+				tmpCode += indentCode(lvlIndenteCode)+a.getName()+".put(\""+b.getName()+"\", new Double(";
+				tmpCode += Operation(sumlist,"-");
+				tmpCode += ")); \n";
 			}
 		}
 		if(!a.equals(f)) {

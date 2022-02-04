@@ -1642,6 +1642,69 @@ ruleJSonNull returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleJSonOperator
+entryRuleJSonOperator returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getJSonOperatorRule()); }
+	iv_ruleJSonOperator=ruleJSonOperator
+	{ $current=$iv_ruleJSonOperator.current; }
+	EOF;
+
+// Rule JSonOperator
+ruleJSonOperator returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getJSonOperatorAccess().getJsonIntegerParserRuleCall_0());
+		}
+		this_JsonInteger_0=ruleJsonInteger
+		{
+			$current = $this_JsonInteger_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getJSonOperatorAccess().getSumParserRuleCall_1());
+		}
+		this_Sum_1=ruleSum
+		{
+			$current = $this_Sum_1.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getJSonOperatorAccess().getDivParserRuleCall_2());
+		}
+		this_Div_2=ruleDiv
+		{
+			$current = $this_Div_2.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getJSonOperatorAccess().getMultParserRuleCall_3());
+		}
+		this_Mult_3=ruleMult
+		{
+			$current = $this_Mult_3.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getJSonOperatorAccess().getSubParserRuleCall_4());
+		}
+		this_Sub_4=ruleSub
+		{
+			$current = $this_Sub_4.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
 // Entry rule entryRuleSum
 entryRuleSum returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getSumRule()); }
@@ -1687,9 +1750,9 @@ ruleSum returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSumAccess().getListIntergerJsonIntegerParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getSumAccess().getListIntergerJSonOperatorParserRuleCall_3_0());
 				}
-				lv_listInterger_3_0=ruleJsonInteger
+				lv_listInterger_3_0=ruleJSonOperator
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getSumRule());
@@ -1698,7 +1761,7 @@ ruleSum returns [EObject current=null]
 						$current,
 						"listInterger",
 						lv_listInterger_3_0,
-						"org.xtext.example.mydsl.MyDsl.JsonInteger");
+						"org.xtext.example.mydsl.MyDsl.JSonOperator");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -1711,9 +1774,9 @@ ruleSum returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getSumAccess().getListIntergerJsonIntegerParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getSumAccess().getListIntergerJSonOperatorParserRuleCall_4_1_0());
 					}
-					lv_listInterger_5_0=ruleJsonInteger
+					lv_listInterger_5_0=ruleJSonOperator
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getSumRule());
@@ -1722,7 +1785,7 @@ ruleSum returns [EObject current=null]
 							$current,
 							"listInterger",
 							lv_listInterger_5_0,
-							"org.xtext.example.mydsl.MyDsl.JsonInteger");
+							"org.xtext.example.mydsl.MyDsl.JSonOperator");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -1780,9 +1843,9 @@ ruleDiv returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getDivAccess().getListIntergerJsonIntegerParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getDivAccess().getListIntergerJSonOperatorParserRuleCall_3_0());
 				}
-				lv_listInterger_3_0=ruleJsonInteger
+				lv_listInterger_3_0=ruleJSonOperator
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getDivRule());
@@ -1791,7 +1854,7 @@ ruleDiv returns [EObject current=null]
 						$current,
 						"listInterger",
 						lv_listInterger_3_0,
-						"org.xtext.example.mydsl.MyDsl.JsonInteger");
+						"org.xtext.example.mydsl.MyDsl.JSonOperator");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -1804,9 +1867,9 @@ ruleDiv returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getDivAccess().getListIntergerJsonIntegerParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getDivAccess().getListIntergerJSonOperatorParserRuleCall_4_1_0());
 					}
-					lv_listInterger_5_0=ruleJsonInteger
+					lv_listInterger_5_0=ruleJSonOperator
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getDivRule());
@@ -1815,7 +1878,7 @@ ruleDiv returns [EObject current=null]
 							$current,
 							"listInterger",
 							lv_listInterger_5_0,
-							"org.xtext.example.mydsl.MyDsl.JsonInteger");
+							"org.xtext.example.mydsl.MyDsl.JSonOperator");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -1873,9 +1936,9 @@ ruleMult returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getMultAccess().getListIntergerJsonIntegerParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getMultAccess().getListIntergerJSonOperatorParserRuleCall_3_0());
 				}
-				lv_listInterger_3_0=ruleJsonInteger
+				lv_listInterger_3_0=ruleJSonOperator
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getMultRule());
@@ -1884,7 +1947,7 @@ ruleMult returns [EObject current=null]
 						$current,
 						"listInterger",
 						lv_listInterger_3_0,
-						"org.xtext.example.mydsl.MyDsl.JsonInteger");
+						"org.xtext.example.mydsl.MyDsl.JSonOperator");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -1897,9 +1960,9 @@ ruleMult returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getMultAccess().getListIntergerJsonIntegerParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getMultAccess().getListIntergerJSonOperatorParserRuleCall_4_1_0());
 					}
-					lv_listInterger_5_0=ruleJsonInteger
+					lv_listInterger_5_0=ruleJSonOperator
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getMultRule());
@@ -1908,7 +1971,7 @@ ruleMult returns [EObject current=null]
 							$current,
 							"listInterger",
 							lv_listInterger_5_0,
-							"org.xtext.example.mydsl.MyDsl.JsonInteger");
+							"org.xtext.example.mydsl.MyDsl.JSonOperator");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -1966,9 +2029,9 @@ ruleSub returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSubAccess().getListIntergerJsonIntegerParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getSubAccess().getListIntergerJSonOperatorParserRuleCall_3_0());
 				}
-				lv_listInterger_3_0=ruleJsonInteger
+				lv_listInterger_3_0=ruleJSonOperator
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getSubRule());
@@ -1977,7 +2040,7 @@ ruleSub returns [EObject current=null]
 						$current,
 						"listInterger",
 						lv_listInterger_3_0,
-						"org.xtext.example.mydsl.MyDsl.JsonInteger");
+						"org.xtext.example.mydsl.MyDsl.JSonOperator");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -1990,9 +2053,9 @@ ruleSub returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getSubAccess().getListIntergerJsonIntegerParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getSubAccess().getListIntergerJSonOperatorParserRuleCall_4_1_0());
 					}
-					lv_listInterger_5_0=ruleJsonInteger
+					lv_listInterger_5_0=ruleJSonOperator
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getSubRule());
@@ -2001,7 +2064,7 @@ ruleSub returns [EObject current=null]
 							$current,
 							"listInterger",
 							lv_listInterger_5_0,
-							"org.xtext.example.mydsl.MyDsl.JsonInteger");
+							"org.xtext.example.mydsl.MyDsl.JSonOperator");
 						afterParserOrEnumRuleCall();
 					}
 				)

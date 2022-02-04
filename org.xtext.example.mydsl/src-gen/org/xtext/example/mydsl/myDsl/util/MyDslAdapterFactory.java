@@ -171,6 +171,11 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createJSonNullAdapter();
       }
       @Override
+      public Adapter caseJSonOperator(JSonOperator object)
+      {
+        return createJSonOperatorAdapter();
+      }
+      @Override
       public Adapter caseSum(Sum object)
       {
         return createSumAdapter();
@@ -498,6 +503,21 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createJSonNullAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.JSonOperator <em>JSon Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.JSonOperator
+   * @generated
+   */
+  public Adapter createJSonOperatorAdapter()
   {
     return null;
   }

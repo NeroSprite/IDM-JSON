@@ -62,7 +62,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="Contient" upperBound="-1"
         eType="#//JSonAttribut" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="JsonInteger" eSuperTypes="#//JSonObject #//JSonAttribut">
+  <eClassifiers xsi:type="ecore:EClass" name="JsonInteger" eSuperTypes="#//JSonObject #//JSonAttribut #//JSonOperator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
@@ -77,25 +77,26 @@
   <eClassifiers xsi:type="ecore:EClass" name="JSonNull" eSuperTypes="#//JSonObject #//JSonAttribut">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Sum" eSuperTypes="#//JSonObject #//JSonAttribut">
+  <eClassifiers xsi:type="ecore:EClass" name="JSonOperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Sum" eSuperTypes="#//JSonObject #//JSonAttribut #//JSonOperator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="listInterger" upperBound="-1"
-        eType="#//JsonInteger" containment="true"/>
+        eType="#//JSonOperator" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Div" eSuperTypes="#//JSonObject #//JSonAttribut">
+  <eClassifiers xsi:type="ecore:EClass" name="Div" eSuperTypes="#//JSonObject #//JSonAttribut #//JSonOperator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="listInterger" upperBound="-1"
-        eType="#//JsonInteger" containment="true"/>
+        eType="#//JSonOperator" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Mult" eSuperTypes="#//JSonObject #//JSonAttribut">
+  <eClassifiers xsi:type="ecore:EClass" name="Mult" eSuperTypes="#//JSonObject #//JSonAttribut #//JSonOperator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="listInterger" upperBound="-1"
-        eType="#//JsonInteger" containment="true"/>
+        eType="#//JSonOperator" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Sub" eSuperTypes="#//JSonObject #//JSonAttribut">
+  <eClassifiers xsi:type="ecore:EClass" name="Sub" eSuperTypes="#//JSonObject #//JSonAttribut #//JSonOperator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="listInterger" upperBound="-1"
-        eType="#//JsonInteger" containment="true"/>
+        eType="#//JSonOperator" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EBoolean"/>
 </ecore:EPackage>

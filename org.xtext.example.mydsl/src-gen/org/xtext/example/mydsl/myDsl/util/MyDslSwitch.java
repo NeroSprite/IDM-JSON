@@ -206,6 +206,7 @@ public class MyDslSwitch<T> extends Switch<T>
         T result = caseJsonInteger(jsonInteger);
         if (result == null) result = caseJSonObject(jsonInteger);
         if (result == null) result = caseJSonAttribut(jsonInteger);
+        if (result == null) result = caseJSonOperator(jsonInteger);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -236,12 +237,20 @@ public class MyDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case MyDslPackage.JSON_OPERATOR:
+      {
+        JSonOperator jSonOperator = (JSonOperator)theEObject;
+        T result = caseJSonOperator(jSonOperator);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MyDslPackage.SUM:
       {
         Sum sum = (Sum)theEObject;
         T result = caseSum(sum);
         if (result == null) result = caseJSonObject(sum);
         if (result == null) result = caseJSonAttribut(sum);
+        if (result == null) result = caseJSonOperator(sum);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -251,6 +260,7 @@ public class MyDslSwitch<T> extends Switch<T>
         T result = caseDiv(div);
         if (result == null) result = caseJSonObject(div);
         if (result == null) result = caseJSonAttribut(div);
+        if (result == null) result = caseJSonOperator(div);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -260,6 +270,7 @@ public class MyDslSwitch<T> extends Switch<T>
         T result = caseMult(mult);
         if (result == null) result = caseJSonObject(mult);
         if (result == null) result = caseJSonAttribut(mult);
+        if (result == null) result = caseJSonOperator(mult);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -269,6 +280,7 @@ public class MyDslSwitch<T> extends Switch<T>
         T result = caseSub(sub);
         if (result == null) result = caseJSonObject(sub);
         if (result == null) result = caseJSonAttribut(sub);
+        if (result == null) result = caseJSonOperator(sub);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -583,6 +595,22 @@ public class MyDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseJSonNull(JSonNull object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>JSon Operator</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>JSon Operator</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseJSonOperator(JSonOperator object)
   {
     return null;
   }

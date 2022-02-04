@@ -134,10 +134,11 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 * Contexts:
 	 *     JSonObject returns Div
 	 *     JSonAttribut returns Div
+	 *     JSonOperator returns Div
 	 *     Div returns Div
 	 *
 	 * Constraint:
-	 *     (name=STRING listInterger+=JsonInteger listInterger+=JsonInteger*)
+	 *     (name=STRING listInterger+=JSonOperator listInterger+=JSonOperator*)
 	 */
 	protected void sequence_Div(ISerializationContext context, Div semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -273,6 +274,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     JSonObject returns JsonInteger
 	 *     JSonAttribut returns JsonInteger
 	 *     JsonInteger returns JsonInteger
+	 *     JSonOperator returns JsonInteger
 	 *
 	 * Constraint:
 	 *     (name=STRING value=INT)
@@ -332,10 +334,11 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 * Contexts:
 	 *     JSonObject returns Mult
 	 *     JSonAttribut returns Mult
+	 *     JSonOperator returns Mult
 	 *     Mult returns Mult
 	 *
 	 * Constraint:
-	 *     (name=STRING listInterger+=JsonInteger listInterger+=JsonInteger*)
+	 *     (name=STRING listInterger+=JSonOperator listInterger+=JSonOperator*)
 	 */
 	protected void sequence_Mult(ISerializationContext context, Mult semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -406,10 +409,11 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 * Contexts:
 	 *     JSonObject returns Sub
 	 *     JSonAttribut returns Sub
+	 *     JSonOperator returns Sub
 	 *     Sub returns Sub
 	 *
 	 * Constraint:
-	 *     (name=STRING listInterger+=JsonInteger listInterger+=JsonInteger*)
+	 *     (name=STRING listInterger+=JSonOperator listInterger+=JSonOperator*)
 	 */
 	protected void sequence_Sub(ISerializationContext context, Sub semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -434,10 +438,11 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 * Contexts:
 	 *     JSonObject returns Sum
 	 *     JSonAttribut returns Sum
+	 *     JSonOperator returns Sum
 	 *     Sum returns Sum
 	 *
 	 * Constraint:
-	 *     (name=STRING listInterger+=JsonInteger listInterger+=JsonInteger*)
+	 *     (name=STRING listInterger+=JSonOperator listInterger+=JSonOperator*)
 	 */
 	protected void sequence_Sum(ISerializationContext context, Sum semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

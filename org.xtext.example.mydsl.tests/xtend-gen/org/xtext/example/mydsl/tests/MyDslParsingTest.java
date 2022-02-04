@@ -24,21 +24,29 @@ public class MyDslParsingTest {
   
   /**
    * @Test
-   * def void DisplayModel() {
-   * val result = parseHelper.parse("Display { jsonfile JSonFile \"Test\" { String \"Test\" \"HelloWorld\" } }");
+   * def void OperationTest() {
+   * val result = parseHelper.parse("JSonFile \"Name\" {
+   * Sum\"Name\"[
+   * Integer \"fr\" 1,
+   * Integer \"Name\" 5 ,
+   * Div\"Name2\"[
+   * Integer \"fr2\" 1,
+   * Integer \"Name3\" 5
+   * ]
+   * ]
+   * }");
    * Assertions.assertNotNull(result)
    * val errors = result.eResource.errors
    * //Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
-   * 
    * 
    * val JavaCompiler cmpJava = new JavaCompiler(result)
    * cmpJava.compileAndRun
    * }
    */
   @Test
-  public void ArrayTest() {
+  public void DEBUGtest() {
     try {
-      final MainGrammar result = this.parseHelper.parse("JSonFile \"File\" {\n\tJSonArray \"MyArray\" {\n\t\tInteger \"MyInteger\" 2  ,\n\t\tInteger \"MyInteger\" 5 ,\n\t\tBoolean \"MyBoolean\" false ,\n\t\tNull \"MyNullObject\",\n\t\tJSonArray \"MyArray2\" {\n\t\tInteger \"MyInteger2\" 2 ,\n\t\tJSonArray \"MyArray3\" {\n\t\tInteger \"MyInteger3\" 2 }\n\t\t}\n\t}\n}");
+      final MainGrammar result = this.parseHelper.parse("JSonFile \"File\" {\n\tJSonArray \"MyArray\" {\n\t\tInteger \"MyInteger\" 2  \n\t\t}\n\t\n}");
       Assertions.assertNotNull(result);
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       final JavaCompiler cmpJava = new JavaCompiler(result);

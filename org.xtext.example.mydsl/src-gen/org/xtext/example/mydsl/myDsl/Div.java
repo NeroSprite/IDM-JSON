@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Div extends JSonObject, JSonAttribut
+public interface Div extends JSonObject, JSonAttribut, JSonOperator
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -48,7 +48,7 @@ public interface Div extends JSonObject, JSonAttribut
 
   /**
    * Returns the value of the '<em><b>List Interger</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.JsonInteger}.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.JSonOperator}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>List Interger</em>' containment reference list.
@@ -56,6 +56,6 @@ public interface Div extends JSonObject, JSonAttribut
    * @model containment="true"
    * @generated
    */
-  EList<JsonInteger> getListInterger();
+  EList<JSonOperator> getListInterger();
 
 } // Div

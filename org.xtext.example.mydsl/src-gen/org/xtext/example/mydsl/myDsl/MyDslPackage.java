@@ -680,6 +680,25 @@ public interface MyDslPackage extends EPackage
   int JSON_NULL_FEATURE_COUNT = JSON_OBJECT_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.JSonOperatorImpl <em>JSon Operator</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.myDsl.impl.JSonOperatorImpl
+   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getJSonOperator()
+   * @generated
+   */
+  int JSON_OPERATOR = 19;
+
+  /**
+   * The number of structural features of the '<em>JSon Operator</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int JSON_OPERATOR_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.SumImpl <em>Sum</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -687,7 +706,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getSum()
    * @generated
    */
-  int SUM = 19;
+  int SUM = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -724,7 +743,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getDiv()
    * @generated
    */
-  int DIV = 20;
+  int DIV = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -761,7 +780,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getMult()
    * @generated
    */
-  int MULT = 21;
+  int MULT = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -798,7 +817,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getSub()
    * @generated
    */
-  int SUB = 22;
+  int SUB = 23;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -835,7 +854,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getEBoolean()
    * @generated
    */
-  int EBOOLEAN = 23;
+  int EBOOLEAN = 24;
 
   /**
    * The number of structural features of the '<em>EBoolean</em>' class.
@@ -1355,6 +1374,16 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EAttribute getJSonNull_Name();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.JSonOperator <em>JSon Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>JSon Operator</em>'.
+   * @see org.xtext.example.mydsl.myDsl.JSonOperator
+   * @generated
+   */
+  EClass getJSonOperator();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Sum <em>Sum</em>}'.
@@ -1938,6 +1967,16 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EAttribute JSON_NULL__NAME = eINSTANCE.getJSonNull_Name();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.JSonOperatorImpl <em>JSon Operator</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.myDsl.impl.JSonOperatorImpl
+     * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getJSonOperator()
+     * @generated
+     */
+    EClass JSON_OPERATOR = eINSTANCE.getJSonOperator();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.SumImpl <em>Sum</em>}' class.

@@ -524,6 +524,31 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Entry rule entryRuleJSonOperator
+entryRuleJSonOperator
+:
+{ before(grammarAccess.getJSonOperatorRule()); }
+	 ruleJSonOperator
+{ after(grammarAccess.getJSonOperatorRule()); } 
+	 EOF 
+;
+
+// Rule JSonOperator
+ruleJSonOperator 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getJSonOperatorAccess().getAlternatives()); }
+		(rule__JSonOperator__Alternatives)
+		{ after(grammarAccess.getJSonOperatorAccess().getAlternatives()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 // Entry rule entryRuleSum
 entryRuleSum
 :
@@ -855,6 +880,45 @@ rule__JsonBoolean__ValueAlternatives_2_0
 		{ before(grammarAccess.getJsonBooleanAccess().getValueFalseKeyword_2_0_1()); }
 		'false'
 		{ after(grammarAccess.getJsonBooleanAccess().getValueFalseKeyword_2_0_1()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__JSonOperator__Alternatives
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getJSonOperatorAccess().getJsonIntegerParserRuleCall_0()); }
+		ruleJsonInteger
+		{ after(grammarAccess.getJSonOperatorAccess().getJsonIntegerParserRuleCall_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getJSonOperatorAccess().getSumParserRuleCall_1()); }
+		ruleSum
+		{ after(grammarAccess.getJSonOperatorAccess().getSumParserRuleCall_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getJSonOperatorAccess().getDivParserRuleCall_2()); }
+		ruleDiv
+		{ after(grammarAccess.getJSonOperatorAccess().getDivParserRuleCall_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getJSonOperatorAccess().getMultParserRuleCall_3()); }
+		ruleMult
+		{ after(grammarAccess.getJSonOperatorAccess().getMultParserRuleCall_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getJSonOperatorAccess().getSubParserRuleCall_4()); }
+		ruleSub
+		{ after(grammarAccess.getJSonOperatorAccess().getSubParserRuleCall_4()); }
 	)
 ;
 finally {
@@ -5361,9 +5425,9 @@ rule__Sum__ListIntergerAssignment_3
 	}
 :
 	(
-		{ before(grammarAccess.getSumAccess().getListIntergerJsonIntegerParserRuleCall_3_0()); }
-		ruleJsonInteger
-		{ after(grammarAccess.getSumAccess().getListIntergerJsonIntegerParserRuleCall_3_0()); }
+		{ before(grammarAccess.getSumAccess().getListIntergerJSonOperatorParserRuleCall_3_0()); }
+		ruleJSonOperator
+		{ after(grammarAccess.getSumAccess().getListIntergerJSonOperatorParserRuleCall_3_0()); }
 	)
 ;
 finally {
@@ -5376,9 +5440,9 @@ rule__Sum__ListIntergerAssignment_4_1
 	}
 :
 	(
-		{ before(grammarAccess.getSumAccess().getListIntergerJsonIntegerParserRuleCall_4_1_0()); }
-		ruleJsonInteger
-		{ after(grammarAccess.getSumAccess().getListIntergerJsonIntegerParserRuleCall_4_1_0()); }
+		{ before(grammarAccess.getSumAccess().getListIntergerJSonOperatorParserRuleCall_4_1_0()); }
+		ruleJSonOperator
+		{ after(grammarAccess.getSumAccess().getListIntergerJSonOperatorParserRuleCall_4_1_0()); }
 	)
 ;
 finally {
@@ -5406,9 +5470,9 @@ rule__Div__ListIntergerAssignment_3
 	}
 :
 	(
-		{ before(grammarAccess.getDivAccess().getListIntergerJsonIntegerParserRuleCall_3_0()); }
-		ruleJsonInteger
-		{ after(grammarAccess.getDivAccess().getListIntergerJsonIntegerParserRuleCall_3_0()); }
+		{ before(grammarAccess.getDivAccess().getListIntergerJSonOperatorParserRuleCall_3_0()); }
+		ruleJSonOperator
+		{ after(grammarAccess.getDivAccess().getListIntergerJSonOperatorParserRuleCall_3_0()); }
 	)
 ;
 finally {
@@ -5421,9 +5485,9 @@ rule__Div__ListIntergerAssignment_4_1
 	}
 :
 	(
-		{ before(grammarAccess.getDivAccess().getListIntergerJsonIntegerParserRuleCall_4_1_0()); }
-		ruleJsonInteger
-		{ after(grammarAccess.getDivAccess().getListIntergerJsonIntegerParserRuleCall_4_1_0()); }
+		{ before(grammarAccess.getDivAccess().getListIntergerJSonOperatorParserRuleCall_4_1_0()); }
+		ruleJSonOperator
+		{ after(grammarAccess.getDivAccess().getListIntergerJSonOperatorParserRuleCall_4_1_0()); }
 	)
 ;
 finally {
@@ -5451,9 +5515,9 @@ rule__Mult__ListIntergerAssignment_3
 	}
 :
 	(
-		{ before(grammarAccess.getMultAccess().getListIntergerJsonIntegerParserRuleCall_3_0()); }
-		ruleJsonInteger
-		{ after(grammarAccess.getMultAccess().getListIntergerJsonIntegerParserRuleCall_3_0()); }
+		{ before(grammarAccess.getMultAccess().getListIntergerJSonOperatorParserRuleCall_3_0()); }
+		ruleJSonOperator
+		{ after(grammarAccess.getMultAccess().getListIntergerJSonOperatorParserRuleCall_3_0()); }
 	)
 ;
 finally {
@@ -5466,9 +5530,9 @@ rule__Mult__ListIntergerAssignment_4_1
 	}
 :
 	(
-		{ before(grammarAccess.getMultAccess().getListIntergerJsonIntegerParserRuleCall_4_1_0()); }
-		ruleJsonInteger
-		{ after(grammarAccess.getMultAccess().getListIntergerJsonIntegerParserRuleCall_4_1_0()); }
+		{ before(grammarAccess.getMultAccess().getListIntergerJSonOperatorParserRuleCall_4_1_0()); }
+		ruleJSonOperator
+		{ after(grammarAccess.getMultAccess().getListIntergerJSonOperatorParserRuleCall_4_1_0()); }
 	)
 ;
 finally {
@@ -5496,9 +5560,9 @@ rule__Sub__ListIntergerAssignment_3
 	}
 :
 	(
-		{ before(grammarAccess.getSubAccess().getListIntergerJsonIntegerParserRuleCall_3_0()); }
-		ruleJsonInteger
-		{ after(grammarAccess.getSubAccess().getListIntergerJsonIntegerParserRuleCall_3_0()); }
+		{ before(grammarAccess.getSubAccess().getListIntergerJSonOperatorParserRuleCall_3_0()); }
+		ruleJSonOperator
+		{ after(grammarAccess.getSubAccess().getListIntergerJSonOperatorParserRuleCall_3_0()); }
 	)
 ;
 finally {
@@ -5511,9 +5575,9 @@ rule__Sub__ListIntergerAssignment_4_1
 	}
 :
 	(
-		{ before(grammarAccess.getSubAccess().getListIntergerJsonIntegerParserRuleCall_4_1_0()); }
-		ruleJsonInteger
-		{ after(grammarAccess.getSubAccess().getListIntergerJsonIntegerParserRuleCall_4_1_0()); }
+		{ before(grammarAccess.getSubAccess().getListIntergerJSonOperatorParserRuleCall_4_1_0()); }
+		ruleJSonOperator
+		{ after(grammarAccess.getSubAccess().getListIntergerJSonOperatorParserRuleCall_4_1_0()); }
 	)
 ;
 finally {

@@ -21,7 +21,7 @@ package org.xtext.example.mydsl.myDsl;
  * @model
  * @generated
  */
-public interface JsonInteger extends JSonObject, JSonAttribut
+public interface JsonInteger extends JSonObject, JSonAttribut, JSonOperator
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

@@ -36,6 +36,7 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getJSonObjectAccess().getAlternatives(), "rule__JSonObject__Alternatives");
 			builder.put(grammarAccess.getJSonAttributAccess().getAlternatives(), "rule__JSonAttribut__Alternatives");
 			builder.put(grammarAccess.getJsonBooleanAccess().getValueAlternatives_2_0(), "rule__JsonBoolean__ValueAlternatives_2_0");
+			builder.put(grammarAccess.getJSonOperatorAccess().getAlternatives(), "rule__JSonOperator__Alternatives");
 			builder.put(grammarAccess.getEBooleanAccess().getAlternatives(), "rule__EBoolean__Alternatives");
 			builder.put(grammarAccess.getJSonFileAccess().getGroup(), "rule__JSonFile__Group__0");
 			builder.put(grammarAccess.getCommandesAccess().getGroup(), "rule__Commandes__Group__0");

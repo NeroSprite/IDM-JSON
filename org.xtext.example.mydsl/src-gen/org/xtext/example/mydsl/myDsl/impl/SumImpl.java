@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.xtext.example.mydsl.myDsl.JsonInteger;
+import org.xtext.example.mydsl.myDsl.JSonOperator;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.Sum;
 
@@ -66,7 +66,7 @@ public class SumImpl extends JSonObjectImpl implements Sum
    * @generated
    * @ordered
    */
-  protected EList<JsonInteger> listInterger;
+  protected EList<JSonOperator> listInterger;
 
   /**
    * <!-- begin-user-doc -->
@@ -120,11 +120,11 @@ public class SumImpl extends JSonObjectImpl implements Sum
    * @generated
    */
   @Override
-  public EList<JsonInteger> getListInterger()
+  public EList<JSonOperator> getListInterger()
   {
     if (listInterger == null)
     {
-      listInterger = new EObjectContainmentEList<JsonInteger>(JsonInteger.class, this, MyDslPackage.SUM__LIST_INTERGER);
+      listInterger = new EObjectContainmentEList<JSonOperator>(JSonOperator.class, this, MyDslPackage.SUM__LIST_INTERGER);
     }
     return listInterger;
   }
@@ -179,7 +179,7 @@ public class SumImpl extends JSonObjectImpl implements Sum
         return;
       case MyDslPackage.SUM__LIST_INTERGER:
         getListInterger().clear();
-        getListInterger().addAll((Collection<? extends JsonInteger>)newValue);
+        getListInterger().addAll((Collection<? extends JSonOperator>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
