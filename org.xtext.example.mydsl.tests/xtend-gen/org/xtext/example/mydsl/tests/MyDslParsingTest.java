@@ -6,10 +6,12 @@ package org.xtext.example.mydsl.tests;
 import com.google.inject.Inject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.eclipse.xtext.testing.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,11 +26,18 @@ public class MyDslParsingTest {
   
   /**
    * @Test
-   * def void loadModel() {
-   * val result = parseHelper.parse("Commandes { Load { path \"foo.json\" , name \"nameFile\" } }");
+   * def void DisplayModel() {
+   * val result = parseHelper.parse("JSonFile \"Name\" {
+   * Integer \"i\" 2
+   * },
+   * Commandes {
+   * Display {
+   * jsonfileName \"Name\"
+   * }
+   * }");
    * Assertions.assertNotNull(result)
    * val errors = result.eResource.errors
-   * //Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+   * Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
    * 
    * 
    * val JavaCompiler cmpJava = new JavaCompiler(result)
@@ -36,11 +45,17 @@ public class MyDslParsingTest {
    * }
    */
   @Test
-  public void DisplayModel() {
+  public void LoadModel() {
     try {
-      final MainGrammar result = this.parseHelper.parse("Commandes { Display { jsonfile JSonFile \"Test\" { Integer \"Test2\" 2 } } }");
+      final MainGrammar result = this.parseHelper.parse("JSonFile \"Name\" {\n\tInteger \"i\" 2\n},\nCommandes {\n\tLoad {\n\t\tpath \"/home/thomas/Téléchargements\",\n\t\tname \"test\"\n\t}\n}\n");
       Assertions.assertNotNull(result);
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
+      boolean _isEmpty = errors.isEmpty();
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Unexpected errors: ");
+      String _join = IterableExtensions.join(errors, ", ");
+      _builder.append(_join);
+      Assertions.assertTrue(_isEmpty, _builder.toString());
       final JavaCompiler cmpJava = new JavaCompiler(result);
       cmpJava.compileAndRun();
     } catch (Throwable _e) {

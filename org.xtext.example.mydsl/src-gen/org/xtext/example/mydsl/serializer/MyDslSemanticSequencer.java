@@ -26,6 +26,7 @@ import org.xtext.example.mydsl.myDsl.JsonArray;
 import org.xtext.example.mydsl.myDsl.JsonBoolean;
 import org.xtext.example.mydsl.myDsl.JsonInteger;
 import org.xtext.example.mydsl.myDsl.Load;
+import org.xtext.example.mydsl.myDsl.MainGrammar;
 import org.xtext.example.mydsl.myDsl.Modify;
 import org.xtext.example.mydsl.myDsl.Mult;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
@@ -87,6 +88,9 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case MyDslPackage.LOAD:
 				sequence_Load(context, (Load) semanticObject); 
 				return; 
+			case MyDslPackage.MAIN_GRAMMAR:
+				sequence_MainGrammar(context, (MainGrammar) semanticObject); 
+				return; 
 			case MyDslPackage.MODIFY:
 				sequence_Modify(context, (Modify) semanticObject); 
 				return; 
@@ -118,15 +122,20 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     MainGrammar returns Display
 	 *     Commandes returns Display
 	 *     Display returns Display
 	 *
 	 * Constraint:
-	 *     (jsonfile+=JSonFile name=STRING)
+	 *     name=STRING
 	 */
 	protected void sequence_Display(ISerializationContext context, Display semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.DISPLAY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.DISPLAY__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDisplayAccess().getNameSTRINGTerminalRuleCall_3_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	
@@ -160,7 +169,6 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     MainGrammar returns Insert
 	 *     Commandes returns Insert
 	 *     Insert returns Insert
 	 *
@@ -188,7 +196,6 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     MainGrammar returns JSonFile
 	 *     JSonFile returns JSonFile
 	 *
 	 * Constraint:
@@ -300,7 +307,6 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     MainGrammar returns Load
 	 *     Commandes returns Load
 	 *     Load returns Load
 	 *
@@ -323,7 +329,18 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     MainGrammar returns Modify
+	 *     MainGrammar returns MainGrammar
+	 *
+	 * Constraint:
+	 *     ((Main+=JSonFile | Main+=Commandes) Main+=JSonFile? (Main+=Commandes? Main+=JSonFile?)*)
+	 */
+	protected void sequence_MainGrammar(ISerializationContext context, MainGrammar semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Commandes returns Modify
 	 *     Modify returns Modify
 	 *
@@ -353,7 +370,6 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     MainGrammar returns Projection
 	 *     Commandes returns Projection
 	 *     Projection returns Projection
 	 *
@@ -376,7 +392,6 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     MainGrammar returns Remove
 	 *     Commandes returns Remove
 	 *     Remove returns Remove
 	 *
@@ -390,7 +405,6 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     MainGrammar returns Store
 	 *     Commandes returns Store
 	 *     Store returns Store
 	 *
@@ -429,7 +443,6 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     MainGrammar returns Subset
 	 *     Commandes returns Subset
 	 *     Subset returns Subset
 	 *

@@ -3,7 +3,6 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,7 +13,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Display#getJsonfile <em>Jsonfile</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.Display#getName <em>Name</em>}</li>
  * </ul>
  *
@@ -24,18 +22,6 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Display extends Commandes
 {
-  /**
-   * Returns the value of the '<em><b>Jsonfile</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.JSonFile}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Jsonfile</em>' containment reference list.
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getDisplay_Jsonfile()
-   * @model containment="true"
-   * @generated
-   */
-  EList<JSonFile> getJsonfile();
-
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->

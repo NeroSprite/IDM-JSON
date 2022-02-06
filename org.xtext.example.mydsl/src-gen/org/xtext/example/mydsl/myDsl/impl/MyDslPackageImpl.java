@@ -309,6 +309,17 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
+  public EReference getMainGrammar_Main()
+  {
+    return (EReference)mainGrammarEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getJSonFile()
   {
     return jSonFileEClass;
@@ -463,20 +474,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getDisplay_Jsonfile()
-  {
-    return (EReference)displayEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EAttribute getDisplay_Name()
   {
-    return (EAttribute)displayEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)displayEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1017,6 +1017,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     // Create classes and their features
     mainGrammarEClass = createEClass(MAIN_GRAMMAR);
+    createEReference(mainGrammarEClass, MAIN_GRAMMAR__MAIN);
 
     jSonFileEClass = createEClass(JSON_FILE);
     createEAttribute(jSonFileEClass, JSON_FILE__NAME);
@@ -1039,7 +1040,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEAttribute(loadEClass, LOAD__NAME);
 
     displayEClass = createEClass(DISPLAY);
-    createEReference(displayEClass, DISPLAY__JSONFILE);
     createEAttribute(displayEClass, DISPLAY__NAME);
 
     subsetEClass = createEClass(SUBSET);
@@ -1135,8 +1135,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    jSonFileEClass.getESuperTypes().add(this.getMainGrammar());
-    commandesEClass.getESuperTypes().add(this.getMainGrammar());
     storeEClass.getESuperTypes().add(this.getCommandes());
     loadEClass.getESuperTypes().add(this.getCommandes());
     displayEClass.getESuperTypes().add(this.getCommandes());
@@ -1181,6 +1179,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     // Initialize classes and features; add operations and parameters
     initEClass(mainGrammarEClass, MainGrammar.class, "MainGrammar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMainGrammar_Main(), ecorePackage.getEObject(), null, "Main", null, 0, -1, MainGrammar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(jSonFileEClass, JSonFile.class, "JSonFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getJSonFile_Name(), ecorePackage.getEString(), "name", null, 0, 1, JSonFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1203,7 +1202,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEAttribute(getLoad_Name(), ecorePackage.getEString(), "name", null, 0, 1, Load.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(displayEClass, Display.class, "Display", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDisplay_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Display.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDisplay_Name(), ecorePackage.getEString(), "name", null, 0, 1, Display.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(subsetEClass, Subset.class, "Subset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

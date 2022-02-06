@@ -68,13 +68,22 @@ public interface MyDslPackage extends EPackage
   int MAIN_GRAMMAR = 0;
 
   /**
+   * The feature id for the '<em><b>Main</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAIN_GRAMMAR__MAIN = 0;
+
+  /**
    * The number of structural features of the '<em>Main Grammar</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MAIN_GRAMMAR_FEATURE_COUNT = 0;
+  int MAIN_GRAMMAR_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.JSonFileImpl <em>JSon File</em>}' class.
@@ -93,7 +102,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int JSON_FILE__NAME = MAIN_GRAMMAR_FEATURE_COUNT + 0;
+  int JSON_FILE__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Contient</b></em>' containment reference list.
@@ -102,7 +111,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int JSON_FILE__CONTIENT = MAIN_GRAMMAR_FEATURE_COUNT + 1;
+  int JSON_FILE__CONTIENT = 1;
 
   /**
    * The number of structural features of the '<em>JSon File</em>' class.
@@ -111,7 +120,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int JSON_FILE_FEATURE_COUNT = MAIN_GRAMMAR_FEATURE_COUNT + 2;
+  int JSON_FILE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.CommandesImpl <em>Commandes</em>}' class.
@@ -130,7 +139,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMMANDES_FEATURE_COUNT = MAIN_GRAMMAR_FEATURE_COUNT + 0;
+  int COMMANDES_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.JSonObjectImpl <em>JSon Object</em>}' class.
@@ -274,22 +283,13 @@ public interface MyDslPackage extends EPackage
   int DISPLAY = 8;
 
   /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DISPLAY__JSONFILE = COMMANDES_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DISPLAY__NAME = COMMANDES_FEATURE_COUNT + 1;
+  int DISPLAY__NAME = COMMANDES_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Display</em>' class.
@@ -298,7 +298,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DISPLAY_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 2;
+  int DISPLAY_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.SubsetImpl <em>Subset</em>}' class.
@@ -896,6 +896,17 @@ public interface MyDslPackage extends EPackage
   EClass getMainGrammar();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.MainGrammar#getMain <em>Main</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Main</em>'.
+   * @see org.xtext.example.mydsl.myDsl.MainGrammar#getMain()
+   * @see #getMainGrammar()
+   * @generated
+   */
+  EReference getMainGrammar_Main();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.JSonFile <em>JSon File</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1040,17 +1051,6 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EClass getDisplay();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.Display#getJsonfile <em>Jsonfile</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Jsonfile</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Display#getJsonfile()
-   * @see #getDisplay()
-   * @generated
-   */
-  EReference getDisplay_Jsonfile();
 
   /**
    * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Display#getName <em>Name</em>}'.
@@ -1586,6 +1586,14 @@ public interface MyDslPackage extends EPackage
     EClass MAIN_GRAMMAR = eINSTANCE.getMainGrammar();
 
     /**
+     * The meta object literal for the '<em><b>Main</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MAIN_GRAMMAR__MAIN = eINSTANCE.getMainGrammar_Main();
+
+    /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.JSonFileImpl <em>JSon File</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1712,14 +1720,6 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EClass DISPLAY = eINSTANCE.getDisplay();
-
-    /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DISPLAY__JSONFILE = eINSTANCE.getDisplay_Jsonfile();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

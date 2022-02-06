@@ -9,6 +9,7 @@ import java.lang.Character.Subset;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.xtext.example.mydsl.myDsl.Commandes;
 import org.xtext.example.mydsl.myDsl.Display;
 import org.xtext.example.mydsl.myDsl.Div;
@@ -53,58 +54,84 @@ public class JavaCompiler {
 
 
 		//Debut Generation code
-		
-		javaCodeFinal+="import org.json.JSONArray;\nimport org.json.JSONObject;\n\n";
+
+		javaCodeFinal+="import org.json.JSONArray;\nimport org.json.JSONObject;\nimport org.json.simple.parser.JSONParser;\nimport java.io.FileWriter;\nimport java.io.FileReader;\nimport java.io.IOException;\n\n";
 		javaCodeFinal+="public class Java {\n";
 		lvlIndenteCode++;
 		javaCodeFinal+=indentCode(lvlIndenteCode)+"public static void main(String args[]) {\n";
 		lvlIndenteCode++;
-		if (_model instanceof JSonFile) {
-			JSonFile f = (JSonFile) _model;
-			javaCodeFinal+=JsonFileToJava(f);
-		}
+		EList<EObject> mainGrammar = _model.getMain();
+		for (EObject main : mainGrammar) { 
+			if (main instanceof JSonFile) {
+				JSonFile f = (JSonFile) main;
+				javaCodeFinal+=JsonFileToJava(f);
+			}
 
-		if(_model instanceof Commandes) {
-			Commandes com = (Commandes) _model;
-			if( com instanceof Load) {
-				Load l = (Load) com;
-				javaCodeFinal += "JSONParser parser = new JSONParser();" +  "\n";
-				javaCodeFinal += "Object "+l.getName()+" = parser.parse(new FileReader( " + l.getPath()+"/"+l.getName() + ".json)\n";
-				javaCodeFinal += "JSONObject jsonObject =  (JSONObject) " +l.getName()+";" + "\n";
-			}
-			if( _model instanceof Store) {
-				Store l = (Store) _model;
-				javaCodeFinal += "private static FileWriter file; " + "\n";
-				javaCodeFinal += "file = new FileWriter(" + l.getPath()+"/"+l.getName() + ".json); \n";
-				javaCodeFinal += "fils.white(jsonfile.toJSONString());" + "\n";
-			}
-			if( com instanceof Display) {
-				Display l = (Display) com;
-				for (JSonFile jo : l.getJsonfile()) { 
-					jsonReferenceTMP = jo.getName();
-					javaCodeFinal+=JsonFileToJava(jo);
-					javaCodeFinal += indentCode(lvlIndenteCode)+"System.out.println("+jo.getName()+"); \n";
+			if(main instanceof Commandes) {
+				Commandes com = (Commandes) main;
+				if( com instanceof Load) {
+					Load l = (Load) com;
+					javaCodeFinal += indentCode(lvlIndenteCode)+"try {\n";
+					lvlIndenteCode++;
+					javaCodeFinal += indentCode(lvlIndenteCode)+"JSONParser parser = new JSONParser();" +  "\n";
+					javaCodeFinal += indentCode(lvlIndenteCode)+"Object paser"+l.getName()+" = parser.parse(new FileReader( \"" + l.getPath()+"/"+l.getName() + ".json\"));\n";
+					javaCodeFinal += indentCode(lvlIndenteCode)+"JSONObject "+ l.getName()+" =  (JSONObject) paser" +l.getName()+";" + "\n";
+					javaCodeFinal += indentCode(lvlIndenteCode)+"} catch (Exception io) {\n";
+					lvlIndenteCode++;
+					javaCodeFinal += indentCode(lvlIndenteCode)+"io.getMessage();\n";
+					lvlIndenteCode--;
+					javaCodeFinal += indentCode(lvlIndenteCode)+"}\n";
 				}
-			}
-			if( _model instanceof Subset) {
-				Subset l = (Subset) _model;
-				javaCodeFinal += "//TODO";
-			}
-			if( _model instanceof Projection) {
-				Projection l = (Projection) _model;
-				javaCodeFinal += "//TODO";
-			}
-			if( _model instanceof Insert) {
-				Insert l = (Insert) _model;
-				javaCodeFinal += "//TODO";
-			}
-			if( _model instanceof Remove) {
-				Remove l = (Remove) _model;
-				javaCodeFinal += "//TODO";
-			}
-			if( _model instanceof Modify) {
-				Modify l = (Modify) _model;
-				javaCodeFinal += "//TODO";
+				if( com instanceof Store) {
+					Store l = (Store) com;
+					javaCodeFinal += indentCode(lvlIndenteCode)+"try {\n";
+					lvlIndenteCode++;
+					javaCodeFinal += indentCode(lvlIndenteCode)+"String path"+l.getName()+" =\""+l.getPath()+"/"+l.getName()+".json\";\n";
+					javaCodeFinal += indentCode(lvlIndenteCode)+"FileWriter file"+l.getName()+" = new FileWriter(path"+l.getName()+");\n";
+					javaCodeFinal += indentCode(lvlIndenteCode)+"String json"+l.getName()+" = "+l.getName()+".toString();\n";
+					javaCodeFinal += indentCode(lvlIndenteCode)+"file"+l.getName()+".write(json"+l.getName()+");\n";
+					javaCodeFinal += indentCode(lvlIndenteCode)+"file"+l.getName()+".close();\n";
+					lvlIndenteCode--;
+					javaCodeFinal += indentCode(lvlIndenteCode)+"} catch (IOException io) {\n";
+					lvlIndenteCode++;
+					javaCodeFinal += indentCode(lvlIndenteCode)+"io.getMessage();\n";
+					lvlIndenteCode--;
+					javaCodeFinal += indentCode(lvlIndenteCode)+"}\n";
+					
+					
+					//javaCodeFinal += "private static FileWriter "+l.getName()+"; " + "\n";
+					//javaCodeFinal += l.getName()+" = new FileWriter(" + l.getPath()+"/"+l.getName() + ".json); \n";
+					//javaCodeFinal += l.getName()+".white(jsonfile.toJSONString());" + "\n";
+				}
+				if( com instanceof Display) {
+					Display l = (Display) com;
+					
+					//for (JSonFile jo : l.getJsonfile()) { 
+						//jsonReferenceTMP = jo.getName();
+						//javaCodeFinal+=JsonFileToJava(jo);
+						javaCodeFinal += indentCode(lvlIndenteCode)+"System.out.println("+l.getName()+"); \n";
+					//}
+				}
+				if( com instanceof Subset) {
+					Subset l = (Subset) com;
+					javaCodeFinal += "//TODO";
+				}
+				if( com instanceof Projection) {
+					Projection l = (Projection) com;
+					javaCodeFinal += "//TODO";
+				}
+				if( com instanceof Insert) {
+					Insert l = (Insert) com;
+					javaCodeFinal += "//TODO";
+				}
+				if( com instanceof Remove) {
+					Remove l = (Remove) com;
+					javaCodeFinal += "//TODO";
+				}
+				if( com instanceof Modify) {
+					Modify l = (Modify) com;
+					javaCodeFinal += "//TODO";
+				}
 			}
 		}
 		javaCodeFinal+=indentCode(lvlIndenteCode)+"}\n";
@@ -116,7 +143,7 @@ public class JavaCompiler {
 
 		// serialize code into Python filename
 		String JAVA_OUTPUT = "Java.java";
-		String JAVA_INPUT = "javac -cp json.jar Java.java";
+		String JAVA_INPUT = "javac -cp json.jar:json-simple.jar Java.java";
 		/*
 		FileWriter fw = new FileWriter(PYTHON_OUTPUT);
 		fw.write(pythonCode);
@@ -149,8 +176,8 @@ public class JavaCompiler {
 			System.out.println(err);
 		}
 	}
-	
-	
+
+
 	public String Operation(EList<JSonOperator> sumlist, String operator) {
 		String res = "";
 		for (JSonOperator jo : sumlist) { 
@@ -174,14 +201,14 @@ public class JavaCompiler {
 				Sub a = (Sub) jo;
 				res+= "("+Operation(a.getListInterger(), "-")+")+";
 			}
-			
+
 		}
 		if(sumlist.size()!=0) {
 			res=res.substring(0,res.length()-1);
 		}
 		return res;
 	}
-	
+
 	public String JsonFileToJava(JSonFile f) {
 		String javaCodeFinal = "";
 		String jsonReferenceTMP = "";
@@ -191,9 +218,9 @@ public class JavaCompiler {
 		for (JSonObject jo : list) { 
 			if( jo instanceof JsonArray) {
 				JsonArray a = (JsonArray) jo;
-				
+
 				int arrayPosition = 0;
-				
+
 				javaCodeFinal+=jsonArrayRecursive(a,a);
 				javaCodeFinal+=indentCode(lvlIndenteCode)+f.getName()+".put(\""+a.getName()+"\","+a.getName()+"); \n";
 				tmpCode ="";
@@ -218,7 +245,7 @@ public class JavaCompiler {
 				JSonString a = (JSonString) jo;
 				javaCodeFinal+= indentCode(lvlIndenteCode)+"JSONObject "+a.getName()+"= new JSONObject().put(\""+a.getName()+"\", \""+a.getValue()+"\"); \n";
 				javaCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP+".put(\""+a.getName()+"\","+a.getName()+"); \n";
-				
+
 			}
 			if( jo instanceof JSonNull) {
 				JSonNull a = (JSonNull) jo;
@@ -261,7 +288,7 @@ public class JavaCompiler {
 		return javaCodeFinal;
 
 	}
-	
+
 	public String jsonEnumList(JSonEnum a) {
 		tmpCode += indentCode(lvlIndenteCode)+"JSONArray "+ a.getName() +" = new JSONArray(); \n";
 		EList<JSonEnumField> listArray = a.getContient();
@@ -271,7 +298,7 @@ public class JavaCompiler {
 				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+"= new JSONObject().put(\""+b.getName()+"\", new Boolean("+b.getValue()+")); \n";
 				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+"); \n";
 			}
-			
+
 			else if( att instanceof JsonInteger) {
 				JsonInteger b = (JsonInteger) att;//
 				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+"= new JSONObject().put(\""+b.getName()+"\", new Double("+b.getValue()+")); \n";
@@ -289,11 +316,11 @@ public class JavaCompiler {
 				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+"); \n";
 			}
 		}
-		
+
 		return tmpCode;
-		
+
 	}
-	
+
 	public String jsonArrayRecursive(JsonArray a,JsonArray f ) {
 		tmpCode += indentCode(lvlIndenteCode)+"JSONArray "+ a.getName() +" = new JSONArray(); \n";
 		EList<JSonAttribut> listArray = a.getContient();
@@ -362,8 +389,8 @@ public class JavaCompiler {
 		}
 		return tmpCode;
 	}
-	
-	
+
+
 
 	public String indentCode(int lvl) {
 		String res = "";

@@ -25,23 +25,55 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	
 	public class MainGrammarElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.MainGrammar");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cJSonFileParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cCommandesParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cMainAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Alternatives cMainAlternatives_0_0 = (Alternatives)cMainAssignment_0.eContents().get(0);
+		private final RuleCall cMainJSonFileParserRuleCall_0_0_0 = (RuleCall)cMainAlternatives_0_0.eContents().get(0);
+		private final RuleCall cMainCommandesParserRuleCall_0_0_1 = (RuleCall)cMainAlternatives_0_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cMainAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final Alternatives cMainAlternatives_1_1_0 = (Alternatives)cMainAssignment_1_1.eContents().get(0);
+		private final RuleCall cMainJSonFileParserRuleCall_1_1_0_0 = (RuleCall)cMainAlternatives_1_1_0.eContents().get(0);
+		private final RuleCall cMainCommandesParserRuleCall_1_1_0_1 = (RuleCall)cMainAlternatives_1_1_0.eContents().get(1);
 		
 		//MainGrammar:
-		//    JSonFile | Commandes
+		//    Main+=(JSonFile | Commandes) ("," Main+=(JSonFile | Commandes))*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//JSonFile | Commandes
-		public Alternatives getAlternatives() { return cAlternatives; }
+		//Main+=(JSonFile | Commandes) ("," Main+=(JSonFile | Commandes))*
+		public Group getGroup() { return cGroup; }
+		
+		//Main+=(JSonFile | Commandes)
+		public Assignment getMainAssignment_0() { return cMainAssignment_0; }
+		
+		//(JSonFile | Commandes)
+		public Alternatives getMainAlternatives_0_0() { return cMainAlternatives_0_0; }
 		
 		//JSonFile
-		public RuleCall getJSonFileParserRuleCall_0() { return cJSonFileParserRuleCall_0; }
+		public RuleCall getMainJSonFileParserRuleCall_0_0_0() { return cMainJSonFileParserRuleCall_0_0_0; }
 		
 		//Commandes
-		public RuleCall getCommandesParserRuleCall_1() { return cCommandesParserRuleCall_1; }
+		public RuleCall getMainCommandesParserRuleCall_0_0_1() { return cMainCommandesParserRuleCall_0_0_1; }
+		
+		//("," Main+=(JSonFile | Commandes))*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//","
+		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
+		
+		//Main+=(JSonFile | Commandes)
+		public Assignment getMainAssignment_1_1() { return cMainAssignment_1_1; }
+		
+		//(JSonFile | Commandes)
+		public Alternatives getMainAlternatives_1_1_0() { return cMainAlternatives_1_1_0; }
+		
+		//JSonFile
+		public RuleCall getMainJSonFileParserRuleCall_1_1_0_0() { return cMainJSonFileParserRuleCall_1_1_0_0; }
+		
+		//Commandes
+		public RuleCall getMainCommandesParserRuleCall_1_1_0_1() { return cMainCommandesParserRuleCall_1_1_0_1; }
 	}
 	public class JSonFileElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.JSonFile");
@@ -416,28 +448,22 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cDisplayKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cJsonfileKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cJsonfileAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cJsonfileJSonFileParserRuleCall_3_0 = (RuleCall)cJsonfileAssignment_3.eContents().get(0);
-		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cNameKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cNameAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cNameSTRINGTerminalRuleCall_6_0 = (RuleCall)cNameAssignment_6.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cJsonfileNameKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameSTRINGTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		///* Display */
 		//Display:
 		//    'Display'
 		//    '{'
-		//        'jsonfile' jsonfile+=JSonFile','
-		//        'name' name=STRING
+		//        'jsonfileName' name=STRING
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Display'
 		//'{'
-		//    'jsonfile' jsonfile+=JSonFile','
-		//    'name' name=STRING
+		//    'jsonfileName' name=STRING
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -447,29 +473,17 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//'jsonfile'
-		public Keyword getJsonfileKeyword_2() { return cJsonfileKeyword_2; }
-		
-		//jsonfile+=JSonFile
-		public Assignment getJsonfileAssignment_3() { return cJsonfileAssignment_3; }
-		
-		//JSonFile
-		public RuleCall getJsonfileJSonFileParserRuleCall_3_0() { return cJsonfileJSonFileParserRuleCall_3_0; }
-		
-		//','
-		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
-		
-		//'name'
-		public Keyword getNameKeyword_5() { return cNameKeyword_5; }
+		//'jsonfileName'
+		public Keyword getJsonfileNameKeyword_2() { return cJsonfileNameKeyword_2; }
 		
 		//name=STRING
-		public Assignment getNameAssignment_6() { return cNameAssignment_6; }
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
 		
 		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_6_0() { return cNameSTRINGTerminalRuleCall_6_0; }
+		public RuleCall getNameSTRINGTerminalRuleCall_3_0() { return cNameSTRINGTerminalRuleCall_3_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 	public class SubsetElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.Subset");
@@ -1518,7 +1532,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 
 	
 	//MainGrammar:
-	//    JSonFile | Commandes
+	//    Main+=(JSonFile | Commandes) ("," Main+=(JSonFile | Commandes))*
 	//;
 	public MainGrammarElements getMainGrammarAccess() {
 		return pMainGrammar;
@@ -1614,8 +1628,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//Display:
 	//    'Display'
 	//    '{'
-	//        'jsonfile' jsonfile+=JSonFile','
-	//        'name' name=STRING
+	//        'jsonfileName' name=STRING
 	//    '}';
 	public DisplayElements getDisplayAccess() {
 		return pDisplay;

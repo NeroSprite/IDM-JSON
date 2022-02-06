@@ -3,9 +3,20 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.myDsl.MainGrammar;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
@@ -14,11 +25,27 @@ import org.xtext.example.mydsl.myDsl.MyDslPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Main Grammar</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.MainGrammarImpl#getMain <em>Main</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class MainGrammarImpl extends MinimalEObjectImpl.Container implements MainGrammar
 {
+  /**
+   * The cached value of the '{@link #getMain() <em>Main</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMain()
+   * @generated
+   * @ordered
+   */
+  protected EList<EObject> main;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -38,6 +65,105 @@ public class MainGrammarImpl extends MinimalEObjectImpl.Container implements Mai
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.MAIN_GRAMMAR;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<EObject> getMain()
+  {
+    if (main == null)
+    {
+      main = new EObjectContainmentEList<EObject>(EObject.class, this, MyDslPackage.MAIN_GRAMMAR__MAIN);
+    }
+    return main;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.MAIN_GRAMMAR__MAIN:
+        return ((InternalEList<?>)getMain()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.MAIN_GRAMMAR__MAIN:
+        return getMain();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.MAIN_GRAMMAR__MAIN:
+        getMain().clear();
+        getMain().addAll((Collection<? extends EObject>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.MAIN_GRAMMAR__MAIN:
+        getMain().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.MAIN_GRAMMAR__MAIN:
+        return main != null && !main.isEmpty();
+    }
+    return super.eIsSet(featureID);
   }
 
 } //MainGrammarImpl

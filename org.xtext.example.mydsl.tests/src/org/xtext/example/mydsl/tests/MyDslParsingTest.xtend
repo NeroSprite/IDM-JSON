@@ -19,25 +19,42 @@ import org.xtext.example.mydsl.myDsl.MainGrammar
 class MyDslParsingTest {
 	@Inject
 	ParseHelper<MainGrammar> parseHelper
-	/* 
+	/*
 	@Test
-	def void loadModel() {
-		val result = parseHelper.parse("Commandes { Load { path \"foo.json\" , name \"nameFile\" } }");
+	def void DisplayModel() {
+		val result = parseHelper.parse("JSonFile \"Name\" {
+	Integer \"i\" 2
+},
+Commandes {
+	Display {
+		jsonfileName \"Name\"
+	}
+}");
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
-		//Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 		
 				
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}*/
 	
-	@Test
-	def void DisplayModel() {
-		val result = parseHelper.parse("Commandes { Display { jsonfile JSonFile \"Test\" { Integer \"Test2\" 2 } } }");
+	
+		@Test
+	def void LoadModel() {
+		val result = parseHelper.parse("JSonFile \"Name\" {
+	Integer \"i\" 2
+},
+Commandes {
+	Load {
+		path \"/home/thomas/Téléchargements\",
+		name \"test\"
+	}
+}
+");
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
-		//Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 		
 				
 		val JavaCompiler cmpJava = new JavaCompiler(result)

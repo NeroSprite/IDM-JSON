@@ -84,7 +84,6 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         JSonFile jSonFile = (JSonFile)theEObject;
         T result = caseJSonFile(jSonFile);
-        if (result == null) result = caseMainGrammar(jSonFile);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -92,7 +91,6 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Commandes commandes = (Commandes)theEObject;
         T result = caseCommandes(commandes);
-        if (result == null) result = caseMainGrammar(commandes);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -122,7 +120,6 @@ public class MyDslSwitch<T> extends Switch<T>
         Store store = (Store)theEObject;
         T result = caseStore(store);
         if (result == null) result = caseCommandes(store);
-        if (result == null) result = caseMainGrammar(store);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -131,7 +128,6 @@ public class MyDslSwitch<T> extends Switch<T>
         Load load = (Load)theEObject;
         T result = caseLoad(load);
         if (result == null) result = caseCommandes(load);
-        if (result == null) result = caseMainGrammar(load);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -140,7 +136,6 @@ public class MyDslSwitch<T> extends Switch<T>
         Display display = (Display)theEObject;
         T result = caseDisplay(display);
         if (result == null) result = caseCommandes(display);
-        if (result == null) result = caseMainGrammar(display);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -149,7 +144,6 @@ public class MyDslSwitch<T> extends Switch<T>
         Subset subset = (Subset)theEObject;
         T result = caseSubset(subset);
         if (result == null) result = caseCommandes(subset);
-        if (result == null) result = caseMainGrammar(subset);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -158,7 +152,6 @@ public class MyDslSwitch<T> extends Switch<T>
         Projection projection = (Projection)theEObject;
         T result = caseProjection(projection);
         if (result == null) result = caseCommandes(projection);
-        if (result == null) result = caseMainGrammar(projection);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -167,7 +160,6 @@ public class MyDslSwitch<T> extends Switch<T>
         Insert insert = (Insert)theEObject;
         T result = caseInsert(insert);
         if (result == null) result = caseCommandes(insert);
-        if (result == null) result = caseMainGrammar(insert);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -176,7 +168,6 @@ public class MyDslSwitch<T> extends Switch<T>
         Remove remove = (Remove)theEObject;
         T result = caseRemove(remove);
         if (result == null) result = caseCommandes(remove);
-        if (result == null) result = caseMainGrammar(remove);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -185,7 +176,6 @@ public class MyDslSwitch<T> extends Switch<T>
         Modify modify = (Modify)theEObject;
         T result = caseModify(modify);
         if (result == null) result = caseCommandes(modify);
-        if (result == null) result = caseMainGrammar(modify);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

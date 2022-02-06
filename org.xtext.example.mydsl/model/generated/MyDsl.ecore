@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="myDsl" nsURI="http://www.xtext.org/example/mydsl/MyDsl" nsPrefix="myDsl">
-  <eClassifiers xsi:type="ecore:EClass" name="MainGrammar"/>
-  <eClassifiers xsi:type="ecore:EClass" name="JSonFile" eSuperTypes="#//MainGrammar">
+  <eClassifiers xsi:type="ecore:EClass" name="MainGrammar">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Main" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JSonFile">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Contient" upperBound="-1"
         eType="#//JSonObject" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Commandes" eSuperTypes="#//MainGrammar"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Commandes"/>
   <eClassifiers xsi:type="ecore:EClass" name="JSonObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="JSonAttribut"/>
   <eClassifiers xsi:type="ecore:EClass" name="JSonEnumField"/>
@@ -20,8 +23,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Display" eSuperTypes="#//Commandes">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="jsonfile" upperBound="-1"
-        eType="#//JSonFile" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Subset" eSuperTypes="#//Commandes">

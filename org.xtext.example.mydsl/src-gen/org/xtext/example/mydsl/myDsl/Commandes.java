@@ -3,6 +3,7 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,6 +15,6 @@ package org.xtext.example.mydsl.myDsl;
  * @model
  * @generated
  */
-public interface Commandes extends MainGrammar
+public interface Commandes extends EObject
 {
 } // Commandes

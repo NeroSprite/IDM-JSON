@@ -3,23 +3,13 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.xtext.example.mydsl.myDsl.Display;
-import org.xtext.example.mydsl.myDsl.JSonFile;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 
 /**
@@ -30,7 +20,6 @@ import org.xtext.example.mydsl.myDsl.MyDslPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.DisplayImpl#getJsonfile <em>Jsonfile</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.DisplayImpl#getName <em>Name</em>}</li>
  * </ul>
  *
@@ -38,16 +27,6 @@ import org.xtext.example.mydsl.myDsl.MyDslPackage;
  */
 public class DisplayImpl extends CommandesImpl implements Display
 {
-  /**
-   * The cached value of the '{@link #getJsonfile() <em>Jsonfile</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getJsonfile()
-   * @generated
-   * @ordered
-   */
-  protected EList<JSonFile> jsonfile;
-
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -95,21 +74,6 @@ public class DisplayImpl extends CommandesImpl implements Display
    * @generated
    */
   @Override
-  public EList<JSonFile> getJsonfile()
-  {
-    if (jsonfile == null)
-    {
-      jsonfile = new EObjectContainmentEList<JSonFile>(JSonFile.class, this, MyDslPackage.DISPLAY__JSONFILE);
-    }
-    return jsonfile;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public String getName()
   {
     return name;
@@ -135,28 +99,10 @@ public class DisplayImpl extends CommandesImpl implements Display
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case MyDslPackage.DISPLAY__JSONFILE:
-        return ((InternalEList<?>)getJsonfile()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
-      case MyDslPackage.DISPLAY__JSONFILE:
-        return getJsonfile();
       case MyDslPackage.DISPLAY__NAME:
         return getName();
     }
@@ -168,16 +114,11 @@ public class DisplayImpl extends CommandesImpl implements Display
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case MyDslPackage.DISPLAY__JSONFILE:
-        getJsonfile().clear();
-        getJsonfile().addAll((Collection<? extends JSonFile>)newValue);
-        return;
       case MyDslPackage.DISPLAY__NAME:
         setName((String)newValue);
         return;
@@ -195,9 +136,6 @@ public class DisplayImpl extends CommandesImpl implements Display
   {
     switch (featureID)
     {
-      case MyDslPackage.DISPLAY__JSONFILE:
-        getJsonfile().clear();
-        return;
       case MyDslPackage.DISPLAY__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -215,8 +153,6 @@ public class DisplayImpl extends CommandesImpl implements Display
   {
     switch (featureID)
     {
-      case MyDslPackage.DISPLAY__JSONFILE:
-        return jsonfile != null && !jsonfile.isEmpty();
       case MyDslPackage.DISPLAY__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }

@@ -31,7 +31,8 @@ public class MyDslParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, MyDslGrammarAccess grammarAccess) {
-			builder.put(grammarAccess.getMainGrammarAccess().getAlternatives(), "rule__MainGrammar__Alternatives");
+			builder.put(grammarAccess.getMainGrammarAccess().getMainAlternatives_0_0(), "rule__MainGrammar__MainAlternatives_0_0");
+			builder.put(grammarAccess.getMainGrammarAccess().getMainAlternatives_1_1_0(), "rule__MainGrammar__MainAlternatives_1_1_0");
 			builder.put(grammarAccess.getCommandesAccess().getAlternatives_2(), "rule__Commandes__Alternatives_2");
 			builder.put(grammarAccess.getJSonObjectAccess().getAlternatives(), "rule__JSonObject__Alternatives");
 			builder.put(grammarAccess.getJSonAttributAccess().getAlternatives(), "rule__JSonAttribut__Alternatives");
@@ -39,6 +40,8 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getJsonBooleanAccess().getValueAlternatives_2_0(), "rule__JsonBoolean__ValueAlternatives_2_0");
 			builder.put(grammarAccess.getJSonOperatorAccess().getAlternatives(), "rule__JSonOperator__Alternatives");
 			builder.put(grammarAccess.getEBooleanAccess().getAlternatives(), "rule__EBoolean__Alternatives");
+			builder.put(grammarAccess.getMainGrammarAccess().getGroup(), "rule__MainGrammar__Group__0");
+			builder.put(grammarAccess.getMainGrammarAccess().getGroup_1(), "rule__MainGrammar__Group_1__0");
 			builder.put(grammarAccess.getJSonFileAccess().getGroup(), "rule__JSonFile__Group__0");
 			builder.put(grammarAccess.getCommandesAccess().getGroup(), "rule__Commandes__Group__0");
 			builder.put(grammarAccess.getStoreAccess().getGroup(), "rule__Store__Group__0");
@@ -68,14 +71,15 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSubAccess().getGroup_4(), "rule__Sub__Group_4__0");
 			builder.put(grammarAccess.getEBooleanAccess().getGroup_0(), "rule__EBoolean__Group_0__0");
 			builder.put(grammarAccess.getEBooleanAccess().getGroup_1(), "rule__EBoolean__Group_1__0");
+			builder.put(grammarAccess.getMainGrammarAccess().getMainAssignment_0(), "rule__MainGrammar__MainAssignment_0");
+			builder.put(grammarAccess.getMainGrammarAccess().getMainAssignment_1_1(), "rule__MainGrammar__MainAssignment_1_1");
 			builder.put(grammarAccess.getJSonFileAccess().getNameAssignment_1(), "rule__JSonFile__NameAssignment_1");
 			builder.put(grammarAccess.getJSonFileAccess().getContientAssignment_3(), "rule__JSonFile__ContientAssignment_3");
 			builder.put(grammarAccess.getStoreAccess().getPathAssignment_3(), "rule__Store__PathAssignment_3");
 			builder.put(grammarAccess.getStoreAccess().getNameAssignment_6(), "rule__Store__NameAssignment_6");
 			builder.put(grammarAccess.getLoadAccess().getPathAssignment_3(), "rule__Load__PathAssignment_3");
 			builder.put(grammarAccess.getLoadAccess().getNameAssignment_6(), "rule__Load__NameAssignment_6");
-			builder.put(grammarAccess.getDisplayAccess().getJsonfileAssignment_3(), "rule__Display__JsonfileAssignment_3");
-			builder.put(grammarAccess.getDisplayAccess().getNameAssignment_6(), "rule__Display__NameAssignment_6");
+			builder.put(grammarAccess.getDisplayAccess().getNameAssignment_3(), "rule__Display__NameAssignment_3");
 			builder.put(grammarAccess.getSubsetAccess().getJsonfileAssignment_3(), "rule__Subset__JsonfileAssignment_3");
 			builder.put(grammarAccess.getSubsetAccess().getListNodesAssignment_7(), "rule__Subset__ListNodesAssignment_7");
 			builder.put(grammarAccess.getSubsetAccess().getListNodesAssignment_8_1(), "rule__Subset__ListNodesAssignment_8_1");

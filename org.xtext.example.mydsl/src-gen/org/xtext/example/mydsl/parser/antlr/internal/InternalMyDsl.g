@@ -76,23 +76,86 @@ ruleMainGrammar returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		{
-			newCompositeNode(grammarAccess.getMainGrammarAccess().getJSonFileParserRuleCall_0());
-		}
-		this_JSonFile_0=ruleJSonFile
-		{
-			$current = $this_JSonFile_0.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getMainGrammarAccess().getCommandesParserRuleCall_1());
-		}
-		this_Commandes_1=ruleCommandes
-		{
-			$current = $this_Commandes_1.current;
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getMainGrammarAccess().getMainJSonFileParserRuleCall_0_0_0());
+					}
+					lv_Main_0_1=ruleJSonFile
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getMainGrammarRule());
+						}
+						add(
+							$current,
+							"Main",
+							lv_Main_0_1,
+							"org.xtext.example.mydsl.MyDsl.JSonFile");
+						afterParserOrEnumRuleCall();
+					}
+					    |
+					{
+						newCompositeNode(grammarAccess.getMainGrammarAccess().getMainCommandesParserRuleCall_0_0_1());
+					}
+					lv_Main_0_2=ruleCommandes
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getMainGrammarRule());
+						}
+						add(
+							$current,
+							"Main",
+							lv_Main_0_2,
+							"org.xtext.example.mydsl.MyDsl.Commandes");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		(
+			otherlv_1=','
+			{
+				newLeafNode(otherlv_1, grammarAccess.getMainGrammarAccess().getCommaKeyword_1_0());
+			}
+			(
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getMainGrammarAccess().getMainJSonFileParserRuleCall_1_1_0_0());
+						}
+						lv_Main_2_1=ruleJSonFile
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getMainGrammarRule());
+							}
+							add(
+								$current,
+								"Main",
+								lv_Main_2_1,
+								"org.xtext.example.mydsl.MyDsl.JSonFile");
+							afterParserOrEnumRuleCall();
+						}
+						    |
+						{
+							newCompositeNode(grammarAccess.getMainGrammarAccess().getMainCommandesParserRuleCall_1_1_0_1());
+						}
+						lv_Main_2_2=ruleCommandes
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getMainGrammarRule());
+							}
+							add(
+								$current,
+								"Main",
+								lv_Main_2_2,
+								"org.xtext.example.mydsl.MyDsl.Commandes");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)
+		)*
 	)
 ;
 
@@ -756,42 +819,15 @@ ruleDisplay returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getDisplayAccess().getLeftCurlyBracketKeyword_1());
 		}
-		otherlv_2='jsonfile'
+		otherlv_2='jsonfileName'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getDisplayAccess().getJsonfileKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getDisplayAccess().getJsonfileNameKeyword_2());
 		}
 		(
 			(
+				lv_name_3_0=RULE_STRING
 				{
-					newCompositeNode(grammarAccess.getDisplayAccess().getJsonfileJSonFileParserRuleCall_3_0());
-				}
-				lv_jsonfile_3_0=ruleJSonFile
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getDisplayRule());
-					}
-					add(
-						$current,
-						"jsonfile",
-						lv_jsonfile_3_0,
-						"org.xtext.example.mydsl.MyDsl.JSonFile");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_4=','
-		{
-			newLeafNode(otherlv_4, grammarAccess.getDisplayAccess().getCommaKeyword_4());
-		}
-		otherlv_5='name'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getDisplayAccess().getNameKeyword_5());
-		}
-		(
-			(
-				lv_name_6_0=RULE_STRING
-				{
-					newLeafNode(lv_name_6_0, grammarAccess.getDisplayAccess().getNameSTRINGTerminalRuleCall_6_0());
+					newLeafNode(lv_name_3_0, grammarAccess.getDisplayAccess().getNameSTRINGTerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -800,14 +836,14 @@ ruleDisplay returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_6_0,
+						lv_name_3_0,
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
-		otherlv_7='}'
+		otherlv_4='}'
 		{
-			newLeafNode(otherlv_7, grammarAccess.getDisplayAccess().getRightCurlyBracketKeyword_7());
+			newLeafNode(otherlv_4, grammarAccess.getDisplayAccess().getRightCurlyBracketKeyword_4());
 		}
 	)
 ;

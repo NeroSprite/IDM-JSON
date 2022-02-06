@@ -3,7 +3,7 @@ grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
 generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
 
 MainGrammar:
-	JSonFile | Commandes
+	Main+=(JSonFile | Commandes) ("," Main+=(JSonFile | Commandes))*  
 ;
 JSonFile:
 	'JSonFile' name=STRING '{' (Contient+=JSonObject*) '}';
@@ -47,8 +47,7 @@ Load:
 Display:
 	'Display'
 	'{'
-		'jsonfile' jsonfile+=JSonFile','
-		'name' name=STRING
+		'jsonfileName' name=STRING
 	'}';
 
 

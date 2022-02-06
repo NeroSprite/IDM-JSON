@@ -3,6 +3,8 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -10,6 +12,12 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Main Grammar</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.MainGrammar#getMain <em>Main</em>}</li>
+ * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getMainGrammar()
  * @model
@@ -17,4 +25,16 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface MainGrammar extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Main</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Main</em>' containment reference list.
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getMainGrammar_Main()
+   * @model containment="true"
+   * @generated
+   */
+  EList<EObject> getMain();
+
 } // MainGrammar
