@@ -496,9 +496,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getSubset_Jsonfile()
+  public EAttribute getSubset_Nodenamesub()
   {
-    return (EReference)subsetEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)subsetEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -507,9 +507,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getSubset_ListNodes()
+  public EAttribute getSubset_Keynamesub()
   {
-    return (EReference)subsetEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)subsetEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1054,8 +1054,8 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEAttribute(displayEClass, DISPLAY__NAME);
 
     subsetEClass = createEClass(SUBSET);
-    createEReference(subsetEClass, SUBSET__JSONFILE);
-    createEReference(subsetEClass, SUBSET__LIST_NODES);
+    createEAttribute(subsetEClass, SUBSET__NODENAMESUB);
+    createEAttribute(subsetEClass, SUBSET__KEYNAMESUB);
 
     projectionEClass = createEClass(PROJECTION);
     createEAttribute(projectionEClass, PROJECTION__NODENAME);
@@ -1217,8 +1217,8 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEAttribute(getDisplay_Name(), ecorePackage.getEString(), "name", null, 0, 1, Display.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(subsetEClass, Subset.class, "Subset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSubset_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Subset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSubset_ListNodes(), this.getJSonObject(), null, "listNodes", null, 0, -1, Subset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSubset_Nodenamesub(), ecorePackage.getEString(), "nodenamesub", null, 0, 1, Subset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSubset_Keynamesub(), ecorePackage.getEString(), "keynamesub", null, 0, -1, Subset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(projectionEClass, Projection.class, "Projection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getProjection_Nodename(), ecorePackage.getEString(), "nodename", null, 0, 1, Projection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

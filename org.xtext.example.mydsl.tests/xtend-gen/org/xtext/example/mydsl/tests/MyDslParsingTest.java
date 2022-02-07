@@ -26,24 +26,16 @@ public class MyDslParsingTest {
   
   /**
    * @Test
-   * def void RemoveTest() {
+   * def void ProjectionModel() {
    * val result = parseHelper.parse("JSonFile \"File\" {
    * JSonArray \"Tab\" {
-   * String \"Str\"\"Value\"
-   * }
-   * Integer \"Name\" 2
-   * 
-   * },
-   * Commandes {
-   * Insert {
-   * targetNode \"Tab\",
-   * nameObject \"Name\"
+   * String \"Name\"\"Value\"
    * }
    * },
    * Commandes {
-   * Remove {
-   * targetNode \"Tab\",
-   * nameObjectRemove \"Name\"
+   * Projection {
+   * arrayName \"Tab\",
+   * keyName \"Name\"
    * }
    * }
    * ");
@@ -55,9 +47,9 @@ public class MyDslParsingTest {
    * }
    */
   @Test
-  public void ModifyTest() {
+  public void subsetModel() {
     try {
-      final MainGrammar result = this.parseHelper.parse("JSonFile \"File\" {\n\tJSonArray \"Tab\" {\n\t\tString \"Str\"\"Value\"\n\t}\n\tInteger \"Name\" 2\n\tInteger \"Name2\" 2\n\t\n},\nCommandes {\n\tInsert {\n\t\ttargetNode \"Tab\",\n\t\tnameObject \"Name\"\n\t}\n},\nCommandes {\n\tModify {\n\t\ttargetNode \"Tab\",\n\t\tnameObjectRemove \"Name\",\n\t\tnameObject \"Name2\"\n\t}\n}\n");
+      final MainGrammar result = this.parseHelper.parse("JSonFile \"File\" {\n\tJSonArray \"Tab\" {\n\t\tString \"Name\"\"Value\"\n\t}\n},\nCommandes {\n\tSubset {\n\t\tarrayName \"Tab\",\n\t\tkeyName \"Name\",\"test\"\n\t}\n}\n");
       Assertions.assertNotNull(result);
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       boolean _isEmpty = errors.isEmpty();

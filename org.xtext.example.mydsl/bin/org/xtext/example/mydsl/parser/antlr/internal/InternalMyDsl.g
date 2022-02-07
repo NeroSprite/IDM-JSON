@@ -872,26 +872,25 @@ ruleSubset returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getSubsetAccess().getLeftCurlyBracketKeyword_1());
 		}
-		otherlv_2='jsonfile'
+		otherlv_2='arrayName'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getSubsetAccess().getJsonfileKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getSubsetAccess().getArrayNameKeyword_2());
 		}
 		(
 			(
+				lv_nodenamesub_3_0=RULE_STRING
 				{
-					newCompositeNode(grammarAccess.getSubsetAccess().getJsonfileJSonFileParserRuleCall_3_0());
+					newLeafNode(lv_nodenamesub_3_0, grammarAccess.getSubsetAccess().getNodenamesubSTRINGTerminalRuleCall_3_0());
 				}
-				lv_jsonfile_3_0=ruleJSonFile
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getSubsetRule());
+						$current = createModelElement(grammarAccess.getSubsetRule());
 					}
-					add(
+					setWithLastConsumed(
 						$current,
-						"jsonfile",
-						lv_jsonfile_3_0,
-						"org.xtext.example.mydsl.MyDsl.JSonFile");
-					afterParserOrEnumRuleCall();
+						"nodenamesub",
+						lv_nodenamesub_3_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
@@ -899,65 +898,55 @@ ruleSubset returns [EObject current=null]
 		{
 			newLeafNode(otherlv_4, grammarAccess.getSubsetAccess().getCommaKeyword_4());
 		}
-		otherlv_5='listNodes'
+		otherlv_5='keyName'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getSubsetAccess().getListNodesKeyword_5());
-		}
-		otherlv_6='('
-		{
-			newLeafNode(otherlv_6, grammarAccess.getSubsetAccess().getLeftParenthesisKeyword_6());
+			newLeafNode(otherlv_5, grammarAccess.getSubsetAccess().getKeyNameKeyword_5());
 		}
 		(
 			(
+				lv_keynamesub_6_0=RULE_STRING
 				{
-					newCompositeNode(grammarAccess.getSubsetAccess().getListNodesJSonObjectParserRuleCall_7_0());
+					newLeafNode(lv_keynamesub_6_0, grammarAccess.getSubsetAccess().getKeynamesubSTRINGTerminalRuleCall_6_0());
 				}
-				lv_listNodes_7_0=ruleJSonObject
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getSubsetRule());
+						$current = createModelElement(grammarAccess.getSubsetRule());
 					}
-					add(
+					addWithLastConsumed(
 						$current,
-						"listNodes",
-						lv_listNodes_7_0,
-						"org.xtext.example.mydsl.MyDsl.JSonObject");
-					afterParserOrEnumRuleCall();
+						"keynamesub",
+						lv_keynamesub_6_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
 		(
-			otherlv_8=','
+			otherlv_7=','
 			{
-				newLeafNode(otherlv_8, grammarAccess.getSubsetAccess().getCommaKeyword_8_0());
+				newLeafNode(otherlv_7, grammarAccess.getSubsetAccess().getCommaKeyword_7_0());
 			}
 			(
 				(
+					lv_keynamesub_8_0=RULE_STRING
 					{
-						newCompositeNode(grammarAccess.getSubsetAccess().getListNodesJSonObjectParserRuleCall_8_1_0());
+						newLeafNode(lv_keynamesub_8_0, grammarAccess.getSubsetAccess().getKeynamesubSTRINGTerminalRuleCall_7_1_0());
 					}
-					lv_listNodes_9_0=ruleJSonObject
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getSubsetRule());
+							$current = createModelElement(grammarAccess.getSubsetRule());
 						}
-						add(
+						addWithLastConsumed(
 							$current,
-							"listNodes",
-							lv_listNodes_9_0,
-							"org.xtext.example.mydsl.MyDsl.JSonObject");
-						afterParserOrEnumRuleCall();
+							"keynamesub",
+							lv_keynamesub_8_0,
+							"org.eclipse.xtext.common.Terminals.STRING");
 					}
 				)
 			)
 		)*
-		otherlv_10=')'
+		otherlv_9='}'
 		{
-			newLeafNode(otherlv_10, grammarAccess.getSubsetAccess().getRightParenthesisKeyword_9());
-		}
-		otherlv_11='}'
-		{
-			newLeafNode(otherlv_11, grammarAccess.getSubsetAccess().getRightCurlyBracketKeyword_10());
+			newLeafNode(otherlv_9, grammarAccess.getSubsetAccess().getRightCurlyBracketKeyword_8());
 		}
 	)
 ;

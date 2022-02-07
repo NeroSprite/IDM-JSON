@@ -5,18 +5,16 @@ package org.xtext.example.mydsl.myDsl.impl;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.xtext.example.mydsl.myDsl.JSonFile;
-import org.xtext.example.mydsl.myDsl.JSonObject;
+import org.eclipse.emf.ecore.util.EDataTypeEList;
+
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.Subset;
 
@@ -28,8 +26,8 @@ import org.xtext.example.mydsl.myDsl.Subset;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.SubsetImpl#getJsonfile <em>Jsonfile</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.SubsetImpl#getListNodes <em>List Nodes</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.SubsetImpl#getNodenamesub <em>Nodenamesub</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.SubsetImpl#getKeynamesub <em>Keynamesub</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,24 +35,34 @@ import org.xtext.example.mydsl.myDsl.Subset;
 public class SubsetImpl extends CommandesImpl implements Subset
 {
   /**
-   * The cached value of the '{@link #getJsonfile() <em>Jsonfile</em>}' containment reference list.
+   * The default value of the '{@link #getNodenamesub() <em>Nodenamesub</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getJsonfile()
+   * @see #getNodenamesub()
    * @generated
    * @ordered
    */
-  protected EList<JSonFile> jsonfile;
+  protected static final String NODENAMESUB_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getListNodes() <em>List Nodes</em>}' containment reference list.
+   * The cached value of the '{@link #getNodenamesub() <em>Nodenamesub</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getListNodes()
+   * @see #getNodenamesub()
    * @generated
    * @ordered
    */
-  protected EList<JSonObject> listNodes;
+  protected String nodenamesub = NODENAMESUB_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getKeynamesub() <em>Keynamesub</em>}' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getKeynamesub()
+   * @generated
+   * @ordered
+   */
+  protected EList<String> keynamesub;
 
   /**
    * <!-- begin-user-doc -->
@@ -83,13 +91,9 @@ public class SubsetImpl extends CommandesImpl implements Subset
    * @generated
    */
   @Override
-  public EList<JSonFile> getJsonfile()
+  public String getNodenamesub()
   {
-    if (jsonfile == null)
-    {
-      jsonfile = new EObjectContainmentEList<JSonFile>(JSonFile.class, this, MyDslPackage.SUBSET__JSONFILE);
-    }
-    return jsonfile;
+    return nodenamesub;
   }
 
   /**
@@ -98,13 +102,12 @@ public class SubsetImpl extends CommandesImpl implements Subset
    * @generated
    */
   @Override
-  public EList<JSonObject> getListNodes()
+  public void setNodenamesub(String newNodenamesub)
   {
-    if (listNodes == null)
-    {
-      listNodes = new EObjectContainmentEList<JSonObject>(JSonObject.class, this, MyDslPackage.SUBSET__LIST_NODES);
-    }
-    return listNodes;
+    String oldNodenamesub = nodenamesub;
+    nodenamesub = newNodenamesub;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.SUBSET__NODENAMESUB, oldNodenamesub, nodenamesub));
   }
 
   /**
@@ -113,16 +116,13 @@ public class SubsetImpl extends CommandesImpl implements Subset
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  public EList<String> getKeynamesub()
   {
-    switch (featureID)
+    if (keynamesub == null)
     {
-      case MyDslPackage.SUBSET__JSONFILE:
-        return ((InternalEList<?>)getJsonfile()).basicRemove(otherEnd, msgs);
-      case MyDslPackage.SUBSET__LIST_NODES:
-        return ((InternalEList<?>)getListNodes()).basicRemove(otherEnd, msgs);
+      keynamesub = new EDataTypeEList<String>(String.class, this, MyDslPackage.SUBSET__KEYNAMESUB);
     }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    return keynamesub;
   }
 
   /**
@@ -135,10 +135,10 @@ public class SubsetImpl extends CommandesImpl implements Subset
   {
     switch (featureID)
     {
-      case MyDslPackage.SUBSET__JSONFILE:
-        return getJsonfile();
-      case MyDslPackage.SUBSET__LIST_NODES:
-        return getListNodes();
+      case MyDslPackage.SUBSET__NODENAMESUB:
+        return getNodenamesub();
+      case MyDslPackage.SUBSET__KEYNAMESUB:
+        return getKeynamesub();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -154,13 +154,12 @@ public class SubsetImpl extends CommandesImpl implements Subset
   {
     switch (featureID)
     {
-      case MyDslPackage.SUBSET__JSONFILE:
-        getJsonfile().clear();
-        getJsonfile().addAll((Collection<? extends JSonFile>)newValue);
+      case MyDslPackage.SUBSET__NODENAMESUB:
+        setNodenamesub((String)newValue);
         return;
-      case MyDslPackage.SUBSET__LIST_NODES:
-        getListNodes().clear();
-        getListNodes().addAll((Collection<? extends JSonObject>)newValue);
+      case MyDslPackage.SUBSET__KEYNAMESUB:
+        getKeynamesub().clear();
+        getKeynamesub().addAll((Collection<? extends String>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -176,11 +175,11 @@ public class SubsetImpl extends CommandesImpl implements Subset
   {
     switch (featureID)
     {
-      case MyDslPackage.SUBSET__JSONFILE:
-        getJsonfile().clear();
+      case MyDslPackage.SUBSET__NODENAMESUB:
+        setNodenamesub(NODENAMESUB_EDEFAULT);
         return;
-      case MyDslPackage.SUBSET__LIST_NODES:
-        getListNodes().clear();
+      case MyDslPackage.SUBSET__KEYNAMESUB:
+        getKeynamesub().clear();
         return;
     }
     super.eUnset(featureID);
@@ -196,12 +195,31 @@ public class SubsetImpl extends CommandesImpl implements Subset
   {
     switch (featureID)
     {
-      case MyDslPackage.SUBSET__JSONFILE:
-        return jsonfile != null && !jsonfile.isEmpty();
-      case MyDslPackage.SUBSET__LIST_NODES:
-        return listNodes != null && !listNodes.isEmpty();
+      case MyDslPackage.SUBSET__NODENAMESUB:
+        return NODENAMESUB_EDEFAULT == null ? nodenamesub != null : !NODENAMESUB_EDEFAULT.equals(nodenamesub);
+      case MyDslPackage.SUBSET__KEYNAMESUB:
+        return keynamesub != null && !keynamesub.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (nodenamesub: ");
+    result.append(nodenamesub);
+    result.append(", keynamesub: ");
+    result.append(keynamesub);
+    result.append(')');
+    return result.toString();
   }
 
 } //SubsetImpl

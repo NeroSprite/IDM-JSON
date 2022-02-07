@@ -84,7 +84,7 @@ Commandes {
 		cmpJava.compileAndRun
 	}*/
 	
-	/*	@Test
+	/*@Test
 	def void ProjectionModel() {
 		val result = parseHelper.parse("JSonFile \"File\" {
 	JSonArray \"Tab\" {
@@ -105,6 +105,26 @@ Commandes {
 		cmpJava.compileAndRun
 	}*/
 	
+		@Test
+	def void subsetModel() {
+		val result = parseHelper.parse("JSonFile \"File\" {
+	JSonArray \"Tab\" {
+		String \"Name\"\"Value\"
+	}
+},
+Commandes {
+	Subset {
+		arrayName \"Tab\",
+		keyName \"Name\",\"test\"
+	}
+}
+");
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')	
+		val JavaCompiler cmpJava = new JavaCompiler(result)
+		cmpJava.compileAndRun
+	}
 	
 	/*@Test
 	def void InsertTest() {
@@ -159,7 +179,7 @@ Commandes {
 	}*/
 	
 	
-	
+	/*
 	@Test
 	def void ModifyTest() {
 		val result = parseHelper.parse("JSonFile \"File\" {
@@ -189,7 +209,7 @@ Commandes {
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')	
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
-	}
+	}*/
 	
 	
 	

@@ -48,7 +48,7 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getLoadAccess().getGroup(), "rule__Load__Group__0");
 			builder.put(grammarAccess.getDisplayAccess().getGroup(), "rule__Display__Group__0");
 			builder.put(grammarAccess.getSubsetAccess().getGroup(), "rule__Subset__Group__0");
-			builder.put(grammarAccess.getSubsetAccess().getGroup_8(), "rule__Subset__Group_8__0");
+			builder.put(grammarAccess.getSubsetAccess().getGroup_7(), "rule__Subset__Group_7__0");
 			builder.put(grammarAccess.getProjectionAccess().getGroup(), "rule__Projection__Group__0");
 			builder.put(grammarAccess.getInsertAccess().getGroup(), "rule__Insert__Group__0");
 			builder.put(grammarAccess.getRemoveAccess().getGroup(), "rule__Remove__Group__0");
@@ -80,9 +80,9 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getLoadAccess().getPathAssignment_3(), "rule__Load__PathAssignment_3");
 			builder.put(grammarAccess.getLoadAccess().getNameAssignment_6(), "rule__Load__NameAssignment_6");
 			builder.put(grammarAccess.getDisplayAccess().getNameAssignment_3(), "rule__Display__NameAssignment_3");
-			builder.put(grammarAccess.getSubsetAccess().getJsonfileAssignment_3(), "rule__Subset__JsonfileAssignment_3");
-			builder.put(grammarAccess.getSubsetAccess().getListNodesAssignment_7(), "rule__Subset__ListNodesAssignment_7");
-			builder.put(grammarAccess.getSubsetAccess().getListNodesAssignment_8_1(), "rule__Subset__ListNodesAssignment_8_1");
+			builder.put(grammarAccess.getSubsetAccess().getNodenamesubAssignment_3(), "rule__Subset__NodenamesubAssignment_3");
+			builder.put(grammarAccess.getSubsetAccess().getKeynamesubAssignment_6(), "rule__Subset__KeynamesubAssignment_6");
+			builder.put(grammarAccess.getSubsetAccess().getKeynamesubAssignment_7_1(), "rule__Subset__KeynamesubAssignment_7_1");
 			builder.put(grammarAccess.getProjectionAccess().getNodenameAssignment_3(), "rule__Projection__NodenameAssignment_3");
 			builder.put(grammarAccess.getProjectionAccess().getKeynameAssignment_6(), "rule__Projection__KeynameAssignment_6");
 			builder.put(grammarAccess.getInsertAccess().getTargetNodeAssignment_3(), "rule__Insert__TargetNodeAssignment_3");

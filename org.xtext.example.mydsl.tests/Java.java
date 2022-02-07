@@ -11,23 +11,24 @@ public class Java {
 	public static void main(String args[]) {
 		JSONObject File = new JSONObject(); 
 		JSONArray Tab = new JSONArray(); 
-		JSONObject Str= new JSONObject().put("Str", "Value"); 
-		Tab.put(Str); 
-		File.put("Tab",Tab); 
-		JSONObject Name= new JSONObject().put("Name", new Double(2)); 
-		File.put("Name",Name); 
-		JSONObject Name2= new JSONObject().put("Name2", new Double(2)); 
-		File.put("Name2",Name2); 
-		//Insert 
+		JSONObject Name= new JSONObject().put("Name", "Value"); 
 		Tab.put(Name); 
-		//Modify 
-		int index0 = 0; 
+		File.put("Tab",Tab); 
+		//Subset 
+		JSONObject search0 = new JSONObject(); 
 		for(int i=0;i<Tab.length();i++) {
-			if(Name.equals(Tab.get(i))) {
-				index0 = i;
+			JSONObject jsonObj0 = Tab.getJSONObject(i);
+			String k0 = jsonObj0.keys().next();
+			if("Name".equals(k0)) {
+				search0.put(k0, jsonObj0.getString(k0));
 			}
 		}
-		Tab.remove(index0); 
-		Tab.put(Name2); 
+		for(int i=0;i<Tab.length();i++) {
+			JSONObject jsonObj0 = Tab.getJSONObject(i);
+			String k0 = jsonObj0.keys().next();
+			if("test".equals(k0)) {
+				search0.put(k0, jsonObj0.getString(k0));
+			}
+		}
 		}
 	}

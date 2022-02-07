@@ -14,8 +14,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Subset#getJsonfile <em>Jsonfile</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Subset#getListNodes <em>List Nodes</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Subset#getNodenamesub <em>Nodenamesub</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Subset#getKeynamesub <em>Keynamesub</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getSubset()
@@ -25,27 +25,37 @@ import org.eclipse.emf.common.util.EList;
 public interface Subset extends Commandes
 {
   /**
-   * Returns the value of the '<em><b>Jsonfile</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.JSonFile}.
+   * Returns the value of the '<em><b>Nodenamesub</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Jsonfile</em>' containment reference list.
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getSubset_Jsonfile()
-   * @model containment="true"
+   * @return the value of the '<em>Nodenamesub</em>' attribute.
+   * @see #setNodenamesub(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getSubset_Nodenamesub()
+   * @model
    * @generated
    */
-  EList<JSonFile> getJsonfile();
+  String getNodenamesub();
 
   /**
-   * Returns the value of the '<em><b>List Nodes</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.JSonObject}.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Subset#getNodenamesub <em>Nodenamesub</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>List Nodes</em>' containment reference list.
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getSubset_ListNodes()
-   * @model containment="true"
+   * @param value the new value of the '<em>Nodenamesub</em>' attribute.
+   * @see #getNodenamesub()
    * @generated
    */
-  EList<JSonObject> getListNodes();
+  void setNodenamesub(String value);
+
+  /**
+   * Returns the value of the '<em><b>Keynamesub</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Keynamesub</em>' attribute list.
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getSubset_Keynamesub()
+   * @model unique="false"
+   * @generated
+   */
+  EList<String> getKeynamesub();
 
 } // Subset

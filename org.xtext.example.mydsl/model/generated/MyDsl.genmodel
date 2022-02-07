@@ -29,8 +29,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Display/name"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Subset">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Subset/jsonfile"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Subset/listNodes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Subset/nodenamesub"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Subset/keynamesub"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Projection">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Projection/nodename"/>

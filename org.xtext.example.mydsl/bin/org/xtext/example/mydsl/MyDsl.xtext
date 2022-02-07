@@ -56,8 +56,8 @@ Display:
 Subset:
 	'Subset'
 	'{'
-		'jsonfile' jsonfile+=JSonFile  ','
-		'listNodes' '(' listNodes+=JSonObject ( "," listNodes+=JSonObject)* ')' 
+		'arrayName' nodenamesub=STRING ','
+		'keyName' keynamesub+=STRING ( "," keynamesub+=STRING)* 
 	'}';
 
 Projection:

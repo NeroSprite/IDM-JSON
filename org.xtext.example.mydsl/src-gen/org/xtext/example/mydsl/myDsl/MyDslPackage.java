@@ -311,22 +311,22 @@ public interface MyDslPackage extends EPackage
   int SUBSET = 9;
 
   /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
+   * The feature id for the '<em><b>Nodenamesub</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SUBSET__JSONFILE = COMMANDES_FEATURE_COUNT + 0;
+  int SUBSET__NODENAMESUB = COMMANDES_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>List Nodes</b></em>' containment reference list.
+   * The feature id for the '<em><b>Keynamesub</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SUBSET__LIST_NODES = COMMANDES_FEATURE_COUNT + 1;
+  int SUBSET__KEYNAMESUB = COMMANDES_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Subset</em>' class.
@@ -1083,26 +1083,26 @@ public interface MyDslPackage extends EPackage
   EClass getSubset();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.Subset#getJsonfile <em>Jsonfile</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Subset#getNodenamesub <em>Nodenamesub</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Jsonfile</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Subset#getJsonfile()
+   * @return the meta object for the attribute '<em>Nodenamesub</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Subset#getNodenamesub()
    * @see #getSubset()
    * @generated
    */
-  EReference getSubset_Jsonfile();
+  EAttribute getSubset_Nodenamesub();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.Subset#getListNodes <em>List Nodes</em>}'.
+   * Returns the meta object for the attribute list '{@link org.xtext.example.mydsl.myDsl.Subset#getKeynamesub <em>Keynamesub</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>List Nodes</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Subset#getListNodes()
+   * @return the meta object for the attribute list '<em>Keynamesub</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Subset#getKeynamesub()
    * @see #getSubset()
    * @generated
    */
-  EReference getSubset_ListNodes();
+  EAttribute getSubset_Keynamesub();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Projection <em>Projection</em>}'.
@@ -1760,20 +1760,20 @@ public interface MyDslPackage extends EPackage
     EClass SUBSET = eINSTANCE.getSubset();
 
     /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Nodenamesub</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SUBSET__JSONFILE = eINSTANCE.getSubset_Jsonfile();
+    EAttribute SUBSET__NODENAMESUB = eINSTANCE.getSubset_Nodenamesub();
 
     /**
-     * The meta object literal for the '<em><b>List Nodes</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Keynamesub</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SUBSET__LIST_NODES = eINSTANCE.getSubset_ListNodes();
+    EAttribute SUBSET__KEYNAMESUB = eINSTANCE.getSubset_Keynamesub();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.ProjectionImpl <em>Projection</em>}' class.

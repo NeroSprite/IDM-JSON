@@ -477,7 +477,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Subset returns Subset
 	 *
 	 * Constraint:
-	 *     (jsonfile+=JSonFile listNodes+=JSonObject listNodes+=JSonObject*)
+	 *     (nodenamesub=STRING keynamesub+=STRING keynamesub+=STRING*)
 	 */
 	protected void sequence_Subset(ISerializationContext context, Subset semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
