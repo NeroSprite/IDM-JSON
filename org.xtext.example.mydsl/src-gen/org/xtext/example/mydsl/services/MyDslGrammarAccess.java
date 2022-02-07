@@ -574,27 +574,27 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cProjectionKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cNameKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cNameSTRINGTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Keyword cArrayNameKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNodenameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNodenameSTRINGTerminalRuleCall_3_0 = (RuleCall)cNodenameAssignment_3.eContents().get(0);
 		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cNodeKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cNodeAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cNodeJSonObjectParserRuleCall_6_0 = (RuleCall)cNodeAssignment_6.eContents().get(0);
+		private final Keyword cKeyNameKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cKeynameAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cKeynameSTRINGTerminalRuleCall_6_0 = (RuleCall)cKeynameAssignment_6.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//Projection:
 		//    'Projection'
 		//    '{'
-		//        'name' name=STRING ','
-		//        'node' node=JSonObject
+		//        'arrayName' nodename=STRING ','
+		//        'keyName' keyname=STRING
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Projection'
 		//'{'
-		//    'name' name=STRING ','
-		//    'node' node=JSonObject
+		//    'arrayName' nodename=STRING ','
+		//    'keyName' keyname=STRING
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -604,26 +604,26 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//'name'
-		public Keyword getNameKeyword_2() { return cNameKeyword_2; }
+		//'arrayName'
+		public Keyword getArrayNameKeyword_2() { return cArrayNameKeyword_2; }
 		
-		//name=STRING
-		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+		//nodename=STRING
+		public Assignment getNodenameAssignment_3() { return cNodenameAssignment_3; }
 		
 		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_3_0() { return cNameSTRINGTerminalRuleCall_3_0; }
+		public RuleCall getNodenameSTRINGTerminalRuleCall_3_0() { return cNodenameSTRINGTerminalRuleCall_3_0; }
 		
 		//','
 		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
 		
-		//'node'
-		public Keyword getNodeKeyword_5() { return cNodeKeyword_5; }
+		//'keyName'
+		public Keyword getKeyNameKeyword_5() { return cKeyNameKeyword_5; }
 		
-		//node=JSonObject
-		public Assignment getNodeAssignment_6() { return cNodeAssignment_6; }
+		//keyname=STRING
+		public Assignment getKeynameAssignment_6() { return cKeynameAssignment_6; }
 		
-		//JSonObject
-		public RuleCall getNodeJSonObjectParserRuleCall_6_0() { return cNodeJSonObjectParserRuleCall_6_0; }
+		//STRING
+		public RuleCall getKeynameSTRINGTerminalRuleCall_6_0() { return cKeynameSTRINGTerminalRuleCall_6_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
@@ -633,34 +633,28 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cInsertKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cJsonFileTargetKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cJsonfileAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cJsonfileJSonFileParserRuleCall_4_0 = (RuleCall)cJsonfileAssignment_4.eContents().get(0);
-		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Keyword cJsonFileSourceKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cJsonfileAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cJsonfileJSonFileParserRuleCall_7_0 = (RuleCall)cJsonfileAssignment_7.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Keyword cCommaKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Keyword cObjectKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Assignment cNodeAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final RuleCall cNodeJSonObjectParserRuleCall_11_0 = (RuleCall)cNodeAssignment_11.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Keyword cTargetNodeKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cTargetNodeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTargetNodeSTRINGTerminalRuleCall_3_0 = (RuleCall)cTargetNodeAssignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cNameObjectKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cNameObjectAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cNameObjectSTRINGTerminalRuleCall_6_0 = (RuleCall)cNameObjectAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		///* Modification On File */
 		//Insert:
 		//    'Insert'
 		//    '{'
-		//        '(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')'  ','
-		//        'Object:' node=JSonObject
+		//        'targetNode' targetNode=STRING ','
+		//        'nameObject' nameObject=STRING
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Insert'
 		//'{'
-		//    '(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')'  ','
-		//    'Object:' node=JSonObject
+		//    'targetNode' targetNode=STRING ','
+		//    'nameObject' nameObject=STRING
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -670,74 +664,56 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+		//'targetNode'
+		public Keyword getTargetNodeKeyword_2() { return cTargetNodeKeyword_2; }
 		
-		//'JsonFileTarget'
-		public Keyword getJsonFileTargetKeyword_3() { return cJsonFileTargetKeyword_3; }
+		//targetNode=STRING
+		public Assignment getTargetNodeAssignment_3() { return cTargetNodeAssignment_3; }
 		
-		//jsonfile+=JSonFile
-		public Assignment getJsonfileAssignment_4() { return cJsonfileAssignment_4; }
-		
-		//JSonFile
-		public RuleCall getJsonfileJSonFileParserRuleCall_4_0() { return cJsonfileJSonFileParserRuleCall_4_0; }
+		//STRING
+		public RuleCall getTargetNodeSTRINGTerminalRuleCall_3_0() { return cTargetNodeSTRINGTerminalRuleCall_3_0; }
 		
 		//','
-		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
 		
-		//'JsonFileSource'
-		public Keyword getJsonFileSourceKeyword_6() { return cJsonFileSourceKeyword_6; }
+		//'nameObject'
+		public Keyword getNameObjectKeyword_5() { return cNameObjectKeyword_5; }
 		
-		//jsonfile+=JSonFile
-		public Assignment getJsonfileAssignment_7() { return cJsonfileAssignment_7; }
+		//nameObject=STRING
+		public Assignment getNameObjectAssignment_6() { return cNameObjectAssignment_6; }
 		
-		//JSonFile
-		public RuleCall getJsonfileJSonFileParserRuleCall_7_0() { return cJsonfileJSonFileParserRuleCall_7_0; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_8() { return cRightParenthesisKeyword_8; }
-		
-		//','
-		public Keyword getCommaKeyword_9() { return cCommaKeyword_9; }
-		
-		//'Object:'
-		public Keyword getObjectKeyword_10() { return cObjectKeyword_10; }
-		
-		//node=JSonObject
-		public Assignment getNodeAssignment_11() { return cNodeAssignment_11; }
-		
-		//JSonObject
-		public RuleCall getNodeJSonObjectParserRuleCall_11_0() { return cNodeJSonObjectParserRuleCall_11_0; }
+		//STRING
+		public RuleCall getNameObjectSTRINGTerminalRuleCall_6_0() { return cNameObjectSTRINGTerminalRuleCall_6_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 	public class RemoveElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.Remove");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cRemoveKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cJsonFileTargetKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cJsonfileAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cJsonfileJSonFileParserRuleCall_3_0 = (RuleCall)cJsonfileAssignment_3.eContents().get(0);
+		private final Keyword cTargetNodeKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cTargetNodeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTargetNodeSTRINGTerminalRuleCall_3_0 = (RuleCall)cTargetNodeAssignment_3.eContents().get(0);
 		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cObjectKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cNodeAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cNodeJSonObjectParserRuleCall_6_0 = (RuleCall)cNodeAssignment_6.eContents().get(0);
+		private final Keyword cNameObjectRemoveKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cNameObjectRemoveAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cNameObjectRemoveSTRINGTerminalRuleCall_6_0 = (RuleCall)cNameObjectRemoveAssignment_6.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//Remove:
 		//    'Remove'
 		//    '{'
-		//        'JsonFileTarget' jsonfile+=JSonFile ','
-		//        'Object:' node=JSonObject
+		//        'targetNode' targetNode=STRING ','
+		//        'nameObjectRemove' nameObjectRemove=STRING
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Remove'
 		//'{'
-		//    'JsonFileTarget' jsonfile+=JSonFile ','
-		//    'Object:' node=JSonObject
+		//    'targetNode' targetNode=STRING ','
+		//    'nameObjectRemove' nameObjectRemove=STRING
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -747,26 +723,26 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//'JsonFileTarget'
-		public Keyword getJsonFileTargetKeyword_2() { return cJsonFileTargetKeyword_2; }
+		//'targetNode'
+		public Keyword getTargetNodeKeyword_2() { return cTargetNodeKeyword_2; }
 		
-		//jsonfile+=JSonFile
-		public Assignment getJsonfileAssignment_3() { return cJsonfileAssignment_3; }
+		//targetNode=STRING
+		public Assignment getTargetNodeAssignment_3() { return cTargetNodeAssignment_3; }
 		
-		//JSonFile
-		public RuleCall getJsonfileJSonFileParserRuleCall_3_0() { return cJsonfileJSonFileParserRuleCall_3_0; }
+		//STRING
+		public RuleCall getTargetNodeSTRINGTerminalRuleCall_3_0() { return cTargetNodeSTRINGTerminalRuleCall_3_0; }
 		
 		//','
 		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
 		
-		//'Object:'
-		public Keyword getObjectKeyword_5() { return cObjectKeyword_5; }
+		//'nameObjectRemove'
+		public Keyword getNameObjectRemoveKeyword_5() { return cNameObjectRemoveKeyword_5; }
 		
-		//node=JSonObject
-		public Assignment getNodeAssignment_6() { return cNodeAssignment_6; }
+		//nameObjectRemove=STRING
+		public Assignment getNameObjectRemoveAssignment_6() { return cNameObjectRemoveAssignment_6; }
 		
-		//JSonObject
-		public RuleCall getNodeJSonObjectParserRuleCall_6_0() { return cNodeJSonObjectParserRuleCall_6_0; }
+		//STRING
+		public RuleCall getNameObjectRemoveSTRINGTerminalRuleCall_6_0() { return cNameObjectRemoveSTRINGTerminalRuleCall_6_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
@@ -776,33 +752,33 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cModifyKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cJsonFileTargetKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cJsonfileAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cJsonfileJSonFileParserRuleCall_4_0 = (RuleCall)cJsonfileAssignment_4.eContents().get(0);
-		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Keyword cJsonFileSourceKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cJsonfileAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cJsonfileJSonFileParserRuleCall_7_0 = (RuleCall)cJsonfileAssignment_7.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Keyword cCommaKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Keyword cObjectKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Assignment cNodeAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final RuleCall cNodeJSonObjectParserRuleCall_11_0 = (RuleCall)cNodeAssignment_11.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Keyword cTargetNodeKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cTargetNodeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTargetNodeSTRINGTerminalRuleCall_3_0 = (RuleCall)cTargetNodeAssignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cNameObjectRemoveKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cNameObjectRemoveAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cNameObjectRemoveSTRINGTerminalRuleCall_6_0 = (RuleCall)cNameObjectRemoveAssignment_6.eContents().get(0);
+		private final Keyword cCommaKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cNameObjectKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cNameObjectAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cNameObjectSTRINGTerminalRuleCall_9_0 = (RuleCall)cNameObjectAssignment_9.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
 		//Modify:
 		//    'Modify'
 		//    '{'
-		//        '(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')' ','
-		//        'Object:' node=JSonObject
+		//        'targetNode' targetNode=STRING ','
+		//        'nameObjectRemove' nameObjectRemove=STRING ','
+		//        'nameObject' nameObject=STRING
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Modify'
 		//'{'
-		//    '(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')' ','
-		//    'Object:' node=JSonObject
+		//    'targetNode' targetNode=STRING ','
+		//    'nameObjectRemove' nameObjectRemove=STRING ','
+		//    'nameObject' nameObject=STRING
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -812,47 +788,41 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+		//'targetNode'
+		public Keyword getTargetNodeKeyword_2() { return cTargetNodeKeyword_2; }
 		
-		//'JsonFileTarget'
-		public Keyword getJsonFileTargetKeyword_3() { return cJsonFileTargetKeyword_3; }
+		//targetNode=STRING
+		public Assignment getTargetNodeAssignment_3() { return cTargetNodeAssignment_3; }
 		
-		//jsonfile+=JSonFile
-		public Assignment getJsonfileAssignment_4() { return cJsonfileAssignment_4; }
-		
-		//JSonFile
-		public RuleCall getJsonfileJSonFileParserRuleCall_4_0() { return cJsonfileJSonFileParserRuleCall_4_0; }
+		//STRING
+		public RuleCall getTargetNodeSTRINGTerminalRuleCall_3_0() { return cTargetNodeSTRINGTerminalRuleCall_3_0; }
 		
 		//','
-		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
 		
-		//'JsonFileSource'
-		public Keyword getJsonFileSourceKeyword_6() { return cJsonFileSourceKeyword_6; }
+		//'nameObjectRemove'
+		public Keyword getNameObjectRemoveKeyword_5() { return cNameObjectRemoveKeyword_5; }
 		
-		//jsonfile+=JSonFile
-		public Assignment getJsonfileAssignment_7() { return cJsonfileAssignment_7; }
+		//nameObjectRemove=STRING
+		public Assignment getNameObjectRemoveAssignment_6() { return cNameObjectRemoveAssignment_6; }
 		
-		//JSonFile
-		public RuleCall getJsonfileJSonFileParserRuleCall_7_0() { return cJsonfileJSonFileParserRuleCall_7_0; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_8() { return cRightParenthesisKeyword_8; }
+		//STRING
+		public RuleCall getNameObjectRemoveSTRINGTerminalRuleCall_6_0() { return cNameObjectRemoveSTRINGTerminalRuleCall_6_0; }
 		
 		//','
-		public Keyword getCommaKeyword_9() { return cCommaKeyword_9; }
+		public Keyword getCommaKeyword_7() { return cCommaKeyword_7; }
 		
-		//'Object:'
-		public Keyword getObjectKeyword_10() { return cObjectKeyword_10; }
+		//'nameObject'
+		public Keyword getNameObjectKeyword_8() { return cNameObjectKeyword_8; }
 		
-		//node=JSonObject
-		public Assignment getNodeAssignment_11() { return cNodeAssignment_11; }
+		//nameObject=STRING
+		public Assignment getNameObjectAssignment_9() { return cNameObjectAssignment_9; }
 		
-		//JSonObject
-		public RuleCall getNodeJSonObjectParserRuleCall_11_0() { return cNodeJSonObjectParserRuleCall_11_0; }
+		//STRING
+		public RuleCall getNameObjectSTRINGTerminalRuleCall_9_0() { return cNameObjectSTRINGTerminalRuleCall_9_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
 	}
 	public class JsonArrayElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.JsonArray");
@@ -1656,8 +1626,8 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//Projection:
 	//    'Projection'
 	//    '{'
-	//        'name' name=STRING ','
-	//        'node' node=JSonObject
+	//        'arrayName' nodename=STRING ','
+	//        'keyName' keyname=STRING
 	//    '}';
 	public ProjectionElements getProjectionAccess() {
 		return pProjection;
@@ -1671,8 +1641,8 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//Insert:
 	//    'Insert'
 	//    '{'
-	//        '(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')'  ','
-	//        'Object:' node=JSonObject
+	//        'targetNode' targetNode=STRING ','
+	//        'nameObject' nameObject=STRING
 	//    '}';
 	public InsertElements getInsertAccess() {
 		return pInsert;
@@ -1685,8 +1655,8 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//Remove:
 	//    'Remove'
 	//    '{'
-	//        'JsonFileTarget' jsonfile+=JSonFile ','
-	//        'Object:' node=JSonObject
+	//        'targetNode' targetNode=STRING ','
+	//        'nameObjectRemove' nameObjectRemove=STRING
 	//    '}';
 	public RemoveElements getRemoveAccess() {
 		return pRemove;
@@ -1699,8 +1669,9 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//Modify:
 	//    'Modify'
 	//    '{'
-	//        '(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')' ','
-	//        'Object:' node=JSonObject
+	//        'targetNode' targetNode=STRING ','
+	//        'nameObjectRemove' nameObjectRemove=STRING ','
+	//        'nameObject' nameObject=STRING
 	//    '}';
 	public ModifyElements getModifyAccess() {
 		return pModify;

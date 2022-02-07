@@ -3,7 +3,6 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,8 +13,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Remove#getJsonfile <em>Jsonfile</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Remove#getNode <em>Node</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Remove#getTargetNode <em>Target Node</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Remove#getNameObjectRemove <em>Name Object Remove</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getRemove()
@@ -25,37 +24,47 @@ import org.eclipse.emf.common.util.EList;
 public interface Remove extends Commandes
 {
   /**
-   * Returns the value of the '<em><b>Jsonfile</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.JSonFile}.
+   * Returns the value of the '<em><b>Target Node</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Jsonfile</em>' containment reference list.
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getRemove_Jsonfile()
-   * @model containment="true"
+   * @return the value of the '<em>Target Node</em>' attribute.
+   * @see #setTargetNode(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getRemove_TargetNode()
+   * @model
    * @generated
    */
-  EList<JSonFile> getJsonfile();
+  String getTargetNode();
 
   /**
-   * Returns the value of the '<em><b>Node</b></em>' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Remove#getTargetNode <em>Target Node</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Node</em>' containment reference.
-   * @see #setNode(JSonObject)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getRemove_Node()
-   * @model containment="true"
+   * @param value the new value of the '<em>Target Node</em>' attribute.
+   * @see #getTargetNode()
    * @generated
    */
-  JSonObject getNode();
+  void setTargetNode(String value);
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Remove#getNode <em>Node</em>}' containment reference.
+   * Returns the value of the '<em><b>Name Object Remove</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Node</em>' containment reference.
-   * @see #getNode()
+   * @return the value of the '<em>Name Object Remove</em>' attribute.
+   * @see #setNameObjectRemove(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getRemove_NameObjectRemove()
+   * @model
    * @generated
    */
-  void setNode(JSonObject value);
+  String getNameObjectRemove();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Remove#getNameObjectRemove <em>Name Object Remove</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name Object Remove</em>' attribute.
+   * @see #getNameObjectRemove()
+   * @generated
+   */
+  void setNameObjectRemove(String value);
 
 } // Remove

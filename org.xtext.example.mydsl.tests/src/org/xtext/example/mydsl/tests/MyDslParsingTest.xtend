@@ -39,7 +39,7 @@ Commandes {
 		cmpJava.compileAndRun
 	}*/
 	
-	
+	/*
 		@Test
 	def void LoadModel() {
 		val result = parseHelper.parse("JSonFile \"Name\" {
@@ -59,7 +59,139 @@ Commandes {
 				
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
+	}*/
+	
+	/*
+	@Test
+	def void EnumModel() {
+		val result = parseHelper.parse("JSonFile \"File\" {
+	JSonArray\"Tableau\" {
+		JSonEnum\"personne1\"[
+			Integer \"Age\" 1
+		],
+		JSonEnum \"personne2\" [
+			Integer \"Age\" 2
+		]
 	}
+}
+");
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		
+				
+		val JavaCompiler cmpJava = new JavaCompiler(result)
+		cmpJava.compileAndRun
+	}*/
+	
+	/*	@Test
+	def void ProjectionModel() {
+		val result = parseHelper.parse("JSonFile \"File\" {
+	JSonArray \"Tab\" {
+		String \"Name\"\"Value\"
+	}
+},
+Commandes {
+	Projection {
+		arrayName \"Tab\",
+		keyName \"Name\"
+	}
+}
+");
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')	
+		val JavaCompiler cmpJava = new JavaCompiler(result)
+		cmpJava.compileAndRun
+	}*/
+	
+	
+	/*@Test
+	def void InsertTest() {
+		val result = parseHelper.parse("JSonFile \"File\" {
+	JSonArray \"Tab\" {
+		String \"Str\"\"Value\"
+	}
+	Integer \"Name\" 2
+	
+},
+Commandes {
+	Insert {
+		targetNode \"Tab\",
+		nameObject \"Name\"
+	}
+}
+");
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')	
+		val JavaCompiler cmpJava = new JavaCompiler(result)
+		cmpJava.compileAndRun
+	}*/
+	
+	/*@Test
+	def void RemoveTest() {
+		val result = parseHelper.parse("JSonFile \"File\" {
+	JSonArray \"Tab\" {
+		String \"Str\"\"Value\"
+	}
+	Integer \"Name\" 2
+	
+},
+Commandes {
+	Insert {
+		targetNode \"Tab\",
+		nameObject \"Name\"
+	}
+},
+Commandes {
+	Remove {
+		targetNode \"Tab\",
+		nameObjectRemove \"Name\"
+	}
+}
+");
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')	
+		val JavaCompiler cmpJava = new JavaCompiler(result)
+		cmpJava.compileAndRun
+	}*/
+	
+	
+	
+	@Test
+	def void ModifyTest() {
+		val result = parseHelper.parse("JSonFile \"File\" {
+	JSonArray \"Tab\" {
+		String \"Str\"\"Value\"
+	}
+	Integer \"Name\" 2
+	Integer \"Name2\" 2
+	
+},
+Commandes {
+	Insert {
+		targetNode \"Tab\",
+		nameObject \"Name\"
+	}
+},
+Commandes {
+	Modify {
+		targetNode \"Tab\",
+		nameObjectRemove \"Name\",
+		nameObject \"Name2\"
+	}
+}
+");
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')	
+		val JavaCompiler cmpJava = new JavaCompiler(result)
+		cmpJava.compileAndRun
+	}
+	
+	
 	
 	/*
 	@Test

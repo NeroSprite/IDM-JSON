@@ -26,28 +26,38 @@ public class MyDslParsingTest {
   
   /**
    * @Test
-   * def void DisplayModel() {
-   * val result = parseHelper.parse("JSonFile \"Name\" {
-   * Integer \"i\" 2
+   * def void RemoveTest() {
+   * val result = parseHelper.parse("JSonFile \"File\" {
+   * JSonArray \"Tab\" {
+   * String \"Str\"\"Value\"
+   * }
+   * Integer \"Name\" 2
+   * 
    * },
    * Commandes {
-   * Display {
-   * jsonfileName \"Name\"
+   * Insert {
+   * targetNode \"Tab\",
+   * nameObject \"Name\"
    * }
-   * }");
+   * },
+   * Commandes {
+   * Remove {
+   * targetNode \"Tab\",
+   * nameObjectRemove \"Name\"
+   * }
+   * }
+   * ");
    * Assertions.assertNotNull(result)
    * val errors = result.eResource.errors
    * Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
-   * 
-   * 
    * val JavaCompiler cmpJava = new JavaCompiler(result)
    * cmpJava.compileAndRun
    * }
    */
   @Test
-  public void LoadModel() {
+  public void ModifyTest() {
     try {
-      final MainGrammar result = this.parseHelper.parse("JSonFile \"Name\" {\n\tInteger \"i\" 2\n},\nCommandes {\n\tLoad {\n\t\tpath \"/home/thomas/Téléchargements\",\n\t\tname \"test\"\n\t}\n}\n");
+      final MainGrammar result = this.parseHelper.parse("JSonFile \"File\" {\n\tJSonArray \"Tab\" {\n\t\tString \"Str\"\"Value\"\n\t}\n\tInteger \"Name\" 2\n\tInteger \"Name2\" 2\n\t\n},\nCommandes {\n\tInsert {\n\t\ttargetNode \"Tab\",\n\t\tnameObject \"Name\"\n\t}\n},\nCommandes {\n\tModify {\n\t\ttargetNode \"Tab\",\n\t\tnameObjectRemove \"Name\",\n\t\tnameObject \"Name2\"\n\t}\n}\n");
       Assertions.assertNotNull(result);
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       boolean _isEmpty = errors.isEmpty();

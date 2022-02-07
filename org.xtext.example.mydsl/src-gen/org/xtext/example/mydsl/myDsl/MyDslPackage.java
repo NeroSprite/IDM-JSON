@@ -348,22 +348,22 @@ public interface MyDslPackage extends EPackage
   int PROJECTION = 10;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Nodename</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROJECTION__NAME = COMMANDES_FEATURE_COUNT + 0;
+  int PROJECTION__NODENAME = COMMANDES_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Node</b></em>' containment reference.
+   * The feature id for the '<em><b>Keyname</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROJECTION__NODE = COMMANDES_FEATURE_COUNT + 1;
+  int PROJECTION__KEYNAME = COMMANDES_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Projection</em>' class.
@@ -385,22 +385,22 @@ public interface MyDslPackage extends EPackage
   int INSERT = 11;
 
   /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
+   * The feature id for the '<em><b>Target Node</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSERT__JSONFILE = COMMANDES_FEATURE_COUNT + 0;
+  int INSERT__TARGET_NODE = COMMANDES_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Node</b></em>' containment reference.
+   * The feature id for the '<em><b>Name Object</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSERT__NODE = COMMANDES_FEATURE_COUNT + 1;
+  int INSERT__NAME_OBJECT = COMMANDES_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Insert</em>' class.
@@ -422,22 +422,22 @@ public interface MyDslPackage extends EPackage
   int REMOVE = 12;
 
   /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
+   * The feature id for the '<em><b>Target Node</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REMOVE__JSONFILE = COMMANDES_FEATURE_COUNT + 0;
+  int REMOVE__TARGET_NODE = COMMANDES_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Node</b></em>' containment reference.
+   * The feature id for the '<em><b>Name Object Remove</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REMOVE__NODE = COMMANDES_FEATURE_COUNT + 1;
+  int REMOVE__NAME_OBJECT_REMOVE = COMMANDES_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Remove</em>' class.
@@ -459,22 +459,31 @@ public interface MyDslPackage extends EPackage
   int MODIFY = 13;
 
   /**
-   * The feature id for the '<em><b>Jsonfile</b></em>' containment reference list.
+   * The feature id for the '<em><b>Target Node</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODIFY__JSONFILE = COMMANDES_FEATURE_COUNT + 0;
+  int MODIFY__TARGET_NODE = COMMANDES_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Node</b></em>' containment reference.
+   * The feature id for the '<em><b>Name Object Remove</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODIFY__NODE = COMMANDES_FEATURE_COUNT + 1;
+  int MODIFY__NAME_OBJECT_REMOVE = COMMANDES_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Name Object</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODIFY__NAME_OBJECT = COMMANDES_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Modify</em>' class.
@@ -483,7 +492,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODIFY_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 2;
+  int MODIFY_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.JsonArrayImpl <em>Json Array</em>}' class.
@@ -1106,26 +1115,26 @@ public interface MyDslPackage extends EPackage
   EClass getProjection();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Projection#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Projection#getNodename <em>Nodename</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Projection#getName()
+   * @return the meta object for the attribute '<em>Nodename</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Projection#getNodename()
    * @see #getProjection()
    * @generated
    */
-  EAttribute getProjection_Name();
+  EAttribute getProjection_Nodename();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Projection#getNode <em>Node</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Projection#getKeyname <em>Keyname</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Node</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Projection#getNode()
+   * @return the meta object for the attribute '<em>Keyname</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Projection#getKeyname()
    * @see #getProjection()
    * @generated
    */
-  EReference getProjection_Node();
+  EAttribute getProjection_Keyname();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Insert <em>Insert</em>}'.
@@ -1138,26 +1147,26 @@ public interface MyDslPackage extends EPackage
   EClass getInsert();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.Insert#getJsonfile <em>Jsonfile</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Insert#getTargetNode <em>Target Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Jsonfile</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Insert#getJsonfile()
+   * @return the meta object for the attribute '<em>Target Node</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Insert#getTargetNode()
    * @see #getInsert()
    * @generated
    */
-  EReference getInsert_Jsonfile();
+  EAttribute getInsert_TargetNode();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Insert#getNode <em>Node</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Insert#getNameObject <em>Name Object</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Node</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Insert#getNode()
+   * @return the meta object for the attribute '<em>Name Object</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Insert#getNameObject()
    * @see #getInsert()
    * @generated
    */
-  EReference getInsert_Node();
+  EAttribute getInsert_NameObject();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Remove <em>Remove</em>}'.
@@ -1170,26 +1179,26 @@ public interface MyDslPackage extends EPackage
   EClass getRemove();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.Remove#getJsonfile <em>Jsonfile</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Remove#getTargetNode <em>Target Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Jsonfile</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Remove#getJsonfile()
+   * @return the meta object for the attribute '<em>Target Node</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Remove#getTargetNode()
    * @see #getRemove()
    * @generated
    */
-  EReference getRemove_Jsonfile();
+  EAttribute getRemove_TargetNode();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Remove#getNode <em>Node</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Remove#getNameObjectRemove <em>Name Object Remove</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Node</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Remove#getNode()
+   * @return the meta object for the attribute '<em>Name Object Remove</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Remove#getNameObjectRemove()
    * @see #getRemove()
    * @generated
    */
-  EReference getRemove_Node();
+  EAttribute getRemove_NameObjectRemove();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Modify <em>Modify</em>}'.
@@ -1202,26 +1211,37 @@ public interface MyDslPackage extends EPackage
   EClass getModify();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.Modify#getJsonfile <em>Jsonfile</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Modify#getTargetNode <em>Target Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Jsonfile</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Modify#getJsonfile()
+   * @return the meta object for the attribute '<em>Target Node</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Modify#getTargetNode()
    * @see #getModify()
    * @generated
    */
-  EReference getModify_Jsonfile();
+  EAttribute getModify_TargetNode();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Modify#getNode <em>Node</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Modify#getNameObjectRemove <em>Name Object Remove</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Node</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Modify#getNode()
+   * @return the meta object for the attribute '<em>Name Object Remove</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Modify#getNameObjectRemove()
    * @see #getModify()
    * @generated
    */
-  EReference getModify_Node();
+  EAttribute getModify_NameObjectRemove();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Modify#getNameObject <em>Name Object</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name Object</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Modify#getNameObject()
+   * @see #getModify()
+   * @generated
+   */
+  EAttribute getModify_NameObject();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.JsonArray <em>Json Array</em>}'.
@@ -1766,20 +1786,20 @@ public interface MyDslPackage extends EPackage
     EClass PROJECTION = eINSTANCE.getProjection();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Nodename</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PROJECTION__NAME = eINSTANCE.getProjection_Name();
+    EAttribute PROJECTION__NODENAME = eINSTANCE.getProjection_Nodename();
 
     /**
-     * The meta object literal for the '<em><b>Node</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Keyname</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROJECTION__NODE = eINSTANCE.getProjection_Node();
+    EAttribute PROJECTION__KEYNAME = eINSTANCE.getProjection_Keyname();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.InsertImpl <em>Insert</em>}' class.
@@ -1792,20 +1812,20 @@ public interface MyDslPackage extends EPackage
     EClass INSERT = eINSTANCE.getInsert();
 
     /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Target Node</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference INSERT__JSONFILE = eINSTANCE.getInsert_Jsonfile();
+    EAttribute INSERT__TARGET_NODE = eINSTANCE.getInsert_TargetNode();
 
     /**
-     * The meta object literal for the '<em><b>Node</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Name Object</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference INSERT__NODE = eINSTANCE.getInsert_Node();
+    EAttribute INSERT__NAME_OBJECT = eINSTANCE.getInsert_NameObject();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.RemoveImpl <em>Remove</em>}' class.
@@ -1818,20 +1838,20 @@ public interface MyDslPackage extends EPackage
     EClass REMOVE = eINSTANCE.getRemove();
 
     /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Target Node</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference REMOVE__JSONFILE = eINSTANCE.getRemove_Jsonfile();
+    EAttribute REMOVE__TARGET_NODE = eINSTANCE.getRemove_TargetNode();
 
     /**
-     * The meta object literal for the '<em><b>Node</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Name Object Remove</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference REMOVE__NODE = eINSTANCE.getRemove_Node();
+    EAttribute REMOVE__NAME_OBJECT_REMOVE = eINSTANCE.getRemove_NameObjectRemove();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.ModifyImpl <em>Modify</em>}' class.
@@ -1844,20 +1864,28 @@ public interface MyDslPackage extends EPackage
     EClass MODIFY = eINSTANCE.getModify();
 
     /**
-     * The meta object literal for the '<em><b>Jsonfile</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Target Node</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODIFY__JSONFILE = eINSTANCE.getModify_Jsonfile();
+    EAttribute MODIFY__TARGET_NODE = eINSTANCE.getModify_TargetNode();
 
     /**
-     * The meta object literal for the '<em><b>Node</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Name Object Remove</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODIFY__NODE = eINSTANCE.getModify_Node();
+    EAttribute MODIFY__NAME_OBJECT_REMOVE = eINSTANCE.getModify_NameObjectRemove();
+
+    /**
+     * The meta object literal for the '<em><b>Name Object</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODIFY__NAME_OBJECT = eINSTANCE.getModify_NameObject();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.JsonArrayImpl <em>Json Array</em>}' class.

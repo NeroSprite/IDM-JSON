@@ -33,20 +33,21 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Subset/listNodes"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Projection">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Projection/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Projection/node"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Projection/nodename"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Projection/keyname"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Insert">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Insert/jsonfile"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Insert/node"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Insert/targetNode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Insert/nameObject"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Remove">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Remove/jsonfile"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Remove/node"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Remove/targetNode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Remove/nameObjectRemove"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Modify">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Modify/jsonfile"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Modify/node"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Modify/targetNode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Modify/nameObjectRemove"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Modify/nameObject"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//JsonArray">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//JsonArray/name"/>

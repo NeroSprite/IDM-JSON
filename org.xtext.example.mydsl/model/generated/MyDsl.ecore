@@ -32,27 +32,21 @@
         eType="#//JSonObject" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Projection" eSuperTypes="#//Commandes">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//JSonObject"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nodename" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="keyname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Insert" eSuperTypes="#//Commandes">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="jsonfile" upperBound="-1"
-        eType="#//JSonFile" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//JSonObject"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetNode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nameObject" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Remove" eSuperTypes="#//Commandes">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="jsonfile" upperBound="-1"
-        eType="#//JSonFile" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//JSonObject"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetNode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nameObjectRemove" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Modify" eSuperTypes="#//Commandes">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="jsonfile" upperBound="-1"
-        eType="#//JSonFile" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//JSonObject"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetNode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nameObjectRemove" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nameObject" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="JsonArray" eSuperTypes="#//JSonObject #//JSonAttribut">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

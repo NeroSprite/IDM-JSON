@@ -4,14 +4,11 @@
 package org.xtext.example.mydsl.myDsl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.xtext.example.mydsl.myDsl.JSonObject;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.Projection;
 
@@ -23,8 +20,8 @@ import org.xtext.example.mydsl.myDsl.Projection;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ProjectionImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ProjectionImpl#getNode <em>Node</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ProjectionImpl#getNodename <em>Nodename</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ProjectionImpl#getKeyname <em>Keyname</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,34 +29,44 @@ import org.xtext.example.mydsl.myDsl.Projection;
 public class ProjectionImpl extends CommandesImpl implements Projection
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getNodename() <em>Nodename</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getNodename()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String NODENAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getNodename() <em>Nodename</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getNodename()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String nodename = NODENAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getNode() <em>Node</em>}' containment reference.
+   * The default value of the '{@link #getKeyname() <em>Keyname</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNode()
+   * @see #getKeyname()
    * @generated
    * @ordered
    */
-  protected JSonObject node;
+  protected static final String KEYNAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getKeyname() <em>Keyname</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getKeyname()
+   * @generated
+   * @ordered
+   */
+  protected String keyname = KEYNAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -88,9 +95,9 @@ public class ProjectionImpl extends CommandesImpl implements Projection
    * @generated
    */
   @Override
-  public String getName()
+  public String getNodename()
   {
-    return name;
+    return nodename;
   }
 
   /**
@@ -99,12 +106,12 @@ public class ProjectionImpl extends CommandesImpl implements Projection
    * @generated
    */
   @Override
-  public void setName(String newName)
+  public void setNodename(String newNodename)
   {
-    String oldName = name;
-    name = newName;
+    String oldNodename = nodename;
+    nodename = newNodename;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PROJECTION__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PROJECTION__NODENAME, oldNodename, nodename));
   }
 
   /**
@@ -113,9 +120,9 @@ public class ProjectionImpl extends CommandesImpl implements Projection
    * @generated
    */
   @Override
-  public JSonObject getNode()
+  public String getKeyname()
   {
-    return node;
+    return keyname;
   }
 
   /**
@@ -123,54 +130,13 @@ public class ProjectionImpl extends CommandesImpl implements Projection
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetNode(JSonObject newNode, NotificationChain msgs)
+  @Override
+  public void setKeyname(String newKeyname)
   {
-    JSonObject oldNode = node;
-    node = newNode;
+    String oldKeyname = keyname;
+    keyname = newKeyname;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.PROJECTION__NODE, oldNode, newNode);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setNode(JSonObject newNode)
-  {
-    if (newNode != node)
-    {
-      NotificationChain msgs = null;
-      if (node != null)
-        msgs = ((InternalEObject)node).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PROJECTION__NODE, null, msgs);
-      if (newNode != null)
-        msgs = ((InternalEObject)newNode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.PROJECTION__NODE, null, msgs);
-      msgs = basicSetNode(newNode, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PROJECTION__NODE, newNode, newNode));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case MyDslPackage.PROJECTION__NODE:
-        return basicSetNode(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.PROJECTION__KEYNAME, oldKeyname, keyname));
   }
 
   /**
@@ -183,10 +149,10 @@ public class ProjectionImpl extends CommandesImpl implements Projection
   {
     switch (featureID)
     {
-      case MyDslPackage.PROJECTION__NAME:
-        return getName();
-      case MyDslPackage.PROJECTION__NODE:
-        return getNode();
+      case MyDslPackage.PROJECTION__NODENAME:
+        return getNodename();
+      case MyDslPackage.PROJECTION__KEYNAME:
+        return getKeyname();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -201,11 +167,11 @@ public class ProjectionImpl extends CommandesImpl implements Projection
   {
     switch (featureID)
     {
-      case MyDslPackage.PROJECTION__NAME:
-        setName((String)newValue);
+      case MyDslPackage.PROJECTION__NODENAME:
+        setNodename((String)newValue);
         return;
-      case MyDslPackage.PROJECTION__NODE:
-        setNode((JSonObject)newValue);
+      case MyDslPackage.PROJECTION__KEYNAME:
+        setKeyname((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -221,11 +187,11 @@ public class ProjectionImpl extends CommandesImpl implements Projection
   {
     switch (featureID)
     {
-      case MyDslPackage.PROJECTION__NAME:
-        setName(NAME_EDEFAULT);
+      case MyDslPackage.PROJECTION__NODENAME:
+        setNodename(NODENAME_EDEFAULT);
         return;
-      case MyDslPackage.PROJECTION__NODE:
-        setNode((JSonObject)null);
+      case MyDslPackage.PROJECTION__KEYNAME:
+        setKeyname(KEYNAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -241,10 +207,10 @@ public class ProjectionImpl extends CommandesImpl implements Projection
   {
     switch (featureID)
     {
-      case MyDslPackage.PROJECTION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case MyDslPackage.PROJECTION__NODE:
-        return node != null;
+      case MyDslPackage.PROJECTION__NODENAME:
+        return NODENAME_EDEFAULT == null ? nodename != null : !NODENAME_EDEFAULT.equals(nodename);
+      case MyDslPackage.PROJECTION__KEYNAME:
+        return KEYNAME_EDEFAULT == null ? keyname != null : !KEYNAME_EDEFAULT.equals(keyname);
     }
     return super.eIsSet(featureID);
   }
@@ -260,8 +226,10 @@ public class ProjectionImpl extends CommandesImpl implements Projection
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (nodename: ");
+    result.append(nodename);
+    result.append(", keyname: ");
+    result.append(keyname);
     result.append(')');
     return result.toString();
   }

@@ -41,6 +41,7 @@ public class JavaCompiler {
 	private MainGrammar _model;
 	private String tmpCode="";
 	private int lvlIndenteCode =0;
+	int multipleElement = 0;
 
 	JavaCompiler(MainGrammar model) {	
 		_model = model;	
@@ -50,12 +51,19 @@ public class JavaCompiler {
 		//Varialbe
 		String javaCodeFinal = "";
 		String jsonReferenceTMP = "";
-		int i = 0;
+		
 
 
 		//Debut Generation code
 
-		javaCodeFinal+="import org.json.JSONArray;\nimport org.json.JSONObject;\nimport org.json.simple.parser.JSONParser;\nimport java.io.FileWriter;\nimport java.io.FileReader;\nimport java.io.IOException;\n\n";
+		javaCodeFinal+="import org.json.JSONArray;\n"
+				+ "import org.json.JSONObject;\n"
+				+ "import org.json.simple.parser.JSONParser;\n"
+				+ "import java.io.FileWriter;\n"
+				+ "import java.io.FileReader;\n"
+				+ "import java.io.IOException;\n"
+				+ "import java.util.stream.IntStream;\n"
+				+ "import java.util.stream.Collectors;\n\n";
 		javaCodeFinal+="public class Java {\n";
 		lvlIndenteCode++;
 		javaCodeFinal+=indentCode(lvlIndenteCode)+"public static void main(String args[]) {\n";
@@ -118,19 +126,26 @@ public class JavaCompiler {
 				}
 				if( com instanceof Projection) {
 					Projection l = (Projection) com;
-					javaCodeFinal += "//TODO";
+					javaCodeFinal += indentCode(lvlIndenteCode)+"return IntStream.range(0, "+l.getNodename()+".length())\n"
+							+ "      .mapToObj(index -> ((JSONObject)"+l.getNodename()+".get(index)).optString("+l.getKeyname()+"))\n"
+							+ "      .collect(Collectors.toList());";
 				}
 				if( com instanceof Insert) {
 					Insert l = (Insert) com;
-					javaCodeFinal += "//TODO";
+					javaCodeFinal+= indentCode(lvlIndenteCode)+"//Insert \n";
+					javaCodeFinal += insertFonction(l.getTargetNode(),l.getNameObject());
 				}
 				if( com instanceof Remove) {
 					Remove l = (Remove) com;
-					javaCodeFinal += "//TODO";
+					javaCodeFinal+= indentCode(lvlIndenteCode)+"//Remove \n";
+					javaCodeFinal += removeFonction(l.getTargetNode(),l.getNameObjectRemove());
+					
 				}
 				if( com instanceof Modify) {
 					Modify l = (Modify) com;
-					javaCodeFinal += "//TODO";
+					javaCodeFinal+= indentCode(lvlIndenteCode)+"//Modify \n";
+					javaCodeFinal += removeFonction(l.getTargetNode(),l.getNameObjectRemove());
+					javaCodeFinal += insertFonction(l.getTargetNode(),l.getNameObject());
 				}
 			}
 		}
@@ -208,6 +223,31 @@ public class JavaCompiler {
 		}
 		return res;
 	}
+	
+	
+	public String removeFonction(String TargetNode, String NameObject) {
+		String tmp = "";
+		tmp+= indentCode(lvlIndenteCode)+"int index"+multipleElement+" = 0; \n";
+		tmp+= indentCode(lvlIndenteCode)+"for(int i=0;i<"+TargetNode+".length();i++) {\n";
+		lvlIndenteCode++;
+		tmp+= indentCode(lvlIndenteCode)+"if("+NameObject+".equals("+TargetNode+".get(i))) {\n";
+		lvlIndenteCode++;    
+		tmp+= indentCode(lvlIndenteCode)+"index"+multipleElement+" = i;\n";
+		lvlIndenteCode--;
+		tmp+= indentCode(lvlIndenteCode)+"}\n";
+		lvlIndenteCode--;
+		tmp+= indentCode(lvlIndenteCode)+"}\n";
+		tmp += indentCode(lvlIndenteCode)+TargetNode+".remove(index"+multipleElement+"); \n";
+		multipleElement++;
+		return tmp;
+	}
+	
+	
+	public String insertFonction(String TargetNode, String NameObject){
+		String tmp = "";
+		tmp += indentCode(lvlIndenteCode)+TargetNode+".put("+NameObject+"); \n";
+		return tmp;
+	}
 
 	public String JsonFileToJava(JSonFile f) {
 		String javaCodeFinal = "";
@@ -237,6 +277,11 @@ public class JavaCompiler {
 			}
 			if( jo instanceof JSonEnum) {
 				JSonEnum a = (JSonEnum) jo;
+				tmpCode += indentCode(lvlIndenteCode)+"JSONArray "+ a.getName() +" = new JSONArray(); \n";
+				
+				//jsonEnumList(b);
+				//tmpCode+=indentCode(lvlIndenteCode)+f.getName()+".put("+b.getName()+"); \n";
+				
 				javaCodeFinal+=jsonEnumList(a);
 				javaCodeFinal+=indentCode(lvlIndenteCode)+f.getName()+".put(\""+a.getName()+"\","+a.getName()+"); \n";
 				tmpCode ="";
@@ -288,32 +333,35 @@ public class JavaCompiler {
 		return javaCodeFinal;
 
 	}
-
+//TODO
 	public String jsonEnumList(JSonEnum a) {
-		tmpCode += indentCode(lvlIndenteCode)+"JSONArray "+ a.getName() +" = new JSONArray(); \n";
-		EList<JSonEnumField> listArray = a.getContient();
-		for (JSonEnumField att : listArray) {
+		EList<JSonEnumField> listEnum = a.getContient();
+		for (JSonEnumField att : listEnum) {
 			if( att instanceof JsonBoolean) {
 				JsonBoolean b = (JsonBoolean) att;
-				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+"= new JSONObject().put(\""+b.getName()+"\", new Boolean("+b.getValue()+")); \n";
-				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+"); \n";
+				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+multipleElement+"= new JSONObject().put(\""+b.getName()+"\", new Boolean("+b.getValue()+")); \n";
+				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+multipleElement+"); \n";
+				multipleElement++;
 			}
 
 			else if( att instanceof JsonInteger) {
 				JsonInteger b = (JsonInteger) att;//
-				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+"= new JSONObject().put(\""+b.getName()+"\", new Double("+b.getValue()+")); \n";
-				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+"); \n";
+				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+multipleElement+"= new JSONObject().put(\""+b.getName()+"\", new Double("+b.getValue()+")); \n";
+				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+multipleElement+"); \n";
+				multipleElement++;
 			}
 
 			else if( att instanceof JSonString) {
 				JSonString b = (JSonString) att;
-				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+"= new JSONObject().put(\""+b.getName()+"\", \""+b.getValue()+"\"); \n";
-				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+"); \n";
+				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+multipleElement+"= new JSONObject().put(\""+b.getName()+"\", \""+b.getValue()+"\"); \n";
+				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+multipleElement+"); \n";
+				multipleElement++;
 			}
 			else if( att instanceof JSonNull) {
 				JSonNull b = (JSonNull) att;
-				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+"= new JSONObject().put(\""+b.getName()+"\", \"null\"); \n";
-				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+"); \n";
+				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+multipleElement+"= new JSONObject().put(\""+b.getName()+"\", \"null\"); \n";
+				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+multipleElement+"); \n";
+				multipleElement++;
 			}
 		}
 
@@ -349,6 +397,16 @@ public class JavaCompiler {
 			else if( att instanceof JsonArray) {
 				JsonArray b = (JsonArray) att;
 				tmpCode= jsonArrayRecursive(b,a);
+				//tmpCode ="";
+			}
+			else if( att instanceof JSonEnum) {
+				JSonEnum b = (JSonEnum) att;
+				tmpCode += indentCode(lvlIndenteCode)+"JSONArray "+ b.getName() +" = new JSONArray(); \n";
+				
+				jsonEnumList(b);
+				tmpCode+=indentCode(lvlIndenteCode)+f.getName()+".put("+b.getName()+"); \n";
+				
+				//TODO
 				//tmpCode ="";
 			}
 			else if( att instanceof Sum) {

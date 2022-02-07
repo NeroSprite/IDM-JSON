@@ -986,15 +986,15 @@ ruleProjection returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getProjectionAccess().getLeftCurlyBracketKeyword_1());
 		}
-		otherlv_2='name'
+		otherlv_2='arrayName'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getProjectionAccess().getNameKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getProjectionAccess().getArrayNameKeyword_2());
 		}
 		(
 			(
-				lv_name_3_0=RULE_STRING
+				lv_nodename_3_0=RULE_STRING
 				{
-					newLeafNode(lv_name_3_0, grammarAccess.getProjectionAccess().getNameSTRINGTerminalRuleCall_3_0());
+					newLeafNode(lv_nodename_3_0, grammarAccess.getProjectionAccess().getNodenameSTRINGTerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -1002,8 +1002,8 @@ ruleProjection returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"name",
-						lv_name_3_0,
+						"nodename",
+						lv_nodename_3_0,
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
@@ -1012,26 +1012,25 @@ ruleProjection returns [EObject current=null]
 		{
 			newLeafNode(otherlv_4, grammarAccess.getProjectionAccess().getCommaKeyword_4());
 		}
-		otherlv_5='node'
+		otherlv_5='keyName'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getProjectionAccess().getNodeKeyword_5());
+			newLeafNode(otherlv_5, grammarAccess.getProjectionAccess().getKeyNameKeyword_5());
 		}
 		(
 			(
+				lv_keyname_6_0=RULE_STRING
 				{
-					newCompositeNode(grammarAccess.getProjectionAccess().getNodeJSonObjectParserRuleCall_6_0());
+					newLeafNode(lv_keyname_6_0, grammarAccess.getProjectionAccess().getKeynameSTRINGTerminalRuleCall_6_0());
 				}
-				lv_node_6_0=ruleJSonObject
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getProjectionRule());
+						$current = createModelElement(grammarAccess.getProjectionRule());
 					}
-					set(
+					setWithLastConsumed(
 						$current,
-						"node",
-						lv_node_6_0,
-						"org.xtext.example.mydsl.MyDsl.JSonObject");
-					afterParserOrEnumRuleCall();
+						"keyname",
+						lv_keyname_6_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
@@ -1066,94 +1065,57 @@ ruleInsert returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getInsertAccess().getLeftCurlyBracketKeyword_1());
 		}
-		otherlv_2='('
+		otherlv_2='targetNode'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getInsertAccess().getLeftParenthesisKeyword_2());
-		}
-		otherlv_3='JsonFileTarget'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getInsertAccess().getJsonFileTargetKeyword_3());
+			newLeafNode(otherlv_2, grammarAccess.getInsertAccess().getTargetNodeKeyword_2());
 		}
 		(
 			(
+				lv_targetNode_3_0=RULE_STRING
 				{
-					newCompositeNode(grammarAccess.getInsertAccess().getJsonfileJSonFileParserRuleCall_4_0());
+					newLeafNode(lv_targetNode_3_0, grammarAccess.getInsertAccess().getTargetNodeSTRINGTerminalRuleCall_3_0());
 				}
-				lv_jsonfile_4_0=ruleJSonFile
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getInsertRule());
+						$current = createModelElement(grammarAccess.getInsertRule());
 					}
-					add(
+					setWithLastConsumed(
 						$current,
-						"jsonfile",
-						lv_jsonfile_4_0,
-						"org.xtext.example.mydsl.MyDsl.JSonFile");
-					afterParserOrEnumRuleCall();
+						"targetNode",
+						lv_targetNode_3_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
-		otherlv_5=','
+		otherlv_4=','
 		{
-			newLeafNode(otherlv_5, grammarAccess.getInsertAccess().getCommaKeyword_5());
+			newLeafNode(otherlv_4, grammarAccess.getInsertAccess().getCommaKeyword_4());
 		}
-		otherlv_6='JsonFileSource'
+		otherlv_5='nameObject'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getInsertAccess().getJsonFileSourceKeyword_6());
+			newLeafNode(otherlv_5, grammarAccess.getInsertAccess().getNameObjectKeyword_5());
 		}
 		(
 			(
+				lv_nameObject_6_0=RULE_STRING
 				{
-					newCompositeNode(grammarAccess.getInsertAccess().getJsonfileJSonFileParserRuleCall_7_0());
+					newLeafNode(lv_nameObject_6_0, grammarAccess.getInsertAccess().getNameObjectSTRINGTerminalRuleCall_6_0());
 				}
-				lv_jsonfile_7_0=ruleJSonFile
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getInsertRule());
+						$current = createModelElement(grammarAccess.getInsertRule());
 					}
-					add(
+					setWithLastConsumed(
 						$current,
-						"jsonfile",
-						lv_jsonfile_7_0,
-						"org.xtext.example.mydsl.MyDsl.JSonFile");
-					afterParserOrEnumRuleCall();
+						"nameObject",
+						lv_nameObject_6_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
-		otherlv_8=')'
+		otherlv_7='}'
 		{
-			newLeafNode(otherlv_8, grammarAccess.getInsertAccess().getRightParenthesisKeyword_8());
-		}
-		otherlv_9=','
-		{
-			newLeafNode(otherlv_9, grammarAccess.getInsertAccess().getCommaKeyword_9());
-		}
-		otherlv_10='Object:'
-		{
-			newLeafNode(otherlv_10, grammarAccess.getInsertAccess().getObjectKeyword_10());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getInsertAccess().getNodeJSonObjectParserRuleCall_11_0());
-				}
-				lv_node_11_0=ruleJSonObject
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getInsertRule());
-					}
-					set(
-						$current,
-						"node",
-						lv_node_11_0,
-						"org.xtext.example.mydsl.MyDsl.JSonObject");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_12='}'
-		{
-			newLeafNode(otherlv_12, grammarAccess.getInsertAccess().getRightCurlyBracketKeyword_12());
+			newLeafNode(otherlv_7, grammarAccess.getInsertAccess().getRightCurlyBracketKeyword_7());
 		}
 	)
 ;
@@ -1182,26 +1144,25 @@ ruleRemove returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getRemoveAccess().getLeftCurlyBracketKeyword_1());
 		}
-		otherlv_2='JsonFileTarget'
+		otherlv_2='targetNode'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getRemoveAccess().getJsonFileTargetKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getRemoveAccess().getTargetNodeKeyword_2());
 		}
 		(
 			(
+				lv_targetNode_3_0=RULE_STRING
 				{
-					newCompositeNode(grammarAccess.getRemoveAccess().getJsonfileJSonFileParserRuleCall_3_0());
+					newLeafNode(lv_targetNode_3_0, grammarAccess.getRemoveAccess().getTargetNodeSTRINGTerminalRuleCall_3_0());
 				}
-				lv_jsonfile_3_0=ruleJSonFile
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getRemoveRule());
+						$current = createModelElement(grammarAccess.getRemoveRule());
 					}
-					add(
+					setWithLastConsumed(
 						$current,
-						"jsonfile",
-						lv_jsonfile_3_0,
-						"org.xtext.example.mydsl.MyDsl.JSonFile");
-					afterParserOrEnumRuleCall();
+						"targetNode",
+						lv_targetNode_3_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
@@ -1209,26 +1170,25 @@ ruleRemove returns [EObject current=null]
 		{
 			newLeafNode(otherlv_4, grammarAccess.getRemoveAccess().getCommaKeyword_4());
 		}
-		otherlv_5='Object:'
+		otherlv_5='nameObjectRemove'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getRemoveAccess().getObjectKeyword_5());
+			newLeafNode(otherlv_5, grammarAccess.getRemoveAccess().getNameObjectRemoveKeyword_5());
 		}
 		(
 			(
+				lv_nameObjectRemove_6_0=RULE_STRING
 				{
-					newCompositeNode(grammarAccess.getRemoveAccess().getNodeJSonObjectParserRuleCall_6_0());
+					newLeafNode(lv_nameObjectRemove_6_0, grammarAccess.getRemoveAccess().getNameObjectRemoveSTRINGTerminalRuleCall_6_0());
 				}
-				lv_node_6_0=ruleJSonObject
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getRemoveRule());
+						$current = createModelElement(grammarAccess.getRemoveRule());
 					}
-					set(
+					setWithLastConsumed(
 						$current,
-						"node",
-						lv_node_6_0,
-						"org.xtext.example.mydsl.MyDsl.JSonObject");
-					afterParserOrEnumRuleCall();
+						"nameObjectRemove",
+						lv_nameObjectRemove_6_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
@@ -1263,94 +1223,83 @@ ruleModify returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getModifyAccess().getLeftCurlyBracketKeyword_1());
 		}
-		otherlv_2='('
+		otherlv_2='targetNode'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getModifyAccess().getLeftParenthesisKeyword_2());
-		}
-		otherlv_3='JsonFileTarget'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getModifyAccess().getJsonFileTargetKeyword_3());
+			newLeafNode(otherlv_2, grammarAccess.getModifyAccess().getTargetNodeKeyword_2());
 		}
 		(
 			(
+				lv_targetNode_3_0=RULE_STRING
 				{
-					newCompositeNode(grammarAccess.getModifyAccess().getJsonfileJSonFileParserRuleCall_4_0());
+					newLeafNode(lv_targetNode_3_0, grammarAccess.getModifyAccess().getTargetNodeSTRINGTerminalRuleCall_3_0());
 				}
-				lv_jsonfile_4_0=ruleJSonFile
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getModifyRule());
+						$current = createModelElement(grammarAccess.getModifyRule());
 					}
-					add(
+					setWithLastConsumed(
 						$current,
-						"jsonfile",
-						lv_jsonfile_4_0,
-						"org.xtext.example.mydsl.MyDsl.JSonFile");
-					afterParserOrEnumRuleCall();
+						"targetNode",
+						lv_targetNode_3_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
-		otherlv_5=','
+		otherlv_4=','
 		{
-			newLeafNode(otherlv_5, grammarAccess.getModifyAccess().getCommaKeyword_5());
+			newLeafNode(otherlv_4, grammarAccess.getModifyAccess().getCommaKeyword_4());
 		}
-		otherlv_6='JsonFileSource'
+		otherlv_5='nameObjectRemove'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getModifyAccess().getJsonFileSourceKeyword_6());
+			newLeafNode(otherlv_5, grammarAccess.getModifyAccess().getNameObjectRemoveKeyword_5());
 		}
 		(
 			(
+				lv_nameObjectRemove_6_0=RULE_STRING
 				{
-					newCompositeNode(grammarAccess.getModifyAccess().getJsonfileJSonFileParserRuleCall_7_0());
+					newLeafNode(lv_nameObjectRemove_6_0, grammarAccess.getModifyAccess().getNameObjectRemoveSTRINGTerminalRuleCall_6_0());
 				}
-				lv_jsonfile_7_0=ruleJSonFile
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getModifyRule());
+						$current = createModelElement(grammarAccess.getModifyRule());
 					}
-					add(
+					setWithLastConsumed(
 						$current,
-						"jsonfile",
-						lv_jsonfile_7_0,
-						"org.xtext.example.mydsl.MyDsl.JSonFile");
-					afterParserOrEnumRuleCall();
+						"nameObjectRemove",
+						lv_nameObjectRemove_6_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
-		otherlv_8=')'
+		otherlv_7=','
 		{
-			newLeafNode(otherlv_8, grammarAccess.getModifyAccess().getRightParenthesisKeyword_8());
+			newLeafNode(otherlv_7, grammarAccess.getModifyAccess().getCommaKeyword_7());
 		}
-		otherlv_9=','
+		otherlv_8='nameObject'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getModifyAccess().getCommaKeyword_9());
-		}
-		otherlv_10='Object:'
-		{
-			newLeafNode(otherlv_10, grammarAccess.getModifyAccess().getObjectKeyword_10());
+			newLeafNode(otherlv_8, grammarAccess.getModifyAccess().getNameObjectKeyword_8());
 		}
 		(
 			(
+				lv_nameObject_9_0=RULE_STRING
 				{
-					newCompositeNode(grammarAccess.getModifyAccess().getNodeJSonObjectParserRuleCall_11_0());
+					newLeafNode(lv_nameObject_9_0, grammarAccess.getModifyAccess().getNameObjectSTRINGTerminalRuleCall_9_0());
 				}
-				lv_node_11_0=ruleJSonObject
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getModifyRule());
+						$current = createModelElement(grammarAccess.getModifyRule());
 					}
-					set(
+					setWithLastConsumed(
 						$current,
-						"node",
-						lv_node_11_0,
-						"org.xtext.example.mydsl.MyDsl.JSonObject");
-					afterParserOrEnumRuleCall();
+						"nameObject",
+						lv_nameObject_9_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
-		otherlv_12='}'
+		otherlv_10='}'
 		{
-			newLeafNode(otherlv_12, grammarAccess.getModifyAccess().getRightCurlyBracketKeyword_12());
+			newLeafNode(otherlv_10, grammarAccess.getModifyAccess().getRightCurlyBracketKeyword_10());
 		}
 	)
 ;

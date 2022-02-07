@@ -63,30 +63,31 @@ Subset:
 Projection:
 	'Projection'
 	'{'
-		'name' name=STRING ','
-		'node' node=JSonObject
+		'arrayName' nodename=STRING ','
+		'keyName' keyname=STRING
 	'}';
 
 /* Modification On File */
 Insert:
 	'Insert'
 	'{'
-		'(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')'  ','
-		'Object:' node=JSonObject
+		'targetNode' targetNode=STRING ','
+		'nameObject' nameObject=STRING
 	'}';
 
 Remove:
 	'Remove'
 	'{'
-		'JsonFileTarget' jsonfile+=JSonFile ','
-		'Object:' node=JSonObject
+		'targetNode' targetNode=STRING ','
+		'nameObjectRemove' nameObjectRemove=STRING
 	'}';
 
 Modify:
 	'Modify'
 	'{'
-		'(' 'JsonFileTarget' jsonfile+=JSonFile ',' 'JsonFileSource' jsonfile+=JSonFile ')' ','
-		'Object:' node=JSonObject
+		'targetNode' targetNode=STRING ','
+		'nameObjectRemove' nameObjectRemove=STRING ','
+		'nameObject' nameObject=STRING
 	'}';
 
 

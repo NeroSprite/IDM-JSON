@@ -529,7 +529,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EAttribute getProjection_Name()
+  public EAttribute getProjection_Nodename()
   {
     return (EAttribute)projectionEClass.getEStructuralFeatures().get(0);
   }
@@ -540,9 +540,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getProjection_Node()
+  public EAttribute getProjection_Keyname()
   {
-    return (EReference)projectionEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)projectionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -562,9 +562,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getInsert_Jsonfile()
+  public EAttribute getInsert_TargetNode()
   {
-    return (EReference)insertEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)insertEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -573,9 +573,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getInsert_Node()
+  public EAttribute getInsert_NameObject()
   {
-    return (EReference)insertEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)insertEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -595,9 +595,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getRemove_Jsonfile()
+  public EAttribute getRemove_TargetNode()
   {
-    return (EReference)removeEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)removeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -606,9 +606,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getRemove_Node()
+  public EAttribute getRemove_NameObjectRemove()
   {
-    return (EReference)removeEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)removeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -628,9 +628,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getModify_Jsonfile()
+  public EAttribute getModify_TargetNode()
   {
-    return (EReference)modifyEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)modifyEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -639,9 +639,20 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getModify_Node()
+  public EAttribute getModify_NameObjectRemove()
   {
-    return (EReference)modifyEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)modifyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getModify_NameObject()
+  {
+    return (EAttribute)modifyEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1047,20 +1058,21 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(subsetEClass, SUBSET__LIST_NODES);
 
     projectionEClass = createEClass(PROJECTION);
-    createEAttribute(projectionEClass, PROJECTION__NAME);
-    createEReference(projectionEClass, PROJECTION__NODE);
+    createEAttribute(projectionEClass, PROJECTION__NODENAME);
+    createEAttribute(projectionEClass, PROJECTION__KEYNAME);
 
     insertEClass = createEClass(INSERT);
-    createEReference(insertEClass, INSERT__JSONFILE);
-    createEReference(insertEClass, INSERT__NODE);
+    createEAttribute(insertEClass, INSERT__TARGET_NODE);
+    createEAttribute(insertEClass, INSERT__NAME_OBJECT);
 
     removeEClass = createEClass(REMOVE);
-    createEReference(removeEClass, REMOVE__JSONFILE);
-    createEReference(removeEClass, REMOVE__NODE);
+    createEAttribute(removeEClass, REMOVE__TARGET_NODE);
+    createEAttribute(removeEClass, REMOVE__NAME_OBJECT_REMOVE);
 
     modifyEClass = createEClass(MODIFY);
-    createEReference(modifyEClass, MODIFY__JSONFILE);
-    createEReference(modifyEClass, MODIFY__NODE);
+    createEAttribute(modifyEClass, MODIFY__TARGET_NODE);
+    createEAttribute(modifyEClass, MODIFY__NAME_OBJECT_REMOVE);
+    createEAttribute(modifyEClass, MODIFY__NAME_OBJECT);
 
     jsonArrayEClass = createEClass(JSON_ARRAY);
     createEAttribute(jsonArrayEClass, JSON_ARRAY__NAME);
@@ -1209,20 +1221,21 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getSubset_ListNodes(), this.getJSonObject(), null, "listNodes", null, 0, -1, Subset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(projectionEClass, Projection.class, "Projection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProjection_Name(), ecorePackage.getEString(), "name", null, 0, 1, Projection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProjection_Node(), this.getJSonObject(), null, "node", null, 0, 1, Projection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProjection_Nodename(), ecorePackage.getEString(), "nodename", null, 0, 1, Projection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProjection_Keyname(), ecorePackage.getEString(), "keyname", null, 0, 1, Projection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(insertEClass, Insert.class, "Insert", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getInsert_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Insert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInsert_Node(), this.getJSonObject(), null, "node", null, 0, 1, Insert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInsert_TargetNode(), ecorePackage.getEString(), "targetNode", null, 0, 1, Insert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInsert_NameObject(), ecorePackage.getEString(), "nameObject", null, 0, 1, Insert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(removeEClass, Remove.class, "Remove", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getRemove_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Remove.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRemove_Node(), this.getJSonObject(), null, "node", null, 0, 1, Remove.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRemove_TargetNode(), ecorePackage.getEString(), "targetNode", null, 0, 1, Remove.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRemove_NameObjectRemove(), ecorePackage.getEString(), "nameObjectRemove", null, 0, 1, Remove.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(modifyEClass, Modify.class, "Modify", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModify_Jsonfile(), this.getJSonFile(), null, "jsonfile", null, 0, -1, Modify.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModify_Node(), this.getJSonObject(), null, "node", null, 0, 1, Modify.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModify_TargetNode(), ecorePackage.getEString(), "targetNode", null, 0, 1, Modify.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModify_NameObjectRemove(), ecorePackage.getEString(), "nameObjectRemove", null, 0, 1, Modify.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModify_NameObject(), ecorePackage.getEString(), "nameObject", null, 0, 1, Modify.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(jsonArrayEClass, JsonArray.class, "JsonArray", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getJsonArray_Name(), ecorePackage.getEString(), "name", null, 0, 1, JsonArray.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

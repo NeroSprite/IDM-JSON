@@ -173,10 +173,19 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Insert returns Insert
 	 *
 	 * Constraint:
-	 *     (jsonfile+=JSonFile jsonfile+=JSonFile node=JSonObject)
+	 *     (targetNode=STRING nameObject=STRING)
 	 */
 	protected void sequence_Insert(ISerializationContext context, Insert semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.INSERT__TARGET_NODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.INSERT__TARGET_NODE));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.INSERT__NAME_OBJECT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.INSERT__NAME_OBJECT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getInsertAccess().getTargetNodeSTRINGTerminalRuleCall_3_0(), semanticObject.getTargetNode());
+		feeder.accept(grammarAccess.getInsertAccess().getNameObjectSTRINGTerminalRuleCall_6_0(), semanticObject.getNameObject());
+		feeder.finish();
 	}
 	
 	
@@ -345,10 +354,22 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Modify returns Modify
 	 *
 	 * Constraint:
-	 *     (jsonfile+=JSonFile jsonfile+=JSonFile node=JSonObject)
+	 *     (targetNode=STRING nameObjectRemove=STRING nameObject=STRING)
 	 */
 	protected void sequence_Modify(ISerializationContext context, Modify semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.MODIFY__TARGET_NODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.MODIFY__TARGET_NODE));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.MODIFY__NAME_OBJECT_REMOVE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.MODIFY__NAME_OBJECT_REMOVE));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.MODIFY__NAME_OBJECT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.MODIFY__NAME_OBJECT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getModifyAccess().getTargetNodeSTRINGTerminalRuleCall_3_0(), semanticObject.getTargetNode());
+		feeder.accept(grammarAccess.getModifyAccess().getNameObjectRemoveSTRINGTerminalRuleCall_6_0(), semanticObject.getNameObjectRemove());
+		feeder.accept(grammarAccess.getModifyAccess().getNameObjectSTRINGTerminalRuleCall_9_0(), semanticObject.getNameObject());
+		feeder.finish();
 	}
 	
 	
@@ -374,18 +395,18 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Projection returns Projection
 	 *
 	 * Constraint:
-	 *     (name=STRING node=JSonObject)
+	 *     (nodename=STRING keyname=STRING)
 	 */
 	protected void sequence_Projection(ISerializationContext context, Projection semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.PROJECTION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.PROJECTION__NAME));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.PROJECTION__NODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.PROJECTION__NODE));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.PROJECTION__NODENAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.PROJECTION__NODENAME));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.PROJECTION__KEYNAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.PROJECTION__KEYNAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getProjectionAccess().getNameSTRINGTerminalRuleCall_3_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getProjectionAccess().getNodeJSonObjectParserRuleCall_6_0(), semanticObject.getNode());
+		feeder.accept(grammarAccess.getProjectionAccess().getNodenameSTRINGTerminalRuleCall_3_0(), semanticObject.getNodename());
+		feeder.accept(grammarAccess.getProjectionAccess().getKeynameSTRINGTerminalRuleCall_6_0(), semanticObject.getKeyname());
 		feeder.finish();
 	}
 	
@@ -396,10 +417,19 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Remove returns Remove
 	 *
 	 * Constraint:
-	 *     (jsonfile+=JSonFile node=JSonObject)
+	 *     (targetNode=STRING nameObjectRemove=STRING)
 	 */
 	protected void sequence_Remove(ISerializationContext context, Remove semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.REMOVE__TARGET_NODE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.REMOVE__TARGET_NODE));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.REMOVE__NAME_OBJECT_REMOVE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.REMOVE__NAME_OBJECT_REMOVE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getRemoveAccess().getTargetNodeSTRINGTerminalRuleCall_3_0(), semanticObject.getTargetNode());
+		feeder.accept(grammarAccess.getRemoveAccess().getNameObjectRemoveSTRINGTerminalRuleCall_6_0(), semanticObject.getNameObjectRemove());
+		feeder.finish();
 	}
 	
 	

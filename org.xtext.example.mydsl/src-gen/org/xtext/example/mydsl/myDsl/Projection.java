@@ -13,8 +13,8 @@ package org.xtext.example.mydsl.myDsl;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Projection#getName <em>Name</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Projection#getNode <em>Node</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Projection#getNodename <em>Nodename</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Projection#getKeyname <em>Keyname</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getProjection()
@@ -24,47 +24,47 @@ package org.xtext.example.mydsl.myDsl;
 public interface Projection extends Commandes
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Nodename</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getProjection_Name()
+   * @return the value of the '<em>Nodename</em>' attribute.
+   * @see #setNodename(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getProjection_Nodename()
    * @model
    * @generated
    */
-  String getName();
+  String getNodename();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Projection#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Projection#getNodename <em>Nodename</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Nodename</em>' attribute.
+   * @see #getNodename()
    * @generated
    */
-  void setName(String value);
+  void setNodename(String value);
 
   /**
-   * Returns the value of the '<em><b>Node</b></em>' containment reference.
+   * Returns the value of the '<em><b>Keyname</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Node</em>' containment reference.
-   * @see #setNode(JSonObject)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getProjection_Node()
-   * @model containment="true"
+   * @return the value of the '<em>Keyname</em>' attribute.
+   * @see #setKeyname(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getProjection_Keyname()
+   * @model
    * @generated
    */
-  JSonObject getNode();
+  String getKeyname();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Projection#getNode <em>Node</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Projection#getKeyname <em>Keyname</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Node</em>' containment reference.
-   * @see #getNode()
+   * @param value the new value of the '<em>Keyname</em>' attribute.
+   * @see #getKeyname()
    * @generated
    */
-  void setNode(JSonObject value);
+  void setKeyname(String value);
 
 } // Projection

@@ -3,7 +3,6 @@
  */
 package org.xtext.example.mydsl.myDsl;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,8 +13,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Insert#getJsonfile <em>Jsonfile</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Insert#getNode <em>Node</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Insert#getTargetNode <em>Target Node</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Insert#getNameObject <em>Name Object</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getInsert()
@@ -25,37 +24,47 @@ import org.eclipse.emf.common.util.EList;
 public interface Insert extends Commandes
 {
   /**
-   * Returns the value of the '<em><b>Jsonfile</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.JSonFile}.
+   * Returns the value of the '<em><b>Target Node</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Jsonfile</em>' containment reference list.
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getInsert_Jsonfile()
-   * @model containment="true"
+   * @return the value of the '<em>Target Node</em>' attribute.
+   * @see #setTargetNode(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getInsert_TargetNode()
+   * @model
    * @generated
    */
-  EList<JSonFile> getJsonfile();
+  String getTargetNode();
 
   /**
-   * Returns the value of the '<em><b>Node</b></em>' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Insert#getTargetNode <em>Target Node</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Node</em>' containment reference.
-   * @see #setNode(JSonObject)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getInsert_Node()
-   * @model containment="true"
+   * @param value the new value of the '<em>Target Node</em>' attribute.
+   * @see #getTargetNode()
    * @generated
    */
-  JSonObject getNode();
+  void setTargetNode(String value);
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Insert#getNode <em>Node</em>}' containment reference.
+   * Returns the value of the '<em><b>Name Object</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Node</em>' containment reference.
-   * @see #getNode()
+   * @return the value of the '<em>Name Object</em>' attribute.
+   * @see #setNameObject(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getInsert_NameObject()
+   * @model
    * @generated
    */
-  void setNode(JSonObject value);
+  String getNameObject();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Insert#getNameObject <em>Name Object</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name Object</em>' attribute.
+   * @see #getNameObject()
+   * @generated
+   */
+  void setNameObject(String value);
 
 } // Insert

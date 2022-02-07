@@ -3,23 +3,12 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.xtext.example.mydsl.myDsl.JSonFile;
-import org.xtext.example.mydsl.myDsl.JSonObject;
 import org.xtext.example.mydsl.myDsl.Modify;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 
@@ -31,8 +20,9 @@ import org.xtext.example.mydsl.myDsl.MyDslPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ModifyImpl#getJsonfile <em>Jsonfile</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ModifyImpl#getNode <em>Node</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ModifyImpl#getTargetNode <em>Target Node</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ModifyImpl#getNameObjectRemove <em>Name Object Remove</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ModifyImpl#getNameObject <em>Name Object</em>}</li>
  * </ul>
  *
  * @generated
@@ -40,24 +30,64 @@ import org.xtext.example.mydsl.myDsl.MyDslPackage;
 public class ModifyImpl extends CommandesImpl implements Modify
 {
   /**
-   * The cached value of the '{@link #getJsonfile() <em>Jsonfile</em>}' containment reference list.
+   * The default value of the '{@link #getTargetNode() <em>Target Node</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getJsonfile()
+   * @see #getTargetNode()
    * @generated
    * @ordered
    */
-  protected EList<JSonFile> jsonfile;
+  protected static final String TARGET_NODE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getNode() <em>Node</em>}' containment reference.
+   * The cached value of the '{@link #getTargetNode() <em>Target Node</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNode()
+   * @see #getTargetNode()
    * @generated
    * @ordered
    */
-  protected JSonObject node;
+  protected String targetNode = TARGET_NODE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getNameObjectRemove() <em>Name Object Remove</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getNameObjectRemove()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_OBJECT_REMOVE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getNameObjectRemove() <em>Name Object Remove</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getNameObjectRemove()
+   * @generated
+   * @ordered
+   */
+  protected String nameObjectRemove = NAME_OBJECT_REMOVE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getNameObject() <em>Name Object</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getNameObject()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_OBJECT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getNameObject() <em>Name Object</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getNameObject()
+   * @generated
+   * @ordered
+   */
+  protected String nameObject = NAME_OBJECT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -86,13 +116,9 @@ public class ModifyImpl extends CommandesImpl implements Modify
    * @generated
    */
   @Override
-  public EList<JSonFile> getJsonfile()
+  public String getTargetNode()
   {
-    if (jsonfile == null)
-    {
-      jsonfile = new EObjectContainmentEList<JSonFile>(JSonFile.class, this, MyDslPackage.MODIFY__JSONFILE);
-    }
-    return jsonfile;
+    return targetNode;
   }
 
   /**
@@ -101,26 +127,12 @@ public class ModifyImpl extends CommandesImpl implements Modify
    * @generated
    */
   @Override
-  public JSonObject getNode()
+  public void setTargetNode(String newTargetNode)
   {
-    return node;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetNode(JSonObject newNode, NotificationChain msgs)
-  {
-    JSonObject oldNode = node;
-    node = newNode;
+    String oldTargetNode = targetNode;
+    targetNode = newTargetNode;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.MODIFY__NODE, oldNode, newNode);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.MODIFY__TARGET_NODE, oldTargetNode, targetNode));
   }
 
   /**
@@ -129,20 +141,9 @@ public class ModifyImpl extends CommandesImpl implements Modify
    * @generated
    */
   @Override
-  public void setNode(JSonObject newNode)
+  public String getNameObjectRemove()
   {
-    if (newNode != node)
-    {
-      NotificationChain msgs = null;
-      if (node != null)
-        msgs = ((InternalEObject)node).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.MODIFY__NODE, null, msgs);
-      if (newNode != null)
-        msgs = ((InternalEObject)newNode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.MODIFY__NODE, null, msgs);
-      msgs = basicSetNode(newNode, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.MODIFY__NODE, newNode, newNode));
+    return nameObjectRemove;
   }
 
   /**
@@ -151,16 +152,37 @@ public class ModifyImpl extends CommandesImpl implements Modify
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  public void setNameObjectRemove(String newNameObjectRemove)
   {
-    switch (featureID)
-    {
-      case MyDslPackage.MODIFY__JSONFILE:
-        return ((InternalEList<?>)getJsonfile()).basicRemove(otherEnd, msgs);
-      case MyDslPackage.MODIFY__NODE:
-        return basicSetNode(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    String oldNameObjectRemove = nameObjectRemove;
+    nameObjectRemove = newNameObjectRemove;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.MODIFY__NAME_OBJECT_REMOVE, oldNameObjectRemove, nameObjectRemove));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getNameObject()
+  {
+    return nameObject;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setNameObject(String newNameObject)
+  {
+    String oldNameObject = nameObject;
+    nameObject = newNameObject;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.MODIFY__NAME_OBJECT, oldNameObject, nameObject));
   }
 
   /**
@@ -173,10 +195,12 @@ public class ModifyImpl extends CommandesImpl implements Modify
   {
     switch (featureID)
     {
-      case MyDslPackage.MODIFY__JSONFILE:
-        return getJsonfile();
-      case MyDslPackage.MODIFY__NODE:
-        return getNode();
+      case MyDslPackage.MODIFY__TARGET_NODE:
+        return getTargetNode();
+      case MyDslPackage.MODIFY__NAME_OBJECT_REMOVE:
+        return getNameObjectRemove();
+      case MyDslPackage.MODIFY__NAME_OBJECT:
+        return getNameObject();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -186,18 +210,19 @@ public class ModifyImpl extends CommandesImpl implements Modify
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case MyDslPackage.MODIFY__JSONFILE:
-        getJsonfile().clear();
-        getJsonfile().addAll((Collection<? extends JSonFile>)newValue);
+      case MyDslPackage.MODIFY__TARGET_NODE:
+        setTargetNode((String)newValue);
         return;
-      case MyDslPackage.MODIFY__NODE:
-        setNode((JSonObject)newValue);
+      case MyDslPackage.MODIFY__NAME_OBJECT_REMOVE:
+        setNameObjectRemove((String)newValue);
+        return;
+      case MyDslPackage.MODIFY__NAME_OBJECT:
+        setNameObject((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -213,11 +238,14 @@ public class ModifyImpl extends CommandesImpl implements Modify
   {
     switch (featureID)
     {
-      case MyDslPackage.MODIFY__JSONFILE:
-        getJsonfile().clear();
+      case MyDslPackage.MODIFY__TARGET_NODE:
+        setTargetNode(TARGET_NODE_EDEFAULT);
         return;
-      case MyDslPackage.MODIFY__NODE:
-        setNode((JSonObject)null);
+      case MyDslPackage.MODIFY__NAME_OBJECT_REMOVE:
+        setNameObjectRemove(NAME_OBJECT_REMOVE_EDEFAULT);
+        return;
+      case MyDslPackage.MODIFY__NAME_OBJECT:
+        setNameObject(NAME_OBJECT_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -233,12 +261,35 @@ public class ModifyImpl extends CommandesImpl implements Modify
   {
     switch (featureID)
     {
-      case MyDslPackage.MODIFY__JSONFILE:
-        return jsonfile != null && !jsonfile.isEmpty();
-      case MyDslPackage.MODIFY__NODE:
-        return node != null;
+      case MyDslPackage.MODIFY__TARGET_NODE:
+        return TARGET_NODE_EDEFAULT == null ? targetNode != null : !TARGET_NODE_EDEFAULT.equals(targetNode);
+      case MyDslPackage.MODIFY__NAME_OBJECT_REMOVE:
+        return NAME_OBJECT_REMOVE_EDEFAULT == null ? nameObjectRemove != null : !NAME_OBJECT_REMOVE_EDEFAULT.equals(nameObjectRemove);
+      case MyDslPackage.MODIFY__NAME_OBJECT:
+        return NAME_OBJECT_EDEFAULT == null ? nameObject != null : !NAME_OBJECT_EDEFAULT.equals(nameObject);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (targetNode: ");
+    result.append(targetNode);
+    result.append(", nameObjectRemove: ");
+    result.append(nameObjectRemove);
+    result.append(", nameObject: ");
+    result.append(nameObject);
+    result.append(')');
+    return result.toString();
   }
 
 } //ModifyImpl
