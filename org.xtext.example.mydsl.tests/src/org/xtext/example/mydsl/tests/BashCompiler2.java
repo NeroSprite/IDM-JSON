@@ -112,7 +112,7 @@ public class BashCompiler2 {
 					//for (JSonFile jo : l.getJsonfile()) { 
 					//jsonReferenceTMP = jo.getName();
 					//bashCodeFinal+=JsonFileToJava(jo);
-					bashCodeFinal += indentCode(lvlIndenteCode)+"System.out.println("+l.getName()+"); \n";
+					bashCodeFinal += indentCode(lvlIndenteCode)+ "echo "+l.getName()+" \n";
 					//}
 				}
 				if( com instanceof Subset) {
@@ -197,7 +197,7 @@ public class BashCompiler2 {
 	
 	    String o;
 		while ((o = stdInput.readLine()) != null) {
-	        System.out.println(o);
+	       // System.out.println(o);
 	    }
 	    
 		String err; 
@@ -206,7 +206,7 @@ public class BashCompiler2 {
 	    }
 	}
 
-	//TODO
+	
 	public String Operation(EList<JSonOperator> sumlist, String operator) {
 		String res = "";
 		for (JSonOperator jo : sumlist) { 
@@ -307,36 +307,37 @@ public class BashCompiler2 {
 	public String JsonFileToBash(JSonFile f) {
 		String bashCodeFinal = "";
 		String jsonReferenceTMP = "";
-		bashCodeFinal += "echo '{\n";
+		bashCodeFinal += "$"+f.getName()+ " = \"{\n";
 		EList<JSonObject> list = f.getContient();
 		for (int i = 0; i < list.size(); i++) { 
 			JSonObject jo = list.get(i);
-			System.out.println(list.size());
+			//System.out.println(list.size());
 			if( jo instanceof JsonArray) {
 				JsonArray a = (JsonArray) jo;
 
 				int arrayPosition = 0;
-
-				bashCodeFinal+=jsonArrayRecursive(a,a);
+				bashCodeFinal+= indentCode(lvlIndenteCode) + " \"" + a.getName() + "\": {\n" + jsonArrayRecursive(a,a);
+				bashCodeFinal+= indentCode(lvlIndenteCode)+ "}\n";
+				
 				tmpCode ="";
 			}
 			if( jo instanceof JSonEnum) {
 				JSonEnum a = (JSonEnum) jo;
-				bashCodeFinal+= indentCode(lvlIndenteCode) + "\"" + a.getName() + "\": [" + jsonEnumList(a) + "]\n";
+				bashCodeFinal+= indentCode(lvlIndenteCode) + " \"" + a.getName() + "\": [" + jsonEnumList(a) + "]\n";
 				tmpCode ="";
 			}
 			if( jo instanceof JsonInteger) {
-				JsonInteger a = (JsonInteger) jo;
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + "\"" + a.getName() + "\" : " + a.getValue();
-				if(i != list.size()) {
+				JsonInteger a = (JsonInteger) jo; 
+				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : " + a.getValue();
+				if(i < list.size()-1) {
 					bashCodeFinal+= ",";
 				}
 				bashCodeFinal+= "\n";
 			}
 			if( jo instanceof JsonBoolean) {
 				JsonBoolean a = (JsonBoolean) jo;
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + "\"" + a.getName() + "\" : " + a.getValue();
-				if(i != list.size()) {
+				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : " + a.getValue();
+				if(i <= list.size()-1) {
 					bashCodeFinal+= ",";
 				}
 				bashCodeFinal+= "\n";
@@ -344,8 +345,8 @@ public class BashCompiler2 {
 		
 			if( jo instanceof JSonString) {
 				JSonString a = (JSonString) jo;
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + "\"" + a.getName() + "\" : \"" + a.getValue() + "\"" ;
-				if(i != list.size()) {
+				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : \"" + a.getValue() + "\"" ;
+				if(i <= list.size()-1) {
 					bashCodeFinal+= ",";
 				}
 				bashCodeFinal+= "\n";
@@ -353,8 +354,8 @@ public class BashCompiler2 {
 			}
 			if( jo instanceof JSonNull) {
 				JSonString a = (JSonString) jo;
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + "\"" + a.getName() + "\" : null\n" ;
-				if((i -1 ) != list.size()) {
+				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : null\n" ;
+				if(i <= list.size()-1) {
 					bashCodeFinal+= ",";
 				}
 				bashCodeFinal+= "\n";
@@ -362,37 +363,44 @@ public class BashCompiler2 {
 			if( jo instanceof Sum) {
 				Sum a = (Sum) jo;
 				EList<JSonOperator> sumlist = a.getListInterger();
-				bashCodeFinal+= indentCode(lvlIndenteCode)+"JSONObject "+a.getName()+"= new JSONObject().put(\""+a.getName()+"\", new Double(";
-				bashCodeFinal += Operation(sumlist,"+");
-				bashCodeFinal += ")); \n";
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP+".put("+a.getName()+"); \n";
+				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : " + Operation(sumlist,"+");
+				if(i <= list.size()-1) {
+					bashCodeFinal+= ",";
+				}
+				bashCodeFinal+= "\n";
 			}
 			if( jo instanceof Div) {
 				Div a = (Div) jo;
 				EList<JSonOperator> sumlist = a.getListInterger();
-				bashCodeFinal+= indentCode(lvlIndenteCode)+"JSONObject "+a.getName()+"= new JSONObject().put(\""+a.getName()+"\", new Double(";
-				bashCodeFinal += Operation(sumlist,"/");
-				bashCodeFinal += ")); \n";
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP+".put("+a.getName()+"); \n";
+				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : " + Operation(sumlist,"/");
+				if(i <= list.size()-1) {
+					bashCodeFinal+= ",";
+				}
+				bashCodeFinal+= "\n";
+				
 			}
 			if( jo instanceof Mult) {
 				Mult a = (Mult) jo;
 				EList<JSonOperator> sumlist = a.getListInterger();
-				bashCodeFinal+= indentCode(lvlIndenteCode)+"JSONObject "+a.getName()+"= new JSONObject().put(\""+a.getName()+"\", new Double(";
-				bashCodeFinal += Operation(sumlist,"*");
-				bashCodeFinal += ")); \n";
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP+".put("+a.getName()+"); \n";
+				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : " + Operation(sumlist,"*");
+				if(i <= list.size()-1) {
+					bashCodeFinal+= ",";
+				}
+				bashCodeFinal+= "\n";
+				
 			}
 			if( jo instanceof Sub) {
 				Sub a = (Sub) jo;
 				EList<JSonOperator> sumlist = a.getListInterger();
-				bashCodeFinal+= indentCode(lvlIndenteCode)+"JSONObject "+a.getName()+"= new JSONObject().put(\""+a.getName()+"\", new Double(";
-				bashCodeFinal += Operation(sumlist,"-");
-				bashCodeFinal += ")); \n";
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP+".put("+a.getName()+"); \n";
+				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : " + Operation(sumlist,"-");
+				if(i <= list.size()-1) {
+					bashCodeFinal+= ",";
+				}
+				bashCodeFinal+= "\n";
+				
 			}
 		}
-		bashCodeFinal += "}'";
+		bashCodeFinal += "}\"";
 		return bashCodeFinal;
 
 	}
@@ -438,78 +446,67 @@ public class BashCompiler2 {
 	}
 
 	public String jsonArrayRecursive(JsonArray a,JsonArray f ) {
-		tmpCode += indentCode(lvlIndenteCode)+ a.getName() +" : [ \n";
+		tmpCode="";
+		//tmpCode += indentCode(lvlIndenteCode)+ a.getName() +" : [ \n";
+		lvlIndenteCode++;
 		EList<JSonAttribut> listArray = a.getContient();
+		int i = 0;
 		for (JSonAttribut att : listArray) {
+			
 			if( att instanceof JsonBoolean) {
 				JsonBoolean b = (JsonBoolean) att;
-				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+"= new JSONObject().put(\""+b.getName()+"\", new Boolean("+b.getValue()+")); \n";
-				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+"); \n";
+				tmpCode+= indentCode(lvlIndenteCode) + "\"" + b.getName() + "\" : " + b.getValue()+"";
 			}
 			else if( att instanceof JsonInteger) {
 				JsonInteger b = (JsonInteger) att;//
-				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+"= new JSONObject().put(\""+b.getName()+"\", new Double("+b.getValue()+")); \n";
-				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+"); \n";
+				tmpCode+= indentCode(lvlIndenteCode) + "\"" + b.getName() + "\" : " + b.getValue();
 			}
 
 			else if( att instanceof JSonString) {
 				JSonString b = (JSonString) att;
-				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+"= new JSONObject().put(\""+b.getName()+"\", \""+b.getValue()+"\"); \n";
-				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+"); \n";
+				tmpCode+= indentCode(lvlIndenteCode) + "\"" + b.getName() + "\" : \"" + b.getValue()+"\"";
 			}
 			else if( att instanceof JSonNull) {
 				JSonNull b = (JSonNull) att;
-				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+"= new JSONObject().put(\""+b.getName()+"\", \"null\"); \n";
-				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+"); \n";
+				tmpCode+= indentCode(lvlIndenteCode) + "\"" + b.getName() + "\" : null";
 			}
 			else if( att instanceof JsonArray) {
 				JsonArray b = (JsonArray) att;
-				tmpCode= jsonArrayRecursive(b,a);
-				//tmpCode ="";
+				tmpCode+= indentCode(lvlIndenteCode)+"\"" + b.getName() + "\": {\n " + jsonArrayRecursive(b,b) +"\n" ;
+				tmpCode+= indentCode(lvlIndenteCode)+"}\n";
 			}
+			//TODO
 			else if( att instanceof JSonEnum) {
 				JSonEnum b = (JSonEnum) att;
-				tmpCode += indentCode(lvlIndenteCode)+"JSONArray "+ b.getName() +" = new JSONArray(); \n";
-
-				jsonEnumList(b);
-				tmpCode+=indentCode(lvlIndenteCode)+f.getName()+".put("+b.getName()+"); \n";
-
+				tmpCode+= indentCode(lvlIndenteCode) + " \"" + b.getName() + "\": [" + jsonEnumList(b) + "]\n";
 			}
 			else if( att instanceof Sum) {
 				Sum b = (Sum) att;
 				EList<JSonOperator> sumlist = b.getListInterger();
-				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+"= new JSONObject().put(\""+b.getName()+"\", new Double(";
-				tmpCode += Operation(sumlist,"+");
-				tmpCode += ")); \n";
-				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+"); \n";
+				tmpCode+= indentCode(lvlIndenteCode)+b.getName() + " \"" + b.getName() + "\" : (" + Operation(sumlist,"+")+")";
 			}
 			else if( att instanceof Div) {
 				Div b = (Div) att;
 				EList<JSonOperator> sumlist = b.getListInterger();
-				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+"= new JSONObject().put(\""+b.getName()+"\", new Double(";
-				tmpCode += Operation(sumlist,"/");
-				tmpCode += ")); \n";
-				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+"); \n";
+				tmpCode+= indentCode(lvlIndenteCode)+b.getName() + " \"" + b.getName() + "\" : (" + Operation(sumlist,"/")+")";
 			}
 			else if( att instanceof Mult) {
 				Mult b = (Mult) att;
 				EList<JSonOperator> sumlist = b.getListInterger();
-				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+"= new JSONObject().put(\""+b.getName()+"\", new Double(";
-				tmpCode += Operation(sumlist,"*");
-				tmpCode += ")); \n";
-				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+"); \n";
+				tmpCode+= indentCode(lvlIndenteCode)+b.getName() + " \"" + b.getName() + "\" : (" + Operation(sumlist,"*")+")";
 			}
 			else if( att instanceof Sub) {
 				Sub b = (Sub) att;
 				EList<JSonOperator> sumlist = b.getListInterger();
-				tmpCode+= indentCode(lvlIndenteCode)+"JSONObject "+b.getName()+"= new JSONObject().put(\""+b.getName()+"\", new Double(";
-				tmpCode += Operation(sumlist,"-");
-				tmpCode += ")); \n";
-				tmpCode+= indentCode(lvlIndenteCode)+a.getName()+".put("+b.getName()+"); \n";
+				tmpCode+= indentCode(lvlIndenteCode)+b.getName() + " \"" + b.getName() + "\" : (" + Operation(sumlist,"-")+")";
 			}
+			if(i + 1 != listArray.size()) {
+				tmpCode+= " ,\n";
+			}
+			i++;
 		}
+		lvlIndenteCode--;
 		if(!a.equals(f)) {
-			tmpCode += indentCode(lvlIndenteCode)+f.getName()+".put("+a.getName()+"); \n";
 		}
 		return tmpCode;
 	}

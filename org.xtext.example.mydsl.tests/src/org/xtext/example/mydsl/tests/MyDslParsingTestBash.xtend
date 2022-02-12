@@ -19,7 +19,7 @@ import org.xtext.example.mydsl.myDsl.MainGrammar
 class MyDslParsingTestBash {
 	@Inject
 	ParseHelper<MainGrammar> parseHelper
-
+/*
 	@Test
 	def void stringExemple() {
 		val result = parseHelper.parse("JSonFile \"File\" {
@@ -46,4 +46,57 @@ class MyDslParsingTestBash {
 		val BashCompiler2 cmpBash = new BashCompiler2(result)
 		cmpBash.compileAndRun
 	}
+	*/
+	 
+	
+	 
+	@Test
+	def void ArrayTest() {
+		val result = parseHelper.parse("JSonFile \"File\" {
+	JSonArray \"MyArray\" {
+		Integer \"MyInteger\" 2  ,
+		Integer \"MyInteger2\" 5 ,
+		String \"strng\" \"Value\" ,
+		Null \"null\" ,
+		JSonArray \"ArrayOther\" {
+			Integer \"IntOther\" 2
+		},
+		Boolean \"BoolValue\" true,
+		Div\"divi\"[
+		Integer \"divi1\" 1,
+		Integer \"divi2\" 5
+		],
+		Mult\"multi\"[
+		Integer \"mult1\" 1,
+		Integer \"mult2\" 5,
+		Integer \"mult3\" 2
+	]
+	}
+}");
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
+	}
+	
+	
+	 /*
+	@Test
+	def void ArrayTest() {
+		val result = parseHelper.parse("JSonFile \"File\" {
+	
+		Integer \"MyInteger\" 2  
+	
+}");
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
+	}
+	*/
+	
+	
+	
 }
