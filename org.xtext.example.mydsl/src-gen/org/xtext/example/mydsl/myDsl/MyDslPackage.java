@@ -227,13 +227,22 @@ public interface MyDslPackage extends EPackage
   int STORE__NAME = COMMANDES_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Contenu</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STORE__CONTENU = COMMANDES_FEATURE_COUNT + 2;
+
+  /**
    * The number of structural features of the '<em>Store</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STORE_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 2;
+  int STORE_FEATURE_COUNT = COMMANDES_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.LoadImpl <em>Load</em>}' class.
@@ -1020,6 +1029,17 @@ public interface MyDslPackage extends EPackage
   EAttribute getStore_Name();
 
   /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Store#getContenu <em>Contenu</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Contenu</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Store#getContenu()
+   * @see #getStore()
+   * @generated
+   */
+  EAttribute getStore_Contenu();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Load <em>Load</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1704,6 +1724,14 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EAttribute STORE__NAME = eINSTANCE.getStore_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Contenu</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STORE__CONTENU = eINSTANCE.getStore_Contenu();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.LoadImpl <em>Load</em>}' class.

@@ -439,7 +439,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Store returns Store
 	 *
 	 * Constraint:
-	 *     (path=STRING name=STRING)
+	 *     (path=STRING name=STRING contenu=STRING)
 	 */
 	protected void sequence_Store(ISerializationContext context, Store semanticObject) {
 		if (errorAcceptor != null) {
@@ -447,10 +447,13 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.STORE__PATH));
 			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.STORE__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.STORE__NAME));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.STORE__CONTENU) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.STORE__CONTENU));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getStoreAccess().getPathSTRINGTerminalRuleCall_3_0(), semanticObject.getPath());
 		feeder.accept(grammarAccess.getStoreAccess().getNameSTRINGTerminalRuleCall_6_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getStoreAccess().getContenuSTRINGTerminalRuleCall_9_0(), semanticObject.getContenu());
 		feeder.finish();
 	}
 	

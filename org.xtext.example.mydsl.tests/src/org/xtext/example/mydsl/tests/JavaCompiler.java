@@ -5,6 +5,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
@@ -38,6 +40,7 @@ import org.xtext.example.mydsl.myDsl.Sum;
 import com.google.common.io.Files;
 
 public class JavaCompiler {
+	long startTime = System.nanoTime();
 	private MainGrammar _model;
 	private String tmpCode="";
 	private int lvlIndenteCode =0;
@@ -48,7 +51,7 @@ public class JavaCompiler {
 	}
 
 	public void compileAndRun() throws IOException {
-		//Varialbe
+		//Variable
 		String javaCodeFinal = "";
 		String jsonReferenceTMP = "";
 
@@ -96,7 +99,7 @@ public class JavaCompiler {
 					lvlIndenteCode++;
 					javaCodeFinal += indentCode(lvlIndenteCode)+"String path"+l.getName()+" =\""+l.getPath()+"/"+l.getName()+".json\";\n";
 					javaCodeFinal += indentCode(lvlIndenteCode)+"FileWriter file"+l.getName()+" = new FileWriter(path"+l.getName()+");\n";
-					javaCodeFinal += indentCode(lvlIndenteCode)+"String json"+l.getName()+" = "+l.getName()+".toString();\n";
+					javaCodeFinal += indentCode(lvlIndenteCode)+"String json"+l.getName()+" = "+l.getContenu()+".toString();\n";
 					javaCodeFinal += indentCode(lvlIndenteCode)+"file"+l.getName()+".write(json"+l.getName()+");\n";
 					javaCodeFinal += indentCode(lvlIndenteCode)+"file"+l.getName()+".close();\n";
 					lvlIndenteCode--;
@@ -157,9 +160,10 @@ public class JavaCompiler {
 		lvlIndenteCode--;
 		javaCodeFinal+=indentCode(lvlIndenteCode)+"}";
 
-		//String javaCode = "import pd.read_csv(\"" + csvFilename + "\")\n" +
-		//		"print(df)";	
-
+		long endTime = System.nanoTime();
+		String timeEnding = "JAVA time execution : "+ ((endTime - startTime))+"  //divide by 1000000 to get milliseconds.";
+		String TIME_OUTPUT = "TimeExecution";		
+		
 		// serialize code into Python filename
 		String JAVA_OUTPUT = "Java.java";
 		String JAVA_INPUT = "javac -cp json.jar:json-simple.jar Java.java";
@@ -171,7 +175,8 @@ public class JavaCompiler {
 		 */
 		// or shorter
 		Files.write(javaCodeFinal.getBytes(), new File(JAVA_OUTPUT));
-
+		Files.write(timeEnding.getBytes(), new File(TIME_OUTPUT));
+		//Files.write(TIME_OUTPUT, timeEnding.getBytes());
 		// execute the generated Python code
 		// roughly: exec "python foo.py"
 
@@ -228,7 +233,7 @@ public class JavaCompiler {
 		return res;
 	}
 
-	//TODO
+
 	public String subsetFonction(String TargetNode, EList<String> eList) {
 
 		String tmp = "";
@@ -377,7 +382,7 @@ public class JavaCompiler {
 		return javaCodeFinal;
 
 	}
-	//TODO
+
 	public String jsonEnumList(JSonEnum a) {
 		EList<JSonEnumField> listEnum = a.getContient();
 		for (JSonEnumField att : listEnum) {

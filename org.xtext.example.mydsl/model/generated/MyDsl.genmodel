@@ -20,6 +20,7 @@
     <genClasses ecoreClass="MyDsl.ecore#//Store">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Store/path"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Store/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Store/contenu"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Load">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Load/path"/>

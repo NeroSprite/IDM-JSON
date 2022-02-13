@@ -336,21 +336,27 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Keyword cNameKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cNameAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cNameSTRINGTerminalRuleCall_6_0 = (RuleCall)cNameAssignment_6.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cCommaKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cContenuKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cContenuAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cContenuSTRINGTerminalRuleCall_9_0 = (RuleCall)cContenuAssignment_9.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
 		///* Load and Store */
 		//Store :
 		//    'Store'
 		//    '{'
 		//        'path' path=STRING ','
-		//        'name' name=STRING
+		//        'name' name=STRING ','
+		//        'contenu' contenu=STRING
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Store'
 		//'{'
 		//    'path' path=STRING ','
-		//    'name' name=STRING
+		//    'name' name=STRING ','
+		//    'contenu' contenu=STRING
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -381,8 +387,20 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//STRING
 		public RuleCall getNameSTRINGTerminalRuleCall_6_0() { return cNameSTRINGTerminalRuleCall_6_0; }
 		
+		//','
+		public Keyword getCommaKeyword_7() { return cCommaKeyword_7; }
+		
+		//'contenu'
+		public Keyword getContenuKeyword_8() { return cContenuKeyword_8; }
+		
+		//contenu=STRING
+		public Assignment getContenuAssignment_9() { return cContenuAssignment_9; }
+		
+		//STRING
+		public RuleCall getContenuSTRINGTerminalRuleCall_9_0() { return cContenuSTRINGTerminalRuleCall_9_0; }
+		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
 	}
 	public class LoadElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.Load");
@@ -1562,7 +1580,8 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//    'Store'
 	//    '{'
 	//        'path' path=STRING ','
-	//        'name' name=STRING
+	//        'name' name=STRING ','
+	//        'contenu' contenu=STRING
 	//    '}';
 	public StoreElements getStoreAccess() {
 		return pStore;

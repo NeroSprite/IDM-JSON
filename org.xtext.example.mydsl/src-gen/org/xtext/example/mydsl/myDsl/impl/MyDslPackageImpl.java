@@ -430,6 +430,17 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
+  public EAttribute getStore_Contenu()
+  {
+    return (EAttribute)storeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getLoad()
   {
     return loadEClass;
@@ -1045,6 +1056,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     storeEClass = createEClass(STORE);
     createEAttribute(storeEClass, STORE__PATH);
     createEAttribute(storeEClass, STORE__NAME);
+    createEAttribute(storeEClass, STORE__CONTENU);
 
     loadEClass = createEClass(LOAD);
     createEAttribute(loadEClass, LOAD__PATH);
@@ -1208,6 +1220,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEClass(storeEClass, Store.class, "Store", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStore_Path(), ecorePackage.getEString(), "path", null, 0, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getStore_Name(), ecorePackage.getEString(), "name", null, 0, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStore_Contenu(), ecorePackage.getEString(), "contenu", null, 0, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(loadEClass, Load.class, "Load", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLoad_Path(), ecorePackage.getEString(), "path", null, 0, 1, Load.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

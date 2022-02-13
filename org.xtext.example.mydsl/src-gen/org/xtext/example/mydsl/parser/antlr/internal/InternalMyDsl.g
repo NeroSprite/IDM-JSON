@@ -709,9 +709,35 @@ ruleStore returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_7='}'
+		otherlv_7=','
 		{
-			newLeafNode(otherlv_7, grammarAccess.getStoreAccess().getRightCurlyBracketKeyword_7());
+			newLeafNode(otherlv_7, grammarAccess.getStoreAccess().getCommaKeyword_7());
+		}
+		otherlv_8='contenu'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getStoreAccess().getContenuKeyword_8());
+		}
+		(
+			(
+				lv_contenu_9_0=RULE_STRING
+				{
+					newLeafNode(lv_contenu_9_0, grammarAccess.getStoreAccess().getContenuSTRINGTerminalRuleCall_9_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getStoreRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"contenu",
+						lv_contenu_9_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		otherlv_10='}'
+		{
+			newLeafNode(otherlv_10, grammarAccess.getStoreAccess().getRightCurlyBracketKeyword_10());
 		}
 	)
 ;

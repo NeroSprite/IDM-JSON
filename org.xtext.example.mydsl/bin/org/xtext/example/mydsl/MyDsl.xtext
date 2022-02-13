@@ -31,7 +31,8 @@ Store :
 	'Store'
 	'{'
 		'path' path=STRING ','
-		'name' name=STRING
+		'name' name=STRING ','
+		'contenu' contenu=STRING
 	'}';
 
 Load:

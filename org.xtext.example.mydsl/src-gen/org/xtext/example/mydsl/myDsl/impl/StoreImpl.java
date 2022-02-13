@@ -22,6 +22,7 @@ import org.xtext.example.mydsl.myDsl.Store;
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl#getContenu <em>Contenu</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +68,26 @@ public class StoreImpl extends CommandesImpl implements Store
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getContenu() <em>Contenu</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getContenu()
+   * @generated
+   * @ordered
+   */
+  protected static final String CONTENU_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getContenu() <em>Contenu</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getContenu()
+   * @generated
+   * @ordered
+   */
+  protected String contenu = CONTENU_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -145,6 +166,31 @@ public class StoreImpl extends CommandesImpl implements Store
    * @generated
    */
   @Override
+  public String getContenu()
+  {
+    return contenu;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setContenu(String newContenu)
+  {
+    String oldContenu = contenu;
+    contenu = newContenu;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__CONTENU, oldContenu, contenu));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -153,6 +199,8 @@ public class StoreImpl extends CommandesImpl implements Store
         return getPath();
       case MyDslPackage.STORE__NAME:
         return getName();
+      case MyDslPackage.STORE__CONTENU:
+        return getContenu();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -172,6 +220,9 @@ public class StoreImpl extends CommandesImpl implements Store
         return;
       case MyDslPackage.STORE__NAME:
         setName((String)newValue);
+        return;
+      case MyDslPackage.STORE__CONTENU:
+        setContenu((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -193,6 +244,9 @@ public class StoreImpl extends CommandesImpl implements Store
       case MyDslPackage.STORE__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case MyDslPackage.STORE__CONTENU:
+        setContenu(CONTENU_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -211,6 +265,8 @@ public class StoreImpl extends CommandesImpl implements Store
         return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
       case MyDslPackage.STORE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case MyDslPackage.STORE__CONTENU:
+        return CONTENU_EDEFAULT == null ? contenu != null : !CONTENU_EDEFAULT.equals(contenu);
     }
     return super.eIsSet(featureID);
   }
@@ -230,6 +286,8 @@ public class StoreImpl extends CommandesImpl implements Store
     result.append(path);
     result.append(", name: ");
     result.append(name);
+    result.append(", contenu: ");
+    result.append(contenu);
     result.append(')');
     return result.toString();
   }

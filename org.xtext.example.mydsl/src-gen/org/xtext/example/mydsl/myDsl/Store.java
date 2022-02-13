@@ -15,6 +15,7 @@ package org.xtext.example.mydsl.myDsl;
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.Store#getPath <em>Path</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.Store#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Store#getContenu <em>Contenu</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getStore()
@@ -66,5 +67,27 @@ public interface Store extends Commandes
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Contenu</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Contenu</em>' attribute.
+   * @see #setContenu(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getStore_Contenu()
+   * @model
+   * @generated
+   */
+  String getContenu();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Store#getContenu <em>Contenu</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Contenu</em>' attribute.
+   * @see #getContenu()
+   * @generated
+   */
+  void setContenu(String value);
 
 } // Store

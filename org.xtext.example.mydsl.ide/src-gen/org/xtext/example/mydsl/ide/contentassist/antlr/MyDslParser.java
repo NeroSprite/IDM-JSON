@@ -77,6 +77,7 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getJSonFileAccess().getContientAssignment_3(), "rule__JSonFile__ContientAssignment_3");
 			builder.put(grammarAccess.getStoreAccess().getPathAssignment_3(), "rule__Store__PathAssignment_3");
 			builder.put(grammarAccess.getStoreAccess().getNameAssignment_6(), "rule__Store__NameAssignment_6");
+			builder.put(grammarAccess.getStoreAccess().getContenuAssignment_9(), "rule__Store__ContenuAssignment_9");
 			builder.put(grammarAccess.getLoadAccess().getPathAssignment_3(), "rule__Load__PathAssignment_3");
 			builder.put(grammarAccess.getLoadAccess().getNameAssignment_6(), "rule__Load__NameAssignment_6");
 			builder.put(grammarAccess.getDisplayAccess().getNameAssignment_3(), "rule__Display__NameAssignment_3");

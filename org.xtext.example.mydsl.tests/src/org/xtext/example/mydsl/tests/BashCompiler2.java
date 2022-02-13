@@ -45,6 +45,8 @@ import org.xtext.example.mydsl.myDsl.Sum;
 
 
 public class BashCompiler2 {
+	
+	long startTime = System.nanoTime();
 	private MainGrammar _model;
 	private String tmpCode="";
 	private int lvlIndenteCode =0;
@@ -59,8 +61,6 @@ public class BashCompiler2 {
 		String bashCodeFinal = "";
 		String jsonReferenceTMP = "";
 
-
-
 		//Debut Generation code
 		lvlIndenteCode++;
 		EList<EObject> mainGrammar = _model.getMain();
@@ -74,95 +74,46 @@ public class BashCompiler2 {
 				Commandes com = (Commandes) main;
 				if( com instanceof Load) {
 					Load l = (Load) com;
-					bashCodeFinal += indentCode(lvlIndenteCode)+"try {\n";
-					lvlIndenteCode++;
-					bashCodeFinal += indentCode(lvlIndenteCode)+"JSONParser parser = new JSONParser();" +  "\n";
-					bashCodeFinal += indentCode(lvlIndenteCode)+"Object paser"+l.getName()+" = parser.parse(new FileReader( \"" + l.getPath()+"/"+l.getName() + ".json\"));\n";
-					bashCodeFinal += indentCode(lvlIndenteCode)+"JSONObject "+ l.getName()+" =  (JSONObject) paser" +l.getName()+";" + "\n";
-					bashCodeFinal += indentCode(lvlIndenteCode)+"} catch (Exception io) {\n";
-					lvlIndenteCode++;
-					bashCodeFinal += indentCode(lvlIndenteCode)+"io.getMessage();\n";
-					lvlIndenteCode--;
-					bashCodeFinal += indentCode(lvlIndenteCode)+"}\n";
+					bashCodeFinal+= l.getName()+"=$(cat "+l.getPath()+"/"+l.getName()+".json)\n";
 				}
 				if( com instanceof Store) {
 					Store l = (Store) com;
-					bashCodeFinal += indentCode(lvlIndenteCode)+"try {\n";
-					lvlIndenteCode++;
-					bashCodeFinal += indentCode(lvlIndenteCode)+"String path"+l.getName()+" =\""+l.getPath()+"/"+l.getName()+".json\";\n";
-					bashCodeFinal += indentCode(lvlIndenteCode)+"FileWriter file"+l.getName()+" = new FileWriter(path"+l.getName()+");\n";
-					bashCodeFinal += indentCode(lvlIndenteCode)+"String json"+l.getName()+" = "+l.getName()+".toString();\n";
-					bashCodeFinal += indentCode(lvlIndenteCode)+"file"+l.getName()+".write(json"+l.getName()+");\n";
-					bashCodeFinal += indentCode(lvlIndenteCode)+"file"+l.getName()+".close();\n";
-					lvlIndenteCode--;
-					bashCodeFinal += indentCode(lvlIndenteCode)+"} catch (IOException io) {\n";
-					lvlIndenteCode++;
-					bashCodeFinal += indentCode(lvlIndenteCode)+"io.getMessage();\n";
-					lvlIndenteCode--;
-					bashCodeFinal += indentCode(lvlIndenteCode)+"}\n";
-
-
-					//bashCodeFinal += "private static FileWriter "+l.getName()+"; " + "\n";
-					//bashCodeFinal += l.getName()+" = new FileWriter(" + l.getPath()+"/"+l.getName() + ".json); \n";
-					//bashCodeFinal += l.getName()+".white(jsonfile.toJSONString());" + "\n";
-				}
+					bashCodeFinal += "echo \"$"+l.getContenu()+"\" >> "+l.getPath()+"/"+l.getName()+".json\n";
+					}
 				if( com instanceof Display) {
 					Display l = (Display) com;
-
-					//for (JSonFile jo : l.getJsonfile()) { 
-					//jsonReferenceTMP = jo.getName();
-					//bashCodeFinal+=JsonFileToJava(jo);
-					bashCodeFinal += indentCode(lvlIndenteCode)+ "echo "+l.getName()+" \n";
-					//}
+					bashCodeFinal += indentCode(lvlIndenteCode)+ "echo \"$"+l.getName()+"\" \n";
 				}
 				if( com instanceof Subset) {
 					Subset l = (Subset) com;
-
-					bashCodeFinal+= indentCode(lvlIndenteCode)+"//Subset \n";
 					bashCodeFinal += subsetFonction(l.getNodenamesub(),l.getKeynamesub());
 				}
 				if( com instanceof Projection) {
 					Projection l = (Projection) com;
-					bashCodeFinal+= indentCode(lvlIndenteCode)+"//Projection \n";
-					bashCodeFinal += projectionFonction(l.getNodename(),l.getKeyname());
-					//bashCodeFinal += indentCode(lvlIndenteCode)+"return IntStream.range(0, "+l.getNodename()+".length())\n"
-					//		+ "      .mapToObj(index -> ((JSONObject)"+l.getNodename()+".get(index)).optString("+l.getKeyname()+"))\n"
-					//		+ "      .collect(Collectors.toList());";
+					bashCodeFinal+= "echo \"$"+l.getNodename()+ "\" | jq \'."+l.getKeyname()+"\'";
 				}
 				if( com instanceof Insert) {
 					Insert l = (Insert) com;
-					bashCodeFinal+= indentCode(lvlIndenteCode)+"//Insert \n";
 					bashCodeFinal += insertFonction(l.getTargetNode(),l.getNameObject());
 				}
 				if( com instanceof Remove) {
 					Remove l = (Remove) com;
-					bashCodeFinal+= indentCode(lvlIndenteCode)+"//Remove \n";
 					bashCodeFinal += removeFonction(l.getTargetNode(),l.getNameObjectRemove());
-
 				}
 				if( com instanceof Modify) {
 					Modify l = (Modify) com;
-					bashCodeFinal+= indentCode(lvlIndenteCode)+"//Modify \n";
-					bashCodeFinal += removeFonction(l.getTargetNode(),l.getNameObjectRemove());
-					bashCodeFinal += insertFonction(l.getTargetNode(),l.getNameObject());
+					bashCodeFinal += modifyFonction(l.getTargetNode(),l.getNameObjectRemove(),l.getNameObject());
 				}
 			}
 		}
 
-		//String javaCode = "import pd.read_csv(\"" + csvFilename + "\")\n" +
-		//		"print(df)";	
+		long endTime = System.nanoTime();
+		String timeEnding = "JQ time execution : "+ ((endTime - startTime))+"  //divide by 1000000 to get milliseconds.";
+		Path TIME_OUTPUT = Paths.get("TimeExecutionBash");	
 
-		// serialize code into Python filename
 		Path BASH_OUTPUT = Paths.get("exampleBash.sh");		
 		String BASH_INPUT = "./exampleBash.sh";	
 		
-		/*resolve
-		FileWriter fw = new FileWriter(PYTHON_OUTPUT);
-		fw.write(pythonCode);
-		fw.flush();
-		fw.close();	
-		*/
-		// or shorter
 		
 		Set<PosixFilePermission> perms = new HashSet<>();
 		perms.add(PosixFilePermission.OWNER_READ);
@@ -182,8 +133,8 @@ public class BashCompiler2 {
 		Files.setPosixFilePermissions(BASH_OUTPUT, perms);
 		Files.write(BASH_OUTPUT, bashCodeFinal.getBytes());
 		
-		// execute the generated Python code
-		// roughly: exec "python foo.py"
+		Files.setPosixFilePermissions(TIME_OUTPUT, perms);
+		Files.write(TIME_OUTPUT, timeEnding.getBytes());
 		
 		Process p = Runtime.getRuntime().exec(BASH_INPUT);
 	    
@@ -238,76 +189,39 @@ public class BashCompiler2 {
 		return res;
 	}
 
-	//TODO
-	public String subsetFonction(String TargetNode, EList<String> eList) {
 
+	public String subsetFonction(String TargetNode, EList<String> eList) {
 		String tmp = "";
-		tmp += indentCode(lvlIndenteCode)+"JSONObject search"+multipleElement +" = new JSONObject(); \n";
 		for (String NameObject : eList) { 
-			tmp+= indentCode(lvlIndenteCode)+"for(int i=0;i<"+TargetNode+".length();i++) {\n";
-			lvlIndenteCode++;
-			tmp+= indentCode(lvlIndenteCode)+"JSONObject jsonObj"+multipleElement +" = "+TargetNode+".getJSONObject(i);\n";
-			tmp += indentCode(lvlIndenteCode) + "String k"+multipleElement+" = jsonObj"+multipleElement +".keys().next();\n";
-			tmp+= indentCode(lvlIndenteCode)+"if(\""+NameObject+"\".equals(k"+multipleElement+")) {\n";
-			lvlIndenteCode++;   
-			tmp+= indentCode(lvlIndenteCode)+"search"+multipleElement+".put(k"+multipleElement+", jsonObj"+multipleElement+".getString(k"+multipleElement+"));\n";
-			lvlIndenteCode--;
-			tmp+= indentCode(lvlIndenteCode)+"}\n";
-			lvlIndenteCode--;
-			tmp+= indentCode(lvlIndenteCode)+"}\n";
+			tmp+= "echo \"$"+TargetNode+ "\" | jq \'."+NameObject+"\'\n";
 		}
 		multipleElement++;
 		return tmp;
 	}
 
-	public String projectionFonction(String TargetNode, String NameObject) {
-		String tmp = "";
-		tmp += indentCode(lvlIndenteCode)+"JSONObject search"+multipleElement +" = new JSONObject(); \n";
-		tmp+= indentCode(lvlIndenteCode)+"for(int i=0;i<"+TargetNode+".length();i++) {\n";
-		lvlIndenteCode++;
-		tmp+= indentCode(lvlIndenteCode)+"JSONObject jsonObj"+multipleElement +" = "+TargetNode+".getJSONObject(i);\n";
-		tmp += indentCode(lvlIndenteCode) + "String k"+multipleElement+" = jsonObj"+multipleElement +".keys().next();\n";
-		tmp+= indentCode(lvlIndenteCode)+"if(\""+NameObject+"\".equals(k"+multipleElement+")) {\n";
-		lvlIndenteCode++;   
-		tmp+= indentCode(lvlIndenteCode)+"search"+multipleElement+".put(k"+multipleElement+", jsonObj"+multipleElement+".getString(k"+multipleElement+"));\n";
-		lvlIndenteCode--;
-		tmp+= indentCode(lvlIndenteCode)+"}\n";
-		lvlIndenteCode--;
-		tmp+= indentCode(lvlIndenteCode)+"}\n";
-		multipleElement++;
-		return tmp;
-	}
-
-
 	public String removeFonction(String TargetNode, String NameObject) {
 		String tmp = "";
-		tmp+= indentCode(lvlIndenteCode)+"int index"+multipleElement+" = 0; \n";
-		tmp+= indentCode(lvlIndenteCode)+"for(int i=0;i<"+TargetNode+".length();i++) {\n";
-		lvlIndenteCode++;
-		tmp+= indentCode(lvlIndenteCode)+"if("+NameObject+".equals("+TargetNode+".get(i))) {\n";
-		lvlIndenteCode++;    
-		tmp+= indentCode(lvlIndenteCode)+"index"+multipleElement+" = i;\n";
-		lvlIndenteCode--;
-		tmp+= indentCode(lvlIndenteCode)+"}\n";
-		lvlIndenteCode--;
-		tmp+= indentCode(lvlIndenteCode)+"}\n";
-		tmp += indentCode(lvlIndenteCode)+TargetNode+".remove(index"+multipleElement+"); \n";
-		multipleElement++;
+		tmp += indentCode(lvlIndenteCode)+TargetNode+"=\"\"\n";
 		return tmp;
 	}
-
 
 	public String insertFonction(String TargetNode, String NameObject){
 		String tmp = "";
-		tmp += indentCode(lvlIndenteCode)+TargetNode+".put("+NameObject+"); \n";
+		tmp += indentCode(lvlIndenteCode)+TargetNode+"=\"$"+ TargetNode +" $"+ NameObject +"\"\n";
+		return tmp;
+	}
+	
+	public String modifyFonction(String TargetNode,String NameObjectRemove, String NameObject){
+		String tmp = "";
+		tmp += indentCode(lvlIndenteCode)+TargetNode+"=\"$"+ NameObject +"\"\n";
 		return tmp;
 	}
 
-	//TODO
+
 	public String JsonFileToBash(JSonFile f) {
 		String bashCodeFinal = "";
 		String jsonReferenceTMP = "";
-		bashCodeFinal += "$"+f.getName()+ " = \"{\n";
+		bashCodeFinal += f.getName()+ "=\'{\n";
 		EList<JSonObject> list = f.getContient();
 		for (int i = 0; i < list.size(); i++) { 
 			JSonObject jo = list.get(i);
@@ -328,7 +242,7 @@ public class BashCompiler2 {
 			}
 			if( jo instanceof JsonInteger) {
 				JsonInteger a = (JsonInteger) jo; 
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : " + a.getValue();
+				bashCodeFinal+= indentCode(lvlIndenteCode) + " \"" + a.getName() + "\" : " + a.getValue();
 				if(i < list.size()-1) {
 					bashCodeFinal+= ",";
 				}
@@ -336,7 +250,7 @@ public class BashCompiler2 {
 			}
 			if( jo instanceof JsonBoolean) {
 				JsonBoolean a = (JsonBoolean) jo;
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : " + a.getValue();
+				bashCodeFinal+= indentCode(lvlIndenteCode) + " \"" + a.getName() + "\" : " + a.getValue();
 				if(i <= list.size()-1) {
 					bashCodeFinal+= ",";
 				}
@@ -345,7 +259,7 @@ public class BashCompiler2 {
 		
 			if( jo instanceof JSonString) {
 				JSonString a = (JSonString) jo;
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : \"" + a.getValue() + "\"" ;
+				bashCodeFinal+= indentCode(lvlIndenteCode) + " \"" + a.getName() + "\" : \"" + a.getValue() + "\"" ;
 				if(i <= list.size()-1) {
 					bashCodeFinal+= ",";
 				}
@@ -354,7 +268,7 @@ public class BashCompiler2 {
 			}
 			if( jo instanceof JSonNull) {
 				JSonString a = (JSonString) jo;
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : null\n" ;
+				bashCodeFinal+= indentCode(lvlIndenteCode) + " \"" + a.getName() + "\" : null\n" ;
 				if(i <= list.size()-1) {
 					bashCodeFinal+= ",";
 				}
@@ -363,7 +277,7 @@ public class BashCompiler2 {
 			if( jo instanceof Sum) {
 				Sum a = (Sum) jo;
 				EList<JSonOperator> sumlist = a.getListInterger();
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : " + Operation(sumlist,"+");
+				bashCodeFinal+= indentCode(lvlIndenteCode) + "\"" + a.getName() + "\" : " + Operation(sumlist,"+");
 				if(i <= list.size()-1) {
 					bashCodeFinal+= ",";
 				}
@@ -372,7 +286,7 @@ public class BashCompiler2 {
 			if( jo instanceof Div) {
 				Div a = (Div) jo;
 				EList<JSonOperator> sumlist = a.getListInterger();
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : " + Operation(sumlist,"/");
+				bashCodeFinal+= indentCode(lvlIndenteCode) + "\"" + a.getName() + "\" : " + Operation(sumlist,"/");
 				if(i <= list.size()-1) {
 					bashCodeFinal+= ",";
 				}
@@ -382,7 +296,7 @@ public class BashCompiler2 {
 			if( jo instanceof Mult) {
 				Mult a = (Mult) jo;
 				EList<JSonOperator> sumlist = a.getListInterger();
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : " + Operation(sumlist,"*");
+				bashCodeFinal+= indentCode(lvlIndenteCode) + "\"" + a.getName() + "\" : " + Operation(sumlist,"*");
 				if(i <= list.size()-1) {
 					bashCodeFinal+= ",";
 				}
@@ -392,7 +306,7 @@ public class BashCompiler2 {
 			if( jo instanceof Sub) {
 				Sub a = (Sub) jo;
 				EList<JSonOperator> sumlist = a.getListInterger();
-				bashCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP + " \"" + a.getName() + "\" : " + Operation(sumlist,"-");
+				bashCodeFinal+= indentCode(lvlIndenteCode) + "\"" + a.getName() + "\" : " + Operation(sumlist,"-");
 				if(i <= list.size()-1) {
 					bashCodeFinal+= ",";
 				}
@@ -400,7 +314,8 @@ public class BashCompiler2 {
 				
 			}
 		}
-		bashCodeFinal += "}\"";
+		bashCodeFinal += "}\'\n";
+		lvlIndenteCode--;
 		return bashCodeFinal;
 
 	}
@@ -447,7 +362,6 @@ public class BashCompiler2 {
 
 	public String jsonArrayRecursive(JsonArray a,JsonArray f ) {
 		tmpCode="";
-		//tmpCode += indentCode(lvlIndenteCode)+ a.getName() +" : [ \n";
 		lvlIndenteCode++;
 		EList<JSonAttribut> listArray = a.getContient();
 		int i = 0;
@@ -475,30 +389,29 @@ public class BashCompiler2 {
 				tmpCode+= indentCode(lvlIndenteCode)+"\"" + b.getName() + "\": {\n " + jsonArrayRecursive(b,b) +"\n" ;
 				tmpCode+= indentCode(lvlIndenteCode)+"}\n";
 			}
-			//TODO
 			else if( att instanceof JSonEnum) {
 				JSonEnum b = (JSonEnum) att;
-				tmpCode+= indentCode(lvlIndenteCode) + " \"" + b.getName() + "\": [" + jsonEnumList(b) + "]\n";
+				tmpCode+= indentCode(lvlIndenteCode) + "\"" + b.getName() + "\": [" + jsonEnumList(b) + "]\n";
 			}
 			else if( att instanceof Sum) {
 				Sum b = (Sum) att;
 				EList<JSonOperator> sumlist = b.getListInterger();
-				tmpCode+= indentCode(lvlIndenteCode)+b.getName() + " \"" + b.getName() + "\" : (" + Operation(sumlist,"+")+")";
+				tmpCode+= indentCode(lvlIndenteCode)+ "\"" + b.getName() + "\" : (" + Operation(sumlist,"+")+")";
 			}
 			else if( att instanceof Div) {
 				Div b = (Div) att;
 				EList<JSonOperator> sumlist = b.getListInterger();
-				tmpCode+= indentCode(lvlIndenteCode)+b.getName() + " \"" + b.getName() + "\" : (" + Operation(sumlist,"/")+")";
+				tmpCode+= indentCode(lvlIndenteCode)+ "\"" + b.getName() + "\" : (" + Operation(sumlist,"/")+")";
 			}
 			else if( att instanceof Mult) {
 				Mult b = (Mult) att;
 				EList<JSonOperator> sumlist = b.getListInterger();
-				tmpCode+= indentCode(lvlIndenteCode)+b.getName() + " \"" + b.getName() + "\" : (" + Operation(sumlist,"*")+")";
+				tmpCode+= indentCode(lvlIndenteCode)+ "\"" + b.getName() + "\" : (" + Operation(sumlist,"*")+")";
 			}
 			else if( att instanceof Sub) {
 				Sub b = (Sub) att;
 				EList<JSonOperator> sumlist = b.getListInterger();
-				tmpCode+= indentCode(lvlIndenteCode)+b.getName() + " \"" + b.getName() + "\" : (" + Operation(sumlist,"-")+")";
+				tmpCode+= indentCode(lvlIndenteCode)+ "\"" + b.getName() + "\" : (" + Operation(sumlist,"-")+")";
 			}
 			if(i + 1 != listArray.size()) {
 				tmpCode+= " ,\n";
