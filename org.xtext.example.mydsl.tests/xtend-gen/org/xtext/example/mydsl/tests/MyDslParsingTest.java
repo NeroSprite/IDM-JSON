@@ -26,30 +26,27 @@ public class MyDslParsingTest {
   
   /**
    * @Test
-   * def void ProjectionModel() {
+   * def void DEBUGtest() {
    * val result = parseHelper.parse("JSonFile \"File\" {
-   * JSonArray \"Tab\" {
-   * String \"Name\"\"Value\"
+   * JSonArray \"MyArray\" {
+   * Integer \"MyInteger\" 2
    * }
-   * },
-   * Commandes {
-   * Projection {
-   * arrayName \"Tab\",
-   * keyName \"Name\"
-   * }
-   * }
-   * ");
+   * 
+   * }");
    * Assertions.assertNotNull(result)
    * val errors = result.eResource.errors
    * Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+   * 
+   * val BashCompiler2 cmpBash = new BashCompiler2(result)
+   * cmpBash.compileAndRun
    * val JavaCompiler cmpJava = new JavaCompiler(result)
    * cmpJava.compileAndRun
    * }
    */
   @Test
-  public void subsetModel() {
+  public void Array2Test() {
     try {
-      final MainGrammar result = this.parseHelper.parse("JSonFile \"File\" {\n\tJSonArray \"Tab\" {\n\t\tString \"Name\"\"Value\"\n\t}\n},\nCommandes {\n\tSubset {\n\t\tarrayName \"Tab\",\n\t\tkeyName \"Name\",\"test\"\n\t}\n}\n");
+      final MainGrammar result = this.parseHelper.parse("JSonFile \"File\" {\n\tJSonArray \"MyArray\" {\n\t\tInteger \"MyInteger\" 2  ,\n\t\tInteger \"MyInteger2\" 5 ,\n\t\tBoolean \"MyBoolean\" false ,\n\t\tNull \"MyNullObject\",\n\t\tJSonArray \"MyArray2\" {\n\t\tInteger \"integ1\" 2 ,\n\t\tJSonArray \"MyArray3\" {\n\t\tInteger \"integ2\" 2 ,\n\t\tSum\"sum\"[\n\t\tInteger \"sum1\" 1,\n\t\tInteger \"sum2\" 5,\n\t\tDiv\"divi\"[\n\t\tInteger \"divi1\" 1,\n\t\tInteger \"divi2\" 5\n\t\t],\n\t\tMult\"multi\"[\n\t\tInteger \"mult1\" 1,\n\t\tInteger \"mult2\" 5,\n\t\tInteger \"mult3\" 2\n\t]\n\t\t]}\n\t\t}\n\t}\n},\nCommandes {\nDisplay {\n\t\tjsonfileName \"File\"\n\t}\n},\nCommandes {\nSubset {\n\t\tarrayName \"MyArray\",\n\t\tkeyName \"integ1\",\"integ2\"\n\t}\n},\nCommandes {\n\tInsert {\n\t\ttargetNode \"MyArray\",\n\t\tnameObject \"integ1\"\n\t}\n},\nCommandes {\n\tModify {\n\t\ttargetNode \"MyArray\",\n\t\tnameObjectRemove \"integ1\",\n\t\tnameObject \"integ2\"\n\t}\n},\nCommandes {\n\tRemove {\n\t\ttargetNode \"MyArray\",\n\t\tnameObjectRemove \"integ2\"\n\t}\n},\nCommandes {\n\tLoad {\n\t\tpath \"/home/thomas/Téléchargements\",\n\t\tname \"test\"\n\t}\n},\nCommandes {\n\tStore {\n\t\tpath \"/home/thomas/Téléchargements\",\n\t\tname \"test\",\n\t\tcontenu \"File\"\n\t}\n}");
       Assertions.assertNotNull(result);
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       boolean _isEmpty = errors.isEmpty();
@@ -58,6 +55,8 @@ public class MyDslParsingTest {
       String _join = IterableExtensions.join(errors, ", ");
       _builder.append(_join);
       Assertions.assertTrue(_isEmpty, _builder.toString());
+      final BashCompiler2 cmpBash = new BashCompiler2(result);
+      cmpBash.compileAndRun();
       final JavaCompiler cmpJava = new JavaCompiler(result);
       cmpJava.compileAndRun();
     } catch (Throwable _e) {

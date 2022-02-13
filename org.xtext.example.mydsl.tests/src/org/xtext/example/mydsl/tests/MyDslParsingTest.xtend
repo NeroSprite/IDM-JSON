@@ -34,7 +34,8 @@ Commandes {
 		val errors = result.eResource.errors
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 		
-				
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}*/
@@ -56,7 +57,8 @@ Commandes {
 		val errors = result.eResource.errors
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 		
-				
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}*/
@@ -79,7 +81,8 @@ Commandes {
 		val errors = result.eResource.errors
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 		
-				
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}*/
@@ -101,10 +104,14 @@ Commandes {
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')	
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}*/
 	
+	
+	/* 
 		@Test
 	def void subsetModel() {
 		val result = parseHelper.parse("JSonFile \"File\" {
@@ -122,9 +129,11 @@ Commandes {
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')	
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
-	}
+	}*/
 	
 	/*@Test
 	def void InsertTest() {
@@ -145,6 +154,8 @@ Commandes {
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')	
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}*/
@@ -174,6 +185,8 @@ Commandes {
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')	
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}*/
@@ -207,6 +220,8 @@ Commandes {
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')	
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}*/
@@ -227,9 +242,11 @@ Commandes {
 } } }");
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
-		//Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 		
 				
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}*/
@@ -239,9 +256,10 @@ Commandes {
 		val result = parseHelper.parse("JSonFile \"Test\" { String \"Test2\" \"HelloWorld\" }");
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
-		//Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 		
-				
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}*/
@@ -279,9 +297,10 @@ Commandes {
 }");
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
-		//Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 		
-				
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}*/
@@ -302,8 +321,10 @@ Div\"Name2\"[
 }");
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
-		//Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 			
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}
@@ -321,11 +342,94 @@ Div\"Name2\"[
 }");
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
-		//Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 		
-				
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}*/
+	
+	
+	@Test
+	def void Array2Test() {
+		val result = parseHelper.parse("JSonFile \"File\" {
+	JSonArray \"MyArray\" {
+		Integer \"MyInteger\" 2  ,
+		Integer \"MyInteger2\" 5 ,
+		Boolean \"MyBoolean\" false ,
+		Null \"MyNullObject\",
+		JSonArray \"MyArray2\" {
+		Integer \"integ1\" 2 ,
+		JSonArray \"MyArray3\" {
+		Integer \"integ2\" 2 ,
+		Sum\"sum\"[
+		Integer \"sum1\" 1,
+		Integer \"sum2\" 5,
+		Div\"divi\"[
+		Integer \"divi1\" 1,
+		Integer \"divi2\" 5
+		],
+		Mult\"multi\"[
+		Integer \"mult1\" 1,
+		Integer \"mult2\" 5,
+		Integer \"mult3\" 2
+	]
+		]}
+		}
+	}
+},
+Commandes {
+Display {
+		jsonfileName \"File\"
+	}
+},
+Commandes {
+Subset {
+		arrayName \"MyArray\",
+		keyName \"integ1\",\"integ2\"
+	}
+},
+Commandes {
+	Insert {
+		targetNode \"MyArray\",
+		nameObject \"integ1\"
+	}
+},
+Commandes {
+	Modify {
+		targetNode \"MyArray\",
+		nameObjectRemove \"integ1\",
+		nameObject \"integ2\"
+	}
+},
+Commandes {
+	Remove {
+		targetNode \"MyArray\",
+		nameObjectRemove \"integ2\"
+	}
+},
+Commandes {
+	Load {
+		path \"/home/thomas/Téléchargements\",
+		name \"test\"
+	}
+},
+Commandes {
+	Store {
+		path \"/home/thomas/Téléchargements\",
+		name \"test\",
+		contenu \"File\"
+	}
+}");
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
+		val JavaCompiler cmpJava = new JavaCompiler(result)
+		cmpJava.compileAndRun
+	}
 	
 }
