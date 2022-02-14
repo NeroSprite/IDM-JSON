@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.logging.Logger;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
@@ -56,7 +57,6 @@ public class JavaCompiler {
 		String jsonReferenceTMP = "";
 
 
-
 		//Debut Generation code
 
 		javaCodeFinal+="import org.json.JSONArray;\n"
@@ -66,6 +66,7 @@ public class JavaCompiler {
 				+ "import java.io.FileReader;\n"
 				+ "import java.io.IOException;\n"
 				+ "import java.util.stream.IntStream;\n"
+				+ "import java.util.logging.Logger;\n"
 				+ "import java.util.stream.Collectors;\n\n";
 		javaCodeFinal+="public class Java {\n";
 		lvlIndenteCode++;
@@ -119,7 +120,6 @@ public class JavaCompiler {
 
 					//for (JSonFile jo : l.getJsonfile()) { 
 					//jsonReferenceTMP = jo.getName();
-					//javaCodeFinal+=JsonFileToJava(jo);
 					javaCodeFinal += indentCode(lvlIndenteCode)+"System.out.println("+l.getName()+"); \n";
 					//}
 				}
@@ -251,6 +251,7 @@ public class JavaCompiler {
 			lvlIndenteCode--;
 			tmp+= indentCode(lvlIndenteCode)+"}\n";
 		}
+		tmp+=indentCode(lvlIndenteCode)+"System.out.println(search"+multipleElement +");\n";
 		multipleElement++;
 		return tmp;
 	}
@@ -352,7 +353,7 @@ public class JavaCompiler {
 				javaCodeFinal+= indentCode(lvlIndenteCode)+"JSONObject "+a.getName()+"= new JSONObject().put(\""+a.getName()+"\", new Double(";
 				javaCodeFinal += Operation(sumlist,"+");
 				javaCodeFinal += ")); \n";
-				javaCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP+".put("+a.getName()+"); \n";
+				javaCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP+".put(\""+a.getName()+"\","+a.getName()+"); \n";
 			}
 			if( jo instanceof Div) {
 				Div a = (Div) jo;
@@ -360,7 +361,7 @@ public class JavaCompiler {
 				javaCodeFinal+= indentCode(lvlIndenteCode)+"JSONObject "+a.getName()+"= new JSONObject().put(\""+a.getName()+"\", new Double(";
 				javaCodeFinal += Operation(sumlist,"/");
 				javaCodeFinal += ")); \n";
-				javaCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP+".put("+a.getName()+"); \n";
+				javaCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP+".put(\""+a.getName()+"\","+a.getName()+"); \n";
 			}
 			if( jo instanceof Mult) {
 				Mult a = (Mult) jo;
@@ -368,7 +369,7 @@ public class JavaCompiler {
 				javaCodeFinal+= indentCode(lvlIndenteCode)+"JSONObject "+a.getName()+"= new JSONObject().put(\""+a.getName()+"\", new Double(";
 				javaCodeFinal += Operation(sumlist,"*");
 				javaCodeFinal += ")); \n";
-				javaCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP+".put("+a.getName()+"); \n";
+				javaCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP+".put(\""+a.getName()+"\","+a.getName()+"); \n";
 			}
 			if( jo instanceof Sub) {
 				Sub a = (Sub) jo;
@@ -376,7 +377,7 @@ public class JavaCompiler {
 				javaCodeFinal+= indentCode(lvlIndenteCode)+"JSONObject "+a.getName()+"= new JSONObject().put(\""+a.getName()+"\", new Double(";
 				javaCodeFinal += Operation(sumlist,"-");
 				javaCodeFinal += ")); \n";
-				javaCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP+".put("+a.getName()+"); \n";
+				javaCodeFinal+= indentCode(lvlIndenteCode)+jsonReferenceTMP+".put(\""+a.getName()+"\","+a.getName()+"); \n";
 			}
 		}
 		return javaCodeFinal;

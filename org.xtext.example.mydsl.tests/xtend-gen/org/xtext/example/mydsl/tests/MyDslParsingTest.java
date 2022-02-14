@@ -26,12 +26,14 @@ public class MyDslParsingTest {
   
   /**
    * @Test
-   * def void DEBUGtest() {
-   * val result = parseHelper.parse("JSonFile \"File\" {
-   * JSonArray \"MyArray\" {
-   * Integer \"MyInteger\" 2
+   * def void DisplayModel() {
+   * val result = parseHelper.parse("JSonFile \"Name\" {
+   * Integer \"i\" 2
+   * },
+   * Commandes {
+   * Display {
+   * jsonfileName \"i\"
    * }
-   * 
    * }");
    * Assertions.assertNotNull(result)
    * val errors = result.eResource.errors
@@ -44,9 +46,9 @@ public class MyDslParsingTest {
    * }
    */
   @Test
-  public void Array2Test() {
+  public void DisplayMultipModel() {
     try {
-      final MainGrammar result = this.parseHelper.parse("JSonFile \"File\" {\n\tJSonArray \"MyArray\" {\n\t\tInteger \"MyInteger\" 2  ,\n\t\tInteger \"MyInteger2\" 5 ,\n\t\tBoolean \"MyBoolean\" false ,\n\t\tNull \"MyNullObject\",\n\t\tJSonArray \"MyArray2\" {\n\t\tInteger \"integ1\" 2 ,\n\t\tJSonArray \"MyArray3\" {\n\t\tInteger \"integ2\" 2 ,\n\t\tSum\"sum\"[\n\t\tInteger \"sum1\" 1,\n\t\tInteger \"sum2\" 5,\n\t\tDiv\"divi\"[\n\t\tInteger \"divi1\" 1,\n\t\tInteger \"divi2\" 5\n\t\t],\n\t\tMult\"multi\"[\n\t\tInteger \"mult1\" 1,\n\t\tInteger \"mult2\" 5,\n\t\tInteger \"mult3\" 2\n\t]\n\t\t]}\n\t\t}\n\t}\n},\nCommandes {\nDisplay {\n\t\tjsonfileName \"File\"\n\t}\n},\nCommandes {\nSubset {\n\t\tarrayName \"MyArray\",\n\t\tkeyName \"integ1\",\"integ2\"\n\t}\n},\nCommandes {\n\tInsert {\n\t\ttargetNode \"MyArray\",\n\t\tnameObject \"integ1\"\n\t}\n},\nCommandes {\n\tModify {\n\t\ttargetNode \"MyArray\",\n\t\tnameObjectRemove \"integ1\",\n\t\tnameObject \"integ2\"\n\t}\n},\nCommandes {\n\tRemove {\n\t\ttargetNode \"MyArray\",\n\t\tnameObjectRemove \"integ2\"\n\t}\n},\nCommandes {\n\tLoad {\n\t\tpath \"/home/thomas/Téléchargements\",\n\t\tname \"test\"\n\t}\n},\nCommandes {\n\tStore {\n\t\tpath \"/home/thomas/Téléchargements\",\n\t\tname \"test\",\n\t\tcontenu \"File\"\n\t}\n}");
+      final MainGrammar result = this.parseHelper.parse("JSonFile \"File\" {\n\tSum \"add\" [\n\t\tMult \"multi\" [\n\t\t\tSub \"sub\" [\n\t\t\t\tInteger\"int1\" 6,\n\t\t\t\tInteger \"int2\" 3\n\t\t\t],\n\t\t\tInteger \"int3\" 5\n\t\t],\n\t\tInteger \"int4\" 4\n\t]\n},\nCommandes {\n\tDisplay {\n\t\tjsonfileName \"add\"\n\t}\n}");
       Assertions.assertNotNull(result);
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       boolean _isEmpty = errors.isEmpty();

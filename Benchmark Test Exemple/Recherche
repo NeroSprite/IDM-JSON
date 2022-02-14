@@ -1,0 +1,15 @@
+JSonFile "File" {
+	JSonArray "Array" {
+		Boolean "bool" false,
+		String "Nom" "NomValue",
+		String "Prenom" "PrenomValue",
+		String "DateNaiss" "01/01/2000",
+		String "Ville" "VilleValue"
+	}
+},
+Commandes {
+	Subset {
+		arrayName "Array",
+		keyName "Nom", "Prenom"
+	}
+}

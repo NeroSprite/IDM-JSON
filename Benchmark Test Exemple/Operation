@@ -1,0 +1,17 @@
+JSonFile "File" {
+	Sum "add" [
+		Mult "multi" [
+			Sub "sub" [
+				Integer"int1" 6,
+				Integer "int2" 3
+			],
+			Integer "int3" 5
+		],
+		Integer "int4" 4
+	]
+},
+Commandes {
+	Display {
+		jsonfileName "add"
+	}
+}

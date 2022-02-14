@@ -1,0 +1,10 @@
+JSonFile "Name" {
+	Integer "i" 2
+},
+Commandes {
+	Display {
+		jsonfileName "Name"
+	}
+}
+
+

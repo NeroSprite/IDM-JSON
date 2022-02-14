@@ -27,7 +27,7 @@ class MyDslParsingTest {
 },
 Commandes {
 	Display {
-		jsonfileName \"Name\"
+		jsonfileName \"i\"
 	}
 }");
 		Assertions.assertNotNull(result)
@@ -39,6 +39,70 @@ Commandes {
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
 	}*/
+	
+	
+		@Test
+	def void DisplayMultipModel() {
+		val result = parseHelper.parse("JSonFile \"File\" {
+	Sum \"add\" [
+		Mult \"multi\" [
+			Sub \"sub\" [
+				Integer\"int1\" 6,
+				Integer \"int2\" 3
+			],
+			Integer \"int3\" 5
+		],
+		Integer \"int4\" 4
+	]
+},
+Commandes {
+	Display {
+		jsonfileName \"add\"
+	}
+}");
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
+		val JavaCompiler cmpJava = new JavaCompiler(result)
+		cmpJava.compileAndRun
+	}
+	
+	
+	
+	/* 
+		@Test
+	def void DisplayRechercheModel() {
+		val result = parseHelper.parse("JSonFile \"File\" {
+	JSonArray \"Array\" {
+		Boolean \"bool\" false,
+		String \"Nom\" \"NomValue\",
+		String \"Prenom\" \"PrenomValue\",
+		String \"DateNaiss\" \"01/01/2000\",
+		String \"Ville\" \"VilleValue\"
+	}
+},
+Commandes {
+	Subset {
+		arrayName \"Array\",
+		keyName \"Nom\", \"Prenom\"
+	}
+}");
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		
+		val BashCompiler2 cmpBash = new BashCompiler2(result)
+		cmpBash.compileAndRun
+		val JavaCompiler cmpJava = new JavaCompiler(result)
+		cmpJava.compileAndRun
+	}*/
+	
+	
+	
+	
 	
 	/*
 		@Test
@@ -350,7 +414,7 @@ Div\"Name2\"[
 		cmpJava.compileAndRun
 	}*/
 	
-	
+	/* 
 	@Test
 	def void Array2Test() {
 		val result = parseHelper.parse("JSonFile \"File\" {
@@ -430,6 +494,6 @@ Commandes {
 		cmpBash.compileAndRun
 		val JavaCompiler cmpJava = new JavaCompiler(result)
 		cmpJava.compileAndRun
-	}
+	}*/
 	
 }
